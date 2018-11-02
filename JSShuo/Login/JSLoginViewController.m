@@ -197,11 +197,12 @@
 - (UIButton *)loginButton{
     if (!_loginButton) {
         _loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _loginButton.backgroundColor = [UIColor colorWithHexString:@"F44336"];
+        
         [_loginButton setTitle:@"登录" forState:UIControlStateNormal];
         [_loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         _loginButton.titleLabel.font = [UIFont systemFontOfSize:16];
-        
+        _loginButton.backgroundColor = [UIColor colorWithHexString:@"999999"];
+        _loginButton.enabled = NO;
         @weakify(self)
         [_loginButton bk_addEventHandler:^(id sender) {
             @strongify(self)
@@ -239,6 +240,9 @@
     
     [self.view addSubview:self.loginButton];
     [self.view addSubview:self.loginBottomView];
+    
+    [self.accountTextField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+    [self.passwordTextField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     
     [self.accountIcon mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(20, 23));
@@ -319,6 +323,16 @@
     }];
 }
 
-
+- (void) textFieldDidChange:(UITextField *) textField {
+    
+    if (self.accountTextField.text.length > 0 && self.passwordTextField.text.length > 0) {
+        self.loginButton.enabled = YES;
+        self.loginButton.backgroundColor = [UIColor colorWithHexString:@"F44336"];
+    }else{
+        self.loginButton.enabled = NO;
+        self.loginButton.backgroundColor = [UIColor colorWithHexString:@"999999"];
+    }
+    
+}
 
 @end

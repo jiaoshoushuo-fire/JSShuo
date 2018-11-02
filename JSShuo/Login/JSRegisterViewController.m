@@ -41,7 +41,7 @@
 - (UITextField *)accountTextField{
     if (!_accountTextField) {
         _accountTextField = [[UITextField alloc]init];
-        _accountTextField.placeholder = @"请输入账号";
+        _accountTextField.placeholder = @"请输入手机号";
         _accountTextField.font = [UIFont systemFontOfSize:14];
         _accountTextField.keyboardType = UIKeyboardTypeNumberPad;
         _accountTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
@@ -96,7 +96,9 @@
     if (!_securityCodeButton) {
         _securityCodeButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_securityCodeButton setTitle:@"发送验证码" forState:UIControlStateNormal];
-        [_securityCodeButton setTitleColor:[UIColor colorWithHexString:@"4A90E2"] forState:UIControlStateNormal];
+        _securityCodeButton.titleLabel.font = [UIFont systemFontOfSize:14];
+        [_securityCodeButton setTitleColor:[UIColor colorWithHexString:@"999999"] forState:UIControlStateNormal];
+        _securityCodeButton.enabled = NO;
         @weakify(self)
         [_securityCodeButton bk_addEventHandler:^(UIButton *sender) {
             @strongify(self)
@@ -111,6 +113,7 @@
                     self.timeCount = 60;
                     [timer invalidate];
                     timer = nil;
+                    [sender setTitle:@"重发" forState:UIControlStateNormal];
                     [self textFieldDidChange:self.accountTextField];
                 }else{
                     self.timeCount -- ;
@@ -162,7 +165,7 @@
 - (UIButton *)registerButton{
     if (!_registerButton) {
         _registerButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _registerButton.backgroundColor = [UIColor colorWithHexString:@"F44336"];
+        _registerButton.backgroundColor = [UIColor colorWithHexString:@"999999"];
         [_registerButton setTitle:@"注册" forState:UIControlStateNormal];
         [_registerButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         _registerButton.titleLabel.font = [UIFont systemFontOfSize:16];
@@ -222,6 +225,9 @@
     [self.view addSubview:self.passwordTextField];
     [self.view addSubview:self.passwordLine];
     
+    [self.view addSubview:self.securityCodeButtonLeftLine];
+    [self.view addSubview:self.securityCodeButton];
+    
     [self.view addSubview:self.agreementLabel];
     [self.view addSubview:self.registerButton];
     [self.view addSubview:self.gologinLabel];
@@ -262,7 +268,7 @@
     
     [self.passwordTextField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.passwordIcon.mas_right).offset(10);
-        make.right.equalTo(self.view).offset(-10);
+        make.right.equalTo(self.securityCodeButtonLeftLine.mas_left).offset(-10);
         make.height.mas_equalTo(30);
         make.centerY.mas_equalTo(self.passwordIcon.mas_centerY);
     }];
@@ -272,6 +278,18 @@
         make.left.equalTo(self.view).offset(10);
         make.right.equalTo(self.view).offset(-10);
         make.bottom.mas_equalTo(self.passwordIcon.mas_bottom).offset(10);
+    }];
+    
+    [self.securityCodeButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(80, 25));
+        make.right.equalTo(self.view).offset(-10);
+        make.centerY.mas_equalTo(self.passwordIcon.mas_centerY);
+    }];
+    
+    [self.securityCodeButtonLeftLine mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(1, 22));
+        make.right.equalTo(self.securityCodeButton.mas_left).offset(-10);
+        make.centerY.mas_equalTo(self.passwordIcon.mas_centerY);
     }];
     
     [self.agreementLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -321,16 +339,20 @@
     if ([self checkAccount]) {
         if (![self.timer isValid]) {
             self.securityCodeButton.enabled = YES;
+            [self.securityCodeButton setTitleColor:[UIColor colorWithHexString:@"4A90E2"] forState:UIControlStateNormal];
         }
     }else{
         self.securityCodeButton.enabled = NO;
+        [self.securityCodeButton setTitleColor:[UIColor colorWithHexString:@"999999"] forState:UIControlStateNormal];
     }
     
     if ([self checkAccount] && self.passwordTextField.text.length > 0 ) {
         self.registerButton.enabled = YES;
+        self.registerButton.backgroundColor = [UIColor colorWithHexString:@"F44336"];
         
     }else{
         self.registerButton.enabled = NO;
+        self.registerButton.backgroundColor = [UIColor colorWithHexString:@"999999"];
         
     }
     
@@ -386,5 +408,11 @@
     
     [self setHighlightInfo:@{} withRange:[reslutString.string rangeOfString:highlightString] toText:reslutString];
     return reslutString;
+}
+- (void)stopTimerIfNeed{
+    if ([self.timer isValid]) {
+        [self.timer invalidate];
+        self.timer = nil;
+    }
 }
 @end
