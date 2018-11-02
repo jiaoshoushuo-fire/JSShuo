@@ -151,7 +151,7 @@
         [textString setColor:[UIColor colorWithHexString:@"999999"] range:[textString.string rangeOfString:string_1]];
         [textString setColor:[UIColor colorWithHexString:@"E81E2D"] range:[textString.string rangeOfString:string_2]];
         textString.font = [UIFont systemFontOfSize:12];
-        YYTextLayout *layout = [YYTextLayout layoutWithContainerSize:CGSizeMake(MAXFLOAT, 20) text:textString];
+        YYTextLayout *layout = [YYTextLayout layoutWithContainerSize:CGSizeMake(MAXFLOAT, 25) text:textString];
         
         [_agreementLabel setTextLayout:layout];
         _agreementLabel.size = layout.textBoundingSize;
