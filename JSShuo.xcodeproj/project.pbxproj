@@ -1,0 +1,1002 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2D4BE293799FA8F9CF3BD9E0 /* libPods-JSShuoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07D21E4F3FE796E0EC111709 /* libPods-JSShuoTests.a */; };
+		6797051512B36A0CAA259324 /* libPods-JSShuoUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 45918ABA94D7C616D6E9C28A /* libPods-JSShuoUITests.a */; };
+		7A203E44218BE02A0001F926 /* JSLoginMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A203E43218BE02A0001F926 /* JSLoginMainViewController.m */; };
+		7A203E47218BE53F0001F926 /* JSLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A203E46218BE53F0001F926 /* JSLoginViewController.m */; };
+		7A203E4A218BE5650001F926 /* JSRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A203E49218BE5650001F926 /* JSRegisterViewController.m */; };
+		7A203E4E218BF2430001F926 /* JSAccountManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A203E4D218BF2430001F926 /* JSAccountManager.m */; };
+		7A5FEE53218ACBAD006CF7EC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5FEE52218ACBAD006CF7EC /* AppDelegate.m */; };
+		7A5FEE56218ACBAD006CF7EC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5FEE55218ACBAD006CF7EC /* ViewController.m */; };
+		7A5FEE59218ACBAD006CF7EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A5FEE57218ACBAD006CF7EC /* Main.storyboard */; };
+		7A5FEE5B218ACBAE006CF7EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A5FEE5A218ACBAE006CF7EC /* Assets.xcassets */; };
+		7A5FEE5E218ACBAE006CF7EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A5FEE5C218ACBAE006CF7EC /* LaunchScreen.storyboard */; };
+		7A5FEE61218ACBAE006CF7EC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5FEE60218ACBAE006CF7EC /* main.m */; };
+		7A5FEE6B218ACBAE006CF7EC /* JSShuoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5FEE6A218ACBAE006CF7EC /* JSShuoTests.m */; };
+		7A5FEE76218ACBAE006CF7EC /* JSShuoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5FEE75218ACBAE006CF7EC /* JSShuoUITests.m */; };
+		7A5FEE88218AFB3E006CF7EC /* JSBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5FEE87218AFB3E006CF7EC /* JSBaseViewController.m */; };
+		7A5FEE8B218AFBAC006CF7EC /* JSTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5FEE8A218AFBAC006CF7EC /* JSTabBarViewController.m */; };
+		7A5FEE8E218AFC39006CF7EC /* JSNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5FEE8D218AFC39006CF7EC /* JSNavigationBar.m */; };
+		7A5FEE91218AFC92006CF7EC /* JSTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5FEE90218AFC92006CF7EC /* JSTabBar.m */; };
+		7A5FEE94218AFD7D006CF7EC /* JSMainTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5FEE93218AFD7D006CF7EC /* JSMainTabBar.m */; };
+		7A5FEE98218AFEA1006CF7EC /* UIColor+JSShuo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5FEE97218AFEA1006CF7EC /* UIColor+JSShuo.m */; };
+		7A5FEE9C218B0058006CF7EC /* UIFont+JSShuo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5FEE9B218B0058006CF7EC /* UIFont+JSShuo.m */; };
+		7A5FEEA0218B07B7006CF7EC /* JSRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5FEE9F218B07B7006CF7EC /* JSRootViewController.m */; };
+		7A5FEEA3218B0BA7006CF7EC /* JSLaunchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5FEEA2218B0BA7006CF7EC /* JSLaunchViewController.m */; };
+		7A5FEEA6218B0BC2006CF7EC /* JSStartupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5FEEA5218B0BC2006CF7EC /* JSStartupViewController.m */; };
+		7A5FEEA9218B0BD0006CF7EC /* JSMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5FEEA8218B0BD0006CF7EC /* JSMainViewController.m */; };
+		7A5FEEB1218B0D4D006CF7EC /* JSActivityCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5FEEB0218B0D4D006CF7EC /* JSActivityCenterViewController.m */; };
+		7A5FEEB4218B0D5E006CF7EC /* JSHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5FEEB3218B0D5E006CF7EC /* JSHomeViewController.m */; };
+		7A5FEEB7218B0D6D006CF7EC /* JSVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5FEEB6218B0D6D006CF7EC /* JSVideoViewController.m */; };
+		7A5FEEBA218B0D7C006CF7EC /* JSProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5FEEB9218B0D7C006CF7EC /* JSProfileViewController.m */; };
+		7A5FEEBD218B0D8A006CF7EC /* JSMissionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5FEEBC218B0D8A006CF7EC /* JSMissionViewController.m */; };
+		7A5FEEC2218B280D006CF7EC /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7A5FEEC0218B280D006CF7EC /* AlipaySDK.bundle */; };
+		7A5FEEC3218B280D006CF7EC /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A5FEEC1218B280D006CF7EC /* AlipaySDK.framework */; };
+		7A5FEEC6218B2814006CF7EC /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A5FEEC5218B2814006CF7EC /* TencentOpenAPI.framework */; };
+		7A5FEEC8218B2C26006CF7EC /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A5FEEC7218B2C26006CF7EC /* CoreMotion.framework */; };
+		7A5FEECA218B2C33006CF7EC /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A5FEEC9218B2C33006CF7EC /* libc++.tbd */; };
+		7A5FEECC218B2C3D006CF7EC /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A5FEECB218B2C3D006CF7EC /* libz.tbd */; };
+		7A5FEECE218B2C44006CF7EC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A5FEECD218B2C44006CF7EC /* SystemConfiguration.framework */; };
+		7A5FEED0218B2C50006CF7EC /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A5FEECF218B2C50006CF7EC /* CoreTelephony.framework */; };
+		7A5FEED2218B2C5B006CF7EC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A5FEED1218B2C5B006CF7EC /* QuartzCore.framework */; };
+		7A5FEED4218B2C63006CF7EC /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A5FEED3218B2C63006CF7EC /* CoreText.framework */; };
+		7A5FEED6218B2C80006CF7EC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A5FEED5218B2C80006CF7EC /* CoreGraphics.framework */; };
+		7A5FEED8218B2C8A006CF7EC /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A5FEED7218B2C89006CF7EC /* CFNetwork.framework */; };
+		A02B29E2FC7397B33BD05EC7 /* libPods-JSShuo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0C9F621EFFB845046C46704 /* libPods-JSShuo.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7A5FEE67218ACBAE006CF7EC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7A5FEE46218ACBAD006CF7EC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7A5FEE4D218ACBAD006CF7EC;
+			remoteInfo = JSShuo;
+		};
+		7A5FEE72218ACBAE006CF7EC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7A5FEE46218ACBAD006CF7EC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7A5FEE4D218ACBAD006CF7EC;
+			remoteInfo = JSShuo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		07D21E4F3FE796E0EC111709 /* libPods-JSShuoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JSShuoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		35A90D49D7D66324E387894E /* Pods-JSShuoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSShuoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JSShuoUITests/Pods-JSShuoUITests.release.xcconfig"; sourceTree = "<group>"; };
+		428D5311982CDC892743DA34 /* Pods-JSShuoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSShuoUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JSShuoUITests/Pods-JSShuoUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		45918ABA94D7C616D6E9C28A /* libPods-JSShuoUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JSShuoUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C8C32F2EB98381D097CADB3 /* Pods-JSShuoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSShuoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JSShuoTests/Pods-JSShuoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		7A203E42218BE02A0001F926 /* JSLoginMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSLoginMainViewController.h; sourceTree = "<group>"; };
+		7A203E43218BE02A0001F926 /* JSLoginMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSLoginMainViewController.m; sourceTree = "<group>"; };
+		7A203E45218BE53F0001F926 /* JSLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSLoginViewController.h; sourceTree = "<group>"; };
+		7A203E46218BE53F0001F926 /* JSLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSLoginViewController.m; sourceTree = "<group>"; };
+		7A203E48218BE5650001F926 /* JSRegisterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSRegisterViewController.h; sourceTree = "<group>"; };
+		7A203E49218BE5650001F926 /* JSRegisterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSRegisterViewController.m; sourceTree = "<group>"; };
+		7A203E4C218BF2430001F926 /* JSAccountManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSAccountManager.h; sourceTree = "<group>"; };
+		7A203E4D218BF2430001F926 /* JSAccountManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSAccountManager.m; sourceTree = "<group>"; };
+		7A5FEE4E218ACBAD006CF7EC /* JSShuo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JSShuo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A5FEE51218ACBAD006CF7EC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		7A5FEE52218ACBAD006CF7EC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		7A5FEE54218ACBAD006CF7EC /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		7A5FEE55218ACBAD006CF7EC /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		7A5FEE58218ACBAD006CF7EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7A5FEE5A218ACBAE006CF7EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7A5FEE5D218ACBAE006CF7EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7A5FEE5F218ACBAE006CF7EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A5FEE60218ACBAE006CF7EC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		7A5FEE66218ACBAE006CF7EC /* JSShuoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSShuoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A5FEE6A218ACBAE006CF7EC /* JSShuoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSShuoTests.m; sourceTree = "<group>"; };
+		7A5FEE6C218ACBAE006CF7EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A5FEE71218ACBAE006CF7EC /* JSShuoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSShuoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A5FEE75218ACBAE006CF7EC /* JSShuoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSShuoUITests.m; sourceTree = "<group>"; };
+		7A5FEE77218ACBAE006CF7EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A5FEE84218AD680006CF7EC /* JSShouPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSShouPrefixHeader.pch; sourceTree = "<group>"; };
+		7A5FEE86218AFB3E006CF7EC /* JSBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSBaseViewController.h; sourceTree = "<group>"; };
+		7A5FEE87218AFB3E006CF7EC /* JSBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSBaseViewController.m; sourceTree = "<group>"; };
+		7A5FEE89218AFBAC006CF7EC /* JSTabBarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSTabBarViewController.h; sourceTree = "<group>"; };
+		7A5FEE8A218AFBAC006CF7EC /* JSTabBarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSTabBarViewController.m; sourceTree = "<group>"; };
+		7A5FEE8C218AFC39006CF7EC /* JSNavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSNavigationBar.h; sourceTree = "<group>"; };
+		7A5FEE8D218AFC39006CF7EC /* JSNavigationBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSNavigationBar.m; sourceTree = "<group>"; };
+		7A5FEE8F218AFC92006CF7EC /* JSTabBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSTabBar.h; sourceTree = "<group>"; };
+		7A5FEE90218AFC92006CF7EC /* JSTabBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSTabBar.m; sourceTree = "<group>"; };
+		7A5FEE92218AFD7D006CF7EC /* JSMainTabBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSMainTabBar.h; sourceTree = "<group>"; };
+		7A5FEE93218AFD7D006CF7EC /* JSMainTabBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSMainTabBar.m; sourceTree = "<group>"; };
+		7A5FEE96218AFEA1006CF7EC /* UIColor+JSShuo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+JSShuo.h"; sourceTree = "<group>"; };
+		7A5FEE97218AFEA1006CF7EC /* UIColor+JSShuo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+JSShuo.m"; sourceTree = "<group>"; };
+		7A5FEE99218AFF6A006CF7EC /* JSMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSMacros.h; sourceTree = "<group>"; };
+		7A5FEE9A218B0058006CF7EC /* UIFont+JSShuo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIFont+JSShuo.h"; sourceTree = "<group>"; };
+		7A5FEE9B218B0058006CF7EC /* UIFont+JSShuo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIFont+JSShuo.m"; sourceTree = "<group>"; };
+		7A5FEE9E218B07B7006CF7EC /* JSRootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSRootViewController.h; sourceTree = "<group>"; };
+		7A5FEE9F218B07B7006CF7EC /* JSRootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSRootViewController.m; sourceTree = "<group>"; };
+		7A5FEEA1218B0BA7006CF7EC /* JSLaunchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSLaunchViewController.h; sourceTree = "<group>"; };
+		7A5FEEA2218B0BA7006CF7EC /* JSLaunchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSLaunchViewController.m; sourceTree = "<group>"; };
+		7A5FEEA4218B0BC2006CF7EC /* JSStartupViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSStartupViewController.h; sourceTree = "<group>"; };
+		7A5FEEA5218B0BC2006CF7EC /* JSStartupViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSStartupViewController.m; sourceTree = "<group>"; };
+		7A5FEEA7218B0BD0006CF7EC /* JSMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSMainViewController.h; sourceTree = "<group>"; };
+		7A5FEEA8218B0BD0006CF7EC /* JSMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSMainViewController.m; sourceTree = "<group>"; };
+		7A5FEEAF218B0D4D006CF7EC /* JSActivityCenterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSActivityCenterViewController.h; sourceTree = "<group>"; };
+		7A5FEEB0218B0D4D006CF7EC /* JSActivityCenterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSActivityCenterViewController.m; sourceTree = "<group>"; };
+		7A5FEEB2218B0D5E006CF7EC /* JSHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSHomeViewController.h; sourceTree = "<group>"; };
+		7A5FEEB3218B0D5E006CF7EC /* JSHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSHomeViewController.m; sourceTree = "<group>"; };
+		7A5FEEB5218B0D6D006CF7EC /* JSVideoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSVideoViewController.h; sourceTree = "<group>"; };
+		7A5FEEB6218B0D6D006CF7EC /* JSVideoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSVideoViewController.m; sourceTree = "<group>"; };
+		7A5FEEB8218B0D7C006CF7EC /* JSProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSProfileViewController.h; sourceTree = "<group>"; };
+		7A5FEEB9218B0D7C006CF7EC /* JSProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSProfileViewController.m; sourceTree = "<group>"; };
+		7A5FEEBB218B0D8A006CF7EC /* JSMissionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSMissionViewController.h; sourceTree = "<group>"; };
+		7A5FEEBC218B0D8A006CF7EC /* JSMissionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSMissionViewController.m; sourceTree = "<group>"; };
+		7A5FEEC0218B280D006CF7EC /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
+		7A5FEEC1218B280D006CF7EC /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
+		7A5FEEC5218B2814006CF7EC /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
+		7A5FEEC7218B2C26006CF7EC /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		7A5FEEC9218B2C33006CF7EC /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		7A5FEECB218B2C3D006CF7EC /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		7A5FEECD218B2C44006CF7EC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		7A5FEECF218B2C50006CF7EC /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		7A5FEED1218B2C5B006CF7EC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		7A5FEED3218B2C63006CF7EC /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		7A5FEED5218B2C80006CF7EC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		7A5FEED7218B2C89006CF7EC /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		970737962D02DBFA81E8DC67 /* Pods-JSShuoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSShuoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JSShuoTests/Pods-JSShuoTests.release.xcconfig"; sourceTree = "<group>"; };
+		A13FC4DE98462C1E2DE50010 /* Pods-JSShuo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSShuo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JSShuo/Pods-JSShuo.debug.xcconfig"; sourceTree = "<group>"; };
+		B29893048A2739D89BF02B42 /* Pods-JSShuo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSShuo.release.xcconfig"; path = "Pods/Target Support Files/Pods-JSShuo/Pods-JSShuo.release.xcconfig"; sourceTree = "<group>"; };
+		F0C9F621EFFB845046C46704 /* libPods-JSShuo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JSShuo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7A5FEE4B218ACBAD006CF7EC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A5FEED8218B2C8A006CF7EC /* CFNetwork.framework in Frameworks */,
+				7A5FEED6218B2C80006CF7EC /* CoreGraphics.framework in Frameworks */,
+				7A5FEED4218B2C63006CF7EC /* CoreText.framework in Frameworks */,
+				7A5FEED2218B2C5B006CF7EC /* QuartzCore.framework in Frameworks */,
+				7A5FEED0218B2C50006CF7EC /* CoreTelephony.framework in Frameworks */,
+				7A5FEECE218B2C44006CF7EC /* SystemConfiguration.framework in Frameworks */,
+				7A5FEECC218B2C3D006CF7EC /* libz.tbd in Frameworks */,
+				7A5FEECA218B2C33006CF7EC /* libc++.tbd in Frameworks */,
+				7A5FEEC8218B2C26006CF7EC /* CoreMotion.framework in Frameworks */,
+				A02B29E2FC7397B33BD05EC7 /* libPods-JSShuo.a in Frameworks */,
+				7A5FEEC6218B2814006CF7EC /* TencentOpenAPI.framework in Frameworks */,
+				7A5FEEC3218B280D006CF7EC /* AlipaySDK.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A5FEE63218ACBAE006CF7EC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2D4BE293799FA8F9CF3BD9E0 /* libPods-JSShuoTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A5FEE6E218ACBAE006CF7EC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6797051512B36A0CAA259324 /* libPods-JSShuoUITests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		15BBF99DF6D3A562552BEDD5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A13FC4DE98462C1E2DE50010 /* Pods-JSShuo.debug.xcconfig */,
+				B29893048A2739D89BF02B42 /* Pods-JSShuo.release.xcconfig */,
+				5C8C32F2EB98381D097CADB3 /* Pods-JSShuoTests.debug.xcconfig */,
+				970737962D02DBFA81E8DC67 /* Pods-JSShuoTests.release.xcconfig */,
+				428D5311982CDC892743DA34 /* Pods-JSShuoUITests.debug.xcconfig */,
+				35A90D49D7D66324E387894E /* Pods-JSShuoUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		7A203E41218BDFB00001F926 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				7A203E42218BE02A0001F926 /* JSLoginMainViewController.h */,
+				7A203E43218BE02A0001F926 /* JSLoginMainViewController.m */,
+				7A203E45218BE53F0001F926 /* JSLoginViewController.h */,
+				7A203E46218BE53F0001F926 /* JSLoginViewController.m */,
+				7A203E48218BE5650001F926 /* JSRegisterViewController.h */,
+				7A203E49218BE5650001F926 /* JSRegisterViewController.m */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		7A203E4B218BF2220001F926 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				7A203E4C218BF2430001F926 /* JSAccountManager.h */,
+				7A203E4D218BF2430001F926 /* JSAccountManager.m */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		7A5FEE45218ACBAD006CF7EC = {
+			isa = PBXGroup;
+			children = (
+				7A5FEE50218ACBAD006CF7EC /* JSShuo */,
+				7A5FEE69218ACBAE006CF7EC /* JSShuoTests */,
+				7A5FEE74218ACBAE006CF7EC /* JSShuoUITests */,
+				7A5FEE4F218ACBAD006CF7EC /* Products */,
+				15BBF99DF6D3A562552BEDD5 /* Pods */,
+				987926DE9B9DF7A3A01F33D8 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		7A5FEE4F218ACBAD006CF7EC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7A5FEE4E218ACBAD006CF7EC /* JSShuo.app */,
+				7A5FEE66218ACBAE006CF7EC /* JSShuoTests.xctest */,
+				7A5FEE71218ACBAE006CF7EC /* JSShuoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7A5FEE50218ACBAD006CF7EC /* JSShuo */ = {
+			isa = PBXGroup;
+			children = (
+				7A203E4B218BF2220001F926 /* User */,
+				7A203E41218BDFB00001F926 /* Login */,
+				7A5FEEBE218B2429006CF7EC /* Libs */,
+				7A5FEEAE218B0D00006CF7EC /* Mission */,
+				7A5FEEAD218B0CF5006CF7EC /* Profile */,
+				7A5FEEAC218B0CEE006CF7EC /* Video */,
+				7A5FEEAB218B0CE2006CF7EC /* Home */,
+				7A5FEEAA218B0CD9006CF7EC /* Activity */,
+				7A5FEE9D218B075C006CF7EC /* Main */,
+				7A5FEE95218AFE7B006CF7EC /* Categories */,
+				7A5FEE85218AFB1D006CF7EC /* Base */,
+				7A5FEE51218ACBAD006CF7EC /* AppDelegate.h */,
+				7A5FEE52218ACBAD006CF7EC /* AppDelegate.m */,
+				7A5FEE54218ACBAD006CF7EC /* ViewController.h */,
+				7A5FEE55218ACBAD006CF7EC /* ViewController.m */,
+				7A5FEE84218AD680006CF7EC /* JSShouPrefixHeader.pch */,
+				7A5FEE99218AFF6A006CF7EC /* JSMacros.h */,
+				7A5FEE57218ACBAD006CF7EC /* Main.storyboard */,
+				7A5FEE5A218ACBAE006CF7EC /* Assets.xcassets */,
+				7A5FEE5C218ACBAE006CF7EC /* LaunchScreen.storyboard */,
+				7A5FEE5F218ACBAE006CF7EC /* Info.plist */,
+				7A5FEE60218ACBAE006CF7EC /* main.m */,
+			);
+			path = JSShuo;
+			sourceTree = "<group>";
+		};
+		7A5FEE69218ACBAE006CF7EC /* JSShuoTests */ = {
+			isa = PBXGroup;
+			children = (
+				7A5FEE6A218ACBAE006CF7EC /* JSShuoTests.m */,
+				7A5FEE6C218ACBAE006CF7EC /* Info.plist */,
+			);
+			path = JSShuoTests;
+			sourceTree = "<group>";
+		};
+		7A5FEE74218ACBAE006CF7EC /* JSShuoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				7A5FEE75218ACBAE006CF7EC /* JSShuoUITests.m */,
+				7A5FEE77218ACBAE006CF7EC /* Info.plist */,
+			);
+			path = JSShuoUITests;
+			sourceTree = "<group>";
+		};
+		7A5FEE85218AFB1D006CF7EC /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				7A5FEE86218AFB3E006CF7EC /* JSBaseViewController.h */,
+				7A5FEE87218AFB3E006CF7EC /* JSBaseViewController.m */,
+				7A5FEE89218AFBAC006CF7EC /* JSTabBarViewController.h */,
+				7A5FEE8A218AFBAC006CF7EC /* JSTabBarViewController.m */,
+				7A5FEE8C218AFC39006CF7EC /* JSNavigationBar.h */,
+				7A5FEE8D218AFC39006CF7EC /* JSNavigationBar.m */,
+				7A5FEE8F218AFC92006CF7EC /* JSTabBar.h */,
+				7A5FEE90218AFC92006CF7EC /* JSTabBar.m */,
+				7A5FEE92218AFD7D006CF7EC /* JSMainTabBar.h */,
+				7A5FEE93218AFD7D006CF7EC /* JSMainTabBar.m */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		7A5FEE95218AFE7B006CF7EC /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				7A5FEE96218AFEA1006CF7EC /* UIColor+JSShuo.h */,
+				7A5FEE97218AFEA1006CF7EC /* UIColor+JSShuo.m */,
+				7A5FEE9A218B0058006CF7EC /* UIFont+JSShuo.h */,
+				7A5FEE9B218B0058006CF7EC /* UIFont+JSShuo.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		7A5FEE9D218B075C006CF7EC /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				7A5FEE9E218B07B7006CF7EC /* JSRootViewController.h */,
+				7A5FEE9F218B07B7006CF7EC /* JSRootViewController.m */,
+				7A5FEEA1218B0BA7006CF7EC /* JSLaunchViewController.h */,
+				7A5FEEA2218B0BA7006CF7EC /* JSLaunchViewController.m */,
+				7A5FEEA4218B0BC2006CF7EC /* JSStartupViewController.h */,
+				7A5FEEA5218B0BC2006CF7EC /* JSStartupViewController.m */,
+				7A5FEEA7218B0BD0006CF7EC /* JSMainViewController.h */,
+				7A5FEEA8218B0BD0006CF7EC /* JSMainViewController.m */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		7A5FEEAA218B0CD9006CF7EC /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				7A5FEEAF218B0D4D006CF7EC /* JSActivityCenterViewController.h */,
+				7A5FEEB0218B0D4D006CF7EC /* JSActivityCenterViewController.m */,
+			);
+			path = Activity;
+			sourceTree = "<group>";
+		};
+		7A5FEEAB218B0CE2006CF7EC /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				7A5FEEB2218B0D5E006CF7EC /* JSHomeViewController.h */,
+				7A5FEEB3218B0D5E006CF7EC /* JSHomeViewController.m */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		7A5FEEAC218B0CEE006CF7EC /* Video */ = {
+			isa = PBXGroup;
+			children = (
+				7A5FEEB5218B0D6D006CF7EC /* JSVideoViewController.h */,
+				7A5FEEB6218B0D6D006CF7EC /* JSVideoViewController.m */,
+			);
+			path = Video;
+			sourceTree = "<group>";
+		};
+		7A5FEEAD218B0CF5006CF7EC /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				7A5FEEB8218B0D7C006CF7EC /* JSProfileViewController.h */,
+				7A5FEEB9218B0D7C006CF7EC /* JSProfileViewController.m */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		7A5FEEAE218B0D00006CF7EC /* Mission */ = {
+			isa = PBXGroup;
+			children = (
+				7A5FEEBB218B0D8A006CF7EC /* JSMissionViewController.h */,
+				7A5FEEBC218B0D8A006CF7EC /* JSMissionViewController.m */,
+			);
+			path = Mission;
+			sourceTree = "<group>";
+		};
+		7A5FEEBE218B2429006CF7EC /* Libs */ = {
+			isa = PBXGroup;
+			children = (
+				7A5FEEC4218B2814006CF7EC /* QQ */,
+				7A5FEEBF218B280D006CF7EC /* AliPay */,
+			);
+			path = Libs;
+			sourceTree = "<group>";
+		};
+		7A5FEEBF218B280D006CF7EC /* AliPay */ = {
+			isa = PBXGroup;
+			children = (
+				7A5FEEC0218B280D006CF7EC /* AlipaySDK.bundle */,
+				7A5FEEC1218B280D006CF7EC /* AlipaySDK.framework */,
+			);
+			path = AliPay;
+			sourceTree = "<group>";
+		};
+		7A5FEEC4218B2814006CF7EC /* QQ */ = {
+			isa = PBXGroup;
+			children = (
+				7A5FEEC5218B2814006CF7EC /* TencentOpenAPI.framework */,
+			);
+			path = QQ;
+			sourceTree = "<group>";
+		};
+		987926DE9B9DF7A3A01F33D8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7A5FEED7218B2C89006CF7EC /* CFNetwork.framework */,
+				7A5FEED5218B2C80006CF7EC /* CoreGraphics.framework */,
+				7A5FEED3218B2C63006CF7EC /* CoreText.framework */,
+				7A5FEED1218B2C5B006CF7EC /* QuartzCore.framework */,
+				7A5FEECF218B2C50006CF7EC /* CoreTelephony.framework */,
+				7A5FEECD218B2C44006CF7EC /* SystemConfiguration.framework */,
+				7A5FEECB218B2C3D006CF7EC /* libz.tbd */,
+				7A5FEEC9218B2C33006CF7EC /* libc++.tbd */,
+				7A5FEEC7218B2C26006CF7EC /* CoreMotion.framework */,
+				F0C9F621EFFB845046C46704 /* libPods-JSShuo.a */,
+				07D21E4F3FE796E0EC111709 /* libPods-JSShuoTests.a */,
+				45918ABA94D7C616D6E9C28A /* libPods-JSShuoUITests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7A5FEE4D218ACBAD006CF7EC /* JSShuo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A5FEE7A218ACBAE006CF7EC /* Build configuration list for PBXNativeTarget "JSShuo" */;
+			buildPhases = (
+				0E3A3F8B64E034C89980365C /* [CP] Check Pods Manifest.lock */,
+				7A5FEE4A218ACBAD006CF7EC /* Sources */,
+				7A5FEE4B218ACBAD006CF7EC /* Frameworks */,
+				7A5FEE4C218ACBAD006CF7EC /* Resources */,
+				85CFFE48288398D803CD5127 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JSShuo;
+			productName = JSShuo;
+			productReference = 7A5FEE4E218ACBAD006CF7EC /* JSShuo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		7A5FEE65218ACBAE006CF7EC /* JSShuoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A5FEE7D218ACBAE006CF7EC /* Build configuration list for PBXNativeTarget "JSShuoTests" */;
+			buildPhases = (
+				2979E1EEBBCD50C0EEE0008C /* [CP] Check Pods Manifest.lock */,
+				7A5FEE62218ACBAE006CF7EC /* Sources */,
+				7A5FEE63218ACBAE006CF7EC /* Frameworks */,
+				7A5FEE64218ACBAE006CF7EC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7A5FEE68218ACBAE006CF7EC /* PBXTargetDependency */,
+			);
+			name = JSShuoTests;
+			productName = JSShuoTests;
+			productReference = 7A5FEE66218ACBAE006CF7EC /* JSShuoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		7A5FEE70218ACBAE006CF7EC /* JSShuoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A5FEE80218ACBAE006CF7EC /* Build configuration list for PBXNativeTarget "JSShuoUITests" */;
+			buildPhases = (
+				57CFCA6862E059EDC32CA2A6 /* [CP] Check Pods Manifest.lock */,
+				7A5FEE6D218ACBAE006CF7EC /* Sources */,
+				7A5FEE6E218ACBAE006CF7EC /* Frameworks */,
+				7A5FEE6F218ACBAE006CF7EC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7A5FEE73218ACBAE006CF7EC /* PBXTargetDependency */,
+			);
+			name = JSShuoUITests;
+			productName = JSShuoUITests;
+			productReference = 7A5FEE71218ACBAE006CF7EC /* JSShuoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7A5FEE46218ACBAD006CF7EC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = JS;
+				LastUpgradeCheck = 1000;
+				ORGANIZATIONNAME = " 乔中祥";
+				TargetAttributes = {
+					7A5FEE4D218ACBAD006CF7EC = {
+						CreatedOnToolsVersion = 10.0;
+					};
+					7A5FEE65218ACBAE006CF7EC = {
+						CreatedOnToolsVersion = 10.0;
+						TestTargetID = 7A5FEE4D218ACBAD006CF7EC;
+					};
+					7A5FEE70218ACBAE006CF7EC = {
+						CreatedOnToolsVersion = 10.0;
+						TestTargetID = 7A5FEE4D218ACBAD006CF7EC;
+					};
+				};
+			};
+			buildConfigurationList = 7A5FEE49218ACBAD006CF7EC /* Build configuration list for PBXProject "JSShuo" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7A5FEE45218ACBAD006CF7EC;
+			productRefGroup = 7A5FEE4F218ACBAD006CF7EC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7A5FEE4D218ACBAD006CF7EC /* JSShuo */,
+				7A5FEE65218ACBAE006CF7EC /* JSShuoTests */,
+				7A5FEE70218ACBAE006CF7EC /* JSShuoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7A5FEE4C218ACBAD006CF7EC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A5FEE5E218ACBAE006CF7EC /* LaunchScreen.storyboard in Resources */,
+				7A5FEE5B218ACBAE006CF7EC /* Assets.xcassets in Resources */,
+				7A5FEEC2218B280D006CF7EC /* AlipaySDK.bundle in Resources */,
+				7A5FEE59218ACBAD006CF7EC /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A5FEE64218ACBAE006CF7EC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A5FEE6F218ACBAE006CF7EC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0E3A3F8B64E034C89980365C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-JSShuo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2979E1EEBBCD50C0EEE0008C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-JSShuoTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		57CFCA6862E059EDC32CA2A6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-JSShuoUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		85CFFE48288398D803CD5127 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-JSShuo/Pods-JSShuo-resources.sh",
+				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
+				"${PODS_ROOT}/Weibo_SDK/libWeiboSDK/WeiboSDK.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/WeiboSDK.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JSShuo/Pods-JSShuo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7A5FEE4A218ACBAD006CF7EC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A5FEEA0218B07B7006CF7EC /* JSRootViewController.m in Sources */,
+				7A5FEE91218AFC92006CF7EC /* JSTabBar.m in Sources */,
+				7A5FEEA9218B0BD0006CF7EC /* JSMainViewController.m in Sources */,
+				7A5FEE98218AFEA1006CF7EC /* UIColor+JSShuo.m in Sources */,
+				7A5FEEB1218B0D4D006CF7EC /* JSActivityCenterViewController.m in Sources */,
+				7A203E4E218BF2430001F926 /* JSAccountManager.m in Sources */,
+				7A5FEE88218AFB3E006CF7EC /* JSBaseViewController.m in Sources */,
+				7A5FEEBD218B0D8A006CF7EC /* JSMissionViewController.m in Sources */,
+				7A5FEEB4218B0D5E006CF7EC /* JSHomeViewController.m in Sources */,
+				7A5FEE56218ACBAD006CF7EC /* ViewController.m in Sources */,
+				7A5FEE8E218AFC39006CF7EC /* JSNavigationBar.m in Sources */,
+				7A5FEE61218ACBAE006CF7EC /* main.m in Sources */,
+				7A203E44218BE02A0001F926 /* JSLoginMainViewController.m in Sources */,
+				7A203E4A218BE5650001F926 /* JSRegisterViewController.m in Sources */,
+				7A5FEEB7218B0D6D006CF7EC /* JSVideoViewController.m in Sources */,
+				7A5FEEA6218B0BC2006CF7EC /* JSStartupViewController.m in Sources */,
+				7A5FEE9C218B0058006CF7EC /* UIFont+JSShuo.m in Sources */,
+				7A203E47218BE53F0001F926 /* JSLoginViewController.m in Sources */,
+				7A5FEE8B218AFBAC006CF7EC /* JSTabBarViewController.m in Sources */,
+				7A5FEE53218ACBAD006CF7EC /* AppDelegate.m in Sources */,
+				7A5FEEBA218B0D7C006CF7EC /* JSProfileViewController.m in Sources */,
+				7A5FEEA3218B0BA7006CF7EC /* JSLaunchViewController.m in Sources */,
+				7A5FEE94218AFD7D006CF7EC /* JSMainTabBar.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A5FEE62218ACBAE006CF7EC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A5FEE6B218ACBAE006CF7EC /* JSShuoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A5FEE6D218ACBAE006CF7EC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A5FEE76218ACBAE006CF7EC /* JSShuoUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7A5FEE68218ACBAE006CF7EC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7A5FEE4D218ACBAD006CF7EC /* JSShuo */;
+			targetProxy = 7A5FEE67218ACBAE006CF7EC /* PBXContainerItemProxy */;
+		};
+		7A5FEE73218ACBAE006CF7EC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7A5FEE4D218ACBAD006CF7EC /* JSShuo */;
+			targetProxy = 7A5FEE72218ACBAE006CF7EC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		7A5FEE57218ACBAD006CF7EC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7A5FEE58218ACBAD006CF7EC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		7A5FEE5C218ACBAE006CF7EC /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7A5FEE5D218ACBAE006CF7EC /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7A5FEE78218ACBAE006CF7EC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		7A5FEE79218ACBAE006CF7EC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7A5FEE7B218ACBAE006CF7EC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A13FC4DE98462C1E2DE50010 /* Pods-JSShuo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = A8V3F299DM;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/JSShuo/Libs/AliPay",
+					"$(PROJECT_DIR)/JSShuo/Libs/QQ",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = $SRCROOT/JSShuo/JSShouPrefixHeader.pch;
+				INFOPLIST_FILE = JSShuo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.guagua.JSShuo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		7A5FEE7C218ACBAE006CF7EC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B29893048A2739D89BF02B42 /* Pods-JSShuo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = A8V3F299DM;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/JSShuo/Libs/AliPay",
+					"$(PROJECT_DIR)/JSShuo/Libs/QQ",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = $SRCROOT/JSShuo/JSShouPrefixHeader.pch;
+				INFOPLIST_FILE = JSShuo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.guagua.JSShuo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		7A5FEE7E218ACBAE006CF7EC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5C8C32F2EB98381D097CADB3 /* Pods-JSShuoTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = JSShuoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.guagua.JSShuoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JSShuo.app/JSShuo";
+			};
+			name = Debug;
+		};
+		7A5FEE7F218ACBAE006CF7EC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 970737962D02DBFA81E8DC67 /* Pods-JSShuoTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = JSShuoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.guagua.JSShuoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JSShuo.app/JSShuo";
+			};
+			name = Release;
+		};
+		7A5FEE81218ACBAE006CF7EC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 428D5311982CDC892743DA34 /* Pods-JSShuoUITests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = JSShuoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.guagua.JSShuoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = JSShuo;
+			};
+			name = Debug;
+		};
+		7A5FEE82218ACBAE006CF7EC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 35A90D49D7D66324E387894E /* Pods-JSShuoUITests.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = JSShuoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.guagua.JSShuoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = JSShuo;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7A5FEE49218ACBAD006CF7EC /* Build configuration list for PBXProject "JSShuo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A5FEE78218ACBAE006CF7EC /* Debug */,
+				7A5FEE79218ACBAE006CF7EC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7A5FEE7A218ACBAE006CF7EC /* Build configuration list for PBXNativeTarget "JSShuo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A5FEE7B218ACBAE006CF7EC /* Debug */,
+				7A5FEE7C218ACBAE006CF7EC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7A5FEE7D218ACBAE006CF7EC /* Build configuration list for PBXNativeTarget "JSShuoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A5FEE7E218ACBAE006CF7EC /* Debug */,
+				7A5FEE7F218ACBAE006CF7EC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7A5FEE80218ACBAE006CF7EC /* Build configuration list for PBXNativeTarget "JSShuoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A5FEE81218ACBAE006CF7EC /* Debug */,
+				7A5FEE82218ACBAE006CF7EC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7A5FEE46218ACBAD006CF7EC /* Project object */;
+}
