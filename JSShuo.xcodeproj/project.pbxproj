@@ -13,6 +13,7 @@
 		7A203E47218BE53F0001F926 /* JSLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A203E46218BE53F0001F926 /* JSLoginViewController.m */; };
 		7A203E4A218BE5650001F926 /* JSRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A203E49218BE5650001F926 /* JSRegisterViewController.m */; };
 		7A203E4E218BF2430001F926 /* JSAccountManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A203E4D218BF2430001F926 /* JSAccountManager.m */; };
+		7A203E51218C77350001F926 /* JSForgetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A203E50218C77350001F926 /* JSForgetPasswordViewController.m */; };
 		7A5FEE53218ACBAD006CF7EC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5FEE52218ACBAD006CF7EC /* AppDelegate.m */; };
 		7A5FEE56218ACBAD006CF7EC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5FEE55218ACBAD006CF7EC /* ViewController.m */; };
 		7A5FEE59218ACBAD006CF7EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A5FEE57218ACBAD006CF7EC /* Main.storyboard */; };
@@ -83,6 +84,8 @@
 		7A203E49218BE5650001F926 /* JSRegisterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSRegisterViewController.m; sourceTree = "<group>"; };
 		7A203E4C218BF2430001F926 /* JSAccountManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSAccountManager.h; sourceTree = "<group>"; };
 		7A203E4D218BF2430001F926 /* JSAccountManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSAccountManager.m; sourceTree = "<group>"; };
+		7A203E4F218C77350001F926 /* JSForgetPasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSForgetPasswordViewController.h; sourceTree = "<group>"; };
+		7A203E50218C77350001F926 /* JSForgetPasswordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSForgetPasswordViewController.m; sourceTree = "<group>"; };
 		7A5FEE4E218ACBAD006CF7EC /* JSShuo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JSShuo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A5FEE51218ACBAD006CF7EC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7A5FEE52218ACBAD006CF7EC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -212,6 +215,8 @@
 				7A203E46218BE53F0001F926 /* JSLoginViewController.m */,
 				7A203E48218BE5650001F926 /* JSRegisterViewController.h */,
 				7A203E49218BE5650001F926 /* JSRegisterViewController.m */,
+				7A203E4F218C77350001F926 /* JSForgetPasswordViewController.h */,
+				7A203E50218C77350001F926 /* JSForgetPasswordViewController.m */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -658,6 +663,7 @@
 				7A5FEEA6218B0BC2006CF7EC /* JSStartupViewController.m in Sources */,
 				7A5FEE9C218B0058006CF7EC /* UIFont+JSShuo.m in Sources */,
 				7A203E47218BE53F0001F926 /* JSLoginViewController.m in Sources */,
+				7A203E51218C77350001F926 /* JSForgetPasswordViewController.m in Sources */,
 				7A5FEE8B218AFBAC006CF7EC /* JSTabBarViewController.m in Sources */,
 				7A5FEE53218ACBAD006CF7EC /* AppDelegate.m in Sources */,
 				7A5FEEBA218B0D7C006CF7EC /* JSProfileViewController.m in Sources */,

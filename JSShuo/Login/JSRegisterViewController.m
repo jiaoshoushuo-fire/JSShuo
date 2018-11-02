@@ -67,7 +67,7 @@
 - (UITextField *)passwordTextField{
     if (!_passwordTextField) {
         _passwordTextField = [[UITextField alloc]init];
-        _passwordTextField.placeholder = @"亲输入密码";
+        _passwordTextField.placeholder = @"请输入密码";
         _passwordTextField.font = [UIFont systemFontOfSize:14];
         _passwordTextField.keyboardType = UIKeyboardTypeNumberPad;
         
@@ -237,7 +237,7 @@
     
     [self.accountIcon mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(20, 23));
-        CGFloat tap = 47;
+        CGFloat tap = 37;
         if (kScreenWidth == 320) {
             tap = 20;
         }
@@ -415,4 +415,8 @@
         self.timer = nil;
     }
 }
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [self.view endEditing:YES];
+}
+
 @end

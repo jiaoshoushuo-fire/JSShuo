@@ -28,7 +28,8 @@
     [testButton bk_addEventHandler:^(id sender) {
         @strongify(self)
         JSLoginMainViewController *loginVC = [[JSLoginMainViewController alloc]init];
-        [self.tabBarController presentViewController:loginVC animated:YES completion:nil];
+        RTRootNavigationController *nav1 = [[RTRootNavigationController alloc] initWithRootViewController:loginVC];
+        [self.tabBarController presentViewController:nav1 animated:YES completion:nil];
         
     } forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:testButton];

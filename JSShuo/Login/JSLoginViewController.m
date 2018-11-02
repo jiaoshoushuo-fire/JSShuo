@@ -7,6 +7,7 @@
 //
 
 #import "JSLoginViewController.h"
+#import "JSForgetPasswordViewController.h"
 
 @interface JSLoginBottomView : UIView
 
@@ -144,11 +145,12 @@
 - (UITextField *)passwordTextField{
     if (!_passwordTextField) {
         _passwordTextField = [[UITextField alloc]init];
-        _passwordTextField.placeholder = @"亲输入密码";
+        _passwordTextField.placeholder = @"请输入密码";
         _passwordTextField.font = [UIFont systemFontOfSize:14];
         _passwordTextField.keyboardType = UIKeyboardTypeASCIICapable;
         _passwordTextField.secureTextEntry = YES;
         _passwordTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+        _passwordTextField.returnKeyType = UIReturnKeyDone;
     }
     return _passwordTextField;
 }
@@ -171,7 +173,9 @@
         @weakify(self)
         [_forgetPasswordButton bk_addEventHandler:^(id sender) {
             @strongify(self)
-            
+            JSForgetPasswordViewController *forgetVC = [[JSForgetPasswordViewController alloc]init];
+            forgetVC.hidesBottomBarWhenPushed = YES;
+            [self.rt_navigationController pushViewController:forgetVC animated:YES complete:nil];
         } forControlEvents:UIControlEventTouchUpInside];
     }
     return _forgetPasswordButton;
@@ -246,7 +250,7 @@
     
     [self.accountIcon mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(20, 23));
-        CGFloat tap = 47;
+        CGFloat tap = 37;
         if (kScreenWidth == 320) {
             tap = 20;
         }
@@ -305,7 +309,7 @@
         make.left.equalTo(self.view).offset(10);
         make.right.equalTo(self.view).offset(-10);
         make.height.mas_equalTo(46);
-        CGFloat tap = 40;
+        CGFloat tap = 30;
         if (kScreenWidth == 320) {
             tap = 20;
         }
@@ -333,6 +337,9 @@
         self.loginButton.backgroundColor = [UIColor colorWithHexString:@"999999"];
     }
     
+}
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [self.view endEditing:YES];
 }
 
 @end

@@ -92,7 +92,7 @@
         [_closeButton bk_addEventHandler:^(id sender) {
             @strongify(self)
             
-            [self dismissViewControllerAnimated:YES completion:nil];
+            [self.rt_navigationController dismissViewControllerAnimated:YES completion:nil];
         } forControlEvents:UIControlEventTouchUpInside];
     }
     return _closeButton;
@@ -148,6 +148,11 @@
     }
     return _pageController;
 }
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = YES;
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -187,6 +192,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
+    self.navigationController.navigationBarHidden = NO;
     [self.registerVC stopTimerIfNeed];
 }
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
