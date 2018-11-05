@@ -50,6 +50,9 @@
 		7A5FEED4218B2C63006CF7EC /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A5FEED3218B2C63006CF7EC /* CoreText.framework */; };
 		7A5FEED6218B2C80006CF7EC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A5FEED5218B2C80006CF7EC /* CoreGraphics.framework */; };
 		7A5FEED8218B2C8A006CF7EC /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A5FEED7218B2C89006CF7EC /* CFNetwork.framework */; };
+		7A8F677A218FCF72008A00F4 /* JSNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8F6779218FCF72008A00F4 /* JSNetworkManager.m */; };
+		7A8F6780218FE30C008A00F4 /* JSNetworkManager+Login.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8F677F218FE30C008A00F4 /* JSNetworkManager+Login.m */; };
+		7A8F6784218FEB2E008A00F4 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8F6782218FEB2E008A00F4 /* MBProgressHUD.m */; };
 		A02B29E2FC7397B33BD05EC7 /* libPods-JSShuo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0C9F621EFFB845046C46704 /* libPods-JSShuo.a */; };
 /* End PBXBuildFile section */
 
@@ -148,6 +151,12 @@
 		7A5FEED3218B2C63006CF7EC /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		7A5FEED5218B2C80006CF7EC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		7A5FEED7218B2C89006CF7EC /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		7A8F6778218FCF72008A00F4 /* JSNetworkManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSNetworkManager.h; sourceTree = "<group>"; };
+		7A8F6779218FCF72008A00F4 /* JSNetworkManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSNetworkManager.m; sourceTree = "<group>"; };
+		7A8F677E218FE30C008A00F4 /* JSNetworkManager+Login.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JSNetworkManager+Login.h"; sourceTree = "<group>"; };
+		7A8F677F218FE30C008A00F4 /* JSNetworkManager+Login.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "JSNetworkManager+Login.m"; sourceTree = "<group>"; };
+		7A8F6782218FEB2E008A00F4 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		7A8F6783218FEB2E008A00F4 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		970737962D02DBFA81E8DC67 /* Pods-JSShuoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSShuoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JSShuoTests/Pods-JSShuoTests.release.xcconfig"; sourceTree = "<group>"; };
 		A13FC4DE98462C1E2DE50010 /* Pods-JSShuo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSShuo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JSShuo/Pods-JSShuo.debug.xcconfig"; sourceTree = "<group>"; };
 		B29893048A2739D89BF02B42 /* Pods-JSShuo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSShuo.release.xcconfig"; path = "Pods/Target Support Files/Pods-JSShuo/Pods-JSShuo.release.xcconfig"; sourceTree = "<group>"; };
@@ -255,6 +264,7 @@
 		7A5FEE50218ACBAD006CF7EC /* JSShuo */ = {
 			isa = PBXGroup;
 			children = (
+				7A8F6777218FCE59008A00F4 /* Network */,
 				7A203E4B218BF2220001F926 /* User */,
 				7A203E41218BDFB00001F926 /* Login */,
 				7A5FEEBE218B2429006CF7EC /* Libs */,
@@ -390,6 +400,7 @@
 		7A5FEEBE218B2429006CF7EC /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				7A8F6781218FEB2E008A00F4 /* HUD */,
 				7A5FEEC4218B2814006CF7EC /* QQ */,
 				7A5FEEBF218B280D006CF7EC /* AliPay */,
 			);
@@ -411,6 +422,26 @@
 				7A5FEEC5218B2814006CF7EC /* TencentOpenAPI.framework */,
 			);
 			path = QQ;
+			sourceTree = "<group>";
+		};
+		7A8F6777218FCE59008A00F4 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				7A8F6778218FCF72008A00F4 /* JSNetworkManager.h */,
+				7A8F6779218FCF72008A00F4 /* JSNetworkManager.m */,
+				7A8F677E218FE30C008A00F4 /* JSNetworkManager+Login.h */,
+				7A8F677F218FE30C008A00F4 /* JSNetworkManager+Login.m */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		7A8F6781218FEB2E008A00F4 /* HUD */ = {
+			isa = PBXGroup;
+			children = (
+				7A8F6782218FEB2E008A00F4 /* MBProgressHUD.m */,
+				7A8F6783218FEB2E008A00F4 /* MBProgressHUD.h */,
+			);
+			path = HUD;
 			sourceTree = "<group>";
 		};
 		987926DE9B9DF7A3A01F33D8 /* Frameworks */ = {
@@ -647,8 +678,10 @@
 			files = (
 				7A5FEEA0218B07B7006CF7EC /* JSRootViewController.m in Sources */,
 				7A5FEE91218AFC92006CF7EC /* JSTabBar.m in Sources */,
+				7A8F677A218FCF72008A00F4 /* JSNetworkManager.m in Sources */,
 				7A5FEEA9218B0BD0006CF7EC /* JSMainViewController.m in Sources */,
 				7A5FEE98218AFEA1006CF7EC /* UIColor+JSShuo.m in Sources */,
+				7A8F6780218FE30C008A00F4 /* JSNetworkManager+Login.m in Sources */,
 				7A5FEEB1218B0D4D006CF7EC /* JSActivityCenterViewController.m in Sources */,
 				7A203E4E218BF2430001F926 /* JSAccountManager.m in Sources */,
 				7A5FEE88218AFB3E006CF7EC /* JSBaseViewController.m in Sources */,
@@ -656,6 +689,7 @@
 				7A5FEEB4218B0D5E006CF7EC /* JSHomeViewController.m in Sources */,
 				7A5FEE56218ACBAD006CF7EC /* ViewController.m in Sources */,
 				7A5FEE8E218AFC39006CF7EC /* JSNavigationBar.m in Sources */,
+				7A8F6784218FEB2E008A00F4 /* MBProgressHUD.m in Sources */,
 				7A5FEE61218ACBAE006CF7EC /* main.m in Sources */,
 				7A203E44218BE02A0001F926 /* JSLoginMainViewController.m in Sources */,
 				7A203E4A218BE5650001F926 /* JSRegisterViewController.m in Sources */,

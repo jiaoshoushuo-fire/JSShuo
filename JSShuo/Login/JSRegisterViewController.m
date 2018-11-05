@@ -7,6 +7,7 @@
 //
 
 #import "JSRegisterViewController.h"
+#import "JSNetworkManager+Login.h"
 
 @interface JSRegisterViewController ()
 @property (nonatomic, strong)UIImageView *accountIcon;
@@ -102,25 +103,30 @@
         @weakify(self)
         [_securityCodeButton bk_addEventHandler:^(UIButton *sender) {
             @strongify(self)
-            if ([self.timer isValid]) {
-                [self.timer invalidate];
-                self.timer = nil;
-            }
-            sender.enabled = NO;
-            self.timer = [NSTimer scheduledTimerWithTimeInterval:1 block:^(NSTimer * _Nonnull timer) {
-                
-                if (self.timeCount == 0) {
-                    self.timeCount = 60;
-                    [timer invalidate];
-                    timer = nil;
-                    [sender setTitle:@"重发" forState:UIControlStateNormal];
-                    [self textFieldDidChange:self.accountTextField];
-                }else{
-                    self.timeCount -- ;
-                    [sender setTitle:[NSString stringWithFormat:@"%@s",@(self.timeCount)] forState:UIControlStateNormal];
+            [JSNetworkManager requestSecurityCodeWithPhoneNumber:self.accountTextField.text type:JSRequestSecurityCodeTypeRegister complement:^(BOOL isSuccess, NSDictionary * _Nonnull contenDict) {
+                if (isSuccess) {
+                    if ([self.timer isValid]) {
+                        [self.timer invalidate];
+                        self.timer = nil;
+                    }
+                    sender.enabled = NO;
+                    self.timer = [NSTimer scheduledTimerWithTimeInterval:1 block:^(NSTimer * _Nonnull timer) {
+                        
+                        if (self.timeCount == 0) {
+                            self.timeCount = 60;
+                            [timer invalidate];
+                            timer = nil;
+                            [sender setTitle:@"重发" forState:UIControlStateNormal];
+                            [self textFieldDidChange:self.accountTextField];
+                        }else{
+                            self.timeCount -- ;
+                            [sender setTitle:[NSString stringWithFormat:@"%@s",@(self.timeCount)] forState:UIControlStateNormal];
+                        }
+                        
+                    } repeats:YES];
                 }
-                
-            } repeats:YES];
+            }];
+            
         } forControlEvents:UIControlEventTouchUpInside];
     }
     return _securityCodeButton;
