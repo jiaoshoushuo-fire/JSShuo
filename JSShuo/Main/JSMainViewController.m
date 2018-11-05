@@ -8,8 +8,8 @@
 
 #import "JSMainViewController.h"
 #import "JSMainTabBar.h"
-#import "JSHomeViewController.h"
-#import "JSVideoViewController.h"
+#import "JSHomeTitleBarViewController.h"
+#import "JSVideoTitleBarViewController.h"
 #import "JSMissionViewController.h"
 #import "JSProfileViewController.h"
 
@@ -18,8 +18,8 @@
 @property (nonatomic, strong) JSMainTabBar *mainTabBar;
 
 
-@property (nonatomic, strong) JSHomeViewController              *homeViewController;
-@property (nonatomic, strong) JSVideoViewController             *videoViewController;
+@property (nonatomic, strong) JSHomeTitleBarViewController      *homeViewController;
+@property (nonatomic, strong) JSVideoTitleBarViewController     *videoViewController;
 @property (nonatomic, strong) JSMissionViewController           *newsViewController;
 @property (nonatomic, strong) JSProfileViewController           *profileViewController;
 
@@ -31,8 +31,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.homeViewController = [[JSHomeViewController alloc] init];
-    self.videoViewController = [[JSVideoViewController alloc] init];
+    self.homeViewController = [[JSHomeTitleBarViewController alloc] init];
+    self.videoViewController = [[JSVideoTitleBarViewController alloc] init];
     self.newsViewController = [[JSMissionViewController alloc] init];
     self.profileViewController = [[JSProfileViewController alloc] init];
     

@@ -19,6 +19,8 @@
 #define IS_IPHONE_XS (IS_IPHONE_X_OR_XS ? IS_IPHONE_X_OR_XS : IS_IPHONE_XS_MAX)
 #define IS_IPHONE_X (IS_IPHONE_XS ? IS_IPHONE_XS : IS_IPHONE_XR)
 
+#define ScreenWidth ([UIScreen mainScreen].bounds.size.width)
+#define ScreenHeight ([UIScreen mainScreen].bounds.size.height)
 
 #define    APP_VERSION [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
 #define APP_BUILD [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]
@@ -83,5 +85,11 @@
 #endif
 #endif
 
+
+#ifdef DEBUG
+#define NSLog(...) NSLog(__VA_ARGS__)
+#else
+#define NSLog(...) {}
+#endif
 
 #endif /* JSMacros_h */

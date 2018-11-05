@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00452037218EDD5C00371F10 /* JSHomeTitleBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00452036218EDD5C00371F10 /* JSHomeTitleBarViewController.m */; };
+		00452046218EED9E00371F10 /* nav_header_login_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 00452042218EED9D00371F10 /* nav_header_login_normal.png */; };
+		00452049218EED9E00371F10 /* nav_header_login_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 00452045218EED9E00371F10 /* nav_header_login_selected.png */; };
+		0045204C218EEE3500371F10 /* JSNavSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0045204B218EEE3500371F10 /* JSNavSearchView.m */; };
+		0045204E218EF26B00371F10 /* nav_headr_redpocket.png in Resources */ = {isa = PBXBuildFile; fileRef = 0045204D218EF26B00371F10 /* nav_headr_redpocket.png */; };
+		00452050218FDEDF00371F10 /* nav_headr_search.png in Resources */ = {isa = PBXBuildFile; fileRef = 0045204F218FDEDF00371F10 /* nav_headr_search.png */; };
+		0045205321900D4300371F10 /* JSVideoTitleBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0045205221900D4300371F10 /* JSVideoTitleBarViewController.m */; };
+		00452056219011F200371F10 /* JSShortVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00452055219011F200371F10 /* JSShortVideoViewController.m */; };
 		2D4BE293799FA8F9CF3BD9E0 /* libPods-JSShuoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07D21E4F3FE796E0EC111709 /* libPods-JSShuoTests.a */; };
 		6797051512B36A0CAA259324 /* libPods-JSShuoUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 45918ABA94D7C616D6E9C28A /* libPods-JSShuoUITests.a */; };
 		7A203E44218BE02A0001F926 /* JSLoginMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A203E43218BE02A0001F926 /* JSLoginMainViewController.m */; };
@@ -50,6 +58,9 @@
 		7A5FEED4218B2C63006CF7EC /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A5FEED3218B2C63006CF7EC /* CoreText.framework */; };
 		7A5FEED6218B2C80006CF7EC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A5FEED5218B2C80006CF7EC /* CoreGraphics.framework */; };
 		7A5FEED8218B2C8A006CF7EC /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A5FEED7218B2C89006CF7EC /* CFNetwork.framework */; };
+		7A8F677A218FCF72008A00F4 /* JSNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8F6779218FCF72008A00F4 /* JSNetworkManager.m */; };
+		7A8F6780218FE30C008A00F4 /* JSNetworkManager+Login.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8F677F218FE30C008A00F4 /* JSNetworkManager+Login.m */; };
+		7A8F6784218FEB2E008A00F4 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8F6782218FEB2E008A00F4 /* MBProgressHUD.m */; };
 		A02B29E2FC7397B33BD05EC7 /* libPods-JSShuo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0C9F621EFFB845046C46704 /* libPods-JSShuo.a */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +82,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00452035218EDD5C00371F10 /* JSHomeTitleBarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSHomeTitleBarViewController.h; sourceTree = "<group>"; };
+		00452036218EDD5C00371F10 /* JSHomeTitleBarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSHomeTitleBarViewController.m; sourceTree = "<group>"; };
+		00452042218EED9D00371F10 /* nav_header_login_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav_header_login_normal.png; sourceTree = "<group>"; };
+		00452045218EED9E00371F10 /* nav_header_login_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav_header_login_selected.png; sourceTree = "<group>"; };
+		0045204A218EEE3500371F10 /* JSNavSearchView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSNavSearchView.h; sourceTree = "<group>"; };
+		0045204B218EEE3500371F10 /* JSNavSearchView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSNavSearchView.m; sourceTree = "<group>"; };
+		0045204D218EF26B00371F10 /* nav_headr_redpocket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav_headr_redpocket.png; sourceTree = "<group>"; };
+		0045204F218FDEDF00371F10 /* nav_headr_search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav_headr_search.png; sourceTree = "<group>"; };
+		0045205121900D4300371F10 /* JSVideoTitleBarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSVideoTitleBarViewController.h; sourceTree = "<group>"; };
+		0045205221900D4300371F10 /* JSVideoTitleBarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSVideoTitleBarViewController.m; sourceTree = "<group>"; };
+		00452054219011F200371F10 /* JSShortVideoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSShortVideoViewController.h; sourceTree = "<group>"; };
+		00452055219011F200371F10 /* JSShortVideoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSShortVideoViewController.m; sourceTree = "<group>"; };
 		07D21E4F3FE796E0EC111709 /* libPods-JSShuoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JSShuoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		35A90D49D7D66324E387894E /* Pods-JSShuoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSShuoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JSShuoUITests/Pods-JSShuoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		428D5311982CDC892743DA34 /* Pods-JSShuoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSShuoUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JSShuoUITests/Pods-JSShuoUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -148,6 +171,12 @@
 		7A5FEED3218B2C63006CF7EC /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		7A5FEED5218B2C80006CF7EC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		7A5FEED7218B2C89006CF7EC /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		7A8F6778218FCF72008A00F4 /* JSNetworkManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSNetworkManager.h; sourceTree = "<group>"; };
+		7A8F6779218FCF72008A00F4 /* JSNetworkManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSNetworkManager.m; sourceTree = "<group>"; };
+		7A8F677E218FE30C008A00F4 /* JSNetworkManager+Login.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JSNetworkManager+Login.h"; sourceTree = "<group>"; };
+		7A8F677F218FE30C008A00F4 /* JSNetworkManager+Login.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "JSNetworkManager+Login.m"; sourceTree = "<group>"; };
+		7A8F6782218FEB2E008A00F4 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		7A8F6783218FEB2E008A00F4 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		970737962D02DBFA81E8DC67 /* Pods-JSShuoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSShuoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JSShuoTests/Pods-JSShuoTests.release.xcconfig"; sourceTree = "<group>"; };
 		A13FC4DE98462C1E2DE50010 /* Pods-JSShuo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSShuo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JSShuo/Pods-JSShuo.debug.xcconfig"; sourceTree = "<group>"; };
 		B29893048A2739D89BF02B42 /* Pods-JSShuo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSShuo.release.xcconfig"; path = "Pods/Target Support Files/Pods-JSShuo/Pods-JSShuo.release.xcconfig"; sourceTree = "<group>"; };
@@ -193,6 +222,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		00452038218EE1DD00371F10 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0045204A218EEE3500371F10 /* JSNavSearchView.h */,
+				0045204B218EEE3500371F10 /* JSNavSearchView.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		00452039218EEC9300371F10 /* Imgs */ = {
+			isa = PBXGroup;
+			children = (
+				0045203A218EEC9B00371F10 /* Home */,
+			);
+			path = Imgs;
+			sourceTree = "<group>";
+		};
+		0045203A218EEC9B00371F10 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				00452041218EECAC00371F10 /* Nav */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		00452041218EECAC00371F10 /* Nav */ = {
+			isa = PBXGroup;
+			children = (
+				00452045218EED9E00371F10 /* nav_header_login_selected.png */,
+				00452042218EED9D00371F10 /* nav_header_login_normal.png */,
+				0045204D218EF26B00371F10 /* nav_headr_redpocket.png */,
+				0045204F218FDEDF00371F10 /* nav_headr_search.png */,
+			);
+			path = Nav;
+			sourceTree = "<group>";
+		};
 		15BBF99DF6D3A562552BEDD5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -255,6 +320,15 @@
 		7A5FEE50218ACBAD006CF7EC /* JSShuo */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
+<<<<<<< HEAD
+				00452039218EEC9300371F10 /* Imgs */,
+=======
+				7A8F6777218FCE59008A00F4 /* Network */,
+>>>>>>> 6f3549804158d8b7a17d824c658229d4be3e25b3
+=======
+				7A8F6777218FCE59008A00F4 /* Network */,
+>>>>>>> 6f3549804158d8b7a17d824c658229d4be3e25b3
 				7A203E4B218BF2220001F926 /* User */,
 				7A203E41218BDFB00001F926 /* Login */,
 				7A5FEEBE218B2429006CF7EC /* Libs */,
@@ -354,6 +428,9 @@
 		7A5FEEAB218B0CE2006CF7EC /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				00452038218EE1DD00371F10 /* Views */,
+				00452035218EDD5C00371F10 /* JSHomeTitleBarViewController.h */,
+				00452036218EDD5C00371F10 /* JSHomeTitleBarViewController.m */,
 				7A5FEEB2218B0D5E006CF7EC /* JSHomeViewController.h */,
 				7A5FEEB3218B0D5E006CF7EC /* JSHomeViewController.m */,
 			);
@@ -363,8 +440,12 @@
 		7A5FEEAC218B0CEE006CF7EC /* Video */ = {
 			isa = PBXGroup;
 			children = (
+				0045205121900D4300371F10 /* JSVideoTitleBarViewController.h */,
+				0045205221900D4300371F10 /* JSVideoTitleBarViewController.m */,
 				7A5FEEB5218B0D6D006CF7EC /* JSVideoViewController.h */,
 				7A5FEEB6218B0D6D006CF7EC /* JSVideoViewController.m */,
+				00452054219011F200371F10 /* JSShortVideoViewController.h */,
+				00452055219011F200371F10 /* JSShortVideoViewController.m */,
 			);
 			path = Video;
 			sourceTree = "<group>";
@@ -390,6 +471,7 @@
 		7A5FEEBE218B2429006CF7EC /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				7A8F6781218FEB2E008A00F4 /* HUD */,
 				7A5FEEC4218B2814006CF7EC /* QQ */,
 				7A5FEEBF218B280D006CF7EC /* AliPay */,
 			);
@@ -411,6 +493,26 @@
 				7A5FEEC5218B2814006CF7EC /* TencentOpenAPI.framework */,
 			);
 			path = QQ;
+			sourceTree = "<group>";
+		};
+		7A8F6777218FCE59008A00F4 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				7A8F6778218FCF72008A00F4 /* JSNetworkManager.h */,
+				7A8F6779218FCF72008A00F4 /* JSNetworkManager.m */,
+				7A8F677E218FE30C008A00F4 /* JSNetworkManager+Login.h */,
+				7A8F677F218FE30C008A00F4 /* JSNetworkManager+Login.m */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		7A8F6781218FEB2E008A00F4 /* HUD */ = {
+			isa = PBXGroup;
+			children = (
+				7A8F6782218FEB2E008A00F4 /* MBProgressHUD.m */,
+				7A8F6783218FEB2E008A00F4 /* MBProgressHUD.h */,
+			);
+			path = HUD;
 			sourceTree = "<group>";
 		};
 		987926DE9B9DF7A3A01F33D8 /* Frameworks */ = {
@@ -543,7 +645,11 @@
 				7A5FEE5E218ACBAE006CF7EC /* LaunchScreen.storyboard in Resources */,
 				7A5FEE5B218ACBAE006CF7EC /* Assets.xcassets in Resources */,
 				7A5FEEC2218B280D006CF7EC /* AlipaySDK.bundle in Resources */,
+				0045204E218EF26B00371F10 /* nav_headr_redpocket.png in Resources */,
 				7A5FEE59218ACBAD006CF7EC /* Main.storyboard in Resources */,
+				00452050218FDEDF00371F10 /* nav_headr_search.png in Resources */,
+				00452046218EED9E00371F10 /* nav_header_login_normal.png in Resources */,
+				00452049218EED9E00371F10 /* nav_header_login_selected.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -647,26 +753,33 @@
 			files = (
 				7A5FEEA0218B07B7006CF7EC /* JSRootViewController.m in Sources */,
 				7A5FEE91218AFC92006CF7EC /* JSTabBar.m in Sources */,
+				7A8F677A218FCF72008A00F4 /* JSNetworkManager.m in Sources */,
 				7A5FEEA9218B0BD0006CF7EC /* JSMainViewController.m in Sources */,
 				7A5FEE98218AFEA1006CF7EC /* UIColor+JSShuo.m in Sources */,
+				7A8F6780218FE30C008A00F4 /* JSNetworkManager+Login.m in Sources */,
 				7A5FEEB1218B0D4D006CF7EC /* JSActivityCenterViewController.m in Sources */,
 				7A203E4E218BF2430001F926 /* JSAccountManager.m in Sources */,
 				7A5FEE88218AFB3E006CF7EC /* JSBaseViewController.m in Sources */,
+				0045204C218EEE3500371F10 /* JSNavSearchView.m in Sources */,
 				7A5FEEBD218B0D8A006CF7EC /* JSMissionViewController.m in Sources */,
 				7A5FEEB4218B0D5E006CF7EC /* JSHomeViewController.m in Sources */,
 				7A5FEE56218ACBAD006CF7EC /* ViewController.m in Sources */,
 				7A5FEE8E218AFC39006CF7EC /* JSNavigationBar.m in Sources */,
+				7A8F6784218FEB2E008A00F4 /* MBProgressHUD.m in Sources */,
 				7A5FEE61218ACBAE006CF7EC /* main.m in Sources */,
 				7A203E44218BE02A0001F926 /* JSLoginMainViewController.m in Sources */,
 				7A203E4A218BE5650001F926 /* JSRegisterViewController.m in Sources */,
 				7A5FEEB7218B0D6D006CF7EC /* JSVideoViewController.m in Sources */,
+				0045205321900D4300371F10 /* JSVideoTitleBarViewController.m in Sources */,
 				7A5FEEA6218B0BC2006CF7EC /* JSStartupViewController.m in Sources */,
 				7A5FEE9C218B0058006CF7EC /* UIFont+JSShuo.m in Sources */,
 				7A203E47218BE53F0001F926 /* JSLoginViewController.m in Sources */,
 				7A203E51218C77350001F926 /* JSForgetPasswordViewController.m in Sources */,
 				7A5FEE8B218AFBAC006CF7EC /* JSTabBarViewController.m in Sources */,
+				00452056219011F200371F10 /* JSShortVideoViewController.m in Sources */,
 				7A5FEE53218ACBAD006CF7EC /* AppDelegate.m in Sources */,
 				7A5FEEBA218B0D7C006CF7EC /* JSProfileViewController.m in Sources */,
+				00452037218EDD5C00371F10 /* JSHomeTitleBarViewController.m in Sources */,
 				7A5FEEA3218B0BA7006CF7EC /* JSLaunchViewController.m in Sources */,
 				7A5FEE94218AFD7D006CF7EC /* JSMainTabBar.m in Sources */,
 			);
