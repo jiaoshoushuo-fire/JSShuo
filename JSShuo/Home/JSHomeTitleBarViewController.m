@@ -11,6 +11,7 @@
 #import "TYTabPagerBar.h"
 #import "TYPagerController.h"
 #import "JSNavSearchView.h"
+#import "JSNetworkManager+Channel.h"
 
 
 @interface JSHomeTitleBarViewController () <TYTabPagerBarDataSource,TYTabPagerBarDelegate,TYPagerControllerDataSource,TYPagerControllerDelegate>
@@ -28,7 +29,12 @@
     [self setupNav];
     [self addTabPageBar];
     [self addPagerController];
-    [self loadData];
+    
+    
+    [JSNetworkManager requestChannelListWithParams:@{} complent:^(NSDictionary * _Nonnull contentDic) {
+        self.datas = contentDic[@"list"];
+        [self loadData];
+    }];
 }
 
 
@@ -75,13 +81,13 @@
 
 - (UICollectionViewCell<TYTabPagerBarCellProtocol> *)pagerTabBar:(TYTabPagerBar *)pagerTabBar cellForItemAtIndex:(NSInteger)index {
     UICollectionViewCell<TYTabPagerBarCellProtocol> *cell = [pagerTabBar dequeueReusableCellWithReuseIdentifier:[TYTabPagerBarCell cellIdentifier] forIndex:index];
-    cell.titleLabel.text = self.datas[index];
+    cell.titleLabel.text = [self.datas[index] objectForKey:@"name"];
     return cell;
 }
 
 #pragma mark - TYTabPagerBarDelegate
 - (CGFloat)pagerTabBar:(TYTabPagerBar *)pagerTabBar widthForItemAtIndex:(NSInteger)index {
-    NSString *title = self.datas[index];
+    NSString *title = [self.datas[index] objectForKey:@"name"];
     return [pagerTabBar cellWidthForTitle:title];
 }
 
@@ -106,13 +112,6 @@
 
 -(void)pagerController:(TYPagerController *)pagerController transitionFromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex progress:(CGFloat)progress {
     [_tabBar scrollToItemFromIndex:fromIndex toIndex:toIndex progress:progress];
-}
-
-- (NSArray *)datas {
-    if (!_datas) {
-        _datas = @[@"推荐",@"新闻",@"视频"];
-    }
-    return _datas;
 }
 
 - (void) setupNav {

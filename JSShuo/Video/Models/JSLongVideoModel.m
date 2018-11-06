@@ -13,7 +13,13 @@
 - (instancetype) initWithDictionary:(NSDictionary *)dictionary {
     if (self = [super init]) {
         
-        [self setValuesForKeysWithDictionary:dictionary];
+        NSString *Description = [dictionary valueForKey:@"description"];
+        Description = Description.length == 0 ? @"没有值" : Description;
+        NSMutableDictionary *tempDic = [NSMutableDictionary dictionaryWithDictionary:dictionary];
+        [tempDic removeObjectForKey:@"description"];
+        [tempDic setValue:Description forKey:@"Description"];
+        
+        [self setValuesForKeysWithDictionary:tempDic];
     }
     return self;
 }

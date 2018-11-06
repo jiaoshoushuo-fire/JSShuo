@@ -20,6 +20,8 @@
 		0045206121904AE600371F10 /* JSLongVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0045206021904AE600371F10 /* JSLongVideoCell.m */; };
 		004520642190656E00371F10 /* comment.png in Resources */ = {isa = PBXBuildFile; fileRef = 004520632190656D00371F10 /* comment.png */; };
 		0045206621913BB500371F10 /* praise.png in Resources */ = {isa = PBXBuildFile; fileRef = 0045206521913BB500371F10 /* praise.png */; };
+		004520692191A27700371F10 /* JSNetworkManager+Channel.m in Sources */ = {isa = PBXBuildFile; fileRef = 004520682191A27700371F10 /* JSNetworkManager+Channel.m */; };
+		0045206C2191C05B00371F10 /* JSNetworkManager+LongVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0045206B2191C05B00371F10 /* JSNetworkManager+LongVideo.m */; };
 		2D4BE293799FA8F9CF3BD9E0 /* libPods-JSShuoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07D21E4F3FE796E0EC111709 /* libPods-JSShuoTests.a */; };
 		6797051512B36A0CAA259324 /* libPods-JSShuoUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 45918ABA94D7C616D6E9C28A /* libPods-JSShuoUITests.a */; };
 		7A203E44218BE02A0001F926 /* JSLoginMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A203E43218BE02A0001F926 /* JSLoginMainViewController.m */; };
@@ -107,6 +109,10 @@
 		0045206021904AE600371F10 /* JSLongVideoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSLongVideoCell.m; sourceTree = "<group>"; };
 		004520632190656D00371F10 /* comment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = comment.png; sourceTree = "<group>"; };
 		0045206521913BB500371F10 /* praise.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = praise.png; sourceTree = "<group>"; };
+		004520672191A27700371F10 /* JSNetworkManager+Channel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JSNetworkManager+Channel.h"; sourceTree = "<group>"; };
+		004520682191A27700371F10 /* JSNetworkManager+Channel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "JSNetworkManager+Channel.m"; sourceTree = "<group>"; };
+		0045206A2191C05B00371F10 /* JSNetworkManager+LongVideo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JSNetworkManager+LongVideo.h"; sourceTree = "<group>"; };
+		0045206B2191C05B00371F10 /* JSNetworkManager+LongVideo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "JSNetworkManager+LongVideo.m"; sourceTree = "<group>"; };
 		07D21E4F3FE796E0EC111709 /* libPods-JSShuoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JSShuoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		35A90D49D7D66324E387894E /* Pods-JSShuoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSShuoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JSShuoUITests/Pods-JSShuoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		428D5311982CDC892743DA34 /* Pods-JSShuoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSShuoUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JSShuoUITests/Pods-JSShuoUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -540,6 +546,10 @@
 				7A8F6779218FCF72008A00F4 /* JSNetworkManager.m */,
 				7A8F677E218FE30C008A00F4 /* JSNetworkManager+Login.h */,
 				7A8F677F218FE30C008A00F4 /* JSNetworkManager+Login.m */,
+				004520672191A27700371F10 /* JSNetworkManager+Channel.h */,
+				004520682191A27700371F10 /* JSNetworkManager+Channel.m */,
+				0045206A2191C05B00371F10 /* JSNetworkManager+LongVideo.h */,
+				0045206B2191C05B00371F10 /* JSNetworkManager+LongVideo.m */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -814,6 +824,7 @@
 				7A5FEEB7218B0D6D006CF7EC /* JSVideoViewController.m in Sources */,
 				0045205321900D4300371F10 /* JSVideoTitleBarViewController.m in Sources */,
 				7A5FEEA6218B0BC2006CF7EC /* JSStartupViewController.m in Sources */,
+				0045206C2191C05B00371F10 /* JSNetworkManager+LongVideo.m in Sources */,
 				7A5FEE9C218B0058006CF7EC /* UIFont+JSShuo.m in Sources */,
 				7A203E47218BE53F0001F926 /* JSLoginViewController.m in Sources */,
 				7A203E51218C77350001F926 /* JSForgetPasswordViewController.m in Sources */,
@@ -823,6 +834,7 @@
 				7A5FEE53218ACBAD006CF7EC /* AppDelegate.m in Sources */,
 				7A5FEEBA218B0D7C006CF7EC /* JSProfileViewController.m in Sources */,
 				00452037218EDD5C00371F10 /* JSHomeTitleBarViewController.m in Sources */,
+				004520692191A27700371F10 /* JSNetworkManager+Channel.m in Sources */,
 				7A5FEEA3218B0BA7006CF7EC /* JSLaunchViewController.m in Sources */,
 				7A5FEE94218AFD7D006CF7EC /* JSMainTabBar.m in Sources */,
 			);

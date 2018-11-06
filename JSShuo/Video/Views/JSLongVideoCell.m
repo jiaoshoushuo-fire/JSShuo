@@ -40,15 +40,7 @@
 - (void)setModel:(JSLongVideoModel *)model {
     _model = model;
     
-    if (model.isHot) {
-        [self.contentView addSubview:self.hotLabel];
-        [self.hotLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(15);
-            make.top.mas_equalTo(self.playerIconImg.mas_bottom).offset(9);
-            make.size.mas_equalTo(CGSizeMake(30, 17));
-        }];
-    }
-    
+    [self.contentView addSubview:self.hotLabel];
     [self.contentView addSubview:self.sourceLabel];
     [self.contentView addSubview:self.releaseTimeLabel];
     [self.contentView addSubview:self.commitCountImg];
@@ -56,47 +48,65 @@
     [self.contentView addSubview:self.praiseCountImg];
     [self.contentView addSubview:self.praiseCountLabel];
     
-    [self.sourceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(36, 17));
-        make.left.mas_equalTo(self.hotLabel.mas_right).offset(10);
+    [self.hotLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.playerIconImg.mas_bottom).offset(9);
+        make.size.mas_equalTo(CGSizeMake(30, 17));
+        make.left.mas_equalTo(15);
     }];
+    
+    // 如果
+    if (!_model.isTop) {
+        self.hotLabel.hidden = YES;
+        [self.sourceLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.leading.equalTo(self).with.offset(15);
+            make.top.mas_equalTo(self.playerIconImg.mas_bottom).offset(9);
+        }];
+    } else {
+        self.hotLabel.hidden = NO;
+        [self.sourceLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.leading.equalTo(self).with.offset(55);
+            make.top.mas_equalTo(self.playerIconImg.mas_bottom).offset(9);
+        }];
+    }
     [self.releaseTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.sourceLabel.mas_right).offset(10);
-        make.top.mas_equalTo(self.playerIconImg.mas_bottom).offset(9);
-        make.size.mas_equalTo(CGSizeMake(60, 17));
+        make.centerY.mas_equalTo(self.sourceLabel.mas_centerY);
+        make.width.mas_equalTo(240);
     }];
+    
     [self.commitCountLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(40, 17));
+        /*  总结：
+            1. UILabel、UIImageView 可以不设置宽高；
+            2. 不设置宽高时，根据文字、图片内容自动包裹；
+            3. 当文字内容、图片尺寸改变时，宽度自动改变；
+            4. 当label设置了对trailing的边距，同时左边有view与它有相对距离时；label变宽，这个view也会向左移动，不需要更新约束。
+        */
         make.centerY.mas_equalTo(self.releaseTimeLabel.mas_centerY);
-        make.right.mas_equalTo(self).offset(-15);
+        make.trailing.equalTo(self).with.offset(-15);
     }];
     [self.commitCountImg mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(19, 17));
-        make.right.mas_equalTo(self.commitCountLabel.mas_left).offset(-8);
+        make.right.mas_equalTo(self.commitCountLabel.mas_left).offset(-5);
         make.centerY.mas_equalTo(self.commitCountLabel.mas_centerY);
     }];
     [self.praiseCountLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(40, 17));
         make.centerY.mas_equalTo(self.commitCountLabel.mas_centerY);
-        make.right.mas_equalTo(self.commitCountImg.mas_left).offset(-10);
+        make.trailing.equalTo(self.commitCountImg).with.offset(-29);
     }];
     [self.praiseCountImg mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(17, 17));
-        make.right.mas_equalTo(self.praiseCountLabel.mas_left).offset(-8);
+        make.right.mas_equalTo(self.praiseCountLabel.mas_left).offset(-5);
         make.centerY.mas_equalTo(self.praiseCountLabel.mas_centerY);
     }];
     
     
-    
-    _titleLabel.text = model.title;
-    //这里不能设置为空，不然会有警告
-//    _playerIconImg.image = [UIImage imageNamed:model.imgURL];
-    _sourceLabel.text = model.source;
-    _releaseTimeLabel.text = model.releaseTime;
-    _videoTimeLabel.text = model.videoTime;
-    _commitCountLabel.text = [NSString stringWithFormat:@"%@",model.commitCount];
-    _praiseCountLabel.text = [NSString stringWithFormat:@"%@",model.praiseCount];
+    _titleLabel.text = _model.Description; // 暂时用描述字段来代替
+    _playerIconImg.image = [UIImage imageNamed:model.cover[0]];
+    _sourceLabel.text = _model.origin;
+    _releaseTimeLabel.text = _model.publishTime;
+    _videoTimeLabel.text = [NSString stringWithFormat:@"%@",_model.duration];
+    _commitCountLabel.text = [NSString stringWithFormat:@"%@",_model.commentNum];
+    _praiseCountLabel.text = [NSString stringWithFormat:@"%@",_model.praiseNum];
 }
 
 - (UILabel *)titleLabel {

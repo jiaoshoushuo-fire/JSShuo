@@ -8,6 +8,7 @@
 
 #import "JSVideoViewController.h"
 #import "JSLongVideoCell.h"
+#import "JSNetworkManager+LongVideo.h"
 
 @interface JSVideoViewController () <UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) UITableView *tableView;
@@ -18,12 +19,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    self.title = @"长视频";
     
-    [self reloadData];
+    NSDictionary *params = @{@"pageNum":@1,@"channel":@"11",@"pageSize":@20};
+    [JSNetworkManager requestLongVideoListWithParams:params complent:^(NSArray * _Nonnull modelsArray) {
+        NSLog(@"%@",modelsArray);
+        self.datas = modelsArray;
+        if (self.tableView) {
+            [self.tableView reloadData];
+        }
+    }];
     
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight-49) style:UITableViewStylePlain];
+    
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight-49-60) style:UITableViewStylePlain];
     [_tableView registerClass:[JSLongVideoCell class] forCellReuseIdentifier:@"JSLongVideoCell"];
     _tableView.delegate = self;
     _tableView.dataSource = self;
@@ -31,21 +38,6 @@
     [self.view addSubview:_tableView];
 }
 
-- (void) reloadData {
-    NSMutableArray *tempArr = [NSMutableArray arrayWithCapacity:0];
-    for (int i = 0; i < 10; i++) {
-        JSLongVideoModel *model = [JSLongVideoModel new];
-        model.title = @"标题";
-        model.isHot = YES;
-        model.imgURL = @"";
-        model.source = @"来源";
-        model.releaseTime = @"5小时前";
-        model.commitCount = @1186;
-        model.praiseCount = @1000;
-        [tempArr addObject:model];
-    }
-    self.datas = (NSArray *)tempArr;
-}
 
 #pragma mark UITableViewDelegate
 

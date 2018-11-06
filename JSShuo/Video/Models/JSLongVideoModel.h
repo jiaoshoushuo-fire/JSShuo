@@ -11,22 +11,38 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface JSLongVideoModel : NSObject
+
+/** 文章ID */
+@property (nonatomic,strong) NSNumber *articleId;
+/** 封面图 */
+@property (nonatomic,strong) NSArray *cover;
 /** 标题 */
-@property (nonatomic,strong) NSString *title;
-/** 视频图片的播放 */
-@property (nonatomic,strong) NSString *imgURL;
+@property (nonatomic,copy) NSString *title;
+/** 展现形式 */
+@property (nonatomic,copy) NSString *showType;
+/** 描述 */
+@property (nonatomic,copy) NSString *Description;
 /** 来源 */
-@property (nonatomic,strong) NSString *source;
-/** 发布距离时间 */
-@property (nonatomic,strong) NSString *releaseTime;
-/** 视频的时长 */
-@property (nonatomic,strong) NSString *videoTime;
-/** 评论数 */
-@property (nonatomic,strong) NSNumber *praiseCount;
-/** 评论数 */
-@property (nonatomic,strong) NSNumber *commitCount;
+@property (nonatomic,copy) NSString *origin;
+/** 作者 */
+@property (nonatomic,copy) NSString *author;
+/** 视频播放地址 */
+@property (nonatomic,copy) NSString *videoUrl;
+/** 时长 */
+@property (nonatomic,strong) NSNumber *duration;
+/**  */
+@property (nonatomic,copy) NSString *bgSound;
+/** 市场 */
+@property (nonatomic,strong) NSNumber *mediaType;
 /** 是否置顶 */
-@property (nonatomic,assign) BOOL isHot;
+@property (nonatomic,strong) NSNumber *isTop;
+/** 评论数 */
+@property (nonatomic,strong) NSNumber *commentNum;
+/** 点赞数 */
+@property (nonatomic,strong) NSNumber *praiseNum;
+/** 发布距离时间 */
+@property (nonatomic,strong) NSString *publishTime;
+
 
 + (JSLongVideoModel *) modelWithDictionary:(NSDictionary *)dic;
 + (NSArray *) modelsWithArray:(NSArray *)array;
