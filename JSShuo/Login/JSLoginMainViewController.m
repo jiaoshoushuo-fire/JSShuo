@@ -69,7 +69,7 @@
 @property (nonatomic, strong) NSArray *subVCs;
 @property (nonatomic, strong) JSLoginMainHeaderView *headerView;
 
-@property (nonatomic, strong) JSLoginViewController *loginVC;
+//@property (nonatomic, strong) JSLoginViewController *loginVC;
 @property (nonatomic, strong) JSRegisterViewController *registerVC;
 
 @property (nonatomic, strong) UIButton *closeButton;
@@ -80,7 +80,8 @@
 
 - (NSArray *)topTitles{
     if (!_topTitles) {
-        _topTitles = @[@"账号登录",@"新人注册"];
+//        _topTitles = @[@"账号登录",@"新人注册"];
+        _topTitles = @[@""];
     }
     return _topTitles;
 }
@@ -91,19 +92,24 @@
         @weakify(self)
         [_closeButton bk_addEventHandler:^(id sender) {
             @strongify(self)
-            
-            [self.rt_navigationController dismissViewControllerAnimated:YES completion:nil];
+             @weakify(self)
+            [self.rt_navigationController dismissViewControllerAnimated:YES completion:^{
+                @strongify(self)
+                if (self.loginComplementBlock) {
+                    self.loginComplementBlock(NO);
+                }
+            }];
         } forControlEvents:UIControlEventTouchUpInside];
     }
     return _closeButton;
 }
-- (JSLoginViewController *)loginVC{
-    if (!_loginVC) {
-        _loginVC = [[JSLoginViewController alloc]init];
-        _loginVC.delegate = self;
-    }
-    return _loginVC;
-}
+//- (JSLoginViewController *)loginVC{
+//    if (!_loginVC) {
+//        _loginVC = [[JSLoginViewController alloc]init];
+//        _loginVC.delegate = self;
+//    }
+//    return _loginVC;
+//}
 - (JSRegisterViewController *)registerVC{
     if (!_registerVC) {
         _registerVC = [[JSRegisterViewController alloc]init];
@@ -113,7 +119,8 @@
 }
 - (NSArray *)subVCs{
     if (!_subVCs) {
-        _subVCs = @[self.loginVC,self.registerVC];
+//        _subVCs = @[self.loginVC,self.registerVC];
+        _subVCs = @[self.registerVC];
     }
     return _subVCs;
 }
@@ -218,11 +225,11 @@
     return self.topTitles[index];
 }
 - (CGRect)pageController:(WMPageController *)pageController preferredFrameForMenuView:(WMMenuView *)menuView {
-    return CGRectMake(0, 0, self.view.width, 42);
+    return CGRectMake(0, 0, self.view.width, 2);
 }
 
 - (CGRect)pageController:(WMPageController *)pageController preferredFrameForContentView:(WMScrollView *)contentView {
-    CGFloat originY = 42;
+    CGFloat originY = 2;
     return CGRectMake(0, originY, self.view.width, self.pageController.view.height - originY);
 }
 
@@ -233,6 +240,17 @@
 #pragma mark - JSLoginViewControllerDelegate
 - (void)didSelectedPageControllerWithIndex:(int)index{
     self.pageController.selectIndex = index;
+}
+- (void)didLoginSuccessComplement{
+    @weakify(self)
+    [self.rt_navigationController dismissViewControllerAnimated:YES completion:^{
+        @strongify(self)
+        //放送登陆成功通知
+        [[NSNotificationCenter defaultCenter]postNotificationName:kLoginSuccessNotification object:nil];
+        if (self.loginComplementBlock) {
+            self.loginComplementBlock(YES);
+        }
+    }];
 }
 /*
 #pragma mark - Navigation

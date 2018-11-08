@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface JSBaseViewController : UIViewController
 
+- (void)userLoginSuccessNoti:(NSNotification *)notification;
+
 @end
 
 NS_ASSUME_NONNULL_END

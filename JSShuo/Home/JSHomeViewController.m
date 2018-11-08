@@ -19,20 +19,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"推荐";
-    
-    UIButton *testButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [testButton setTitle:@"登陆" forState:UIControlStateNormal];
-    [testButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-    testButton.frame = CGRectMake(100, 100, 100, 100);
-    @weakify(self)
-    [testButton bk_addEventHandler:^(id sender) {
-        @strongify(self)
-        JSLoginMainViewController *loginVC = [[JSLoginMainViewController alloc]init];
-        RTRootNavigationController *nav1 = [[RTRootNavigationController alloc] initWithRootViewController:loginVC];
-        [self.tabBarController presentViewController:nav1 animated:YES completion:nil];
-        
-    } forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:testButton];
+
 }
 
 /*

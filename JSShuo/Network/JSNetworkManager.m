@@ -8,6 +8,7 @@
 
 #import "JSNetworkManager.h"
 #import "MBProgressHUD.h"
+#import "AppDelegate.h"
 
 @implementation JSNetworkManager
 
@@ -21,6 +22,7 @@
         networkManager.requestSerializer.timeoutInterval = 30;
         [networkManager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
         [networkManager.requestSerializer setValue:@"*/*; charset=utf-8" forHTTPHeaderField:@"Accept"];
+        networkManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html",@"text/plain", nil];
         
         //允许证书无效
         AFSecurityPolicy *securityPolicy = [AFSecurityPolicy defaultPolicy];
@@ -30,11 +32,23 @@
     });
     return networkManager;
 }
-
++ (void)restartLogin{
+    [JSAccountManager refreshAccountToken:nil];
+    [JSAccountManager checkLoginStatusComplement:^(BOOL isLogin) {
+        
+    }];
+}
++ (UIViewController *)currentViewController{
+    JSMainViewController *mainVC = [AppDelegate instance].mainViewController;
+    RTRootNavigationController *currentNav = mainVC.selectedViewController;
+    UIViewController *currentVC = currentNav.rt_topViewController;
+    return currentVC;
+}
 
 + (void)POST:(NSString *)url parameters:(NSDictionary *)parameters complement:(void(^)(BOOL isSuccess,NSDictionary *responseDict))complement{
-    
+//    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[self currentViewController].view animated:YES];
     [[self shareManager]POST:url parameters:[self transformParameters:parameters] progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+//        [hud hideAnimated:YES];
         NSString *state = responseObject[@"code"];
         if (state.integerValue == 0) {
             NSDictionary *dataDict = responseObject[@"data"];
@@ -42,6 +56,11 @@
                 complement(YES,dataDict);
             }
             
+        }else if (state.integerValue == 2){
+            [self restartLogin];
+            if (complement) {
+                complement(NO,nil);
+            }
         }else{
             NSString *messageString = responseObject[@"message"];
             [self showErrorMessgae:messageString];
@@ -50,7 +69,7 @@
             }
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
+//        [hud hideAnimated:YES];
         [self showErrorMessgae:error.localizedDescription];
         
         if (complement) {
@@ -60,7 +79,9 @@
 }
 
 + (void)GET:(NSString *)url parameters:(NSDictionary *)parameters complement:(void(^)(BOOL isSuccess,NSDictionary *responseDict))complement{
+//    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[self currentViewController].view animated:YES];
     [[self shareManager]GET:url parameters:[self transformParameters:parameters] progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+//        [hud hideAnimated:YES];
         NSString *state = responseObject[@"code"];
         if (state.integerValue == 0) {
             NSDictionary *dataDict = responseObject[@"data"];
@@ -68,6 +89,11 @@
                 complement(YES,dataDict);
             }
             
+        }else if (state.integerValue == 2){
+            [self restartLogin];
+            if (complement) {
+                complement(NO,nil);
+            }
         }else{
             NSString *messageString = responseObject[@"message"];
             [self showErrorMessgae:messageString];
@@ -77,6 +103,7 @@
         }
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+//        [hud hideAnimated:YES];
         [self showErrorMessgae:error.localizedDescription];
         if (complement) {
             complement(NO,nil);
@@ -131,7 +158,35 @@
     
     hud.mode = MBProgressHUDModeText;
     hud.label.text = message;
-    [hud hideAnimated:YES afterDelay:3.f];
+    [hud hideAnimated:YES afterDelay:2.f];
 }
 
++ (void)normalPOST:(NSString *)url parameters:(NSDictionary *)parameters complement:(void(^)(BOOL isSuccess,NSDictionary *responseDict))complement{
+    [[self shareManager]POST:url parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (complement) {
+            complement(YES,responseObject);
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [self showErrorMessgae:error.localizedDescription];
+        if (complement) {
+            complement(NO,nil);
+        }
+    }];
+}
+
++ (void)normalGET:(NSString *)url parameters:(NSDictionary *)parameters complement:(void(^)(BOOL isSuccess,NSDictionary *responseDict))complement{
+    
+    [[self shareManager]GET:url parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (complement) {
+            complement(YES,responseObject);
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [self showErrorMessgae:error.localizedDescription];
+        if (complement) {
+            complement(NO,nil);
+        }
+    }];
+}
 @end

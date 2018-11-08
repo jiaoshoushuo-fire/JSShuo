@@ -28,6 +28,8 @@
 @property (nonatomic, strong)NSTimer *timer;
 @property (nonatomic, assign)NSInteger timeCount;
 
+@property (nonatomic, strong)JSLoginBottomView *loginBottomView;
+
 @end
 
 @implementation JSRegisterViewController
@@ -68,7 +70,7 @@
 - (UITextField *)passwordTextField{
     if (!_passwordTextField) {
         _passwordTextField = [[UITextField alloc]init];
-        _passwordTextField.placeholder = @"请输入密码";
+        _passwordTextField.placeholder = @"请输入验证码";
         _passwordTextField.font = [UIFont systemFontOfSize:14];
         _passwordTextField.keyboardType = UIKeyboardTypeNumberPad;
         
@@ -103,7 +105,7 @@
         @weakify(self)
         [_securityCodeButton bk_addEventHandler:^(UIButton *sender) {
             @strongify(self)
-            [JSNetworkManager requestSecurityCodeWithPhoneNumber:self.accountTextField.text type:JSRequestSecurityCodeTypeRegister complement:^(BOOL isSuccess, NSDictionary * _Nonnull contenDict) {
+            [JSNetworkManager requestSecurityCodeWithPhoneNumber:self.accountTextField.text type:JSRequestSecurityCodeTypeLogin complement:^(BOOL isSuccess, NSDictionary * _Nonnull contenDict) {
                 if (isSuccess) {
                     if ([self.timer isValid]) {
                         [self.timer invalidate];
@@ -172,14 +174,20 @@
     if (!_registerButton) {
         _registerButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _registerButton.backgroundColor = [UIColor colorWithHexString:@"999999"];
-        [_registerButton setTitle:@"注册" forState:UIControlStateNormal];
+        [_registerButton setTitle:@"登录" forState:UIControlStateNormal];
         [_registerButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         _registerButton.titleLabel.font = [UIFont systemFontOfSize:16];
         
         @weakify(self)
         [_registerButton bk_addEventHandler:^(id sender) {
             @strongify(self)
-            
+            [JSNetworkManager loginAccountNumberWithPhoneNumber:self.accountTextField.text securityCode:self.passwordTextField.text complement:^(BOOL isSuccess, NSDictionary * _Nonnull contenDict) {
+                if (isSuccess) {
+                    if (self.delegate && [self.delegate respondsToSelector:@selector(didLoginSuccessComplement)]) {
+                        [self.delegate didLoginSuccessComplement];
+                    }
+                }
+            }];
         } forControlEvents:UIControlEventTouchUpInside];
     }
     return _registerButton;
@@ -217,6 +225,18 @@
     return _gologinLabel;
 }
 
+- (JSLoginBottomView *)loginBottomView{
+    if (!_loginBottomView) {
+        _loginBottomView = [[JSLoginBottomView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 125)];
+        @weakify(self)
+        [_loginBottomView.wechatLoginButton bk_addEventHandler:^(id sender) {
+            @strongify(self)
+            
+        } forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _loginBottomView;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -236,7 +256,9 @@
     
     [self.view addSubview:self.agreementLabel];
     [self.view addSubview:self.registerButton];
-    [self.view addSubview:self.gologinLabel];
+//    [self.view addSubview:self.gologinLabel];
+    
+    [self.view addSubview:self.loginBottomView];
     
     [self.accountTextField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     [self.passwordTextField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
@@ -312,10 +334,21 @@
         make.top.mas_equalTo(self.agreementLabel.mas_bottom).offset(10);
     }];
     
-    [self.gologinLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(self.gologinLabel.size);
-        make.top.mas_equalTo(self.registerButton.mas_bottom).offset(18);
-        make.centerX.mas_equalTo(self.registerButton.mas_centerX);
+//    [self.gologinLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.size.mas_equalTo(self.gologinLabel.size);
+//        make.top.mas_equalTo(self.registerButton.mas_bottom).offset(18);
+//        make.centerX.mas_equalTo(self.registerButton.mas_centerX);
+//    }];
+    
+    [self.loginBottomView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(self.view);
+        CGFloat height = 125;
+        if (kScreenWidth == 320) {
+            height = 105;
+        }
+        make.height.mas_equalTo(height);
+        CGFloat bottomOffset = IS_IPHONE_X ? 34 : 0;
+        make.bottom.equalTo(self.view).offset(bottomOffset);
     }];
 }
 

@@ -19,6 +19,10 @@ const static NSString *Base_Url = @"http://api.jiaoshoutt.com";
 + (void)GET:(NSString *)url parameters:(NSDictionary *)parameters complement:(void(^)(BOOL isSuccess,NSDictionary *responseDict))complement;
 
 + (void)showErrorMessgae:(NSString *)message;
+
++ (void)normalPOST:(NSString *)url parameters:(NSDictionary *)parameters complement:(void(^)(BOOL isSuccess,NSDictionary *responseDict))complement;
+
++ (void)normalGET:(NSString *)url parameters:(NSDictionary *)parameters complement:(void(^)(BOOL isSuccess,NSDictionary *responseDict))complement;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface JSMainViewController : JSTabBarViewController
 
+- (void)switchToViewControllerAtIndex:(NSInteger)index;
 @end
 
 NS_ASSUME_NONNULL_END

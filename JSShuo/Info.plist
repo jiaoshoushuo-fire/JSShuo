@@ -42,5 +42,34 @@
         <key>NSAllowsArbitraryLoads</key>
         <true/>
     </dict>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>mqqopensdkapiV2</string>
+        <string>mqqopensdkapiV3</string>
+        <string>mqq</string>
+        <string>wtloginmqq2</string>
+        <string>mqzone</string>
+        <string>mqqapi</string>
+        <string>mqqwpa</string>
+        <string>wechat</string>
+        <string>weixin</string>
+        <string>weibosdk2.5</string>
+        <string>weibosdk</string>
+        <string>sinaweibo</string>
+        <string>sinaweibohd</string>
+    </array>
+    <key>CFBundleURLTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleTypeRole</key>
+            <string>Editor</string>
+            <key>CFBundleURLName</key>
+            <string>wechat</string>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>wx84fd8fba0a29ae12</string>
+            </array>
+        </dict>
+    </array>
 </dict>
 </plist>

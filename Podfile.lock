@@ -14,6 +14,7 @@ PODS:
   - AFNetworking/Serialization (3.2.1)
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
+  - AKASegmentedControl (1.0.5)
   - BlocksKit (2.2.5):
     - BlocksKit/All (= 2.2.5)
   - BlocksKit/All (2.2.5):
@@ -48,6 +49,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 3.2.1)
+  - AKASegmentedControl (~> 1.0.5)
   - BlocksKit (~> 2.2.5)
   - Mantle (~> 2.1.0)
   - Masonry (~> 1.1.0)
@@ -63,6 +65,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AFNetworking
+    - AKASegmentedControl
     - BlocksKit
     - Mantle
     - Masonry
@@ -77,6 +80,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  AKASegmentedControl: b98249ce1d319cc1971f9f78172173fd90c5f4d5
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
   Mantle: 2fa750afa478cd625a94230fbf1c13462f29395b
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
@@ -89,6 +93,6 @@ SPEC CHECKSUMS:
   WMPageController: 0c7624d2b48e4f1ab92371688cf6744ed701575d
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: 793d8f9c364164da2589e4fbca399d143c7e37de
+PODFILE CHECKSUM: fe2ea2f2652187e15d252971016239658f6b732c
 
 COCOAPODS: 1.5.3
