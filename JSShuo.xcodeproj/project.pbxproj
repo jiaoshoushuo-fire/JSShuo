@@ -15,6 +15,13 @@
 		00452050218FDEDF00371F10 /* nav_headr_search.png in Resources */ = {isa = PBXBuildFile; fileRef = 0045204F218FDEDF00371F10 /* nav_headr_search.png */; };
 		0045205321900D4300371F10 /* JSVideoTitleBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0045205221900D4300371F10 /* JSVideoTitleBarViewController.m */; };
 		00452056219011F200371F10 /* JSShortVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00452055219011F200371F10 /* JSShortVideoViewController.m */; };
+		0045205B2190484700371F10 /* JSLongVideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0045205A2190484700371F10 /* JSLongVideoModel.m */; };
+		0045205E2190485600371F10 /* JSShortVideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0045205D2190485600371F10 /* JSShortVideoModel.m */; };
+		0045206121904AE600371F10 /* JSLongVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0045206021904AE600371F10 /* JSLongVideoCell.m */; };
+		004520642190656E00371F10 /* comment.png in Resources */ = {isa = PBXBuildFile; fileRef = 004520632190656D00371F10 /* comment.png */; };
+		0045206621913BB500371F10 /* praise.png in Resources */ = {isa = PBXBuildFile; fileRef = 0045206521913BB500371F10 /* praise.png */; };
+		004520692191A27700371F10 /* JSNetworkManager+Channel.m in Sources */ = {isa = PBXBuildFile; fileRef = 004520682191A27700371F10 /* JSNetworkManager+Channel.m */; };
+		0045206C2191C05B00371F10 /* JSNetworkManager+LongVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0045206B2191C05B00371F10 /* JSNetworkManager+LongVideo.m */; };
 		2D4BE293799FA8F9CF3BD9E0 /* libPods-JSShuoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07D21E4F3FE796E0EC111709 /* libPods-JSShuoTests.a */; };
 		6797051512B36A0CAA259324 /* libPods-JSShuoUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 45918ABA94D7C616D6E9C28A /* libPods-JSShuoUITests.a */; };
 		7A203E44218BE02A0001F926 /* JSLoginMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A203E43218BE02A0001F926 /* JSLoginMainViewController.m */; };
@@ -119,6 +126,18 @@
 		0045205221900D4300371F10 /* JSVideoTitleBarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSVideoTitleBarViewController.m; sourceTree = "<group>"; };
 		00452054219011F200371F10 /* JSShortVideoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSShortVideoViewController.h; sourceTree = "<group>"; };
 		00452055219011F200371F10 /* JSShortVideoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSShortVideoViewController.m; sourceTree = "<group>"; };
+		004520592190484700371F10 /* JSLongVideoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSLongVideoModel.h; sourceTree = "<group>"; };
+		0045205A2190484700371F10 /* JSLongVideoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSLongVideoModel.m; sourceTree = "<group>"; };
+		0045205C2190485600371F10 /* JSShortVideoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSShortVideoModel.h; sourceTree = "<group>"; };
+		0045205D2190485600371F10 /* JSShortVideoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSShortVideoModel.m; sourceTree = "<group>"; };
+		0045205F21904AE600371F10 /* JSLongVideoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSLongVideoCell.h; sourceTree = "<group>"; };
+		0045206021904AE600371F10 /* JSLongVideoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSLongVideoCell.m; sourceTree = "<group>"; };
+		004520632190656D00371F10 /* comment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = comment.png; sourceTree = "<group>"; };
+		0045206521913BB500371F10 /* praise.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = praise.png; sourceTree = "<group>"; };
+		004520672191A27700371F10 /* JSNetworkManager+Channel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JSNetworkManager+Channel.h"; sourceTree = "<group>"; };
+		004520682191A27700371F10 /* JSNetworkManager+Channel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "JSNetworkManager+Channel.m"; sourceTree = "<group>"; };
+		0045206A2191C05B00371F10 /* JSNetworkManager+LongVideo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JSNetworkManager+LongVideo.h"; sourceTree = "<group>"; };
+		0045206B2191C05B00371F10 /* JSNetworkManager+LongVideo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "JSNetworkManager+LongVideo.m"; sourceTree = "<group>"; };
 		07D21E4F3FE796E0EC111709 /* libPods-JSShuoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JSShuoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		35A90D49D7D66324E387894E /* Pods-JSShuoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSShuoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JSShuoUITests/Pods-JSShuoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		428D5311982CDC892743DA34 /* Pods-JSShuoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSShuoUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JSShuoUITests/Pods-JSShuoUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -312,6 +331,7 @@
 		00452039218EEC9300371F10 /* Imgs */ = {
 			isa = PBXGroup;
 			children = (
+				004520622190655F00371F10 /* Video */,
 				0045203A218EEC9B00371F10 /* Home */,
 			);
 			path = Imgs;
@@ -334,6 +354,35 @@
 				0045204F218FDEDF00371F10 /* nav_headr_search.png */,
 			);
 			path = Nav;
+			sourceTree = "<group>";
+		};
+		00452057219047E200371F10 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0045205F21904AE600371F10 /* JSLongVideoCell.h */,
+				0045206021904AE600371F10 /* JSLongVideoCell.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		00452058219047EA00371F10 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				004520592190484700371F10 /* JSLongVideoModel.h */,
+				0045205A2190484700371F10 /* JSLongVideoModel.m */,
+				0045205C2190485600371F10 /* JSShortVideoModel.h */,
+				0045205D2190485600371F10 /* JSShortVideoModel.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		004520622190655F00371F10 /* Video */ = {
+			isa = PBXGroup;
+			children = (
+				004520632190656D00371F10 /* comment.png */,
+				0045206521913BB500371F10 /* praise.png */,
+			);
+			path = Video;
 			sourceTree = "<group>";
 		};
 		15BBF99DF6D3A562552BEDD5 /* Pods */ = {
@@ -523,6 +572,8 @@
 		7A5FEEAC218B0CEE006CF7EC /* Video */ = {
 			isa = PBXGroup;
 			children = (
+				00452058219047EA00371F10 /* Models */,
+				00452057219047E200371F10 /* Views */,
 				0045205121900D4300371F10 /* JSVideoTitleBarViewController.h */,
 				0045205221900D4300371F10 /* JSVideoTitleBarViewController.m */,
 				7A5FEEB5218B0D6D006CF7EC /* JSVideoViewController.h */,
@@ -661,6 +712,10 @@
 				7A8F6779218FCF72008A00F4 /* JSNetworkManager.m */,
 				7A8F677E218FE30C008A00F4 /* JSNetworkManager+Login.h */,
 				7A8F677F218FE30C008A00F4 /* JSNetworkManager+Login.m */,
+				004520672191A27700371F10 /* JSNetworkManager+Channel.h */,
+				004520682191A27700371F10 /* JSNetworkManager+Channel.m */,
+				0045206A2191C05B00371F10 /* JSNetworkManager+LongVideo.h */,
+				0045206B2191C05B00371F10 /* JSNetworkManager+LongVideo.m */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -831,8 +886,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A5FEE5E218ACBAE006CF7EC /* LaunchScreen.storyboard in Resources */,
+				004520642190656E00371F10 /* comment.png in Resources */,
 				7A5FEE5B218ACBAE006CF7EC /* Assets.xcassets in Resources */,
 				7A5FEEC2218B280D006CF7EC /* AlipaySDK.bundle in Resources */,
+				0045206621913BB500371F10 /* praise.png in Resources */,
 				0045204E218EF26B00371F10 /* nav_headr_redpocket.png in Resources */,
 				7A5FEE59218ACBAD006CF7EC /* Main.storyboard in Resources */,
 				00452050218FDEDF00371F10 /* nav_headr_search.png in Resources */,
@@ -947,6 +1004,7 @@
 				7A898F3F2193C4F600A7CADD /* JSMessageViewController.m in Sources */,
 				7ABD9E662191BA6600E19B6A /* TAAbstractDotView.m in Sources */,
 				7A5FEE91218AFC92006CF7EC /* JSTabBar.m in Sources */,
+				0045205B2190484700371F10 /* JSLongVideoModel.m in Sources */,
 				7A8F677A218FCF72008A00F4 /* JSNetworkManager.m in Sources */,
 				7A8F67902190492A008A00F4 /* JSAccountManager+SinaWeibo.m in Sources */,
 				7A846ECA219290AB0048F222 /* JSProfileUserModel.m in Sources */,
@@ -954,6 +1012,7 @@
 				7A5FEE98218AFEA1006CF7EC /* UIColor+JSShuo.m in Sources */,
 				7A8F6780218FE30C008A00F4 /* JSNetworkManager+Login.m in Sources */,
 				7ABD9E652191BA6600E19B6A /* TAAnimatedDotView.m in Sources */,
+				0045206121904AE600371F10 /* JSLongVideoCell.m in Sources */,
 				7A5FEEB1218B0D4D006CF7EC /* JSActivityCenterViewController.m in Sources */,
 				7A203E4E218BF2430001F926 /* JSAccountManager.m in Sources */,
 				7A5FEE88218AFB3E006CF7EC /* JSBaseViewController.m in Sources */,
@@ -973,6 +1032,7 @@
 				7A5FEEB7218B0D6D006CF7EC /* JSVideoViewController.m in Sources */,
 				0045205321900D4300371F10 /* JSVideoTitleBarViewController.m in Sources */,
 				7A5FEEA6218B0BC2006CF7EC /* JSStartupViewController.m in Sources */,
+				0045206C2191C05B00371F10 /* JSNetworkManager+LongVideo.m in Sources */,
 				7A5FEE9C218B0058006CF7EC /* UIFont+JSShuo.m in Sources */,
 				7A898F492193D88F00A7CADD /* JSAdjustButton.m in Sources */,
 				7A898F622193FFE100A7CADD /* JSNotificationViewController.m in Sources */,
@@ -985,11 +1045,13 @@
 				7ABD9E602191BA6600E19B6A /* SDCycleScrollView.m in Sources */,
 				7ABD9E642191BA6600E19B6A /* TAPageControl.m in Sources */,
 				7A898F5C2193E4EF00A7CADD /* CAAnimation+WAnimation.m in Sources */,
+				0045205E2190485600371F10 /* JSShortVideoModel.m in Sources */,
 				7A5FEE53218ACBAD006CF7EC /* AppDelegate.m in Sources */,
 				7ABD9E612191BA6600E19B6A /* UIView+SDExtension.m in Sources */,
 				7A5FEEBA218B0D7C006CF7EC /* JSProfileViewController.m in Sources */,
 				7ABD9E692191C03400E19B6A /* JSProfileCell.m in Sources */,
 				00452037218EDD5C00371F10 /* JSHomeTitleBarViewController.m in Sources */,
+				004520692191A27700371F10 /* JSNetworkManager+Channel.m in Sources */,
 				7A5FEEA3218B0BA7006CF7EC /* JSLaunchViewController.m in Sources */,
 				7A898F682194065E00A7CADD /* JSMessageCell.m in Sources */,
 				7A846ECD219333D10048F222 /* NSDictionary+SetNullWithStr.m in Sources */,
