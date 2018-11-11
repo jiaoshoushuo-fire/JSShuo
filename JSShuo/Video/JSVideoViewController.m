@@ -22,7 +22,6 @@
     
     NSDictionary *params = @{@"pageNum":@1,@"channel":@"11",@"pageSize":@20};
     [JSNetworkManager requestLongVideoListWithParams:params complent:^(NSArray * _Nonnull modelsArray) {
-        NSLog(@"%@",modelsArray);
         self.datas = modelsArray;
         if (self.tableView) {
             [self.tableView reloadData];
@@ -41,6 +40,10 @@
 
 #pragma mark UITableViewDelegate
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.datas.count;
 }
@@ -52,7 +55,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 40+(ScreenWidth-30)*9/16+9+25;
+    return 40+(ScreenWidth-30)*9/16+9+25+2;
 }
 
 

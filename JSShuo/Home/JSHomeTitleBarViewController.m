@@ -102,6 +102,7 @@
 
 - (UIViewController *)pagerController:(TYPagerController *)pagerController controllerForIndex:(NSInteger)index prefetching:(BOOL)prefetching {
     JSHomeViewController *vc = [[JSHomeViewController alloc] init];
+    vc.genreID = [_datas[index] objectForKey:@"channelId"];
     return vc;
 }
 

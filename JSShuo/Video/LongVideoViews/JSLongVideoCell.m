@@ -7,6 +7,11 @@
 //
 
 #import "JSLongVideoCell.h"
+#import "JSComputeTime.h"
+
+@interface JSLongVideoCell()
+@property (nonatomic,strong) UIView *lineView;
+@end
 
 @implementation JSLongVideoCell
 
@@ -16,6 +21,7 @@
 }
 
 - (instancetype) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
     
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         [self.contentView addSubview:self.titleLabel];
@@ -47,6 +53,7 @@
     [self.contentView addSubview:self.commitCountLabel];
     [self.contentView addSubview:self.praiseCountImg];
     [self.contentView addSubview:self.praiseCountLabel];
+    [self.contentView addSubview:self.lineView];
     
     [self.hotLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.playerIconImg.mas_bottom).offset(9);
@@ -98,12 +105,17 @@
         make.right.mas_equalTo(self.praiseCountLabel.mas_left).offset(-5);
         make.centerY.mas_equalTo(self.praiseCountLabel.mas_centerY);
     }];
+    [self.lineView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(ScreenWidth-30, 2));
+        make.left.mas_equalTo(15);
+        make.top.mas_equalTo(self.sourceLabel.mas_bottom).offset(8);
+    }];
     
-    
-    _titleLabel.text = _model.Description; // 暂时用描述字段来代替
-    _playerIconImg.image = [UIImage imageNamed:model.cover[0]];
+    _titleLabel.text = _model.Description; // 暂时用描述字段来代替_playerIconImg
+    [self.playerIconImg sd_setImageWithURL:[NSURL URLWithString:model.cover[0]]];
     _sourceLabel.text = _model.origin;
-    _releaseTimeLabel.text = _model.publishTime;
+//    _releaseTimeLabel.text = _model.publishTime;
+    _releaseTimeLabel.text = [[JSComputeTime new] distanceTimeWithPublistTime:model.publishTime];
     _videoTimeLabel.text = [NSString stringWithFormat:@"%@",_model.duration];
     _commitCountLabel.text = [NSString stringWithFormat:@"%@",_model.commentNum];
     _praiseCountLabel.text = [NSString stringWithFormat:@"%@",_model.praiseNum];
@@ -122,7 +134,6 @@
 - (UIImageView *)playerIconImg {
     if (!_playerIconImg) {
         _playerIconImg = [[UIImageView alloc] init];
-        _playerIconImg.backgroundColor = [UIColor cyanColor];
     }
     return _playerIconImg;
 }
@@ -194,6 +205,14 @@
         _commitCountLabel.textAlignment = NSTextAlignmentLeft;
     }
     return _commitCountLabel;
+}
+
+- (UIView *) lineView {
+    if (!_lineView) {
+        _lineView = [[UIView alloc] init];
+        _lineView.backgroundColor = [UIColor colorWithHexString:@"EDEDED"];
+    }
+    return _lineView;
 }
 
 @end

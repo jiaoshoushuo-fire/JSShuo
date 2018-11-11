@@ -29,6 +29,7 @@ PODS:
   - BlocksKit/UIKit (2.2.5):
     - BlocksKit/Core
     - BlocksKit/DynamicDelegate
+  - FDFullscreenPopGesture (1.1)
   - Mantle (2.1.0):
     - Mantle/extobjc (= 2.1.0)
   - Mantle/extobjc (2.1.0)
@@ -38,6 +39,9 @@ PODS:
   - RTRootNavigationController (0.6.7):
     - RTRootNavigationController/Core (= 0.6.7)
   - RTRootNavigationController/Core (0.6.7)
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
   - TYPagerController (2.1.2)
   - WechatOpenSDK (1.8.2)
   - Weibo_SDK (3.2.3)
@@ -49,11 +53,13 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 3.2.1)
   - BlocksKit (~> 2.2.5)
+  - FDFullscreenPopGesture
   - Mantle (~> 2.1.0)
   - Masonry (~> 1.1.0)
   - MJRefresh (~> 3.1.15.7)
   - pop (~> 1.0.10)
   - RTRootNavigationController (~> 0.6.7)
+  - SDWebImage (~> 3.8)
   - TYPagerController
   - WechatOpenSDK (~> 1.8.2)
   - Weibo_SDK (~> 3.2.3)
@@ -64,11 +70,13 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AFNetworking
     - BlocksKit
+    - FDFullscreenPopGesture
     - Mantle
     - Masonry
     - MJRefresh
     - pop
     - RTRootNavigationController
+    - SDWebImage
     - TYPagerController
     - WechatOpenSDK
     - Weibo_SDK
@@ -78,17 +86,19 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
+  FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
   Mantle: 2fa750afa478cd625a94230fbf1c13462f29395b
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
   pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
   RTRootNavigationController: d6aa6cbb78a3eaecea4f6e4df63f15dd887836b8
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   TYPagerController: 262556ecef99986d26ed77fb1288a198ed42f4af
   WechatOpenSDK: 676feec516a11173eafd1fe64b10d27babf28701
   Weibo_SDK: 652ca78c2f7147a5de5e75e7cbea89838a81772a
   WMPageController: 0c7624d2b48e4f1ab92371688cf6744ed701575d
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: 793d8f9c364164da2589e4fbca399d143c7e37de
+PODFILE CHECKSUM: 6e1f6bd325bb4f4f1cc6eda94cd9d243179114bb
 
 COCOAPODS: 1.5.3
