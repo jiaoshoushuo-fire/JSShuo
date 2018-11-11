@@ -17,6 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(userLoginSuccessNoti:) name:kLoginSuccessNotification object:nil];
     // Do any additional setup after loading the view.
 }
 
@@ -24,7 +25,9 @@
     
     return [JSNavigationBar class];
 }
-
+- (void)userLoginSuccessNoti:(NSNotification *)notification{
+    
+};
 - (UIBarButtonItem *)rt_customBackItemWithTarget:(id)target action:(SEL)action{
     UIBarButtonItem *backButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"navi_top_back"]
                                                                        style:UIBarButtonItemStylePlain

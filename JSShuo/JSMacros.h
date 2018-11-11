@@ -19,6 +19,15 @@
 #define IS_IPHONE_XS (IS_IPHONE_X_OR_XS ? IS_IPHONE_X_OR_XS : IS_IPHONE_XS_MAX)
 #define IS_IPHONE_X (IS_IPHONE_XS ? IS_IPHONE_XS : IS_IPHONE_XR)
 
+#define IPHONE_NAVIGATIONBAR_HEIGHT  (IS_IPHONE_X ? 88 : 64)
+#define IPHONE_STATUSBAR_HEIGHT      (IS_IPHONE_X ? 44 : 20)
+#define IPHONE_SAFEBOTTOMAREA_HEIGHT (IS_IPHONE_X ? 34 : 0)
+#define IPHONE_TOPSENSOR_HEIGHT      (IS_IPHONE_X ? 32 : 0)
+#define IPHONE_TABBAR_HEIGHT         (IS_IPHONE_X ? 83 : 49)
+#define kApplicationStatusBarHeight  [UIApplication sharedApplication].statusBarFrame.size.height //状态栏的高度
+
+
+
 #define ScreenWidth ([UIScreen mainScreen].bounds.size.width)
 #define ScreenHeight ([UIScreen mainScreen].bounds.size.height)
 

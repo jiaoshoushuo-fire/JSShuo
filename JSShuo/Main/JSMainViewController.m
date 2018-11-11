@@ -79,17 +79,25 @@
 //        }];
         
     } else if (button == self.mainTabBar.newsButton) {
-        if (self.selectedViewController == [self.viewControllers objectAtIndex:2]) {
-//            [self.newsViewController scrollToTopAndReloadData];
-        } else {
-            self.selectedIndex = 2;
-        }
+        [JSAccountManager checkLoginStatusComplement:^(BOOL isLogin) {
+            if (isLogin) {
+                if (self.selectedViewController == [self.viewControllers objectAtIndex:2]) {
+                    //            [self.newsViewController scrollToTopAndReloadData];
+                } else {
+                    self.selectedIndex = 2;
+                }
+            }
+        }];
     } else if (button == self.mainTabBar.profileButton) {
-        if (self.selectedViewController == [self.viewControllers objectAtIndex:3]) {
-//            [self.profileViewController scrollToTopAndReloadData];
-        } else {
-            self.selectedIndex = 3;
-        }
+        [JSAccountManager checkLoginStatusComplement:^(BOOL isLogin) {
+            if (isLogin) {
+                if (self.selectedViewController == [self.viewControllers objectAtIndex:3]) {
+                    //            [self.profileViewController scrollToTopAndReloadData];
+                } else {
+                    self.selectedIndex = 3;
+                }
+            }
+        }];
     }
 }
 

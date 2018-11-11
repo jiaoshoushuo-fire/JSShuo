@@ -17,6 +17,7 @@ pod 'pop', '~> 1.0.10'
 pod 'WechatOpenSDK', '~> 1.8.2'
 pod 'Weibo_SDK', '~> 3.2.3'
 pod 'WMPageController', '~> 2.5.2'
+pod 'AKASegmentedControl', '~> 1.0.5'
 
   target 'JSShuoTests' do
     inherit! :search_paths

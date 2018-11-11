@@ -7,7 +7,7 @@
 //
 
 #import "JSLongVideoCell.h"
-#import "JSComputeTime.h"
+//#import "JSComputeTime.h"
 
 @interface JSLongVideoCell()
 @property (nonatomic,strong) UIView *lineView;
@@ -114,8 +114,8 @@
     _titleLabel.text = _model.Description; // 暂时用描述字段来代替_playerIconImg
     [self.playerIconImg sd_setImageWithURL:[NSURL URLWithString:model.cover[0]]];
     _sourceLabel.text = _model.origin;
-//    _releaseTimeLabel.text = _model.publishTime;
-    _releaseTimeLabel.text = [[JSComputeTime new] distanceTimeWithPublistTime:model.publishTime];
+    _releaseTimeLabel.text = _model.publishTime;
+//    _releaseTimeLabel.text = [[JSComputeTime new] distanceTimeWithPublistTime:model.publishTime];
     _videoTimeLabel.text = [NSString stringWithFormat:@"%@",_model.duration];
     _commitCountLabel.text = [NSString stringWithFormat:@"%@",_model.commentNum];
     _praiseCountLabel.text = [NSString stringWithFormat:@"%@",_model.praiseNum];

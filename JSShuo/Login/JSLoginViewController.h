@@ -11,8 +11,20 @@
 @protocol JSLoginViewControllerDelegate <NSObject>
 
 - (void)didSelectedPageControllerWithIndex:(int)index;
+- (void)didLoginSuccessComplement;
 
 @end
+
+@interface JSLoginBottomView : UIView
+
+@property (nonatomic, strong)UIView *otherPlatformLeftLine;
+@property (nonatomic, strong)UILabel *otherPlatfomTitle;
+@property (nonatomic, strong)UIView *otherPlanformRightLine;
+
+@property (nonatomic, strong)UIButton *wechatLoginButton;
+
+@end
+
 
 NS_ASSUME_NONNULL_BEGIN
 

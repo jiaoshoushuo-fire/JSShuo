@@ -9,15 +9,7 @@
 #import "JSLoginViewController.h"
 #import "JSForgetPasswordViewController.h"
 
-@interface JSLoginBottomView : UIView
 
-@property (nonatomic, strong)UIView *otherPlatformLeftLine;
-@property (nonatomic, strong)UILabel *otherPlatfomTitle;
-@property (nonatomic, strong)UIView *otherPlanformRightLine;
-
-@property (nonatomic, strong)UIButton *wechatLoginButton;
-
-@end
 @implementation JSLoginBottomView
 
 - (UIView *)otherPlatformLeftLine{
@@ -48,7 +40,8 @@
     if (!_wechatLoginButton) {
         _wechatLoginButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _wechatLoginButton.size = CGSizeMake(40, 40);
-        _wechatLoginButton.backgroundColor = [UIColor redColor];
+//        _wechatLoginButton.backgroundColor = [UIColor redColor];
+        [_wechatLoginButton setImage:[UIImage imageNamed:@"js_login_wechat"] forState:UIControlStateNormal];
     }
     return _wechatLoginButton;
 }

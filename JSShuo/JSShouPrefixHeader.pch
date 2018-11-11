@@ -23,7 +23,10 @@
 
 #import "UIColor+JSShuo.h"
 #import "JSMacros.h"
+#import "constants.h"
 #import "JSNetworkManager.h"
+#import "JSAccountManager.h"
+#import "WZLBadgeImport.h"
 #endif
 
 // Include any system framework and library headers here that should be included in all compilation units.

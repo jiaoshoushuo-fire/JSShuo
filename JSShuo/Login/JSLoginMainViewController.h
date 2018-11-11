@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface JSLoginMainViewController : JSBaseViewController
 
+@property (nonatomic, copy)void(^loginComplementBlock)(BOOL isLogin);
+
 @end
 
 NS_ASSUME_NONNULL_END

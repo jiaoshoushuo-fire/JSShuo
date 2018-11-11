@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "JSAccountManager+Wechat.h"
 
 @interface AppDelegate ()
 
@@ -66,6 +67,7 @@
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
+    [JSAccountManager initWechat];
     
     [self initRootViewController];
     [self.window makeKeyAndVisible];
@@ -110,6 +112,27 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    return [self handleURL:url];
+}
+
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options {
+    return [self handleURL:url];
+}
+
+- (BOOL)handleURL:(NSURL *)url {
+    
+   
+    NSString *scheme = [[url scheme] lowercaseString];
+    
+    if ([scheme isEqualToString:wechat_App_ID]) {
+        return [JSAccountManager handleWechatURL:url];
+    } 
+    
+    return YES;
+    
 }
 
 
