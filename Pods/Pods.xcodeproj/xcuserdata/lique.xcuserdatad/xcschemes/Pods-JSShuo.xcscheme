@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "63603D18B1462D9DA3791384F7E2529C"
+               BlueprintIdentifier = "4D0668B3EBDB1B2D6DFB76796077751F"
                BlueprintName = "Pods-JSShuo"
                ReferencedContainer = "container:Pods.xcodeproj"
                BuildableName = "libPods-JSShuo.a">

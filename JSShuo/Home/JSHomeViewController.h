@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface JSHomeViewController : JSBaseViewController
 
+@property (nonatomic,copy) NSString *genreID;
+
 @end
 
 NS_ASSUME_NONNULL_END

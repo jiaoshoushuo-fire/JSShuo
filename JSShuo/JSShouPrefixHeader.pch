@@ -18,7 +18,7 @@
 #import <Mantle.h>
 #import <AFNetworking.h>
 #import <RTRootNavigationController.h>
-
+#import "UIImageView+WebCache.h"
 
 
 #import "UIColor+JSShuo.h"
