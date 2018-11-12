@@ -1,4 +1,5 @@
 PODS:
+  - ActionSheetPicker-3.0 (2.3.0)
   - AFNetworking (3.2.1):
     - AFNetworking/NSURLSession (= 3.2.1)
     - AFNetworking/Reachability (= 3.2.1)
@@ -30,12 +31,16 @@ PODS:
   - BlocksKit/UIKit (2.2.5):
     - BlocksKit/Core
     - BlocksKit/DynamicDelegate
+  - FastttCamera (0.3.4):
+    - FastttCamera/Default (= 0.3.4)
+  - FastttCamera/Default (0.3.4)
   - Mantle (2.1.0):
     - Mantle/extobjc (= 2.1.0)
   - Mantle/extobjc (2.1.0)
   - Masonry (1.1.0)
   - MJRefresh (3.1.15.7)
   - pop (1.0.10)
+  - RSKImageCropper (2.1.0)
   - RTRootNavigationController (0.6.7):
     - RTRootNavigationController/Core (= 0.6.7)
   - RTRootNavigationController/Core (0.6.7)
@@ -48,13 +53,16 @@ PODS:
   - YYKit/no-arc (1.0.9)
 
 DEPENDENCIES:
+  - ActionSheetPicker-3.0 (~> 2.3.0)
   - AFNetworking (~> 3.2.1)
   - AKASegmentedControl (~> 1.0.5)
   - BlocksKit (~> 2.2.5)
+  - FastttCamera (~> 0.3.4)
   - Mantle (~> 2.1.0)
   - Masonry (~> 1.1.0)
   - MJRefresh (~> 3.1.15.7)
   - pop (~> 1.0.10)
+  - RSKImageCropper (~> 2.1.0)
   - RTRootNavigationController (~> 0.6.7)
   - TYPagerController
   - WechatOpenSDK (~> 1.8.2)
@@ -64,13 +72,16 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - ActionSheetPicker-3.0
     - AFNetworking
     - AKASegmentedControl
     - BlocksKit
+    - FastttCamera
     - Mantle
     - Masonry
     - MJRefresh
     - pop
+    - RSKImageCropper
     - RTRootNavigationController
     - TYPagerController
     - WechatOpenSDK
@@ -79,13 +90,16 @@ SPEC REPOS:
     - YYKit
 
 SPEC CHECKSUMS:
+  ActionSheetPicker-3.0: eef157d75e151f255c5333d26656c7fbfe905a51
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   AKASegmentedControl: b98249ce1d319cc1971f9f78172173fd90c5f4d5
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
+  FastttCamera: 51f16712cbd5bdb08bc6231b957325c6be5e478d
   Mantle: 2fa750afa478cd625a94230fbf1c13462f29395b
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
   pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
+  RSKImageCropper: 0d0c6d8525a2381f03fde32a47c6703817a2feed
   RTRootNavigationController: d6aa6cbb78a3eaecea4f6e4df63f15dd887836b8
   TYPagerController: 262556ecef99986d26ed77fb1288a198ed42f4af
   WechatOpenSDK: 676feec516a11173eafd1fe64b10d27babf28701
@@ -93,6 +107,6 @@ SPEC CHECKSUMS:
   WMPageController: 0c7624d2b48e4f1ab92371688cf6744ed701575d
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: fe2ea2f2652187e15d252971016239658f6b732c
+PODFILE CHECKSUM: dc518515b523cefdcc5c439f064ce238f680ef93
 
 COCOAPODS: 1.5.3

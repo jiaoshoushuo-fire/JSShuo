@@ -65,6 +65,11 @@
 		7A5FEED4218B2C63006CF7EC /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A5FEED3218B2C63006CF7EC /* CoreText.framework */; };
 		7A5FEED6218B2C80006CF7EC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A5FEED5218B2C80006CF7EC /* CoreGraphics.framework */; };
 		7A5FEED8218B2C8A006CF7EC /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A5FEED7218B2C89006CF7EC /* CFNetwork.framework */; };
+		7A6E47362199774200D5C559 /* GFCacheUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6E47352199774200D5C559 /* GFCacheUtil.m */; };
+		7A6E473921997B8C00D5C559 /* JSFontChangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6E473821997B8C00D5C559 /* JSFontChangeViewController.m */; };
+		7A6E473C21997C5B00D5C559 /* JSPrivacyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6E473B21997C5B00D5C559 /* JSPrivacyViewController.m */; };
+		7A6E473F21997D7300D5C559 /* JSFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6E473E21997D7300D5C559 /* JSFeedbackViewController.m */; };
+		7A6E474221997DCE00D5C559 /* JSAboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6E474121997DCD00D5C559 /* JSAboutUsViewController.m */; };
 		7A846ECA219290AB0048F222 /* JSProfileUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A846EC9219290AB0048F222 /* JSProfileUserModel.m */; };
 		7A846ECD219333D10048F222 /* NSDictionary+SetNullWithStr.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A846ECB219333D00048F222 /* NSDictionary+SetNullWithStr.m */; };
 		7A898F3F2193C4F600A7CADD /* JSMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A898F3E2193C4F600A7CADD /* JSMessageViewController.m */; };
@@ -79,6 +84,19 @@
 		7A898F622193FFE100A7CADD /* JSNotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A898F612193FFE100A7CADD /* JSNotificationViewController.m */; };
 		7A898F682194065E00A7CADD /* JSMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A898F672194065E00A7CADD /* JSMessageCell.m */; };
 		7A898F6B21941D8900A7CADD /* JSMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A898F6A21941D8900A7CADD /* JSMessageModel.m */; };
+		7A898F7021951D7B00A7CADD /* JSPerfectUserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A898F6F21951D7B00A7CADD /* JSPerfectUserInfoViewController.m */; };
+		7A898F73219528D500A7CADD /* JSPerfectUserInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A898F72219528D500A7CADD /* JSPerfectUserInfoCell.m */; };
+		7A898F8721956B0F00A7CADD /* GGPhotoLibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A898F7721956B0F00A7CADD /* GGPhotoLibraryViewController.m */; };
+		7A898F8821956B0F00A7CADD /* GGPhotoPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A898F7821956B0F00A7CADD /* GGPhotoPreviewViewController.m */; };
+		7A898F8921956B0F00A7CADD /* GGCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A898F7921956B0F00A7CADD /* GGCameraViewController.m */; };
+		7A898F8A21956B0F00A7CADD /* GGAssetCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A898F7E21956B0F00A7CADD /* GGAssetCollectionView.m */; };
+		7A898F8B21956B0F00A7CADD /* GGAssetCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A898F7F21956B0F00A7CADD /* GGAssetCollectionCell.m */; };
+		7A898F8C21956B0F00A7CADD /* GGAssetsPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A898F8321956B0F00A7CADD /* GGAssetsPickerViewController.m */; };
+		7A898F8D21956B0F00A7CADD /* GGAssetItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A898F8421956B0F00A7CADD /* GGAssetItemCell.m */; };
+		7A898F8F21956B0F00A7CADD /* GFImageCropView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A898F8621956B0F00A7CADD /* GFImageCropView.m */; };
+		7A898F9321956C4D00A7CADD /* GGPhotoLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A898F9121956C4D00A7CADD /* GGPhotoLibrary.m */; };
+		7A898F9921956EB900A7CADD /* NSString+Path.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A898F9821956EB900A7CADD /* NSString+Path.m */; };
+		7A898F9C2195865200A7CADD /* JSInputBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A898F9B2195865200A7CADD /* JSInputBar.m */; };
 		7A8F677A218FCF72008A00F4 /* JSNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8F6779218FCF72008A00F4 /* JSNetworkManager.m */; };
 		7A8F6780218FE30C008A00F4 /* JSNetworkManager+Login.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8F677F218FE30C008A00F4 /* JSNetworkManager+Login.m */; };
 		7A8F6784218FEB2E008A00F4 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8F6782218FEB2E008A00F4 /* MBProgressHUD.m */; };
@@ -215,6 +233,16 @@
 		7A5FEED3218B2C63006CF7EC /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		7A5FEED5218B2C80006CF7EC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		7A5FEED7218B2C89006CF7EC /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		7A6E47342199774200D5C559 /* GFCacheUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFCacheUtil.h; sourceTree = "<group>"; };
+		7A6E47352199774200D5C559 /* GFCacheUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFCacheUtil.m; sourceTree = "<group>"; };
+		7A6E473721997B8C00D5C559 /* JSFontChangeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSFontChangeViewController.h; sourceTree = "<group>"; };
+		7A6E473821997B8C00D5C559 /* JSFontChangeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSFontChangeViewController.m; sourceTree = "<group>"; };
+		7A6E473A21997C5B00D5C559 /* JSPrivacyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSPrivacyViewController.h; sourceTree = "<group>"; };
+		7A6E473B21997C5B00D5C559 /* JSPrivacyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSPrivacyViewController.m; sourceTree = "<group>"; };
+		7A6E473D21997D7300D5C559 /* JSFeedbackViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSFeedbackViewController.h; sourceTree = "<group>"; };
+		7A6E473E21997D7300D5C559 /* JSFeedbackViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSFeedbackViewController.m; sourceTree = "<group>"; };
+		7A6E474021997DCD00D5C559 /* JSAboutUsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSAboutUsViewController.h; sourceTree = "<group>"; };
+		7A6E474121997DCD00D5C559 /* JSAboutUsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSAboutUsViewController.m; sourceTree = "<group>"; };
 		7A846EC8219290AB0048F222 /* JSProfileUserModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSProfileUserModel.h; sourceTree = "<group>"; };
 		7A846EC9219290AB0048F222 /* JSProfileUserModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSProfileUserModel.m; sourceTree = "<group>"; };
 		7A846ECB219333D00048F222 /* NSDictionary+SetNullWithStr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+SetNullWithStr.m"; sourceTree = "<group>"; };
@@ -246,6 +274,32 @@
 		7A898F6921941D8900A7CADD /* JSMessageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSMessageModel.h; sourceTree = "<group>"; };
 		7A898F6A21941D8900A7CADD /* JSMessageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSMessageModel.m; sourceTree = "<group>"; };
 		7A898F6D219430D200A7CADD /* constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = constants.h; sourceTree = "<group>"; };
+		7A898F6E21951D7B00A7CADD /* JSPerfectUserInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSPerfectUserInfoViewController.h; sourceTree = "<group>"; };
+		7A898F6F21951D7B00A7CADD /* JSPerfectUserInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSPerfectUserInfoViewController.m; sourceTree = "<group>"; };
+		7A898F71219528D500A7CADD /* JSPerfectUserInfoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSPerfectUserInfoCell.h; sourceTree = "<group>"; };
+		7A898F72219528D500A7CADD /* JSPerfectUserInfoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSPerfectUserInfoCell.m; sourceTree = "<group>"; };
+		7A898F7521956B0F00A7CADD /* GGAssetCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGAssetCollectionView.h; sourceTree = "<group>"; };
+		7A898F7621956B0F00A7CADD /* GGAssetsPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGAssetsPickerViewController.h; sourceTree = "<group>"; };
+		7A898F7721956B0F00A7CADD /* GGPhotoLibraryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGPhotoLibraryViewController.m; sourceTree = "<group>"; };
+		7A898F7821956B0F00A7CADD /* GGPhotoPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGPhotoPreviewViewController.m; sourceTree = "<group>"; };
+		7A898F7921956B0F00A7CADD /* GGCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGCameraViewController.m; sourceTree = "<group>"; };
+		7A898F7A21956B0F00A7CADD /* GGAssetCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGAssetCollectionCell.h; sourceTree = "<group>"; };
+		7A898F7C21956B0F00A7CADD /* GGAssetItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGAssetItemCell.h; sourceTree = "<group>"; };
+		7A898F7D21956B0F00A7CADD /* GFImageCropView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFImageCropView.h; sourceTree = "<group>"; };
+		7A898F7E21956B0F00A7CADD /* GGAssetCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGAssetCollectionView.m; sourceTree = "<group>"; };
+		7A898F7F21956B0F00A7CADD /* GGAssetCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGAssetCollectionCell.m; sourceTree = "<group>"; };
+		7A898F8021956B0F00A7CADD /* GGCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGCameraViewController.h; sourceTree = "<group>"; };
+		7A898F8121956B0F00A7CADD /* GGPhotoPreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGPhotoPreviewViewController.h; sourceTree = "<group>"; };
+		7A898F8221956B0F00A7CADD /* GGPhotoLibraryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGPhotoLibraryViewController.h; sourceTree = "<group>"; };
+		7A898F8321956B0F00A7CADD /* GGAssetsPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGAssetsPickerViewController.m; sourceTree = "<group>"; };
+		7A898F8421956B0F00A7CADD /* GGAssetItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGAssetItemCell.m; sourceTree = "<group>"; };
+		7A898F8621956B0F00A7CADD /* GFImageCropView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFImageCropView.m; sourceTree = "<group>"; };
+		7A898F9121956C4D00A7CADD /* GGPhotoLibrary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGPhotoLibrary.m; sourceTree = "<group>"; };
+		7A898F9221956C4D00A7CADD /* GGPhotoLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGPhotoLibrary.h; sourceTree = "<group>"; };
+		7A898F9721956EB900A7CADD /* NSString+Path.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Path.h"; sourceTree = "<group>"; };
+		7A898F9821956EB900A7CADD /* NSString+Path.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Path.m"; sourceTree = "<group>"; };
+		7A898F9A2195865200A7CADD /* JSInputBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSInputBar.h; sourceTree = "<group>"; };
+		7A898F9B2195865200A7CADD /* JSInputBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSInputBar.m; sourceTree = "<group>"; };
 		7A8F6778218FCF72008A00F4 /* JSNetworkManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSNetworkManager.h; sourceTree = "<group>"; };
 		7A8F6779218FCF72008A00F4 /* JSNetworkManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSNetworkManager.m; sourceTree = "<group>"; };
 		7A8F677E218FE30C008A00F4 /* JSNetworkManager+Login.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JSNetworkManager+Login.h"; sourceTree = "<group>"; };
@@ -529,6 +583,8 @@
 				7A5FEE97218AFEA1006CF7EC /* UIColor+JSShuo.m */,
 				7A5FEE9A218B0058006CF7EC /* UIFont+JSShuo.h */,
 				7A5FEE9B218B0058006CF7EC /* UIFont+JSShuo.m */,
+				7A898F9721956EB900A7CADD /* NSString+Path.h */,
+				7A898F9821956EB900A7CADD /* NSString+Path.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -595,6 +651,18 @@
 				7A898F612193FFE100A7CADD /* JSNotificationViewController.m */,
 				7A898F402193C50500A7CADD /* JSSettingViewController.h */,
 				7A898F412193C50500A7CADD /* JSSettingViewController.m */,
+				7A898F6E21951D7B00A7CADD /* JSPerfectUserInfoViewController.h */,
+				7A898F6F21951D7B00A7CADD /* JSPerfectUserInfoViewController.m */,
+				7A6E473721997B8C00D5C559 /* JSFontChangeViewController.h */,
+				7A6E473821997B8C00D5C559 /* JSFontChangeViewController.m */,
+				7A6E473A21997C5B00D5C559 /* JSPrivacyViewController.h */,
+				7A6E473B21997C5B00D5C559 /* JSPrivacyViewController.m */,
+				7A6E473D21997D7300D5C559 /* JSFeedbackViewController.h */,
+				7A6E473E21997D7300D5C559 /* JSFeedbackViewController.m */,
+				7A6E474021997DCD00D5C559 /* JSAboutUsViewController.h */,
+				7A6E474121997DCD00D5C559 /* JSAboutUsViewController.m */,
+				7A898F71219528D500A7CADD /* JSPerfectUserInfoCell.h */,
+				7A898F72219528D500A7CADD /* JSPerfectUserInfoCell.m */,
 				7ABD9E672191C03400E19B6A /* JSProfileCell.h */,
 				7ABD9E682191C03400E19B6A /* JSProfileCell.m */,
 				7A898F662194065E00A7CADD /* JSMessageCell.h */,
@@ -603,6 +671,8 @@
 				7A846EC9219290AB0048F222 /* JSProfileUserModel.m */,
 				7A898F6921941D8900A7CADD /* JSMessageModel.h */,
 				7A898F6A21941D8900A7CADD /* JSMessageModel.m */,
+				7A898F9A2195865200A7CADD /* JSInputBar.h */,
+				7A898F9B2195865200A7CADD /* JSInputBar.m */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -648,10 +718,14 @@
 		7A898F432193CC8700A7CADD /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				7A898F9021956C4D00A7CADD /* Photo */,
+				7A898F7421956B0F00A7CADD /* PhotoLibrary */,
 				7A898F442193CCAD00A7CADD /* JSSwitchSegmentView.h */,
 				7A898F452193CCAD00A7CADD /* JSSwitchSegmentView.m */,
 				7A898F472193D88F00A7CADD /* JSAdjustButton.h */,
 				7A898F482193D88F00A7CADD /* JSAdjustButton.m */,
+				7A6E47342199774200D5C559 /* GFCacheUtil.h */,
+				7A6E47352199774200D5C559 /* GFCacheUtil.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -703,6 +777,38 @@
 				7A898F5B2193E4EE00A7CADD /* UIView+WZLBadge.m */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		7A898F7421956B0F00A7CADD /* PhotoLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				7A898F7521956B0F00A7CADD /* GGAssetCollectionView.h */,
+				7A898F7621956B0F00A7CADD /* GGAssetsPickerViewController.h */,
+				7A898F7721956B0F00A7CADD /* GGPhotoLibraryViewController.m */,
+				7A898F7821956B0F00A7CADD /* GGPhotoPreviewViewController.m */,
+				7A898F7921956B0F00A7CADD /* GGCameraViewController.m */,
+				7A898F7A21956B0F00A7CADD /* GGAssetCollectionCell.h */,
+				7A898F7C21956B0F00A7CADD /* GGAssetItemCell.h */,
+				7A898F7D21956B0F00A7CADD /* GFImageCropView.h */,
+				7A898F7E21956B0F00A7CADD /* GGAssetCollectionView.m */,
+				7A898F7F21956B0F00A7CADD /* GGAssetCollectionCell.m */,
+				7A898F8021956B0F00A7CADD /* GGCameraViewController.h */,
+				7A898F8121956B0F00A7CADD /* GGPhotoPreviewViewController.h */,
+				7A898F8221956B0F00A7CADD /* GGPhotoLibraryViewController.h */,
+				7A898F8321956B0F00A7CADD /* GGAssetsPickerViewController.m */,
+				7A898F8421956B0F00A7CADD /* GGAssetItemCell.m */,
+				7A898F8621956B0F00A7CADD /* GFImageCropView.m */,
+			);
+			path = PhotoLibrary;
+			sourceTree = "<group>";
+		};
+		7A898F9021956C4D00A7CADD /* Photo */ = {
+			isa = PBXGroup;
+			children = (
+				7A898F9121956C4D00A7CADD /* GGPhotoLibrary.m */,
+				7A898F9221956C4D00A7CADD /* GGPhotoLibrary.h */,
+			);
+			path = Photo;
 			sourceTree = "<group>";
 		};
 		7A8F6777218FCE59008A00F4 /* Network */ = {
@@ -977,11 +1083,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-JSShuo/Pods-JSShuo-resources.sh",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
+				"${PODS_ROOT}/RSKImageCropper/RSKImageCropper/RSKImageCropperStrings.bundle",
 				"${PODS_ROOT}/Weibo_SDK/libWeiboSDK/WeiboSDK.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RSKImageCropperStrings.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/WeiboSDK.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -996,21 +1104,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A898F9921956EB900A7CADD /* NSString+Path.m in Sources */,
+				7A898F9C2195865200A7CADD /* JSInputBar.m in Sources */,
 				7A898F422193C50500A7CADD /* JSSettingViewController.m in Sources */,
 				7A898F5D2193E4EF00A7CADD /* UIBarButtonItem+WZLBadge.m in Sources */,
 				7A898F5F2193E4EF00A7CADD /* UIView+WZLBadge.m in Sources */,
 				7A8F678A21903DD3008A00F4 /* JSAccountManager+Wechat.m in Sources */,
+				7A6E47362199774200D5C559 /* GFCacheUtil.m in Sources */,
 				7A5FEEA0218B07B7006CF7EC /* JSRootViewController.m in Sources */,
 				7A898F3F2193C4F600A7CADD /* JSMessageViewController.m in Sources */,
 				7ABD9E662191BA6600E19B6A /* TAAbstractDotView.m in Sources */,
 				7A5FEE91218AFC92006CF7EC /* JSTabBar.m in Sources */,
+				7A6E473C21997C5B00D5C559 /* JSPrivacyViewController.m in Sources */,
 				0045205B2190484700371F10 /* JSLongVideoModel.m in Sources */,
+				7A6E474221997DCE00D5C559 /* JSAboutUsViewController.m in Sources */,
 				7A8F677A218FCF72008A00F4 /* JSNetworkManager.m in Sources */,
+				7A898F73219528D500A7CADD /* JSPerfectUserInfoCell.m in Sources */,
 				7A8F67902190492A008A00F4 /* JSAccountManager+SinaWeibo.m in Sources */,
 				7A846ECA219290AB0048F222 /* JSProfileUserModel.m in Sources */,
 				7A5FEEA9218B0BD0006CF7EC /* JSMainViewController.m in Sources */,
 				7A5FEE98218AFEA1006CF7EC /* UIColor+JSShuo.m in Sources */,
+				7A898F8C21956B0F00A7CADD /* GGAssetsPickerViewController.m in Sources */,
 				7A8F6780218FE30C008A00F4 /* JSNetworkManager+Login.m in Sources */,
+				7A898F8A21956B0F00A7CADD /* GGAssetCollectionView.m in Sources */,
 				7ABD9E652191BA6600E19B6A /* TAAnimatedDotView.m in Sources */,
 				0045206121904AE600371F10 /* JSLongVideoCell.m in Sources */,
 				7A5FEEB1218B0D4D006CF7EC /* JSActivityCenterViewController.m in Sources */,
@@ -1031,13 +1147,21 @@
 				7A203E4A218BE5650001F926 /* JSRegisterViewController.m in Sources */,
 				7A5FEEB7218B0D6D006CF7EC /* JSVideoViewController.m in Sources */,
 				0045205321900D4300371F10 /* JSVideoTitleBarViewController.m in Sources */,
+				7A898F8821956B0F00A7CADD /* GGPhotoPreviewViewController.m in Sources */,
+				7A898F8D21956B0F00A7CADD /* GGAssetItemCell.m in Sources */,
+				7A898F9321956C4D00A7CADD /* GGPhotoLibrary.m in Sources */,
 				7A5FEEA6218B0BC2006CF7EC /* JSStartupViewController.m in Sources */,
+				7A898F8721956B0F00A7CADD /* GGPhotoLibraryViewController.m in Sources */,
+				7A898F8921956B0F00A7CADD /* GGCameraViewController.m in Sources */,
+				7A898F7021951D7B00A7CADD /* JSPerfectUserInfoViewController.m in Sources */,
 				0045206C2191C05B00371F10 /* JSNetworkManager+LongVideo.m in Sources */,
 				7A5FEE9C218B0058006CF7EC /* UIFont+JSShuo.m in Sources */,
 				7A898F492193D88F00A7CADD /* JSAdjustButton.m in Sources */,
 				7A898F622193FFE100A7CADD /* JSNotificationViewController.m in Sources */,
 				7A203E47218BE53F0001F926 /* JSLoginViewController.m in Sources */,
 				7A203E51218C77350001F926 /* JSForgetPasswordViewController.m in Sources */,
+				7A898F8F21956B0F00A7CADD /* GFImageCropView.m in Sources */,
+				7A898F8B21956B0F00A7CADD /* GGAssetCollectionCell.m in Sources */,
 				7A5FEE8B218AFBAC006CF7EC /* JSTabBarViewController.m in Sources */,
 				00452056219011F200371F10 /* JSShortVideoViewController.m in Sources */,
 				7ABD9E632191BA6600E19B6A /* TADotView.m in Sources */,
@@ -1050,8 +1174,10 @@
 				7ABD9E612191BA6600E19B6A /* UIView+SDExtension.m in Sources */,
 				7A5FEEBA218B0D7C006CF7EC /* JSProfileViewController.m in Sources */,
 				7ABD9E692191C03400E19B6A /* JSProfileCell.m in Sources */,
+				7A6E473921997B8C00D5C559 /* JSFontChangeViewController.m in Sources */,
 				00452037218EDD5C00371F10 /* JSHomeTitleBarViewController.m in Sources */,
 				004520692191A27700371F10 /* JSNetworkManager+Channel.m in Sources */,
+				7A6E473F21997D7300D5C559 /* JSFeedbackViewController.m in Sources */,
 				7A5FEEA3218B0BA7006CF7EC /* JSLaunchViewController.m in Sources */,
 				7A898F682194065E00A7CADD /* JSMessageCell.m in Sources */,
 				7A846ECD219333D10048F222 /* NSDictionary+SetNullWithStr.m in Sources */,

@@ -10,6 +10,7 @@
 #import "JSForgetPasswordViewController.h"
 
 
+
 @implementation JSLoginBottomView
 
 - (UIView *)otherPlatformLeftLine{
@@ -214,6 +215,7 @@
         @weakify(self)
         [_loginBottomView.wechatLoginButton bk_addEventHandler:^(id sender) {
             @strongify(self)
+            
             
         } forControlEvents:UIControlEventTouchUpInside];
     }

@@ -32,6 +32,22 @@
     });
     return networkManager;
 }
++ (AFHTTPSessionManager *)shareUploadManager{
+    static AFHTTPSessionManager *uplodManager = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        uplodManager = [AFHTTPSessionManager manager];
+        uplodManager.requestSerializer = [AFHTTPRequestSerializer serializer];
+        uplodManager.responseSerializer = [AFJSONResponseSerializer serializer];
+        uplodManager.requestSerializer.timeoutInterval = 30;
+        [uplodManager.requestSerializer setValue:@"multipart/form-data" forHTTPHeaderField:@"Content-Type"];
+//        [uplodManager.requestSerializer setValue:@"fanfan_ios" forHTTPHeaderField:@"User-Agent"];
+        
+    });
+    return uplodManager;
+    
+}
+
 + (void)restartLogin{
     [JSAccountManager refreshAccountToken:nil];
     [JSAccountManager checkLoginStatusComplement:^(BOOL isLogin) {
@@ -188,5 +204,53 @@
             complement(NO,nil);
         }
     }];
+    
+    
 }
++ (void)ImagePOST:(NSString *)url parameters:(NSDictionary *)parameters image:(UIImage *)image complement:(void(^)(BOOL isSuccess,NSDictionary *responseDict))complement{
+    [[self shareUploadManager] POST:url parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        NSData *imageData = UIImagePNGRepresentation(image);
+        
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        // 设置时间格式
+        formatter.dateFormat = @"yyyyMMddHHmmss";
+        NSString *str = [formatter stringFromDate:[NSDate date]];
+        NSString *fileName = [NSString stringWithFormat:@"%@.png", str];
+        
+        [formData appendPartWithFileData:imageData name:@"image" fileName:fileName mimeType:@"image/png"];
+        
+//        [formData appendPartWithFormData:imageData name:@"image"];
+        
+    } progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSString *state = responseObject[@"code"];
+        if (state.integerValue == 0) {
+            NSDictionary *dataDict = responseObject[@"data"];
+            if (complement) {
+                complement(YES,dataDict);
+            }
+            
+        }else if (state.integerValue == 2){
+            [self restartLogin];
+            if (complement) {
+                complement(NO,nil);
+            }
+        }else{
+            NSString *messageString = responseObject[@"message"];
+            [self showErrorMessgae:messageString];
+            if (complement) {
+                complement(NO,nil);
+            }
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [self showErrorMessgae:error.localizedDescription];
+        if (complement) {
+            complement(NO,nil);
+        }
+    }];
+     
+}
+
+    
+    
 @end

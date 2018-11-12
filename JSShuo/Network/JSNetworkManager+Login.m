@@ -13,6 +13,11 @@ const static NSString *wechatLoginPostUrl = @"/v1/thirdpt/login/wechat";
 const static NSString *profilePostUrl = @"/v1/user/info/center";
 const static NSString *profileMessageUrl = @"/v1/user/message/list";
 const static NSString *loginOutUrl = @"/v1/user/logout";
+const static NSString *userInfoQueryUrl = @"/v1/user/info/query";
+const static NSString *modifyUserInfoUrl = @"/v1/user/info/modify";
+const static NSString *uploadImageUrl = @"/v1/upload/image";
+const static NSString *feedbackUrl = @"/v1/user/feedback/create";
+
 
 @implementation JSNetworkManager (Login)
 
@@ -48,7 +53,13 @@ const static NSString *loginOutUrl = @"/v1/user/logout";
 + (void)wechatLoginWithAuthCode:(NSString *)code appid:(NSString *)appid complement:(void(^)(BOOL isSuccess,NSDictionary *contenDict))complement{
     NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,wechatLoginPostUrl];
     NSDictionary *param = @{@"code":code,@"wechatAppId":appid};
+    
     [self POST:url parameters:param complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
+        if (isSuccess) {
+            NSString *token = responseDict[@"token"];
+            [JSAccountManager refreshAccountToken:token];
+        }
+
         if (complement) {
             complement(isSuccess,responseDict);
         }
@@ -80,6 +91,55 @@ const static NSString *loginOutUrl = @"/v1/user/logout";
 + (void)loginOutWithComplement:(void(^)(BOOL isSuccess,NSDictionary *contenDict))complement{
     NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,loginOutUrl];
     NSDictionary *param = @{@"token":[JSAccountManager shareManager].accountToken};
+    [self POST:url parameters:param complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
+        if (complement) {
+            complement(isSuccess,responseDict);
+        }
+    }];
+}
+
+//完善资料查询
++ (void)queryUserInformationWitchComplement:(void(^)(BOOL isSuccess,JSProfileUserModel *userModel))complement{
+    NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,userInfoQueryUrl];
+    NSDictionary *param = @{@"token":[JSAccountManager shareManager].accountToken};
+    [self GET:url parameters:param complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
+        if (complement) {
+            JSProfileUserModel *userInfoModel = nil;
+            if (isSuccess) {
+                NSError *error = nil;
+                userInfoModel = [MTLJSONAdapter modelOfClass:[JSProfileUserModel class] fromJSONDictionary:responseDict error:&error];
+            }
+            complement(isSuccess,userInfoModel);
+        }
+    }];
+}
+
++ (void)modifyUserInfoWithDict:(NSDictionary *)dict complement:(void(^)(BOOL isSuccess, NSDictionary*contenDict))complement{
+    NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,modifyUserInfoUrl];
+
+    NSMutableDictionary *newDict = [NSMutableDictionary dictionaryWithDictionary:dict];
+    [newDict setValue:[JSAccountManager shareManager].accountToken forKey:@"token"];
+    [self POST:url parameters:newDict complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
+        if (complement) {
+            complement(isSuccess,responseDict);
+        }
+    }];
+}
+
++ (void)uploadImage:(UIImage *)image complement:(void(^)(BOOL isSuccess, NSDictionary *contentDict))complemnt{
+    NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,uploadImageUrl];
+    NSDictionary *param = @{@"type":@"1"};
+    [self ImagePOST:url parameters:param image:image complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
+        if (complemnt) {
+            complemnt(isSuccess,responseDict);
+        }
+    }];
+    
+}
++ (void)feedbackText:(NSString *)text image:(UIImage *)image complement:(void(^)(BOOL isSuccess,NSDictionary *contentDict))complement{
+    NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,feedbackUrl];
+    NSDictionary *param = @{@"token":[JSAccountManager shareManager].accountToken,@"content":text};
+    //先没有传图片，以后更新
     [self POST:url parameters:param complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
         if (complement) {
             complement(isSuccess,responseDict);

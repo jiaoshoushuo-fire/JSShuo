@@ -7,6 +7,7 @@
 //
 
 #import "JSNetworkManager.h"
+#import "JSProfileUserModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -34,6 +35,15 @@ typedef  NS_ENUM(NSInteger, JSRequestSecurityCodeType){
 
 //消息列表
 + (void)requestMessageListWithType:(NSInteger) type pageNum:(NSInteger)pageNumber complement:(void(^)(BOOL isSuccess,NSDictionary *contenDict))complement;
+
+//完善资料查询
++ (void)queryUserInformationWitchComplement:(void(^)(BOOL isSuccess,JSProfileUserModel *userModel))complement;
+
++ (void)modifyUserInfoWithDict:(NSDictionary *)dict complement:(void(^)(BOOL isSuccess, NSDictionary*contenDict))complement;
+
++ (void)uploadImage:(UIImage *)image complement:(void(^)(BOOL isSuccess, NSDictionary *contentDict))complemnt;
+
++ (void)feedbackText:(NSString *)text image:(UIImage *)image complement:(void(^)(BOOL isSuccess,NSDictionary *contentDict))complement;
 @end
 
 NS_ASSUME_NONNULL_END

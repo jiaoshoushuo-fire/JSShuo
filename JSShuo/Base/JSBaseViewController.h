@@ -14,6 +14,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)userLoginSuccessNoti:(NSNotification *)notification;
 
+- (void)showAutoDismissTextAlert:(NSString *)alert;
+
+- (void)showWaitingHUD;
+- (void)hideWaitingHUD;
 @end
 
 NS_ASSUME_NONNULL_END

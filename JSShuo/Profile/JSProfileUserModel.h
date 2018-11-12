@@ -25,6 +25,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign)NSInteger coin;
 @property (nonatomic, assign)NSInteger money;
 @property (nonatomic, assign)NSInteger readTime;
+
+@property (nonatomic, copy)NSString *jobCategory;
+@property (nonatomic, copy)NSString *jobInfo;
+@property (nonatomic, copy)NSString *education;
+@property (nonatomic, copy)NSString *wechatId;
+@property (nonatomic, copy)NSString *alipayId;
+@property (nonatomic, assign)NSInteger bindStatus;
 @end
 
 NS_ASSUME_NONNULL_END

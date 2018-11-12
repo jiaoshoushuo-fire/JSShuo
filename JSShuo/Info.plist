@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>叫兽说</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -16,10 +18,64 @@
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>wechat</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>wx84fd8fba0a29ae12</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>mqqopensdkapiV2</string>
+		<string>mqqopensdkapiV3</string>
+		<string>mqq</string>
+		<string>wtloginmqq2</string>
+		<string>mqzone</string>
+		<string>mqqapi</string>
+		<string>mqqwpa</string>
+		<string>wechat</string>
+		<string>weixin</string>
+		<string>weibosdk2.5</string>
+		<string>weibosdk</string>
+		<string>sinaweibo</string>
+		<string>sinaweibohd</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>是否允许此App访问你的媒体资料库</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>是否允许此App使用蓝牙</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>是否允许此App使用日历</string>
+	<key>NSCameraUsageDescription</key>
+	<string>是否允许此App使用你的相机</string>
+	<key>NSContactsUsageDescription</key>
+	<string>是否允许此App访问你的通讯录</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>我们需要通过您的地理位置信息获取您周边的相关数据</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>我们需要通过您的地理位置信息获取您周边的相关数据</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>是否允许此App使用你的麦克风</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>是否允许此App访问你的相册</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>是否允许此App使用语音识别</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -37,39 +93,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-    <key>NSAppTransportSecurity</key>
-    <dict>
-        <key>NSAllowsArbitraryLoads</key>
-        <true/>
-    </dict>
-    <key>LSApplicationQueriesSchemes</key>
-    <array>
-        <string>mqqopensdkapiV2</string>
-        <string>mqqopensdkapiV3</string>
-        <string>mqq</string>
-        <string>wtloginmqq2</string>
-        <string>mqzone</string>
-        <string>mqqapi</string>
-        <string>mqqwpa</string>
-        <string>wechat</string>
-        <string>weixin</string>
-        <string>weibosdk2.5</string>
-        <string>weibosdk</string>
-        <string>sinaweibo</string>
-        <string>sinaweibohd</string>
-    </array>
-    <key>CFBundleURLTypes</key>
-    <array>
-        <dict>
-            <key>CFBundleTypeRole</key>
-            <string>Editor</string>
-            <key>CFBundleURLName</key>
-            <string>wechat</string>
-            <key>CFBundleURLSchemes</key>
-            <array>
-                <string>wx84fd8fba0a29ae12</string>
-            </array>
-        </dict>
-    </array>
 </dict>
 </plist>

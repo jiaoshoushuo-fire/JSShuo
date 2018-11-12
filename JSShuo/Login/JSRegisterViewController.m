@@ -8,6 +8,7 @@
 
 #import "JSRegisterViewController.h"
 #import "JSNetworkManager+Login.h"
+#import "JSAccountManager+Wechat.h"
 
 @interface JSRegisterViewController ()
 @property (nonatomic, strong)UIImageView *accountIcon;
@@ -231,7 +232,13 @@
         @weakify(self)
         [_loginBottomView.wechatLoginButton bk_addEventHandler:^(id sender) {
             @strongify(self)
-            
+            [JSAccountManager wechatAuthorizeFromLogin:YES completion:^(BOOL success) {
+                if (success) {
+                    if (self.delegate && [self.delegate respondsToSelector:@selector(didLoginSuccessComplement)]) {
+                        [self.delegate didLoginSuccessComplement];
+                    }
+                }
+            }];
         } forControlEvents:UIControlEventTouchUpInside];
     }
     return _loginBottomView;

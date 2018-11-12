@@ -8,9 +8,10 @@
 
 #import "JSBaseViewController.h"
 #import "JSNavigationBar.h"
+#import "MBProgressHUD.h"
 
 @interface JSBaseViewController ()
-
+@property (nonatomic, strong)MBProgressHUD *hud;
 @end
 
 @implementation JSBaseViewController
@@ -37,6 +38,19 @@
     return backButtonItem;
 }
 
+- (void)showAutoDismissTextAlert:(NSString *)alert{
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    hud.mode = MBProgressHUDModeText;
+    hud.label.text = alert;
+    [hud hideAnimated:YES afterDelay:2.f];
+}
 
-
+- (void)showWaitingHUD{
+    self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+}
+- (void)hideWaitingHUD{
+    [self.hud hideAnimated:YES];
+}
 @end

@@ -19,6 +19,13 @@
 //"coin": 56,
 //"money": 204,
 //"readTime": 0
+//@property (nonatomic, copy)NSString *jobCategory;
+//@property (nonatomic, copy)NSString *jobInfo;
+//@property (nonatomic, copy)NSString *education;
+//@property (nonatomic, copy)NSString *wechatId;
+//@property (nonatomic, copy)NSString *alipayId;
+//@property (nonatomic, assign)NSInteger bindStatus;
+
 
 @implementation JSProfileUserModel
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
@@ -33,7 +40,13 @@
              @"apprenticeNum" : @"apprenticeNum",
              @"coin" : @"coin",
              @"money" : @"money",
-             @"readTime" : @"readTime"
+             @"readTime" : @"readTime",
+             @"jobCategory" : @"jobCategory",
+             @"jobInfo" : @"jobInfo",
+             @"education" : @"education",
+             @"wechatId" : @"wechatId",
+             @"alipayId" : @"alipayId",
+             @"bindStatus" : @"bindStatus"
              };
 }
 

@@ -422,13 +422,7 @@
     if (!_tableHeaderView) {
         _tableHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 280)];
         [_tableHeaderView addSubview:self.headerView];
-//        [_tableHeaderView addSubview:self.menuItemView];
-//        [_tableHeaderView addSubview:self.cycleScrollView];
-        
-//        self.menuItemView.top = self.headerView.bottom;
-//        self.cycleScrollView.top = self.menuItemView.bottom;
-//        self.headerView.centerX = self.menuItemView.centerX = self.cycleScrollView.centerX = _tableHeaderView.width/2.0f;
-//        _tableHeaderView.backgroundColor = [UIColor whiteColor];
+
     }
     return _tableHeaderView;
 }
@@ -486,7 +480,10 @@
     [self checkTableviewSubViews];
     [self.profileTableView.mj_header beginRefreshing];
     
-    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refreshProfileInfo) name:@"JS_Refresh_Profile_info" object:nil];
+}
+- (void)refreshProfileInfo{
+    [self.profileTableView.mj_header beginRefreshing];
 }
 - (void)checkTableviewSubViews{
     UIView *bgView = [[UIView alloc] initWithFrame:CGRectOffset(self.profileTableView.bounds, 0, -self.profileTableView.bounds.size.height)];
@@ -575,5 +572,8 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
+}
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
 @end

@@ -27,6 +27,8 @@
 #import "JSNetworkManager.h"
 #import "JSAccountManager.h"
 #import "WZLBadgeImport.h"
+#import "GGPhotoLibrary.h"
+#import "MBProgressHUD.h"
 #endif
 
 // Include any system framework and library headers here that should be included in all compilation units.
