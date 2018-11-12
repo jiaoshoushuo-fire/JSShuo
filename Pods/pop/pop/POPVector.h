@@ -10,15 +10,12 @@
 #ifndef __POP__FBVector__
 #define __POP__FBVector__
 
-#ifdef __cplusplus
-
 #include <iostream>
 #include <vector>
 
 #import <objc/NSObjCRuntime.h>
 
 #import <CoreGraphics/CoreGraphics.h>
-#import <Foundation/NSException.h>
 
 #import "POPDefines.h"
 
@@ -29,6 +26,8 @@
 #if TARGET_OS_IPHONE
 #import <UIKit/UIKit.h>
 #endif
+
+#import "POPMath.h"
 
 namespace POP {
 
@@ -346,12 +345,12 @@ namespace POP {
     // CGColorRef support
     CGColorRef cg_color() const CF_RETURNS_RETAINED;
     static Vector *new_cg_color(CGColorRef color);
-
+    
 #if SCENEKIT_SDK_AVAILABLE
     // SCNVector3 support
     SCNVector3 scn_vector3() const;
     static Vector *new_scn_vector3(const SCNVector3 &vec3);
-
+    
     // SCNVector4 support
     SCNVector4 scn_vector4() const;
     static Vector *new_scn_vector4(const SCNVector4 &vec4);
@@ -392,5 +391,4 @@ namespace POP {
   typedef std::shared_ptr<const Vector> VectorConstRef;
 
 }
-#endif /* __cplusplus */
 #endif /* defined(__POP__FBVector__) */

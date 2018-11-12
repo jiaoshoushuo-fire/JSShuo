@@ -49,7 +49,7 @@ PODS:
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
   - TYPagerController (2.1.2)
-  - WechatOpenSDK (1.8.3)
+  - WechatOpenSDK (1.8.2)
   - Weibo_SDK (3.2.3)
   - WMPageController (2.5.2)
   - YYKit (1.0.9):
@@ -103,24 +103,20 @@ SPEC CHECKSUMS:
   AKASegmentedControl: b98249ce1d319cc1971f9f78172173fd90c5f4d5
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
   FastttCamera: 51f16712cbd5bdb08bc6231b957325c6be5e478d
+  FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
   Mantle: 2fa750afa478cd625a94230fbf1c13462f29395b
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
   pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
   RSKImageCropper: 0d0c6d8525a2381f03fde32a47c6703817a2feed
-  FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
-  Mantle: 2fa750afa478cd625a94230fbf1c13462f29395b
-  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
-  MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
-  pop: d582054913807fd11fd50bfe6a539d91c7e1a55a
   RTRootNavigationController: d6aa6cbb78a3eaecea4f6e4df63f15dd887836b8
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   TYPagerController: 262556ecef99986d26ed77fb1288a198ed42f4af
-  WechatOpenSDK: 3117412f8aafde4758cac1e8d20b93c67cafcfef
+  WechatOpenSDK: 676feec516a11173eafd1fe64b10d27babf28701
   Weibo_SDK: 652ca78c2f7147a5de5e75e7cbea89838a81772a
   WMPageController: 0c7624d2b48e4f1ab92371688cf6744ed701575d
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: dc518515b523cefdcc5c439f064ce238f680ef93
+PODFILE CHECKSUM: ae2d3367a98fd35352a59fc8ebd4372fdb7af203
 
 COCOAPODS: 1.5.3
