@@ -67,6 +67,8 @@
 		0060434D2197D35D0080091A /* JSNetworkManager+ShortVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0060434C2197D35D0080091A /* JSNetworkManager+ShortVideo.m */; };
 		2D4BE293799FA8F9CF3BD9E0 /* libPods-JSShuoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07D21E4F3FE796E0EC111709 /* libPods-JSShuoTests.a */; };
 		6797051512B36A0CAA259324 /* libPods-JSShuoUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 45918ABA94D7C616D6E9C28A /* libPods-JSShuoUITests.a */; };
+		7A015E11219A75BE0025D24F /* JSWithdrawViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A015E10219A75BE0025D24F /* JSWithdrawViewController.m */; };
+		7A015E14219AF9740025D24F /* JSWithdrawModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A015E13219AF9740025D24F /* JSWithdrawModel.m */; };
 		7A203E44218BE02A0001F926 /* JSLoginMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A203E43218BE02A0001F926 /* JSLoginMainViewController.m */; };
 		7A203E47218BE53F0001F926 /* JSLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A203E46218BE53F0001F926 /* JSLoginViewController.m */; };
 		7A203E4A218BE5650001F926 /* JSRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A203E49218BE5650001F926 /* JSRegisterViewController.m */; };
@@ -108,6 +110,7 @@
 		7A5FEED4218B2C63006CF7EC /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A5FEED3218B2C63006CF7EC /* CoreText.framework */; };
 		7A5FEED6218B2C80006CF7EC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A5FEED5218B2C80006CF7EC /* CoreGraphics.framework */; };
 		7A5FEED8218B2C8A006CF7EC /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A5FEED7218B2C89006CF7EC /* CFNetwork.framework */; };
+		7A600EC3219BFACA0033F6DF /* JSWithdrawAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A600EC2219BFACA0033F6DF /* JSWithdrawAlertView.m */; };
 		7A6E47362199774200D5C559 /* GFCacheUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6E47352199774200D5C559 /* GFCacheUtil.m */; };
 		7A6E473921997B8C00D5C559 /* JSFontChangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6E473821997B8C00D5C559 /* JSFontChangeViewController.m */; };
 		7A6E473C21997C5B00D5C559 /* JSPrivacyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6E473B21997C5B00D5C559 /* JSPrivacyViewController.m */; };
@@ -292,6 +295,10 @@
 		428D5311982CDC892743DA34 /* Pods-JSShuoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSShuoUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JSShuoUITests/Pods-JSShuoUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		45918ABA94D7C616D6E9C28A /* libPods-JSShuoUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JSShuoUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C8C32F2EB98381D097CADB3 /* Pods-JSShuoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSShuoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JSShuoTests/Pods-JSShuoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		7A015E0F219A75BE0025D24F /* JSWithdrawViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSWithdrawViewController.h; sourceTree = "<group>"; };
+		7A015E10219A75BE0025D24F /* JSWithdrawViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSWithdrawViewController.m; sourceTree = "<group>"; };
+		7A015E12219AF9740025D24F /* JSWithdrawModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSWithdrawModel.h; sourceTree = "<group>"; };
+		7A015E13219AF9740025D24F /* JSWithdrawModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSWithdrawModel.m; sourceTree = "<group>"; };
 		7A203E42218BE02A0001F926 /* JSLoginMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSLoginMainViewController.h; sourceTree = "<group>"; };
 		7A203E43218BE02A0001F926 /* JSLoginMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSLoginMainViewController.m; sourceTree = "<group>"; };
 		7A203E45218BE53F0001F926 /* JSLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSLoginViewController.h; sourceTree = "<group>"; };
@@ -364,6 +371,8 @@
 		7A5FEED3218B2C63006CF7EC /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		7A5FEED5218B2C80006CF7EC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		7A5FEED7218B2C89006CF7EC /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		7A600EC1219BFAC90033F6DF /* JSWithdrawAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSWithdrawAlertView.h; sourceTree = "<group>"; };
+		7A600EC2219BFACA0033F6DF /* JSWithdrawAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSWithdrawAlertView.m; sourceTree = "<group>"; };
 		7A6E47342199774200D5C559 /* GFCacheUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFCacheUtil.h; sourceTree = "<group>"; };
 		7A6E47352199774200D5C559 /* GFCacheUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFCacheUtil.m; sourceTree = "<group>"; };
 		7A6E473721997B8C00D5C559 /* JSFontChangeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSFontChangeViewController.h; sourceTree = "<group>"; };
@@ -962,6 +971,8 @@
 				7A6E473E21997D7300D5C559 /* JSFeedbackViewController.m */,
 				7A6E474021997DCD00D5C559 /* JSAboutUsViewController.h */,
 				7A6E474121997DCD00D5C559 /* JSAboutUsViewController.m */,
+				7A015E0F219A75BE0025D24F /* JSWithdrawViewController.h */,
+				7A015E10219A75BE0025D24F /* JSWithdrawViewController.m */,
 				7A898F71219528D500A7CADD /* JSPerfectUserInfoCell.h */,
 				7A898F72219528D500A7CADD /* JSPerfectUserInfoCell.m */,
 				7ABD9E672191C03400E19B6A /* JSProfileCell.h */,
@@ -974,6 +985,10 @@
 				7A898F6A21941D8900A7CADD /* JSMessageModel.m */,
 				7A898F9A2195865200A7CADD /* JSInputBar.h */,
 				7A898F9B2195865200A7CADD /* JSInputBar.m */,
+				7A600EC1219BFAC90033F6DF /* JSWithdrawAlertView.h */,
+				7A600EC2219BFACA0033F6DF /* JSWithdrawAlertView.m */,
+				7A015E12219AF9740025D24F /* JSWithdrawModel.h */,
+				7A015E13219AF9740025D24F /* JSWithdrawModel.m */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1504,11 +1519,13 @@
 				7A203E51218C77350001F926 /* JSForgetPasswordViewController.m in Sources */,
 				7A898F8F21956B0F00A7CADD /* GFImageCropView.m in Sources */,
 				7A898F8B21956B0F00A7CADD /* GGAssetCollectionCell.m in Sources */,
+				7A015E11219A75BE0025D24F /* JSWithdrawViewController.m in Sources */,
 				7A5FEE8B218AFBAC006CF7EC /* JSTabBarViewController.m in Sources */,
 				00452056219011F200371F10 /* JSShortVideoViewController.m in Sources */,
 				0060432E2197C7700080091A /* ZFIJKPlayerManager.m in Sources */,
 				7ABD9E632191BA6600E19B6A /* TADotView.m in Sources */,
 				7A8F678D2190473B008A00F4 /* JSAccountManager+QQ.m in Sources */,
+				7A015E14219AF9740025D24F /* JSWithdrawModel.m in Sources */,
 				7ABD9E602191BA6600E19B6A /* SDCycleScrollView.m in Sources */,
 				7ABD9E642191BA6600E19B6A /* TAPageControl.m in Sources */,
 				7A898F5C2193E4EF00A7CADD /* CAAnimation+WAnimation.m in Sources */,
@@ -1536,6 +1553,7 @@
 				7A846ECD219333D10048F222 /* NSDictionary+SetNullWithStr.m in Sources */,
 				7A5FEE94218AFD7D006CF7EC /* JSMainTabBar.m in Sources */,
 				7A898F6B21941D8900A7CADD /* JSMessageModel.m in Sources */,
+				7A600EC3219BFACA0033F6DF /* JSWithdrawAlertView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -43,7 +43,11 @@ typedef  NS_ENUM(NSInteger, JSRequestSecurityCodeType){
 
 + (void)uploadImage:(UIImage *)image complement:(void(^)(BOOL isSuccess, NSDictionary *contentDict))complemnt;
 
-+ (void)feedbackText:(NSString *)text image:(UIImage *)image complement:(void(^)(BOOL isSuccess,NSDictionary *contentDict))complement;
++ (void)feedbackText:(NSString *)text images:(NSArray *)images complement:(void(^)(BOOL isSuccess,NSDictionary *contentDict))complement;
+
++ (void)queryWithdrawInfoWithComplement:(void(^)(BOOL isSuccess,NSDictionary *dataDict))complement;
+
++ (void)getMoneyWithMethod:(NSString *)method count:(NSInteger)amount complement:(void(^)(NSInteger code, NSString *message))complement;
 @end
 
 NS_ASSUME_NONNULL_END

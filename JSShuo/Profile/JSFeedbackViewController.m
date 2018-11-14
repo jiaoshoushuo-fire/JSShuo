@@ -434,12 +434,40 @@
         [self.rt_navigationController presentViewController:alertVC animated:YES completion:nil];
         return;
     }
-    //x没处理图片，后期需要改
-    [JSNetworkManager feedbackText:secondCell.contentTextView.text image:nil complement:^(BOOL isSuccess, NSDictionary * _Nonnull contentDict) {
-        if (isSuccess) {
-            [self.rt_navigationController popViewControllerAnimated:YES complete:nil];
+    NSMutableArray *images = [NSMutableArray array];
+    
+    for (id object in self.currentAssets) {
+         dispatch_group_enter(self.group);
+        __block UIImage *reslutImage = nil;
+        if ([object isKindOfClass:[NSString class]]) {
+            reslutImage = [UIImage imageWithContentsOfFile:(NSString *)object];
+            
+           
+            [images addObject:reslutImage];
+            
+            dispatch_group_leave(self.group);
+        }else if ([object isKindOfClass:[PHAsset class]]){
+            PHAsset *asset = (PHAsset *)object;
+            [GGPhotoLibrary requestImageForAsset:asset preferSize:CGSizeMake(asset.pixelWidth, asset.pixelHeight) completion:^(UIImage *image, NSDictionary *info) {
+                
+                [images addObject:image];
+                dispatch_group_leave(self.group);
+            }];
         }
-    }];
+    }
+    dispatch_group_notify(self.group, self.queue, ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self showWaitingHUD];
+            [JSNetworkManager feedbackText:secondCell.contentTextView.text images:images complement:^(BOOL isSuccess, NSDictionary * _Nonnull contentDict) {
+                [self hideWaitingHUD];
+                if (isSuccess) {
+                    [self.rt_navigationController popViewControllerAnimated:YES complete:nil];
+                }
+            }];
+        });
+    });
+    
+    
     
 }
 

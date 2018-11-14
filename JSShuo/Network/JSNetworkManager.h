@@ -14,6 +14,8 @@ const static NSString *Base_Url = @"http://api.jiaoshoutt.com";
 
 @interface JSNetworkManager : NSObject
 
++ (AFHTTPSessionManager *)shareManager;
+
 + (void)POST:(NSString *)url parameters:(NSDictionary *)parameters complement:(void(^)(BOOL isSuccess,NSDictionary *responseDict))complement;
 
 + (void)GET:(NSString *)url parameters:(NSDictionary *)parameters complement:(void(^)(BOOL isSuccess,NSDictionary *responseDict))complement;
@@ -25,6 +27,8 @@ const static NSString *Base_Url = @"http://api.jiaoshoutt.com";
 + (void)normalGET:(NSString *)url parameters:(NSDictionary *)parameters complement:(void(^)(BOOL isSuccess,NSDictionary *responseDict))complement;
 
 + (void)ImagePOST:(NSString *)url parameters:(NSDictionary *)parameters image:(UIImage *)image complement:(void(^)(BOOL isSuccess,NSDictionary *responseDict))complement;
+
++ (NSDictionary *)transformParameters:(NSDictionary *)parameters;
 @end
 
 NS_ASSUME_NONNULL_END

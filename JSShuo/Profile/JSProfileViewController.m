@@ -14,6 +14,7 @@
 #import "NSDictionary+SetNullWithStr.h"
 #import "JSMessageViewController.h"
 #import "JSSettingViewController.h"
+#import "JSWithdrawViewController.h"
 
 @interface JSProfileItemView : UIView
 @property (nonatomic, strong)UIImageView *itemImageView;
@@ -116,7 +117,7 @@
 }
 @end
 
-@interface JSProfileHeaderView:UIView
+@interface JSProfileHeaderView:UIImageView
 @property (nonatomic, strong)UIButton *leftButton;
 @property (nonatomic, strong)UIButton *rightButton;
 @property (nonatomic, strong)UILabel *titleLabel;
@@ -256,6 +257,8 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        self.userInteractionEnabled = YES;
+        self.image = [UIImage imageNamed:@"js_profile_header_back"];
         [self addSubview:self.leftButton];
         [self addSubview:self.rightButton];
         [self addSubview:self.titleLabel];
@@ -381,7 +384,7 @@
 - (JSProfileHeaderView *)headerView{
     if (!_headerView) {
         _headerView = [[JSProfileHeaderView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 280)];
-        _headerView.backgroundColor = [UIColor redColor];
+//        _headerView.backgroundColor = [UIColor redColor];
         @weakify(self)
         [_headerView.leftButton bk_addEventHandler:^(id sender) {//消息
             @strongify(self)
@@ -487,7 +490,7 @@
 }
 - (void)checkTableviewSubViews{
     UIView *bgView = [[UIView alloc] initWithFrame:CGRectOffset(self.profileTableView.bounds, 0, -self.profileTableView.bounds.size.height)];
-    bgView.backgroundColor = [UIColor redColor];
+    bgView.backgroundColor = [UIColor colorWithHexString:@"F05952"];
     [self.profileTableView insertSubview:bgView atIndex:0];
 }
 -  (void)viewWillAppear:(BOOL)animated{
@@ -515,7 +518,25 @@
 }
 #pragma mark JSProfileHeaderMenuItemViewDelegate
 - (void)didSelectedMenuItemIndex:(NSInteger)index{
-    
+    switch (index) {
+        case 0:{//提现
+            JSWithdrawViewController *vc = [[JSWithdrawViewController alloc]init];
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.rt_navigationController pushViewController:vc animated:YES complete:nil];
+        }break;
+        case 1:{
+            
+        }break;
+        case 2:{
+            
+        }break;
+        case 3:{
+            
+        }break;
+            
+        default:
+            break;
+    }
 }
 
 #pragma SDCycleScrollViewDelegate
