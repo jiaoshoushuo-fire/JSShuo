@@ -8,6 +8,7 @@
 
 #import "JSNetworkManager.h"
 #import "JSProfileUserModel.h"
+#import "JSAccountModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -45,9 +46,20 @@ typedef  NS_ENUM(NSInteger, JSRequestSecurityCodeType){
 
 + (void)feedbackText:(NSString *)text images:(NSArray *)images complement:(void(^)(BOOL isSuccess,NSDictionary *contentDict))complement;
 
+//查询提现规则
 + (void)queryWithdrawInfoWithComplement:(void(^)(BOOL isSuccess,NSDictionary *dataDict))complement;
 
+//提现
 + (void)getMoneyWithMethod:(NSString *)method count:(NSInteger)amount complement:(void(^)(NSInteger code, NSString *message))complement;
+
+//账户查询
++ (void)queryAccountInfoWithComplement:(void(^)(BOOL isSuccess,JSAccountModel *accountModel))complement;
+
+//账户流水
++ (void)queryListWithTypeIndex:(NSInteger)index pageNumber:(NSInteger)pageIndex complement:(void(^)(BOOL isSuccess,NSDictionary *contenDict))complement;
+
+//兑换
++ (void)exchangeWithMoney:(NSInteger)money complement:(void(^)(BOOL isSuccess,NSDictionary *contentDict))complement;
 @end
 
 NS_ASSUME_NONNULL_END

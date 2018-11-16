@@ -28,6 +28,7 @@
         AFSecurityPolicy *securityPolicy = [AFSecurityPolicy defaultPolicy];
         securityPolicy.validatesDomainName = NO;
         securityPolicy.allowInvalidCertificates = YES;
+        
         networkManager.securityPolicy = securityPolicy;
     });
     return networkManager;

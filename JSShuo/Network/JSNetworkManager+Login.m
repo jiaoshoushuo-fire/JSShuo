@@ -19,6 +19,9 @@ const static NSString *uploadImageUrl = @"/v1/upload/image";
 const static NSString *feedbackUrl = @"/v1/user/feedback/create";
 const static NSString *withdrawUrl = @"/v1/account/withdraw/queryRule";
 const static NSString *getMoneyUrl = @"/v1/account/withdraw/apply";
+const static NSString *queryAccountUrl = @"/v1/account/query";
+const static NSString *accountRunningwaterList = @"/v1/account/detail/list";
+const static NSString *exchangerUrl = @"/v1/account/exchange";
 
 
 @implementation JSNetworkManager (Login)
@@ -210,6 +213,40 @@ const static NSString *getMoneyUrl = @"/v1/account/withdraw/apply";
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         if (complement) {
             complement(99,error.localizedDescription);
+        }
+    }];
+}
+
++ (void)queryAccountInfoWithComplement:(void(^)(BOOL isSuccess,JSAccountModel *accountModel))complement{
+    NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,queryAccountUrl];
+    NSDictionary *param = @{@"token":[JSAccountManager shareManager].accountToken};
+    [self GET:url parameters:param complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
+        if (complement) {
+            JSAccountModel *model = nil;
+            if (isSuccess) {
+                model = [MTLJSONAdapter modelOfClass:[JSAccountModel class] fromJSONDictionary:responseDict error:nil];
+            }
+            complement(isSuccess,model);
+        }
+    }];
+}
+
++ (void)queryListWithTypeIndex:(NSInteger)index pageNumber:(NSInteger)pageIndex complement:(void(^)(BOOL isSuccess,NSDictionary *contenDict))complement{
+    NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,accountRunningwaterList];
+    NSDictionary *param = @{@"token":[JSAccountManager shareManager].accountToken,@"category":@(index),@"pageNum":@(pageIndex),@"pageSize":@(10)};
+    [self GET:url parameters:param complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
+        if (complement) {
+            complement(isSuccess,responseDict);
+        }
+    }];
+}
+
++ (void)exchangeWithMoney:(NSInteger)money complement:(void(^)(BOOL isSuccess,NSDictionary *contentDict))complement{
+    NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,exchangerUrl];
+    NSDictionary *param = @{@"token":[JSAccountManager shareManager].accountToken,@"money":@(money)};
+    [self POST:url parameters:param complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
+        if (complement) {
+            complement(isSuccess,responseDict);
         }
     }];
 }
