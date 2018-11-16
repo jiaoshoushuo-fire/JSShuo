@@ -10,9 +10,17 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef  NS_ENUM(NSInteger, JSPageShowType){
+    JSHomePage = 1,
+    JSSearchResultPage
+};
+
 @interface JSHomeViewController : JSBaseViewController
 
 @property (nonatomic,copy) NSString *genreID;
+@property (nonatomic,assign) JSPageShowType type;
+@property (nonatomic,copy) NSString *keywrod;
+@property (nonatomic,assign) int searchType;
 
 @end
 

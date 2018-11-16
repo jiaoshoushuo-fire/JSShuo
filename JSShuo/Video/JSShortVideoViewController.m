@@ -86,8 +86,8 @@ static NSString *kIdentifier = @"ZFDouYinCell";
 }
 
 - (void)requestData {
-    NSDictionary *params = @{@"pageNum":@1,@"channel":@"12",@"pageSize":@20};
-    [JSNetworkManager requestLongVideoListWithParams:params complent:^(NSArray * _Nonnull modelsArray) {
+    NSDictionary *params = @{@"pageNum":@1,@"channel":@"12",@"pageSize":@5};
+    [JSNetworkManager requestLongVideoListWithParams:params complent:^(NSNumber * _Nonnull totalPage, NSArray * _Nonnull modelsArray) {
         self.dataSource = (NSMutableArray *)modelsArray;
         for (int i = 0; i < modelsArray.count; i++) {
             JSShortVideoModel *model = modelsArray[i];
@@ -99,7 +99,6 @@ static NSString *kIdentifier = @"ZFDouYinCell";
             [self.tableView reloadData];
         }
     }];
-    
     [self.tableView.mj_header endRefreshing];
 }
 
