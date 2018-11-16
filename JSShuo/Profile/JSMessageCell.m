@@ -38,7 +38,7 @@
 - (UIImageView *)arrowImageView{
     if (!_arrowImageView) {
         _arrowImageView = [[UIImageView alloc]init];
-        _arrowImageView.backgroundColor = [UIColor redColor];
+        _arrowImageView.image = [UIImage imageNamed:@"personalCenter_arrow"];
         _arrowImageView.userInteractionEnabled = YES;
     }
     return _arrowImageView;

@@ -15,6 +15,9 @@
 #import "JSMessageViewController.h"
 #import "JSSettingViewController.h"
 #import "JSWithdrawViewController.h"
+#import "JSShopViewController.h"
+#import "JSInvitationViewController.h"
+#import "JSMyWalletViewController.h"
 
 @interface JSProfileItemView : UIView
 @property (nonatomic, strong)UIImageView *itemImageView;
@@ -173,6 +176,7 @@
         _avaterIcon = [[UIImageView alloc]init];
         _avaterIcon.clipsToBounds = YES;
         _avaterIcon.layer.cornerRadius = 70/2.0f;
+        _avaterIcon.image = [UIImage imageNamed:@"js_profile_default_icon"];
     }
     return _avaterIcon;
 }
@@ -524,14 +528,20 @@
             vc.hidesBottomBarWhenPushed = YES;
             [self.rt_navigationController pushViewController:vc animated:YES complete:nil];
         }break;
-        case 1:{
-            
+        case 1:{//商城
+            JSShopViewController *shopVC = [[JSShopViewController alloc]init];
+            shopVC.hidesBottomBarWhenPushed = YES;
+            [self.rt_navigationController pushViewController:shopVC animated:YES complete:nil];
         }break;
-        case 2:{
-            
+        case 2:{//邀请好友
+            JSInvitationViewController *invitationVC = [[JSInvitationViewController alloc]init];
+            invitationVC.hidesBottomBarWhenPushed = YES;
+            [self.rt_navigationController pushViewController:invitationVC animated:YES complete:nil];
         }break;
-        case 3:{
-            
+        case 3:{//我的钱包
+            JSMyWalletViewController *myWalletVC = [[JSMyWalletViewController alloc]init];
+            myWalletVC.hidesBottomBarWhenPushed = YES;
+            [self.rt_navigationController pushViewController:myWalletVC animated:YES complete:nil];
         }break;
             
         default:

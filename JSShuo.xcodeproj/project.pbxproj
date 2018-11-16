@@ -111,6 +111,9 @@
 		7A5FEED6218B2C80006CF7EC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A5FEED5218B2C80006CF7EC /* CoreGraphics.framework */; };
 		7A5FEED8218B2C8A006CF7EC /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A5FEED7218B2C89006CF7EC /* CFNetwork.framework */; };
 		7A600EC3219BFACA0033F6DF /* JSWithdrawAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A600EC2219BFACA0033F6DF /* JSWithdrawAlertView.m */; };
+		7A600EC6219C1A3E0033F6DF /* JSShopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A600EC5219C1A3E0033F6DF /* JSShopViewController.m */; };
+		7A600EC9219C1B2D0033F6DF /* JSInvitationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A600EC8219C1B2D0033F6DF /* JSInvitationViewController.m */; };
+		7A600ECC219C1BA40033F6DF /* JSMyWalletViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A600ECB219C1BA40033F6DF /* JSMyWalletViewController.m */; };
 		7A6E47362199774200D5C559 /* GFCacheUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6E47352199774200D5C559 /* GFCacheUtil.m */; };
 		7A6E473921997B8C00D5C559 /* JSFontChangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6E473821997B8C00D5C559 /* JSFontChangeViewController.m */; };
 		7A6E473C21997C5B00D5C559 /* JSPrivacyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6E473B21997C5B00D5C559 /* JSPrivacyViewController.m */; };
@@ -149,6 +152,10 @@
 		7A8F678A21903DD3008A00F4 /* JSAccountManager+Wechat.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8F678921903DD3008A00F4 /* JSAccountManager+Wechat.m */; };
 		7A8F678D2190473B008A00F4 /* JSAccountManager+QQ.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8F678C2190473B008A00F4 /* JSAccountManager+QQ.m */; };
 		7A8F67902190492A008A00F4 /* JSAccountManager+SinaWeibo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8F678F2190492A008A00F4 /* JSAccountManager+SinaWeibo.m */; };
+		7AB931A3219E6218001E5390 /* JSWalletSwitchSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB931A2219E6218001E5390 /* JSWalletSwitchSegmentView.m */; };
+		7AB931A6219E6BBF001E5390 /* JSMyWalletCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB931A5219E6BBF001E5390 /* JSMyWalletCell.m */; };
+		7AB931A9219E9490001E5390 /* JSConvertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB931A8219E9490001E5390 /* JSConvertViewController.m */; };
+		7AB931AC219E9763001E5390 /* JSAccountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB931AB219E9763001E5390 /* JSAccountModel.m */; };
 		7ABD9E602191BA6600E19B6A /* SDCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABD9E542191BA6500E19B6A /* SDCycleScrollView.m */; };
 		7ABD9E612191BA6600E19B6A /* UIView+SDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABD9E552191BA6500E19B6A /* UIView+SDExtension.m */; };
 		7ABD9E622191BA6600E19B6A /* SDCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABD9E562191BA6500E19B6A /* SDCollectionViewCell.m */; };
@@ -373,6 +380,12 @@
 		7A5FEED7218B2C89006CF7EC /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		7A600EC1219BFAC90033F6DF /* JSWithdrawAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSWithdrawAlertView.h; sourceTree = "<group>"; };
 		7A600EC2219BFACA0033F6DF /* JSWithdrawAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSWithdrawAlertView.m; sourceTree = "<group>"; };
+		7A600EC4219C1A3E0033F6DF /* JSShopViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSShopViewController.h; sourceTree = "<group>"; };
+		7A600EC5219C1A3E0033F6DF /* JSShopViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSShopViewController.m; sourceTree = "<group>"; };
+		7A600EC7219C1B2D0033F6DF /* JSInvitationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSInvitationViewController.h; sourceTree = "<group>"; };
+		7A600EC8219C1B2D0033F6DF /* JSInvitationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSInvitationViewController.m; sourceTree = "<group>"; };
+		7A600ECA219C1BA40033F6DF /* JSMyWalletViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSMyWalletViewController.h; sourceTree = "<group>"; };
+		7A600ECB219C1BA40033F6DF /* JSMyWalletViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSMyWalletViewController.m; sourceTree = "<group>"; };
 		7A6E47342199774200D5C559 /* GFCacheUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFCacheUtil.h; sourceTree = "<group>"; };
 		7A6E47352199774200D5C559 /* GFCacheUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFCacheUtil.m; sourceTree = "<group>"; };
 		7A6E473721997B8C00D5C559 /* JSFontChangeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSFontChangeViewController.h; sourceTree = "<group>"; };
@@ -452,6 +465,14 @@
 		7A8F678C2190473B008A00F4 /* JSAccountManager+QQ.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "JSAccountManager+QQ.m"; sourceTree = "<group>"; };
 		7A8F678E2190492A008A00F4 /* JSAccountManager+SinaWeibo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JSAccountManager+SinaWeibo.h"; sourceTree = "<group>"; };
 		7A8F678F2190492A008A00F4 /* JSAccountManager+SinaWeibo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "JSAccountManager+SinaWeibo.m"; sourceTree = "<group>"; };
+		7AB931A1219E6218001E5390 /* JSWalletSwitchSegmentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSWalletSwitchSegmentView.h; sourceTree = "<group>"; };
+		7AB931A2219E6218001E5390 /* JSWalletSwitchSegmentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSWalletSwitchSegmentView.m; sourceTree = "<group>"; };
+		7AB931A4219E6BBF001E5390 /* JSMyWalletCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSMyWalletCell.h; sourceTree = "<group>"; };
+		7AB931A5219E6BBF001E5390 /* JSMyWalletCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSMyWalletCell.m; sourceTree = "<group>"; };
+		7AB931A7219E9490001E5390 /* JSConvertViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSConvertViewController.h; sourceTree = "<group>"; };
+		7AB931A8219E9490001E5390 /* JSConvertViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSConvertViewController.m; sourceTree = "<group>"; };
+		7AB931AA219E9763001E5390 /* JSAccountModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSAccountModel.h; sourceTree = "<group>"; };
+		7AB931AB219E9763001E5390 /* JSAccountModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSAccountModel.m; sourceTree = "<group>"; };
 		7ABD9E512191BA6500E19B6A /* UIView+SDExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SDExtension.h"; sourceTree = "<group>"; };
 		7ABD9E522191BA6500E19B6A /* SDCycleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDCycleScrollView.h; sourceTree = "<group>"; };
 		7ABD9E532191BA6500E19B6A /* SDCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDCollectionViewCell.h; sourceTree = "<group>"; };
@@ -973,6 +994,16 @@
 				7A6E474121997DCD00D5C559 /* JSAboutUsViewController.m */,
 				7A015E0F219A75BE0025D24F /* JSWithdrawViewController.h */,
 				7A015E10219A75BE0025D24F /* JSWithdrawViewController.m */,
+				7A600EC4219C1A3E0033F6DF /* JSShopViewController.h */,
+				7A600EC5219C1A3E0033F6DF /* JSShopViewController.m */,
+				7A600EC7219C1B2D0033F6DF /* JSInvitationViewController.h */,
+				7A600EC8219C1B2D0033F6DF /* JSInvitationViewController.m */,
+				7A600ECA219C1BA40033F6DF /* JSMyWalletViewController.h */,
+				7A600ECB219C1BA40033F6DF /* JSMyWalletViewController.m */,
+				7AB931A7219E9490001E5390 /* JSConvertViewController.h */,
+				7AB931A8219E9490001E5390 /* JSConvertViewController.m */,
+				7AB931A4219E6BBF001E5390 /* JSMyWalletCell.h */,
+				7AB931A5219E6BBF001E5390 /* JSMyWalletCell.m */,
 				7A898F71219528D500A7CADD /* JSPerfectUserInfoCell.h */,
 				7A898F72219528D500A7CADD /* JSPerfectUserInfoCell.m */,
 				7ABD9E672191C03400E19B6A /* JSProfileCell.h */,
@@ -983,6 +1014,8 @@
 				7A846EC9219290AB0048F222 /* JSProfileUserModel.m */,
 				7A898F6921941D8900A7CADD /* JSMessageModel.h */,
 				7A898F6A21941D8900A7CADD /* JSMessageModel.m */,
+				7AB931AA219E9763001E5390 /* JSAccountModel.h */,
+				7AB931AB219E9763001E5390 /* JSAccountModel.m */,
 				7A898F9A2195865200A7CADD /* JSInputBar.h */,
 				7A898F9B2195865200A7CADD /* JSInputBar.m */,
 				7A600EC1219BFAC90033F6DF /* JSWithdrawAlertView.h */,
@@ -1042,6 +1075,8 @@
 				002B7402219862AA00483841 /* JSComputeTime.m */,
 				7A898F442193CCAD00A7CADD /* JSSwitchSegmentView.h */,
 				7A898F452193CCAD00A7CADD /* JSSwitchSegmentView.m */,
+				7AB931A1219E6218001E5390 /* JSWalletSwitchSegmentView.h */,
+				7AB931A2219E6218001E5390 /* JSWalletSwitchSegmentView.m */,
 				7A898F472193D88F00A7CADD /* JSAdjustButton.h */,
 				7A898F482193D88F00A7CADD /* JSAdjustButton.m */,
 				7A6E47342199774200D5C559 /* GFCacheUtil.h */,
@@ -1466,6 +1501,7 @@
 				7ABD9E652191BA6600E19B6A /* TAAnimatedDotView.m in Sources */,
 				002B7404219862AB00483841 /* JSComputeTime.m in Sources */,
 				0045206121904AE600371F10 /* JSLongVideoCell.m in Sources */,
+				7A600EC6219C1A3E0033F6DF /* JSShopViewController.m in Sources */,
 				006043442197CA8A0080091A /* ZFDouYinControlView.m in Sources */,
 				0060432A2197C7700080091A /* ZFPlayerView.m in Sources */,
 				7A5FEEB1218B0D4D006CF7EC /* JSActivityCenterViewController.m in Sources */,
@@ -1493,21 +1529,25 @@
 				006043372197C7700080091A /* ZFPlayerControlView.m in Sources */,
 				7A5FEEB7218B0D6D006CF7EC /* JSVideoViewController.m in Sources */,
 				006043342197C7700080091A /* ZFNetworkSpeedMonitor.m in Sources */,
+				7AB931A9219E9490001E5390 /* JSConvertViewController.m in Sources */,
 				006043392197C7700080091A /* ZFLoadingView.m in Sources */,
 				0045205321900D4300371F10 /* JSVideoTitleBarViewController.m in Sources */,
 				7A898F8821956B0F00A7CADD /* GGPhotoPreviewViewController.m in Sources */,
 				7A898F8D21956B0F00A7CADD /* GGAssetItemCell.m in Sources */,
+				7AB931AC219E9763001E5390 /* JSAccountModel.m in Sources */,
 				7A898F9321956C4D00A7CADD /* GGPhotoLibrary.m in Sources */,
 				7A5FEEA6218B0BC2006CF7EC /* JSStartupViewController.m in Sources */,
 				7A898F8721956B0F00A7CADD /* GGPhotoLibraryViewController.m in Sources */,
 				7A898F8921956B0F00A7CADD /* GGCameraViewController.m in Sources */,
 				7A898F7021951D7B00A7CADD /* JSPerfectUserInfoViewController.m in Sources */,
+				7A600ECC219C1BA40033F6DF /* JSMyWalletViewController.m in Sources */,
 				0045206C2191C05B00371F10 /* JSNetworkManager+LongVideo.m in Sources */,
 				0023C2172193212300960DF1 /* JSCellBottomView.m in Sources */,
 				0060433B2197C7700080091A /* ZFPortraitControlView.m in Sources */,
 				006043382197C7700080091A /* ZFSmallFloatControlView.m in Sources */,
 				7A5FEE9C218B0058006CF7EC /* UIFont+JSShuo.m in Sources */,
 				004910A021951DB700B85B4F /* UITableView+FDTemplateLayoutCellDebug.m in Sources */,
+				7AB931A6219E6BBF001E5390 /* JSMyWalletCell.m in Sources */,
 				006043252197C7700080091A /* ZFOrientationObserver.m in Sources */,
 				0060433A2197C7700080091A /* ZFSpeedLoadingView.m in Sources */,
 				7A898F492193D88F00A7CADD /* JSAdjustButton.m in Sources */,
@@ -1529,6 +1569,7 @@
 				7ABD9E602191BA6600E19B6A /* SDCycleScrollView.m in Sources */,
 				7ABD9E642191BA6600E19B6A /* TAPageControl.m in Sources */,
 				7A898F5C2193E4EF00A7CADD /* CAAnimation+WAnimation.m in Sources */,
+				7AB931A3219E6218001E5390 /* JSWalletSwitchSegmentView.m in Sources */,
 				0045205E2190485600371F10 /* JSShortVideoModel.m in Sources */,
 				0060434A2197CAB20080091A /* ZFTableViewCellLayout.m in Sources */,
 				0060433C2197C7700080091A /* UIImageView+ZFCache.m in Sources */,
@@ -1536,6 +1577,7 @@
 				0060433D2197C7700080091A /* KSMediaPlayerManager.m in Sources */,
 				7ABD9E612191BA6600E19B6A /* UIView+SDExtension.m in Sources */,
 				7A5FEEBA218B0D7C006CF7EC /* JSProfileViewController.m in Sources */,
+				7A600EC9219C1B2D0033F6DF /* JSInvitationViewController.m in Sources */,
 				7ABD9E692191C03400E19B6A /* JSProfileCell.m in Sources */,
 				7A6E473921997B8C00D5C559 /* JSFontChangeViewController.m in Sources */,
 				00452037218EDD5C00371F10 /* JSHomeTitleBarViewController.m in Sources */,
