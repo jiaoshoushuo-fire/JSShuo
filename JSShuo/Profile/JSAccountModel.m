@@ -41,3 +41,16 @@
 }
 
 @end
+
+@implementation JSListModel
+
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    return @{
+             @"friendNum" : @"friendNum",
+             @"totalCoin" : @"totalCoin",
+             @"userId" : @"userId"
+             };
+}
+
+
+@end

@@ -18,6 +18,7 @@
 #import "JSShopViewController.h"
 #import "JSInvitationViewController.h"
 #import "JSMyWalletViewController.h"
+#import "JSInputCodeViewController.h"
 
 @interface JSProfileItemView : UIView
 @property (nonatomic, strong)UIImageView *itemImageView;
@@ -602,7 +603,26 @@
     return 0.00000001f;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSDictionary *dict = self.profileInfoArray[indexPath.row];
+    NSString *title = dict[@"title"];
     
+    if ([title isEqualToString:@"输入邀请码"]) {
+        JSInputCodeViewController *inputVC = [[JSInputCodeViewController alloc]init];
+        inputVC.hidesBottomBarWhenPushed = YES;
+        [self.rt_navigationController pushViewController:inputVC animated:YES complete:nil];
+    }else if ([title isEqualToString:@"任务中心"]){
+        
+    }else if ([title isEqualToString:@"游戏大厅"]){
+        
+    }else if ([title isEqualToString:@"会员大促销"]){
+        
+    }else if ([title isEqualToString:@"常见问题"]){
+        
+    }else if ([title isEqualToString:@"我的评论"]){
+        
+    }else if ([title isEqualToString:@"我的收藏"]){
+        
+    }
 }
 - (void)dealloc{
     [[NSNotificationCenter defaultCenter]removeObserver:self];

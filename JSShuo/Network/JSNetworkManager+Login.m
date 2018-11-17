@@ -22,6 +22,7 @@ const static NSString *getMoneyUrl = @"/v1/account/withdraw/apply";
 const static NSString *queryAccountUrl = @"/v1/account/query";
 const static NSString *accountRunningwaterList = @"/v1/account/detail/list";
 const static NSString *exchangerUrl = @"/v1/account/exchange";
+const static NSString *rangkListUrl = @"/v1/ranking/list";
 
 
 @implementation JSNetworkManager (Login)
@@ -247,6 +248,16 @@ const static NSString *exchangerUrl = @"/v1/account/exchange";
     [self POST:url parameters:param complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
         if (complement) {
             complement(isSuccess,responseDict);
+        }
+    }];
+}
+
++ (void)questListWithWeak:(BOOL)isWeak complement:(void(^)(BOOL isSuccess,NSDictionary *contentDict))complemnt{
+    NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,rangkListUrl];
+    NSDictionary *param = @{@"token":[JSAccountManager shareManager].accountToken,@"type":isWeak ? @"1":@"2"};
+    [self GET:url parameters:param complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
+        if (complemnt) {
+            complemnt(isSuccess,responseDict);
         }
     }];
 }

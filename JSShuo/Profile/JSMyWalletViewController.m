@@ -13,6 +13,8 @@
 #import "JSWithdrawViewController.h"
 #import "JSNetworkManager+Login.h"
 #import "JSConvertViewController.h"
+#import "JSIncomeListViewController.h"
+#import "JSShareManager.h"
 
 
 @interface JSMyWalletHeaderView : UIView
@@ -359,13 +361,13 @@
     _model = model;
     self.balanceLabel.text = [NSString stringWithFormat:@"￥%@",@(model.money)];
     self.totalLabel.text = [NSString stringWithFormat:@"￥%@",@(model.totalMoney)];
-    self.todayLabel.text = [NSString stringWithFormat:@"￥%@",@(model.todayMoney)];
-    self.convertTitleLabel.text = [NSString stringWithFormat: @"汇率：%@金币=0.1元",@(model.exchangeRate)];
+    self.todayLabel.text = [NSString stringWithFormat:@"￥%@",@(model.todayCoin)];
+    self.convertTitleLabel.text = [NSString stringWithFormat: @"汇率：%@金币=1元",@(model.exchangeRate)];
     
 }
 @end
 
-@interface JSMyWalletViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface JSMyWalletViewController ()<UITableViewDelegate,UITableViewDataSource,JSConvertViewControllerDelegate>
 @property (nonatomic, strong)UITableView *tableView;
 @property (nonatomic, strong)JSMyWalletHeaderView *headerView;
 @property (nonatomic, strong)UIView *bottomView;
@@ -434,7 +436,8 @@
         @weakify(self)
         [_incomeListButton bk_addEventHandler:^(id sender) {
             @strongify(self)
-            
+            JSIncomeListViewController *incomeVC = [[JSIncomeListViewController alloc]init];
+            [self.rt_navigationController pushViewController:incomeVC animated:YES complete:nil];
         } forControlEvents:UIControlEventTouchUpInside];
     }
     return _incomeListButton;
@@ -451,10 +454,16 @@
         _shareButton.titleLabel.font = [UIFont systemFontOfSize:14];
         [_shareButton setBackgroundImage:[UIImage imageNamed:@"js_tixian_back_image"] forState:UIControlStateNormal];
         
-        @weakify(self)
+        
         [_shareButton bk_addEventHandler:^(id sender) {
-             @strongify(self)
             
+            [JSShareManager shareWithTitle:@"测试title" Text:@"测试text" Image:[UIImage imageNamed:@"js_profile_mywallet_share"] Url:@"https://www.baidu.com/" complement:^(BOOL isSuccess) {
+                if (isSuccess) {
+                    [self showAutoDismissTextAlert:@"分享成功"];
+                }else{
+                    [self showAutoDismissTextAlert:@"分享失败"];
+                }
+            }];
         } forControlEvents:UIControlEventTouchUpInside];
     }
     return _shareButton;
@@ -476,6 +485,7 @@
             JSConvertViewController *convertVC = [[JSConvertViewController alloc]init];
             convertVC.hidesBottomBarWhenPushed = YES;
             convertVC.accountModel = self.headerView.model;
+            convertVC.delegate = self;
             [self.rt_navigationController pushViewController:convertVC animated:YES complete:nil];
         } forControlEvents:UIControlEventTouchUpInside];
         
@@ -492,6 +502,7 @@
                     [self.tableView.mj_header beginRefreshing];
                 }
             }
+            [self.tableView reloadData];
         };
         
     }
@@ -566,14 +577,17 @@
     self.currentGoldPage = 1;
     self.currentLoosePage = 1;
     
+    [self refreshHeaderData];
+    
+    [self.tableView.mj_header beginRefreshing];
+    
+}
+- (void)refreshHeaderData{
     [JSNetworkManager queryAccountInfoWithComplement:^(BOOL isSuccess, JSAccountModel * _Nonnull accountModel) {
         if (isSuccess) {
             self.headerView.model = accountModel;
         }
     }];
-    
-    [self.tableView.mj_header beginRefreshing];
-    
 }
 - (void)refreshDataListWithHeaderRefresh:(BOOL)isHeaderRefresh{
     NSInteger typeIndex = self.isGold ? 1:2;
@@ -656,6 +670,12 @@
     return 50;
 }
 
+
+#pragma  mark - JSConvertViewControllerDelegate
+- (void)didRefreshWithdrawViewController{
+    [self refreshHeaderData];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"JS_Refresh_Profile_info" object:nil];
+}
 /*
 #pragma mark - Navigation
 

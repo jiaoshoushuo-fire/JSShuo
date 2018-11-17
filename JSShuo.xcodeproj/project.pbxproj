@@ -69,6 +69,9 @@
 		6797051512B36A0CAA259324 /* libPods-JSShuoUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 45918ABA94D7C616D6E9C28A /* libPods-JSShuoUITests.a */; };
 		7A015E11219A75BE0025D24F /* JSWithdrawViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A015E10219A75BE0025D24F /* JSWithdrawViewController.m */; };
 		7A015E14219AF9740025D24F /* JSWithdrawModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A015E13219AF9740025D24F /* JSWithdrawModel.m */; };
+		7A1749BD21A064E000E9AA12 /* JSShareManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1749BC21A064E000E9AA12 /* JSShareManager.m */; };
+		7A1749C021A066B500E9AA12 /* GFPopMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1749BF21A066B500E9AA12 /* GFPopMenuView.m */; };
+		7A1749C321A0789000E9AA12 /* JSInputCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1749C221A0789000E9AA12 /* JSInputCodeViewController.m */; };
 		7A203E44218BE02A0001F926 /* JSLoginMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A203E43218BE02A0001F926 /* JSLoginMainViewController.m */; };
 		7A203E47218BE53F0001F926 /* JSLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A203E46218BE53F0001F926 /* JSLoginViewController.m */; };
 		7A203E4A218BE5650001F926 /* JSRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A203E49218BE5650001F926 /* JSRegisterViewController.m */; };
@@ -156,6 +159,7 @@
 		7AB931A6219E6BBF001E5390 /* JSMyWalletCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB931A5219E6BBF001E5390 /* JSMyWalletCell.m */; };
 		7AB931A9219E9490001E5390 /* JSConvertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB931A8219E9490001E5390 /* JSConvertViewController.m */; };
 		7AB931AC219E9763001E5390 /* JSAccountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB931AB219E9763001E5390 /* JSAccountModel.m */; };
+		7AB931AF219EDF89001E5390 /* JSIncomeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB931AE219EDF89001E5390 /* JSIncomeListViewController.m */; };
 		7ABD9E602191BA6600E19B6A /* SDCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABD9E542191BA6500E19B6A /* SDCycleScrollView.m */; };
 		7ABD9E612191BA6600E19B6A /* UIView+SDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABD9E552191BA6500E19B6A /* UIView+SDExtension.m */; };
 		7ABD9E622191BA6600E19B6A /* SDCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABD9E562191BA6500E19B6A /* SDCollectionViewCell.m */; };
@@ -306,6 +310,12 @@
 		7A015E10219A75BE0025D24F /* JSWithdrawViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSWithdrawViewController.m; sourceTree = "<group>"; };
 		7A015E12219AF9740025D24F /* JSWithdrawModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSWithdrawModel.h; sourceTree = "<group>"; };
 		7A015E13219AF9740025D24F /* JSWithdrawModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSWithdrawModel.m; sourceTree = "<group>"; };
+		7A1749BB21A064E000E9AA12 /* JSShareManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSShareManager.h; sourceTree = "<group>"; };
+		7A1749BC21A064E000E9AA12 /* JSShareManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSShareManager.m; sourceTree = "<group>"; };
+		7A1749BE21A066B400E9AA12 /* GFPopMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFPopMenuView.h; sourceTree = "<group>"; };
+		7A1749BF21A066B500E9AA12 /* GFPopMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFPopMenuView.m; sourceTree = "<group>"; };
+		7A1749C121A0789000E9AA12 /* JSInputCodeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSInputCodeViewController.h; sourceTree = "<group>"; };
+		7A1749C221A0789000E9AA12 /* JSInputCodeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSInputCodeViewController.m; sourceTree = "<group>"; };
 		7A203E42218BE02A0001F926 /* JSLoginMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSLoginMainViewController.h; sourceTree = "<group>"; };
 		7A203E43218BE02A0001F926 /* JSLoginMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSLoginMainViewController.m; sourceTree = "<group>"; };
 		7A203E45218BE53F0001F926 /* JSLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSLoginViewController.h; sourceTree = "<group>"; };
@@ -473,6 +483,8 @@
 		7AB931A8219E9490001E5390 /* JSConvertViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSConvertViewController.m; sourceTree = "<group>"; };
 		7AB931AA219E9763001E5390 /* JSAccountModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSAccountModel.h; sourceTree = "<group>"; };
 		7AB931AB219E9763001E5390 /* JSAccountModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSAccountModel.m; sourceTree = "<group>"; };
+		7AB931AD219EDF89001E5390 /* JSIncomeListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSIncomeListViewController.h; sourceTree = "<group>"; };
+		7AB931AE219EDF89001E5390 /* JSIncomeListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSIncomeListViewController.m; sourceTree = "<group>"; };
 		7ABD9E512191BA6500E19B6A /* UIView+SDExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SDExtension.h"; sourceTree = "<group>"; };
 		7ABD9E522191BA6500E19B6A /* SDCycleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDCycleScrollView.h; sourceTree = "<group>"; };
 		7ABD9E532191BA6500E19B6A /* SDCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDCollectionViewCell.h; sourceTree = "<group>"; };
@@ -800,6 +812,10 @@
 			children = (
 				7A203E4C218BF2430001F926 /* JSAccountManager.h */,
 				7A203E4D218BF2430001F926 /* JSAccountManager.m */,
+				7A1749BB21A064E000E9AA12 /* JSShareManager.h */,
+				7A1749BC21A064E000E9AA12 /* JSShareManager.m */,
+				7A1749BE21A066B400E9AA12 /* GFPopMenuView.h */,
+				7A1749BF21A066B500E9AA12 /* GFPopMenuView.m */,
 				7A8F678821903DD3008A00F4 /* JSAccountManager+Wechat.h */,
 				7A8F678921903DD3008A00F4 /* JSAccountManager+Wechat.m */,
 				7A8F678B2190473B008A00F4 /* JSAccountManager+QQ.h */,
@@ -1002,6 +1018,10 @@
 				7A600ECB219C1BA40033F6DF /* JSMyWalletViewController.m */,
 				7AB931A7219E9490001E5390 /* JSConvertViewController.h */,
 				7AB931A8219E9490001E5390 /* JSConvertViewController.m */,
+				7AB931AD219EDF89001E5390 /* JSIncomeListViewController.h */,
+				7AB931AE219EDF89001E5390 /* JSIncomeListViewController.m */,
+				7A1749C121A0789000E9AA12 /* JSInputCodeViewController.h */,
+				7A1749C221A0789000E9AA12 /* JSInputCodeViewController.m */,
 				7AB931A4219E6BBF001E5390 /* JSMyWalletCell.h */,
 				7AB931A5219E6BBF001E5390 /* JSMyWalletCell.m */,
 				7A898F71219528D500A7CADD /* JSPerfectUserInfoCell.h */,
@@ -1477,6 +1497,7 @@
 				7ABD9E662191BA6600E19B6A /* TAAbstractDotView.m in Sources */,
 				7A5FEE91218AFC92006CF7EC /* JSTabBar.m in Sources */,
 				7A6E473C21997C5B00D5C559 /* JSPrivacyViewController.m in Sources */,
+				7A1749C321A0789000E9AA12 /* JSInputCodeViewController.m in Sources */,
 				0045205B2190484700371F10 /* JSLongVideoModel.m in Sources */,
 				7A6E474221997DCE00D5C559 /* JSAboutUsViewController.m in Sources */,
 				7A8F677A218FCF72008A00F4 /* JSNetworkManager.m in Sources */,
@@ -1500,6 +1521,7 @@
 				006043312197C7700080091A /* UIView+ZFFrame.m in Sources */,
 				7ABD9E652191BA6600E19B6A /* TAAnimatedDotView.m in Sources */,
 				002B7404219862AB00483841 /* JSComputeTime.m in Sources */,
+				7A1749BD21A064E000E9AA12 /* JSShareManager.m in Sources */,
 				0045206121904AE600371F10 /* JSLongVideoCell.m in Sources */,
 				7A600EC6219C1A3E0033F6DF /* JSShopViewController.m in Sources */,
 				006043442197CA8A0080091A /* ZFDouYinControlView.m in Sources */,
@@ -1561,6 +1583,7 @@
 				7A898F8B21956B0F00A7CADD /* GGAssetCollectionCell.m in Sources */,
 				7A015E11219A75BE0025D24F /* JSWithdrawViewController.m in Sources */,
 				7A5FEE8B218AFBAC006CF7EC /* JSTabBarViewController.m in Sources */,
+				7AB931AF219EDF89001E5390 /* JSIncomeListViewController.m in Sources */,
 				00452056219011F200371F10 /* JSShortVideoViewController.m in Sources */,
 				0060432E2197C7700080091A /* ZFIJKPlayerManager.m in Sources */,
 				7ABD9E632191BA6600E19B6A /* TADotView.m in Sources */,
@@ -1595,6 +1618,7 @@
 				7A846ECD219333D10048F222 /* NSDictionary+SetNullWithStr.m in Sources */,
 				7A5FEE94218AFD7D006CF7EC /* JSMainTabBar.m in Sources */,
 				7A898F6B21941D8900A7CADD /* JSMessageModel.m in Sources */,
+				7A1749C021A066B500E9AA12 /* GFPopMenuView.m in Sources */,
 				7A600EC3219BFACA0033F6DF /* JSWithdrawAlertView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

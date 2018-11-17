@@ -60,6 +60,9 @@ typedef  NS_ENUM(NSInteger, JSRequestSecurityCodeType){
 
 //兑换
 + (void)exchangeWithMoney:(NSInteger)money complement:(void(^)(BOOL isSuccess,NSDictionary *contentDict))complement;
+
+//排行榜
++ (void)questListWithWeak:(BOOL)isWeak complement:(void(^)(BOOL isSuccess,NSDictionary *contentDict))complemnt;
 @end
 
 NS_ASSUME_NONNULL_END

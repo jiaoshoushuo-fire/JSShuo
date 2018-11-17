@@ -232,7 +232,9 @@
         @weakify(self)
         [_loginBottomView.wechatLoginButton bk_addEventHandler:^(id sender) {
             @strongify(self)
+            [self showWaitingHUD];
             [JSAccountManager wechatAuthorizeFromLogin:YES completion:^(BOOL success) {
+                [self hideWaitingHUD];
                 if (success) {
                     if (self.delegate && [self.delegate respondsToSelector:@selector(didLoginSuccessComplement)]) {
                         [self.delegate didLoginSuccessComplement];

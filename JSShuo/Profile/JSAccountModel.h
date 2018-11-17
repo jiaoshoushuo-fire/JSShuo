@@ -45,4 +45,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+@interface JSListModel : MTLModel<MTLJSONSerializing>
+
+@property (nonatomic, assign)NSInteger userId;
+@property (nonatomic, assign)NSInteger totalCoin;
+@property (nonatomic, assign)NSInteger friendNum;
+
+@end
+
 NS_ASSUME_NONNULL_END

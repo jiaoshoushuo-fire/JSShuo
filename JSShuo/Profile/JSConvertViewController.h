@@ -10,9 +10,16 @@
 #import "JSAccountModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol JSConvertViewControllerDelegate <NSObject>
+
+- (void)didRefreshWithdrawViewController;
+
+@end
+
 @interface JSConvertViewController : JSBaseViewController
 
 @property (nonatomic, strong)JSAccountModel *accountModel;
+@property (nonatomic, weak)id <JSConvertViewControllerDelegate>delegate;
 @end
 
 NS_ASSUME_NONNULL_END
