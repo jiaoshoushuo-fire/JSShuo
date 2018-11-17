@@ -12,6 +12,7 @@
 #import "TYPagerController.h"
 #import "JSNavSearchView.h"
 #import "JSNetworkManager+Channel.h"
+#import "JSSearchViewController.h"
 
 
 @interface JSHomeTitleBarViewController () <TYTabPagerBarDataSource,TYTabPagerBarDelegate,TYPagerControllerDataSource,TYPagerControllerDelegate>
@@ -102,6 +103,7 @@
 
 - (UIViewController *)pagerController:(TYPagerController *)pagerController controllerForIndex:(NSInteger)index prefetching:(BOOL)prefetching {
     JSHomeViewController *vc = [[JSHomeViewController alloc] init];
+    vc.type = JSHomePage;
     vc.genreID = [_datas[index] objectForKey:@"channelId"];
     return vc;
 }
@@ -120,6 +122,13 @@
     nav.backgroundColor = [UIColor colorWithHexString:@"F44336"];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pushToSearchVC:)];
     [nav.searchRectangle addGestureRecognizer:tap];
+    [nav.headButton bk_addEventHandler:^(id sender) {
+        [JSAccountManager checkLoginStatusComplement:^(BOOL isLogin) {
+            if (isLogin) {
+                NSLog(@"跳转到个人页面");
+            }
+        }];
+    } forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:nav];
     [nav mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(self.view);
@@ -129,7 +138,9 @@
 }
 
 - (void) pushToSearchVC:(UITapGestureRecognizer *)tap {
-    NSLog(@"应该进入搜索页面");
+    JSSearchViewController *vc = [JSSearchViewController new];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.rt_navigationController pushViewController:vc animated:YES complete:nil];
 }
 
 

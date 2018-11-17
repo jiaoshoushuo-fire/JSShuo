@@ -10,16 +10,34 @@
 #import "JSLongVideoModel.h"
 
 const static NSString *longVideoList = @"/v1/content/list";
+const static NSString *searchResult = @"/v1/content/search";
 
 @implementation JSNetworkManager (LongVideo)
 
-+ (void) requestLongVideoListWithParams:(NSDictionary *)params complent:(void(^)(NSArray *modelsArray))complent {
++ (void) requestLongVideoListWithParams:(NSDictionary *)params complent:(void(^)(NSNumber *totalPage,NSArray *modelsArray))complent {
     NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,longVideoList];
     [self GET:url parameters:params complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
-        if (complent) {
+        if (complent && isSuccess) {
             NSArray *array = [JSLongVideoModel modelsWithArray:responseDict[@"list"]];
             
-            complent(array);
+            complent(responseDict[@"totalPage"],array);
+        } else {
+            NSArray *tempArr = [NSArray array];
+            complent(@0,tempArr);
+        }
+    }];
+}
+
++ (void) requestKeywordWihtParmas:(NSDictionary *)params complent:(void(^)(BOOL isSuccess, NSNumber *totalPage, NSArray *modelsArray))complent {
+    NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,searchResult];
+    [self GET:url parameters:params complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
+        if (complent && isSuccess) {
+            NSArray *array = [JSLongVideoModel modelsWithArray:responseDict[@"list"]];
+            
+            complent(true,responseDict[@"totalPage"],array);
+        } else {
+            NSArray *tempArr = [NSArray array];
+            complent(false,@0,tempArr);
         }
     }];
 }

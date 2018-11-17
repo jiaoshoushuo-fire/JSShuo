@@ -14,35 +14,74 @@
 #import "JSShowTypeBigPictureTableViewCell.h"
 #import "JSShowTypeSmallPictureTableViewCell.h"
 #import "JSShowTypeThreePictureTableViewCell.h"
+#import "JSNetworkManager+Search.h"
 
 
 @interface JSHomeViewController () <UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) UITableView *tableView;
-@property (nonatomic,strong) NSArray *datas;
+@property (nonatomic,strong) NSMutableArray *datas;
+@property (nonatomic,strong) NSNumber *currentPage;
 @end
 
 @implementation JSHomeViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    NSDictionary *params = @{@"pageNum":@1,@"channel":self.genreID,@"pageSize":@20};
-    [JSNetworkManager requestLongVideoListWithParams:params complent:^(NSArray * _Nonnull modelsArray) {
-        NSMutableArray *tempArr = [[NSMutableArray alloc] initWithCapacity:0];
-        for (int i = 0; i < modelsArray.count; i++) {
-            JSHomeModel *model = modelsArray[i];
-            if (model.showType.intValue == 1 || model.showType.intValue == 2 || model.showType.intValue == 3) {
-                [tempArr addObject:model];
-            }
-        }
-        self.datas = (NSArray *)tempArr;
-        if (self.tableView) {
-            [self.tableView reloadData];
+    _currentPage = @1;
+    [self initTableView];
+    _type == JSHomePage ? [self requestData] : [self requestSearchResultData];
+}
+
+- (void) requestData {
+    NSLog(@"第%@页",_currentPage);
+    NSDictionary *params = @{@"pageNum":_currentPage,@"channel":self.genreID,@"pageSize":@5};
+    [JSNetworkManager requestLongVideoListWithParams:params complent:^(NSNumber * _Nonnull totalPage, NSArray * _Nonnull modelsArray) {
+        [self dealData:modelsArray];
+    }];
+}
+
+- (void) requestSearchResultData {
+    NSDictionary *params = @{@"keyword":self.keywrod,@"type":[NSString stringWithFormat:@"%i",_searchType],@"pageNum":_currentPage,@"pageSize":@5};
+    [JSNetworkManager requestKeywordWihtParmas:params complent:^(BOOL isSuccess, NSNumber * _Nonnull totalPage, NSArray * _Nonnull modelsArray) {
+        if (isSuccess) {
+            [self dealData:modelsArray];
+        } else {
+            NSLog(@"请求数据失败");
         }
     }];
-    
-//    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight-49-60) style:UITableViewStylePlain];
+}
+
+- (void) dealData:(NSArray *)modelsArray {
+    if (modelsArray.count < 1) { // 如果数组为空，则说明请求失败
+        [self.tableView.mj_header endRefreshing];
+        [self.tableView.mj_footer endRefreshing];
+    }
+    NSMutableArray *tempArr = [[NSMutableArray alloc] initWithCapacity:0];
+    for (int i = 0; i < modelsArray.count; i++) {
+        JSHomeModel *model = modelsArray[i];
+        if (model.showType.intValue == 1 || model.showType.intValue == 2 || model.showType.intValue == 3) {
+            [tempArr addObject:model];
+        }
+    }
+    if (self.currentPage.integerValue == 1) { // 下拉刷新
+        self.datas = tempArr;
+        [self.tableView.mj_header endRefreshing];
+    } else {
+        [self.datas addObjectsFromArray:tempArr];
+        [self.tableView.mj_footer endRefreshing];
+    }
+    if (self.tableView) {
+        [self.tableView reloadData];
+    }
+}
+
+- (void) initTableView {
     self.tableView = [[UITableView alloc] init];
+    if (_type == JSHomePage) {
+        self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight-49-60-38) style:UITableViewStylePlain];
+    } else {
+        self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight-64) style:UITableViewStylePlain];
+    }
     [_tableView registerClass:[JSShowTypeBigPictureTableViewCell class] forCellReuseIdentifier:@"JSShowTypeBigPictureTableViewCell"];
     [_tableView registerClass:[JSShowTypeSmallPictureTableViewCell class] forCellReuseIdentifier:@"JSShowTypeSmallPictureTableViewCell"];
     [_tableView registerClass:[JSShowTypeThreePictureTableViewCell class] forCellReuseIdentifier:@"JSShowTypeThreePictureTableViewCell"];
@@ -51,9 +90,21 @@
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_tableView];
     
-    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.and.left.and.right.mas_equalTo(0);
-        make.height.mas_equalTo(ScreenHeight-49-60-38);
+//    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.and.left.and.right.mas_equalTo(0);
+//        make.height.mas_equalTo(ScreenHeight-49-60-38);
+//    }];
+    @weakify(self)
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        @strongify(self)
+        self.currentPage = @1;
+        [self requestData];
+    }];
+    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        @strongify(self)
+        int temp = self.currentPage.intValue + 1;
+        self.currentPage = [NSNumber numberWithInt:temp];
+        [self requestData];
     }];
 }
 
