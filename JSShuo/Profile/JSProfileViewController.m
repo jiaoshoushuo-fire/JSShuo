@@ -19,6 +19,11 @@
 #import "JSInvitationViewController.h"
 #import "JSMyWalletViewController.h"
 #import "JSInputCodeViewController.h"
+#import "JSGamesViewController.h"
+#import "JSMemberViewController.h"
+#import "JSCommonQuestionViewController.h"
+#import "JSMyCommentViewController.h"
+#import "JSMyCollectViewController.h"
 
 @interface JSProfileItemView : UIView
 @property (nonatomic, strong)UIImageView *itemImageView;
@@ -362,6 +367,7 @@
     return self;
 }
 - (void)setUserModel:(JSProfileUserModel *)userModel{
+    _userModel = userModel;
     self.titleLabel.text = userModel.nickname;
     self.subLabel.text = userModel.inviteCode;
     [self.avaterIcon setImageWithURL:[NSURL URLWithString:userModel.portrait] placeholder:nil];
@@ -613,15 +619,30 @@
     }else if ([title isEqualToString:@"任务中心"]){
         
     }else if ([title isEqualToString:@"游戏大厅"]){
+        JSGamesViewController *gamesVC = [[JSGamesViewController alloc]init];
+        gamesVC.hidesBottomBarWhenPushed = YES;
+        [self.rt_navigationController pushViewController:gamesVC animated:YES complete:nil];
         
     }else if ([title isEqualToString:@"会员大促销"]){
+        JSMemberViewController *memberVC = [[JSMemberViewController alloc]init];
+        memberVC.hidesBottomBarWhenPushed = YES;
+        [self.rt_navigationController pushViewController:memberVC animated:YES complete:nil];
         
     }else if ([title isEqualToString:@"常见问题"]){
+        JSCommonQuestionViewController *commonVC = [[JSCommonQuestionViewController alloc]init];
+        commonVC.hidesBottomBarWhenPushed = YES;
+        [self.rt_navigationController pushViewController:commonVC animated:YES complete:nil];
         
     }else if ([title isEqualToString:@"我的评论"]){
+        JSMyCommentViewController *myCommentVC = [[JSMyCommentViewController alloc]init];
+        myCommentVC.userModel = self.headerView.userModel;
+        myCommentVC.hidesBottomBarWhenPushed = YES;
+        [self.rt_navigationController pushViewController:myCommentVC animated:YES complete:nil];
         
     }else if ([title isEqualToString:@"我的收藏"]){
-        
+        JSMyCollectViewController *myCollectVC = [[JSMyCollectViewController alloc]init];
+        myCollectVC.hidesBottomBarWhenPushed = YES;
+        [self.rt_navigationController pushViewController:myCollectVC animated:YES complete:nil];
     }
 }
 - (void)dealloc{

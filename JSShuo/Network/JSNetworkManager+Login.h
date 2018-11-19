@@ -63,6 +63,21 @@ typedef  NS_ENUM(NSInteger, JSRequestSecurityCodeType){
 
 //排行榜
 + (void)questListWithWeak:(BOOL)isWeak complement:(void(^)(BOOL isSuccess,NSDictionary *contentDict))complemnt;
+
+//我的评论
++ (void)questCommentListWith:(NSInteger)pageNumber complement:(void(^)(BOOL isSuccess,NSDictionary *contentDict))complemnt;
+
+//收到的评论
++ (void)questRecvCommentListWith:(NSInteger)pageNumber complement:(void(^)(BOOL isSuccess,NSDictionary *contentDict))complemnt;
+
+//清空评论
++ (void)clearCommentComplement:(void(^)(BOOL isSuccess,NSDictionary *contentDict))complement;
+
+//收藏列表
++ (void)requestCollectListWithType:(NSInteger)type pageNumber:(NSInteger)pageIndex complement:(void(^)(BOOL isSuccess, NSDictionary *contentDict))complement;
+
+//删除收藏
++ (void)requestDeleateCollectWithID:(NSInteger)collectId complement:(void(^)(BOOL isSuccess, NSDictionary *contentDict))complement;
 @end
 
 NS_ASSUME_NONNULL_END

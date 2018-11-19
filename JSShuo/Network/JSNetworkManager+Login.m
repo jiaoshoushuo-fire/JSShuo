@@ -23,7 +23,11 @@ const static NSString *queryAccountUrl = @"/v1/account/query";
 const static NSString *accountRunningwaterList = @"/v1/account/detail/list";
 const static NSString *exchangerUrl = @"/v1/account/exchange";
 const static NSString *rangkListUrl = @"/v1/ranking/list";
-
+const static NSString *commentListUrl = @"/v1/user/comment/list";
+const static NSString *recvCommentListUrl = @"/v1/user/comment/recv";
+const static NSString *clearCommentListUrl = @"/v1/user/comment/clear";
+const static NSString *collectListUrl = @"/v1/user/collect/list";
+const static NSString *deleateCollectUrl = @"/v1/user/collect/delete";
 
 @implementation JSNetworkManager (Login)
 
@@ -260,5 +264,58 @@ const static NSString *rangkListUrl = @"/v1/ranking/list";
             complemnt(isSuccess,responseDict);
         }
     }];
+}
+
+//我的评论
++ (void)questCommentListWith:(NSInteger)pageNumber complement:(void(^)(BOOL isSuccess,NSDictionary *contentDict))complemnt{
+    NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,commentListUrl];
+    NSDictionary *param = @{@"token":[JSAccountManager shareManager].accountToken,@"pageNum":@(pageNumber),@"pageSize":@(10)};
+    [self GET:url parameters:param complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
+        if (complemnt) {
+            complemnt(isSuccess,responseDict);
+        }
+    }];
+}
+
+//收到的评论
++ (void)questRecvCommentListWith:(NSInteger)pageNumber complement:(void(^)(BOOL isSuccess,NSDictionary *contentDict))complemnt{
+    NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,recvCommentListUrl];
+    NSDictionary *param = @{@"token":[JSAccountManager shareManager].accountToken,@"pageNum":@(pageNumber),@"pageSize":@(10)};
+    [self GET:url parameters:param complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
+        if (complemnt) {
+            complemnt(isSuccess,responseDict);
+        }
+    }];
+}
+
++ (void)clearCommentComplement:(void(^)(BOOL isSuccess,NSDictionary *contentDict))complement{
+    NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,clearCommentListUrl];
+    NSDictionary *param = @{@"token":[JSAccountManager shareManager].accountToken};
+    [self POST:url parameters:param complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
+        if (complement) {
+            complement(isSuccess,responseDict);
+        }
+    }];
+}
+
++ (void)requestCollectListWithType:(NSInteger)type pageNumber:(NSInteger)pageIndex complement:(void(^)(BOOL isSuccess, NSDictionary *contentDict))complement{
+    NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,collectListUrl];
+    NSDictionary *param = @{@"token":[JSAccountManager shareManager].accountToken,@"type":@(type),@"pageNum":@(pageIndex),@"pageSize":@(10)};
+    [self GET:url parameters:param complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
+        if (complement) {
+            complement(isSuccess,responseDict);
+        }
+    }];
+}
+
++ (void)requestDeleateCollectWithID:(NSInteger)collectId complement:(void(^)(BOOL isSuccess, NSDictionary *contentDict))complement{
+    NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,deleateCollectUrl];
+    NSDictionary *param = @{@"token":[JSAccountManager shareManager].accountToken,@"collectId":@(collectId)};
+    [self POST:url parameters:param complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
+        if (complement) {
+            complement(isSuccess,responseDict);
+        }
+    }];
+    
 }
 @end

@@ -10,16 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-//{
-//    accountId = 1120965;
-//    coin = 18;
-//    exchangeRate = 20;
-//    money = 111;
-//    todayCoin = 0;
-//    todayMoney = 0;
-//    totalCoin = 18;
-//    totalMoney = 111;
-//}
+
 @interface JSAccountModel : MTLModel <MTLJSONSerializing>
 @property (nonatomic, assign)NSInteger accountId;
 @property (nonatomic, assign)NSInteger coin;

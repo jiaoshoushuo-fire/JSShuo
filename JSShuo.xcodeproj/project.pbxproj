@@ -79,6 +79,16 @@
 		7A1749BD21A064E000E9AA12 /* JSShareManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1749BC21A064E000E9AA12 /* JSShareManager.m */; };
 		7A1749C021A066B500E9AA12 /* GFPopMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1749BF21A066B500E9AA12 /* GFPopMenuView.m */; };
 		7A1749C321A0789000E9AA12 /* JSInputCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1749C221A0789000E9AA12 /* JSInputCodeViewController.m */; };
+		7A1749C621A24C5F00E9AA12 /* JSGamesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1749C521A24C5F00E9AA12 /* JSGamesViewController.m */; };
+		7A1749C921A24CE700E9AA12 /* JSMemberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1749C821A24CE700E9AA12 /* JSMemberViewController.m */; };
+		7A1749CC21A24D3C00E9AA12 /* JSCommonQuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1749CB21A24D3C00E9AA12 /* JSCommonQuestionViewController.m */; };
+		7A1749CF21A24D8900E9AA12 /* JSMyCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1749CE21A24D8900E9AA12 /* JSMyCommentViewController.m */; };
+		7A1749D221A24DB900E9AA12 /* JSMyCollectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1749D121A24DB900E9AA12 /* JSMyCollectViewController.m */; };
+		7A1749D521A25A8C00E9AA12 /* JSSubMyCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1749D421A25A8C00E9AA12 /* JSSubMyCommentViewController.m */; };
+		7A1749D821A25C0C00E9AA12 /* JSMyCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1749D721A25C0C00E9AA12 /* JSMyCommentCell.m */; };
+		7A1749DB21A28D7300E9AA12 /* JSMyCollectArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1749DA21A28D7300E9AA12 /* JSMyCollectArticleViewController.m */; };
+		7A1749DE21A28D8300E9AA12 /* JSMyCollectVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1749DD21A28D8300E9AA12 /* JSMyCollectVideoViewController.m */; };
+		7A1749E121A2ADC900E9AA12 /* JSCollectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1749E021A2ADC900E9AA12 /* JSCollectModel.m */; };
 		7A203E44218BE02A0001F926 /* JSLoginMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A203E43218BE02A0001F926 /* JSLoginMainViewController.m */; };
 		7A203E47218BE53F0001F926 /* JSLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A203E46218BE53F0001F926 /* JSLoginViewController.m */; };
 		7A203E4A218BE5650001F926 /* JSRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A203E49218BE5650001F926 /* JSRegisterViewController.m */; };
@@ -337,6 +347,26 @@
 		7A1749BF21A066B500E9AA12 /* GFPopMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFPopMenuView.m; sourceTree = "<group>"; };
 		7A1749C121A0789000E9AA12 /* JSInputCodeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSInputCodeViewController.h; sourceTree = "<group>"; };
 		7A1749C221A0789000E9AA12 /* JSInputCodeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSInputCodeViewController.m; sourceTree = "<group>"; };
+		7A1749C421A24C5F00E9AA12 /* JSGamesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSGamesViewController.h; sourceTree = "<group>"; };
+		7A1749C521A24C5F00E9AA12 /* JSGamesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSGamesViewController.m; sourceTree = "<group>"; };
+		7A1749C721A24CE700E9AA12 /* JSMemberViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSMemberViewController.h; sourceTree = "<group>"; };
+		7A1749C821A24CE700E9AA12 /* JSMemberViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSMemberViewController.m; sourceTree = "<group>"; };
+		7A1749CA21A24D3C00E9AA12 /* JSCommonQuestionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSCommonQuestionViewController.h; sourceTree = "<group>"; };
+		7A1749CB21A24D3C00E9AA12 /* JSCommonQuestionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSCommonQuestionViewController.m; sourceTree = "<group>"; };
+		7A1749CD21A24D8900E9AA12 /* JSMyCommentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSMyCommentViewController.h; sourceTree = "<group>"; };
+		7A1749CE21A24D8900E9AA12 /* JSMyCommentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSMyCommentViewController.m; sourceTree = "<group>"; };
+		7A1749D021A24DB900E9AA12 /* JSMyCollectViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSMyCollectViewController.h; sourceTree = "<group>"; };
+		7A1749D121A24DB900E9AA12 /* JSMyCollectViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSMyCollectViewController.m; sourceTree = "<group>"; };
+		7A1749D321A25A8C00E9AA12 /* JSSubMyCommentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSSubMyCommentViewController.h; sourceTree = "<group>"; };
+		7A1749D421A25A8C00E9AA12 /* JSSubMyCommentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSSubMyCommentViewController.m; sourceTree = "<group>"; };
+		7A1749D621A25C0C00E9AA12 /* JSMyCommentCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSMyCommentCell.h; sourceTree = "<group>"; };
+		7A1749D721A25C0C00E9AA12 /* JSMyCommentCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSMyCommentCell.m; sourceTree = "<group>"; };
+		7A1749D921A28D7300E9AA12 /* JSMyCollectArticleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSMyCollectArticleViewController.h; sourceTree = "<group>"; };
+		7A1749DA21A28D7300E9AA12 /* JSMyCollectArticleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSMyCollectArticleViewController.m; sourceTree = "<group>"; };
+		7A1749DC21A28D8300E9AA12 /* JSMyCollectVideoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSMyCollectVideoViewController.h; sourceTree = "<group>"; };
+		7A1749DD21A28D8300E9AA12 /* JSMyCollectVideoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSMyCollectVideoViewController.m; sourceTree = "<group>"; };
+		7A1749DF21A2ADC900E9AA12 /* JSCollectModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSCollectModel.h; sourceTree = "<group>"; };
+		7A1749E021A2ADC900E9AA12 /* JSCollectModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSCollectModel.m; sourceTree = "<group>"; };
 		7A203E42218BE02A0001F926 /* JSLoginMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSLoginMainViewController.h; sourceTree = "<group>"; };
 		7A203E43218BE02A0001F926 /* JSLoginMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSLoginMainViewController.m; sourceTree = "<group>"; };
 		7A203E45218BE53F0001F926 /* JSLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSLoginViewController.h; sourceTree = "<group>"; };
@@ -1079,6 +1109,24 @@
 				7AB931AE219EDF89001E5390 /* JSIncomeListViewController.m */,
 				7A1749C121A0789000E9AA12 /* JSInputCodeViewController.h */,
 				7A1749C221A0789000E9AA12 /* JSInputCodeViewController.m */,
+				7A1749C421A24C5F00E9AA12 /* JSGamesViewController.h */,
+				7A1749C521A24C5F00E9AA12 /* JSGamesViewController.m */,
+				7A1749C721A24CE700E9AA12 /* JSMemberViewController.h */,
+				7A1749C821A24CE700E9AA12 /* JSMemberViewController.m */,
+				7A1749CA21A24D3C00E9AA12 /* JSCommonQuestionViewController.h */,
+				7A1749CB21A24D3C00E9AA12 /* JSCommonQuestionViewController.m */,
+				7A1749CD21A24D8900E9AA12 /* JSMyCommentViewController.h */,
+				7A1749CE21A24D8900E9AA12 /* JSMyCommentViewController.m */,
+				7A1749D321A25A8C00E9AA12 /* JSSubMyCommentViewController.h */,
+				7A1749D421A25A8C00E9AA12 /* JSSubMyCommentViewController.m */,
+				7A1749D621A25C0C00E9AA12 /* JSMyCommentCell.h */,
+				7A1749D721A25C0C00E9AA12 /* JSMyCommentCell.m */,
+				7A1749D021A24DB900E9AA12 /* JSMyCollectViewController.h */,
+				7A1749D121A24DB900E9AA12 /* JSMyCollectViewController.m */,
+				7A1749D921A28D7300E9AA12 /* JSMyCollectArticleViewController.h */,
+				7A1749DA21A28D7300E9AA12 /* JSMyCollectArticleViewController.m */,
+				7A1749DC21A28D8300E9AA12 /* JSMyCollectVideoViewController.h */,
+				7A1749DD21A28D8300E9AA12 /* JSMyCollectVideoViewController.m */,
 				7AB931A4219E6BBF001E5390 /* JSMyWalletCell.h */,
 				7AB931A5219E6BBF001E5390 /* JSMyWalletCell.m */,
 				7A898F71219528D500A7CADD /* JSPerfectUserInfoCell.h */,
@@ -1093,6 +1141,8 @@
 				7A898F6A21941D8900A7CADD /* JSMessageModel.m */,
 				7AB931AA219E9763001E5390 /* JSAccountModel.h */,
 				7AB931AB219E9763001E5390 /* JSAccountModel.m */,
+				7A1749DF21A2ADC900E9AA12 /* JSCollectModel.h */,
+				7A1749E021A2ADC900E9AA12 /* JSCollectModel.m */,
 				7A898F9A2195865200A7CADD /* JSInputBar.h */,
 				7A898F9B2195865200A7CADD /* JSInputBar.m */,
 				7A600EC1219BFAC90033F6DF /* JSWithdrawAlertView.h */,
@@ -1553,6 +1603,7 @@
 				7A6E47362199774200D5C559 /* GFCacheUtil.m in Sources */,
 				7A5FEEA0218B07B7006CF7EC /* JSRootViewController.m in Sources */,
 				7A898F3F2193C4F600A7CADD /* JSMessageViewController.m in Sources */,
+				7A1749C921A24CE700E9AA12 /* JSMemberViewController.m in Sources */,
 				7ABD9E662191BA6600E19B6A /* TAAbstractDotView.m in Sources */,
 				7A5FEE91218AFC92006CF7EC /* JSTabBar.m in Sources */,
 				002B74D5219D677900483841 /* JSSearchTopNavView.m in Sources */,
@@ -1560,6 +1611,7 @@
 				7A1749C321A0789000E9AA12 /* JSInputCodeViewController.m in Sources */,
 				0045205B2190484700371F10 /* JSLongVideoModel.m in Sources */,
 				7A6E474221997DCE00D5C559 /* JSAboutUsViewController.m in Sources */,
+				7A1749CC21A24D3C00E9AA12 /* JSCommonQuestionViewController.m in Sources */,
 				7A8F677A218FCF72008A00F4 /* JSNetworkManager.m in Sources */,
 				7A898F73219528D500A7CADD /* JSPerfectUserInfoCell.m in Sources */,
 				004910A92195584B00B85B4F /* JSShowTypeSmallPictureTableViewCell.m in Sources */,
@@ -1567,11 +1619,13 @@
 				004521192192DFB600371F10 /* JSHomeModel.m in Sources */,
 				004910A221951DB700B85B4F /* UITableView+FDKeyedHeightCache.m in Sources */,
 				006043472197CAA20080091A /* ZFDouYinCell.m in Sources */,
+				7A1749D221A24DB900E9AA12 /* JSMyCollectViewController.m in Sources */,
 				0060434D2197D35D0080091A /* JSNetworkManager+ShortVideo.m in Sources */,
 				7A8F677A218FCF72008A00F4 /* JSNetworkManager.m in Sources */,
 				0060432F2197C7700080091A /* ZFAVPlayerManager.m in Sources */,
 				7A8F67902190492A008A00F4 /* JSAccountManager+SinaWeibo.m in Sources */,
 				7A846ECA219290AB0048F222 /* JSProfileUserModel.m in Sources */,
+				7A1749DB21A28D7300E9AA12 /* JSMyCollectArticleViewController.m in Sources */,
 				002B74D8219E5A0700483841 /* JSHotSearchTitleCollectionViewCell.m in Sources */,
 				7A5FEEA9218B0BD0006CF7EC /* JSMainViewController.m in Sources */,
 				7A5FEE98218AFEA1006CF7EC /* UIColor+JSShuo.m in Sources */,
@@ -1596,6 +1650,7 @@
 				7ABD9E622191BA6600E19B6A /* SDCollectionViewCell.m in Sources */,
 				0045204C218EEE3500371F10 /* JSNavSearchView.m in Sources */,
 				006043232197C7700080091A /* ZFPlayerGestureControl.m in Sources */,
+				7A1749CF21A24D8900E9AA12 /* JSMyCommentViewController.m in Sources */,
 				006043272197C7700080091A /* UIScrollView+ZFPlayer.m in Sources */,
 				0045211C2192E02700371F10 /* JSHomeTableViewCell.m in Sources */,
 				7A5FEEBD218B0D8A006CF7EC /* JSMissionViewController.m in Sources */,
@@ -1610,6 +1665,7 @@
 				7A898F5E2193E4EF00A7CADD /* UITabBarItem+WZLBadge.m in Sources */,
 				7A5FEE61218ACBAE006CF7EC /* main.m in Sources */,
 				7A203E44218BE02A0001F926 /* JSLoginMainViewController.m in Sources */,
+				7A1749C621A24C5F00E9AA12 /* JSGamesViewController.m in Sources */,
 				7A203E4A218BE5650001F926 /* JSRegisterViewController.m in Sources */,
 				004910AC2195586100B85B4F /* JSShowTypeThreePictureTableViewCell.m in Sources */,
 				006043372197C7700080091A /* ZFPlayerControlView.m in Sources */,
@@ -1634,8 +1690,10 @@
 				7A5FEE9C218B0058006CF7EC /* UIFont+JSShuo.m in Sources */,
 				004910A021951DB700B85B4F /* UITableView+FDTemplateLayoutCellDebug.m in Sources */,
 				7AB931A6219E6BBF001E5390 /* JSMyWalletCell.m in Sources */,
+				7A1749D821A25C0C00E9AA12 /* JSMyCommentCell.m in Sources */,
 				006043252197C7700080091A /* ZFOrientationObserver.m in Sources */,
 				0060433A2197C7700080091A /* ZFSpeedLoadingView.m in Sources */,
+				7A1749DE21A28D8300E9AA12 /* JSMyCollectVideoViewController.m in Sources */,
 				7A898F492193D88F00A7CADD /* JSAdjustButton.m in Sources */,
 				7A898F622193FFE100A7CADD /* JSNotificationViewController.m in Sources */,
 				7A203E47218BE53F0001F926 /* JSLoginViewController.m in Sources */,
@@ -1682,7 +1740,9 @@
 				006043262197C7700080091A /* ZFPlayerLogManager.m in Sources */,
 				7A898F682194065E00A7CADD /* JSMessageCell.m in Sources */,
 				7A846ECD219333D10048F222 /* NSDictionary+SetNullWithStr.m in Sources */,
+				7A1749E121A2ADC900E9AA12 /* JSCollectModel.m in Sources */,
 				7A5FEE94218AFD7D006CF7EC /* JSMainTabBar.m in Sources */,
+				7A1749D521A25A8C00E9AA12 /* JSSubMyCommentViewController.m in Sources */,
 				7A898F6B21941D8900A7CADD /* JSMessageModel.m in Sources */,
 				7A1749C021A066B500E9AA12 /* GFPopMenuView.m in Sources */,
 				7A600EC3219BFACA0033F6DF /* JSWithdrawAlertView.m in Sources */,
