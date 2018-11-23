@@ -370,7 +370,7 @@
     _userModel = userModel;
     self.titleLabel.text = userModel.nickname;
     self.subLabel.text = userModel.inviteCode;
-    [self.avaterIcon setImageWithURL:[NSURL URLWithString:userModel.portrait] placeholder:nil];
+    [self.avaterIcon setImageWithURL:[NSURL URLWithString:userModel.portrait] placeholder:[UIImage imageNamed:@"js_profile_default_icon"]];
     self.myGoldNumber.text = @(userModel.coin).stringValue;
     self.myReadTime.text = @(userModel.readTime).stringValue;
     self.myPocketMoney.text = @(userModel.money).stringValue;

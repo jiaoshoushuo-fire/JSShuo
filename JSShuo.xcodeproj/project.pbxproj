@@ -102,6 +102,7 @@
 		7A5152A521A79B1300116494 /* JSRedPerformViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5152A421A79B1300116494 /* JSRedPerformViewController.m */; };
 		7A5152A821A7AAB500116494 /* CountDown.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5152A721A7AAB400116494 /* CountDown.m */; };
 		7A5152AB21A7D84900116494 /* JSOpenRedPackCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5152AA21A7D84900116494 /* JSOpenRedPackCell.m */; };
+		7A5152AE21A7F22400116494 /* JSBindIPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5152AD21A7F22400116494 /* JSBindIPhoneViewController.m */; };
 		7A5FEE53218ACBAD006CF7EC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5FEE52218ACBAD006CF7EC /* AppDelegate.m */; };
 		7A5FEE56218ACBAD006CF7EC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5FEE55218ACBAD006CF7EC /* ViewController.m */; };
 		7A5FEE59218ACBAD006CF7EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A5FEE57218ACBAD006CF7EC /* Main.storyboard */; };
@@ -403,6 +404,8 @@
 		7A5152A721A7AAB400116494 /* CountDown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountDown.m; sourceTree = "<group>"; };
 		7A5152A921A7D84900116494 /* JSOpenRedPackCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSOpenRedPackCell.h; sourceTree = "<group>"; };
 		7A5152AA21A7D84900116494 /* JSOpenRedPackCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSOpenRedPackCell.m; sourceTree = "<group>"; };
+		7A5152AC21A7F22400116494 /* JSBindIPhoneViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSBindIPhoneViewController.h; sourceTree = "<group>"; };
+		7A5152AD21A7F22400116494 /* JSBindIPhoneViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSBindIPhoneViewController.m; sourceTree = "<group>"; };
 		7A5FEE4E218ACBAD006CF7EC /* JSShuo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JSShuo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A5FEE51218ACBAD006CF7EC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7A5FEE52218ACBAD006CF7EC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -1131,6 +1134,8 @@
 				7A898F412193C50500A7CADD /* JSSettingViewController.m */,
 				7A898F6E21951D7B00A7CADD /* JSPerfectUserInfoViewController.h */,
 				7A898F6F21951D7B00A7CADD /* JSPerfectUserInfoViewController.m */,
+				7A5152AC21A7F22400116494 /* JSBindIPhoneViewController.h */,
+				7A5152AD21A7F22400116494 /* JSBindIPhoneViewController.m */,
 				7A6E473721997B8C00D5C559 /* JSFontChangeViewController.h */,
 				7A6E473821997B8C00D5C559 /* JSFontChangeViewController.m */,
 				7A6E473A21997C5B00D5C559 /* JSPrivacyViewController.h */,
@@ -1746,6 +1751,7 @@
 				7A898F8821956B0F00A7CADD /* GGPhotoPreviewViewController.m in Sources */,
 				7A898F8D21956B0F00A7CADD /* GGAssetItemCell.m in Sources */,
 				7AB931AC219E9763001E5390 /* JSAccountModel.m in Sources */,
+				7A5152AE21A7F22400116494 /* JSBindIPhoneViewController.m in Sources */,
 				7A898F9321956C4D00A7CADD /* GGPhotoLibrary.m in Sources */,
 				7A5FEEA6218B0BC2006CF7EC /* JSStartupViewController.m in Sources */,
 				7A2DDCB821A673EF00D77867 /* YUFoldingTableView.m in Sources */,

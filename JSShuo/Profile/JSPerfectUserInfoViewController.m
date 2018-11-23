@@ -11,8 +11,10 @@
 #import "JSNetworkManager+Login.h"
 #import "GGAssetsPickerViewController.h"
 #import "JSInputBar.h"
+#import "JSBindIPhoneViewController.h"
+#import "JSAccountManager+Wechat.h"
 #import <ActionSheetPicker.h>
-
+#import "JSWithdrawAlertView.h"
 
 
 
@@ -38,6 +40,11 @@
         _tableview.delegate = self;
         _tableview.dataSource = self;
         [_tableview registerClass:[JSPerfectUserInfoCell class] forCellReuseIdentifier:@"JSPerfectUserInfoCell"];
+        @weakify(self)
+        _tableview.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+            @strongify(self)
+            [self createData];
+        }];
         
     }
     return _tableview;
@@ -67,8 +74,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"完善资料";
+    
+    self.view.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:self.tableview];
+    [self.tableview mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.view);
+    }];
+    [self.tableview.mj_header beginRefreshing];
+    // Do any additional setup after loading the view.
+}
+- (void)createData{
     [JSNetworkManager queryUserInformationWitchComplement:^(BOOL isSuccess, JSProfileUserModel * _Nonnull userModel) {
         if (isSuccess) {
+            [self.tableview.mj_header endRefreshing];
+            [self.userInfos removeAllObjects];
             NSMutableArray *array1 = [NSMutableArray array];
             {
                 JSPerfectUserInfoCellModel *model = [[JSPerfectUserInfoCellModel alloc]init];
@@ -147,12 +166,6 @@
             [self.tableview reloadData];
         }
     }];
-    self.view.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:self.tableview];
-    [self.tableview mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view);
-    }];
-    // Do any additional setup after loading the view.
 }
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
@@ -350,11 +363,36 @@
         }];
         
     }else if ([model.title isEqualToString:@"手机号"]){
+        if ([model.subTitle isEqualToString:@"未绑定"]) {
+            JSBindIPhoneViewController *bindVC = [[JSBindIPhoneViewController alloc]init];
+            bindVC.codeType = JSRequestSecurityCodeTypeBindIPhone;
+            bindVC.complement = ^(BOOL isFinished) {
+                if (isFinished) {
+                    JSPerfectUserInfoCellModel *model = self.userInfos[1][0];
+                    model.subTitle = @"已绑定";
+                    model.isHasAccessory = NO;
+                    [self.tableview reloadRow:0 inSection:1 withRowAnimation:UITableViewRowAnimationFade];
+                }
+            };
+            [self.rt_navigationController pushViewController:bindVC animated:YES complete:nil];
+        }
         
     }else if ([model.title isEqualToString:@"微信"]){
-        
+        if (model.subTitle.length <= 0) {
+            [JSAccountManager wechatAuthorizeFromLogin:NO completion:^(BOOL success) {
+                if (success) {
+                    [self.tableview.mj_header beginRefreshing];
+                }
+            }];
+        }
     }else if ([model.title isEqualToString:@"支付宝"]){
-        
+        if (model.subTitle.length <= 0) {
+            [JSWithdrawAlertView showAlertViewWithSuperView:self.navigationController.view type:JSWithdrawAlertViewTypeAlipay isBind:YES handle:^(BOOL isSuccess) {
+                if (isSuccess) {
+                    [self.tableview.mj_header beginRefreshing];
+                }
+            }];
+        }
     }
 }
 

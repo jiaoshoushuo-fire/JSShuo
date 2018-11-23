@@ -44,7 +44,7 @@
              @"jobCategory" : @"jobCategory",
              @"jobInfo" : @"jobInfo",
              @"education" : @"education",
-             @"wechatId" : @"wechatId",
+             @"wechatId" : @"wechatOpenId",
              @"alipayId" : @"alipayId",
              @"bindStatus" : @"bindStatus"
              };

@@ -17,7 +17,8 @@ typedef  NS_ENUM(NSInteger, JSRequestSecurityCodeType){
     JSRequestSecurityCodeTypeLogin,
     JSRequestSecurityCodeTypeResetpassword,
     JSRequestSecurityCodeTypeChangepassword,
-    JSRequestSecurityCodeTypeAskteacher
+    JSRequestSecurityCodeTypeAskteacher,
+    JSRequestSecurityCodeTypeBindIPhone
 };
 
 @interface JSNetworkManager (Login)
