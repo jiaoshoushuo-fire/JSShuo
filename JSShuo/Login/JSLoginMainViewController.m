@@ -192,7 +192,7 @@
     
     [self.closeButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(30, 30));
-        make.top.equalTo(self.view).offset(20);
+        make.top.equalTo(self.view).offset(IPHONE_STATUSBAR_HEIGHT);
         make.right.equalTo(self.view);
     }];
 }

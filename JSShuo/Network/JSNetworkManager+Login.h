@@ -29,6 +29,15 @@ typedef  NS_ENUM(NSInteger, JSRequestSecurityCodeType){
 
 + (void)wechatLoginWithAuthCode:(NSString *)code appid:(NSString *)appid complement:(void(^)(BOOL isSuccess,NSDictionary *contenDict))complement;
 
+//绑定微信
++ (void)bindWechatWithAuthCode:(NSString *)code appid:(NSString *)appid complement:(void(^)(BOOL isSuccess,NSDictionary *contenDict))complement;
+
+//绑定支付宝
++ (void)bindAlipayWithAlipayId:(NSString *)alipayId realName:(NSString *)realName complement:(void(^)(BOOL isSuccess,NSDictionary *contenDict))complement;
+
+//绑定手机号
++ (void)bindMobileWithMobile:(NSString *)mobile validateCode:(NSString *)validateCode complement:(void(^)(BOOL isSuccess,NSDictionary *contenDict))complement;
+
 + (void)loginOutWithComplement:(void(^)(BOOL isSuccess,NSDictionary *contenDict))complement;
 
 //个人主页
@@ -78,6 +87,9 @@ typedef  NS_ENUM(NSInteger, JSRequestSecurityCodeType){
 
 //删除收藏
 + (void)requestDeleateCollectWithID:(NSInteger)collectId complement:(void(^)(BOOL isSuccess, NSDictionary *contentDict))complement;
+
+//徒弟列表
++ (void)requestApprenticeListWithPageIndex:(NSInteger)pageNumber complement:(void(^)(BOOL isSuccess, NSDictionary *contentDict))complement;
 @end
 
 NS_ASSUME_NONNULL_END

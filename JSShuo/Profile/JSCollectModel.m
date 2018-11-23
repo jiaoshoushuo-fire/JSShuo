@@ -24,3 +24,19 @@
 }
 
 @end
+
+@implementation JSApprentModel
+
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    return @{
+             @"apprenticeId" : @"apprenticeId",
+             @"userId" : @"userId",
+             @"masterId" : @"masterId",
+             @"portrait" : @"portrait",
+             @"nickname" : @"nickname",
+             @"lastLoginTime" : @"lastLoginTime",
+             @"wakeUpTime" : @"wakeUpTime"
+             };
+}
+
+@end

@@ -94,6 +94,14 @@
 		7A203E4A218BE5650001F926 /* JSRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A203E49218BE5650001F926 /* JSRegisterViewController.m */; };
 		7A203E4E218BF2430001F926 /* JSAccountManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A203E4D218BF2430001F926 /* JSAccountManager.m */; };
 		7A203E51218C77350001F926 /* JSForgetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A203E50218C77350001F926 /* JSForgetPasswordViewController.m */; };
+		7A2DDCB821A673EF00D77867 /* YUFoldingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A2DDCB321A673EE00D77867 /* YUFoldingTableView.m */; };
+		7A2DDCB921A673EF00D77867 /* YUFoldingSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A2DDCB421A673EE00D77867 /* YUFoldingSectionHeader.m */; };
+		7A2DDCBA21A673EF00D77867 /* YUFolding_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A2DDCB621A673EE00D77867 /* YUFolding_arrow.png */; };
+		7A2DDCBD21A68C3C00D77867 /* JSMissionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A2DDCBC21A68C3C00D77867 /* JSMissionCell.m */; };
+		7A2DDCC021A6B2E300D77867 /* JSRedPacketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A2DDCBF21A6B2E300D77867 /* JSRedPacketViewController.m */; };
+		7A5152A521A79B1300116494 /* JSRedPerformViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5152A421A79B1300116494 /* JSRedPerformViewController.m */; };
+		7A5152A821A7AAB500116494 /* CountDown.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5152A721A7AAB400116494 /* CountDown.m */; };
+		7A5152AB21A7D84900116494 /* JSOpenRedPackCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5152AA21A7D84900116494 /* JSOpenRedPackCell.m */; };
 		7A5FEE53218ACBAD006CF7EC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5FEE52218ACBAD006CF7EC /* AppDelegate.m */; };
 		7A5FEE56218ACBAD006CF7EC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5FEE55218ACBAD006CF7EC /* ViewController.m */; };
 		7A5FEE59218ACBAD006CF7EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A5FEE57218ACBAD006CF7EC /* Main.storyboard */; };
@@ -134,6 +142,7 @@
 		7A600EC6219C1A3E0033F6DF /* JSShopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A600EC5219C1A3E0033F6DF /* JSShopViewController.m */; };
 		7A600EC9219C1B2D0033F6DF /* JSInvitationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A600EC8219C1B2D0033F6DF /* JSInvitationViewController.m */; };
 		7A600ECC219C1BA40033F6DF /* JSMyWalletViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A600ECB219C1BA40033F6DF /* JSMyWalletViewController.m */; };
+		7A605B9021A3991F00D6AD67 /* JSMyApprenticeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A605B8F21A3991F00D6AD67 /* JSMyApprenticeViewController.m */; };
 		7A6E47362199774200D5C559 /* GFCacheUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6E47352199774200D5C559 /* GFCacheUtil.m */; };
 		7A6E473921997B8C00D5C559 /* JSFontChangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6E473821997B8C00D5C559 /* JSFontChangeViewController.m */; };
 		7A6E473C21997C5B00D5C559 /* JSPrivacyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6E473B21997C5B00D5C559 /* JSPrivacyViewController.m */; };
@@ -172,6 +181,8 @@
 		7A8F678A21903DD3008A00F4 /* JSAccountManager+Wechat.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8F678921903DD3008A00F4 /* JSAccountManager+Wechat.m */; };
 		7A8F678D2190473B008A00F4 /* JSAccountManager+QQ.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8F678C2190473B008A00F4 /* JSAccountManager+QQ.m */; };
 		7A8F67902190492A008A00F4 /* JSAccountManager+SinaWeibo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8F678F2190492A008A00F4 /* JSAccountManager+SinaWeibo.m */; };
+		7A9108F921A4FDAA005BFDC8 /* JSMissionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9108F821A4FDAA005BFDC8 /* JSMissionModel.m */; };
+		7A9108FC21A53775005BFDC8 /* JSNetworkManager+Mission.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9108FB21A53775005BFDC8 /* JSNetworkManager+Mission.m */; };
 		7AB931A3219E6218001E5390 /* JSWalletSwitchSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB931A2219E6218001E5390 /* JSWalletSwitchSegmentView.m */; };
 		7AB931A6219E6BBF001E5390 /* JSMyWalletCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB931A5219E6BBF001E5390 /* JSMyWalletCell.m */; };
 		7AB931A9219E9490001E5390 /* JSConvertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB931A8219E9490001E5390 /* JSConvertViewController.m */; };
@@ -377,6 +388,21 @@
 		7A203E4D218BF2430001F926 /* JSAccountManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSAccountManager.m; sourceTree = "<group>"; };
 		7A203E4F218C77350001F926 /* JSForgetPasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSForgetPasswordViewController.h; sourceTree = "<group>"; };
 		7A203E50218C77350001F926 /* JSForgetPasswordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSForgetPasswordViewController.m; sourceTree = "<group>"; };
+		7A2DDCB321A673EE00D77867 /* YUFoldingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YUFoldingTableView.m; sourceTree = "<group>"; };
+		7A2DDCB421A673EE00D77867 /* YUFoldingSectionHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YUFoldingSectionHeader.m; sourceTree = "<group>"; };
+		7A2DDCB521A673EE00D77867 /* YUFoldingTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YUFoldingTableView.h; sourceTree = "<group>"; };
+		7A2DDCB621A673EE00D77867 /* YUFolding_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = YUFolding_arrow.png; sourceTree = "<group>"; };
+		7A2DDCB721A673EE00D77867 /* YUFoldingSectionHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YUFoldingSectionHeader.h; sourceTree = "<group>"; };
+		7A2DDCBB21A68C3C00D77867 /* JSMissionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSMissionCell.h; sourceTree = "<group>"; };
+		7A2DDCBC21A68C3C00D77867 /* JSMissionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSMissionCell.m; sourceTree = "<group>"; };
+		7A2DDCBE21A6B2E300D77867 /* JSRedPacketViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSRedPacketViewController.h; sourceTree = "<group>"; };
+		7A2DDCBF21A6B2E300D77867 /* JSRedPacketViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSRedPacketViewController.m; sourceTree = "<group>"; };
+		7A5152A321A79B1300116494 /* JSRedPerformViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSRedPerformViewController.h; sourceTree = "<group>"; };
+		7A5152A421A79B1300116494 /* JSRedPerformViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSRedPerformViewController.m; sourceTree = "<group>"; };
+		7A5152A621A7AAB400116494 /* CountDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountDown.h; sourceTree = "<group>"; };
+		7A5152A721A7AAB400116494 /* CountDown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountDown.m; sourceTree = "<group>"; };
+		7A5152A921A7D84900116494 /* JSOpenRedPackCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSOpenRedPackCell.h; sourceTree = "<group>"; };
+		7A5152AA21A7D84900116494 /* JSOpenRedPackCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSOpenRedPackCell.m; sourceTree = "<group>"; };
 		7A5FEE4E218ACBAD006CF7EC /* JSShuo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JSShuo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A5FEE51218ACBAD006CF7EC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7A5FEE52218ACBAD006CF7EC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -447,6 +473,8 @@
 		7A600EC8219C1B2D0033F6DF /* JSInvitationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSInvitationViewController.m; sourceTree = "<group>"; };
 		7A600ECA219C1BA40033F6DF /* JSMyWalletViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSMyWalletViewController.h; sourceTree = "<group>"; };
 		7A600ECB219C1BA40033F6DF /* JSMyWalletViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSMyWalletViewController.m; sourceTree = "<group>"; };
+		7A605B8E21A3991F00D6AD67 /* JSMyApprenticeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSMyApprenticeViewController.h; sourceTree = "<group>"; };
+		7A605B8F21A3991F00D6AD67 /* JSMyApprenticeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSMyApprenticeViewController.m; sourceTree = "<group>"; };
 		7A6E47342199774200D5C559 /* GFCacheUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFCacheUtil.h; sourceTree = "<group>"; };
 		7A6E47352199774200D5C559 /* GFCacheUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFCacheUtil.m; sourceTree = "<group>"; };
 		7A6E473721997B8C00D5C559 /* JSFontChangeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSFontChangeViewController.h; sourceTree = "<group>"; };
@@ -526,6 +554,10 @@
 		7A8F678C2190473B008A00F4 /* JSAccountManager+QQ.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "JSAccountManager+QQ.m"; sourceTree = "<group>"; };
 		7A8F678E2190492A008A00F4 /* JSAccountManager+SinaWeibo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JSAccountManager+SinaWeibo.h"; sourceTree = "<group>"; };
 		7A8F678F2190492A008A00F4 /* JSAccountManager+SinaWeibo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "JSAccountManager+SinaWeibo.m"; sourceTree = "<group>"; };
+		7A9108F721A4FDAA005BFDC8 /* JSMissionModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSMissionModel.h; sourceTree = "<group>"; };
+		7A9108F821A4FDAA005BFDC8 /* JSMissionModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSMissionModel.m; sourceTree = "<group>"; };
+		7A9108FA21A53775005BFDC8 /* JSNetworkManager+Mission.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JSNetworkManager+Mission.h"; sourceTree = "<group>"; };
+		7A9108FB21A53775005BFDC8 /* JSNetworkManager+Mission.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "JSNetworkManager+Mission.m"; sourceTree = "<group>"; };
 		7AB931A1219E6218001E5390 /* JSWalletSwitchSegmentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSWalletSwitchSegmentView.h; sourceTree = "<group>"; };
 		7AB931A2219E6218001E5390 /* JSWalletSwitchSegmentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSWalletSwitchSegmentView.m; sourceTree = "<group>"; };
 		7AB931A4219E6BBF001E5390 /* JSMyWalletCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSMyWalletCell.h; sourceTree = "<group>"; };
@@ -909,6 +941,18 @@
 			path = User;
 			sourceTree = "<group>";
 		};
+		7A2DDCB221A673EE00D77867 /* YUFoldingTableView */ = {
+			isa = PBXGroup;
+			children = (
+				7A2DDCB321A673EE00D77867 /* YUFoldingTableView.m */,
+				7A2DDCB421A673EE00D77867 /* YUFoldingSectionHeader.m */,
+				7A2DDCB521A673EE00D77867 /* YUFoldingTableView.h */,
+				7A2DDCB621A673EE00D77867 /* YUFolding_arrow.png */,
+				7A2DDCB721A673EE00D77867 /* YUFoldingSectionHeader.h */,
+			);
+			path = YUFoldingTableView;
+			sourceTree = "<group>";
+		};
 		7A5FEE45218ACBAD006CF7EC = {
 			isa = PBXGroup;
 			children = (
@@ -1103,6 +1147,8 @@
 				7A600EC8219C1B2D0033F6DF /* JSInvitationViewController.m */,
 				7A600ECA219C1BA40033F6DF /* JSMyWalletViewController.h */,
 				7A600ECB219C1BA40033F6DF /* JSMyWalletViewController.m */,
+				7A605B8E21A3991F00D6AD67 /* JSMyApprenticeViewController.h */,
+				7A605B8F21A3991F00D6AD67 /* JSMyApprenticeViewController.m */,
 				7AB931A7219E9490001E5390 /* JSConvertViewController.h */,
 				7AB931A8219E9490001E5390 /* JSConvertViewController.m */,
 				7AB931AD219EDF89001E5390 /* JSIncomeListViewController.h */,
@@ -1158,6 +1204,16 @@
 			children = (
 				7A5FEEBB218B0D8A006CF7EC /* JSMissionViewController.h */,
 				7A5FEEBC218B0D8A006CF7EC /* JSMissionViewController.m */,
+				7A2DDCBB21A68C3C00D77867 /* JSMissionCell.h */,
+				7A2DDCBC21A68C3C00D77867 /* JSMissionCell.m */,
+				7A9108F721A4FDAA005BFDC8 /* JSMissionModel.h */,
+				7A9108F821A4FDAA005BFDC8 /* JSMissionModel.m */,
+				7A2DDCBE21A6B2E300D77867 /* JSRedPacketViewController.h */,
+				7A2DDCBF21A6B2E300D77867 /* JSRedPacketViewController.m */,
+				7A5152A321A79B1300116494 /* JSRedPerformViewController.h */,
+				7A5152A421A79B1300116494 /* JSRedPerformViewController.m */,
+				7A5152A921A7D84900116494 /* JSOpenRedPackCell.h */,
+				7A5152AA21A7D84900116494 /* JSOpenRedPackCell.m */,
 			);
 			path = Mission;
 			sourceTree = "<group>";
@@ -1165,6 +1221,7 @@
 		7A5FEEBE218B2429006CF7EC /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				7A2DDCB221A673EE00D77867 /* YUFoldingTableView */,
 				006042E52197C7700080091A /* ZFPlayer */,
 				0049109721951DA400B85B4F /* FDTemplateLayoutCell */,
 				7A898F4D2193E4EE00A7CADD /* WZLBadge */,
@@ -1208,6 +1265,8 @@
 				7A898F482193D88F00A7CADD /* JSAdjustButton.m */,
 				7A6E47342199774200D5C559 /* GFCacheUtil.h */,
 				7A6E47352199774200D5C559 /* GFCacheUtil.m */,
+				7A5152A621A7AAB400116494 /* CountDown.h */,
+				7A5152A721A7AAB400116494 /* CountDown.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -1300,6 +1359,8 @@
 				7A8F6779218FCF72008A00F4 /* JSNetworkManager.m */,
 				7A8F677E218FE30C008A00F4 /* JSNetworkManager+Login.h */,
 				7A8F677F218FE30C008A00F4 /* JSNetworkManager+Login.m */,
+				7A9108FA21A53775005BFDC8 /* JSNetworkManager+Mission.h */,
+				7A9108FB21A53775005BFDC8 /* JSNetworkManager+Mission.m */,
 				004520672191A27700371F10 /* JSNetworkManager+Channel.h */,
 				004520682191A27700371F10 /* JSNetworkManager+Channel.m */,
 				0045206A2191C05B00371F10 /* JSNetworkManager+LongVideo.h */,
@@ -1486,6 +1547,7 @@
 				7A5FEE59218ACBAD006CF7EC /* Main.storyboard in Resources */,
 				00452050218FDEDF00371F10 /* nav_headr_search.png in Resources */,
 				00452046218EED9E00371F10 /* nav_header_login_normal.png in Resources */,
+				7A2DDCBA21A673EF00D77867 /* YUFolding_arrow.png in Resources */,
 				00452049218EED9E00371F10 /* nav_header_login_selected.png in Resources */,
 				006043352197C7700080091A /* ZFPlayer.bundle in Resources */,
 			);
@@ -1613,6 +1675,7 @@
 				7A6E474221997DCE00D5C559 /* JSAboutUsViewController.m in Sources */,
 				7A1749CC21A24D3C00E9AA12 /* JSCommonQuestionViewController.m in Sources */,
 				7A8F677A218FCF72008A00F4 /* JSNetworkManager.m in Sources */,
+				7A2DDCBD21A68C3C00D77867 /* JSMissionCell.m in Sources */,
 				7A898F73219528D500A7CADD /* JSPerfectUserInfoCell.m in Sources */,
 				004910A92195584B00B85B4F /* JSShowTypeSmallPictureTableViewCell.m in Sources */,
 				002B74D2219D648300483841 /* JSSearchResultView.m in Sources */,
@@ -1621,6 +1684,7 @@
 				006043472197CAA20080091A /* ZFDouYinCell.m in Sources */,
 				7A1749D221A24DB900E9AA12 /* JSMyCollectViewController.m in Sources */,
 				0060434D2197D35D0080091A /* JSNetworkManager+ShortVideo.m in Sources */,
+				7A5152A521A79B1300116494 /* JSRedPerformViewController.m in Sources */,
 				7A8F677A218FCF72008A00F4 /* JSNetworkManager.m in Sources */,
 				0060432F2197C7700080091A /* ZFAVPlayerManager.m in Sources */,
 				7A8F67902190492A008A00F4 /* JSAccountManager+SinaWeibo.m in Sources */,
@@ -1632,6 +1696,7 @@
 				7A898F8C21956B0F00A7CADD /* GGAssetsPickerViewController.m in Sources */,
 				7A8F6780218FE30C008A00F4 /* JSNetworkManager+Login.m in Sources */,
 				002B74CF219D647300483841 /* JSSearchNormalView.m in Sources */,
+				7A5152A821A7AAB500116494 /* CountDown.m in Sources */,
 				7A898F8A21956B0F00A7CADD /* GGAssetCollectionView.m in Sources */,
 				006043242197C7700080091A /* ZFPlayerController.m in Sources */,
 				7A8F6780218FE30C008A00F4 /* JSNetworkManager+Login.m in Sources */,
@@ -1647,6 +1712,7 @@
 				7A203E4E218BF2430001F926 /* JSAccountManager.m in Sources */,
 				002B74DF219EC79000483841 /* JSArticleDetailViewController.m in Sources */,
 				7A5FEE88218AFB3E006CF7EC /* JSBaseViewController.m in Sources */,
+				7A2DDCC021A6B2E300D77867 /* JSRedPacketViewController.m in Sources */,
 				7ABD9E622191BA6600E19B6A /* SDCollectionViewCell.m in Sources */,
 				0045204C218EEE3500371F10 /* JSNavSearchView.m in Sources */,
 				006043232197C7700080091A /* ZFPlayerGestureControl.m in Sources */,
@@ -1657,6 +1723,7 @@
 				004910A121951DB700B85B4F /* UITableView+FDIndexPathHeightCache.m in Sources */,
 				004910A321951DB700B85B4F /* UITableView+FDTemplateLayoutCell.m in Sources */,
 				7A898F462193CCAD00A7CADD /* JSSwitchSegmentView.m in Sources */,
+				7A2DDCB921A673EF00D77867 /* YUFoldingSectionHeader.m in Sources */,
 				7A5FEEB4218B0D5E006CF7EC /* JSHomeViewController.m in Sources */,
 				7A5FEE56218ACBAD006CF7EC /* ViewController.m in Sources */,
 				7A898F4C2193E05100A7CADD /* UIImage+Extension.m in Sources */,
@@ -1667,10 +1734,12 @@
 				7A203E44218BE02A0001F926 /* JSLoginMainViewController.m in Sources */,
 				7A1749C621A24C5F00E9AA12 /* JSGamesViewController.m in Sources */,
 				7A203E4A218BE5650001F926 /* JSRegisterViewController.m in Sources */,
+				7A9108F921A4FDAA005BFDC8 /* JSMissionModel.m in Sources */,
 				004910AC2195586100B85B4F /* JSShowTypeThreePictureTableViewCell.m in Sources */,
 				006043372197C7700080091A /* ZFPlayerControlView.m in Sources */,
 				7A5FEEB7218B0D6D006CF7EC /* JSVideoViewController.m in Sources */,
 				006043342197C7700080091A /* ZFNetworkSpeedMonitor.m in Sources */,
+				7A5152AB21A7D84900116494 /* JSOpenRedPackCell.m in Sources */,
 				7AB931A9219E9490001E5390 /* JSConvertViewController.m in Sources */,
 				006043392197C7700080091A /* ZFLoadingView.m in Sources */,
 				0045205321900D4300371F10 /* JSVideoTitleBarViewController.m in Sources */,
@@ -1679,6 +1748,7 @@
 				7AB931AC219E9763001E5390 /* JSAccountModel.m in Sources */,
 				7A898F9321956C4D00A7CADD /* GGPhotoLibrary.m in Sources */,
 				7A5FEEA6218B0BC2006CF7EC /* JSStartupViewController.m in Sources */,
+				7A2DDCB821A673EF00D77867 /* YUFoldingTableView.m in Sources */,
 				7A898F8721956B0F00A7CADD /* GGPhotoLibraryViewController.m in Sources */,
 				7A898F8921956B0F00A7CADD /* GGCameraViewController.m in Sources */,
 				7A898F7021951D7B00A7CADD /* JSPerfectUserInfoViewController.m in Sources */,
@@ -1698,6 +1768,7 @@
 				7A898F622193FFE100A7CADD /* JSNotificationViewController.m in Sources */,
 				7A203E47218BE53F0001F926 /* JSLoginViewController.m in Sources */,
 				006043412197CA740080091A /* NSString+Size.m in Sources */,
+				7A9108FC21A53775005BFDC8 /* JSNetworkManager+Mission.m in Sources */,
 				006043362197C7700080091A /* ZFSliderView.m in Sources */,
 				006043282197C7700080091A /* ZFPlayerNotification.m in Sources */,
 				7A203E51218C77350001F926 /* JSForgetPasswordViewController.m in Sources */,
@@ -1713,6 +1784,7 @@
 				7A015E14219AF9740025D24F /* JSWithdrawModel.m in Sources */,
 				7ABD9E602191BA6600E19B6A /* SDCycleScrollView.m in Sources */,
 				7ABD9E642191BA6600E19B6A /* TAPageControl.m in Sources */,
+				7A605B9021A3991F00D6AD67 /* JSMyApprenticeViewController.m in Sources */,
 				002B74CA219D514100483841 /* JSSearchViewController.m in Sources */,
 				7A898F5C2193E4EF00A7CADD /* CAAnimation+WAnimation.m in Sources */,
 				7AB931A3219E6218001E5390 /* JSWalletSwitchSegmentView.m in Sources */,

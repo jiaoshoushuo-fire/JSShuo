@@ -12,6 +12,7 @@
 #import "JSVideoTitleBarViewController.h"
 #import "JSMissionViewController.h"
 #import "JSProfileViewController.h"
+#import "JSActivityCenterViewController.h"
 
 @interface JSMainViewController ()
 
@@ -20,6 +21,7 @@
 
 @property (nonatomic, strong) JSHomeTitleBarViewController      *homeViewController;
 @property (nonatomic, strong) JSVideoTitleBarViewController     *videoViewController;
+@property (nonatomic, strong) JSActivityCenterViewController    *activityViewController;
 @property (nonatomic, strong) JSMissionViewController           *newsViewController;
 @property (nonatomic, strong) JSProfileViewController           *profileViewController;
 
@@ -33,6 +35,7 @@
     
     self.homeViewController = [[JSHomeTitleBarViewController alloc] init];
     self.videoViewController = [[JSVideoTitleBarViewController alloc] init];
+    self.activityViewController = [[JSActivityCenterViewController alloc] init];
     self.newsViewController = [[JSMissionViewController alloc] init];
     self.profileViewController = [[JSProfileViewController alloc] init];
     
@@ -42,11 +45,13 @@
     RTRootNavigationController *nav2 = [[RTRootNavigationController alloc] init];
     nav2.viewControllers = @[self.videoViewController];
     RTRootNavigationController *nav3 = [[RTRootNavigationController alloc] init];
-    nav3.viewControllers = @[self.newsViewController];
+    nav3.viewControllers = @[self.activityViewController];
     RTRootNavigationController *nav4 = [[RTRootNavigationController alloc] init];
-    nav4.viewControllers = @[self.profileViewController];
+    nav4.viewControllers = @[self.newsViewController];
+    RTRootNavigationController *nav5 = [[RTRootNavigationController alloc] init];
+    nav5.viewControllers = @[self.profileViewController];
     
-    self.viewControllers = @[nav1, nav2, nav3, nav4];
+    self.viewControllers = @[nav1, nav2, nav3, nav4, nav5];
     
     @weakify(self)
     self.mainTabBar = [JSMainTabBar mainTabBarWithHandler:^(id sender) {
@@ -71,33 +76,24 @@
             self.selectedIndex = 1;
         }
     } else if (button == self.mainTabBar.publishButton) {
-//        [GFAccountManager checkLoginStatusCompletion:^(BOOL isLogin, GFUserMTL *user, BOOL justLogin) {
-//            if (isLogin) {
-//                GFPublishViewController *publishViewController = [[GFPublishViewController alloc] init];
-//                [self presentViewController:publishViewController animated:YES completion:NULL];
-//            }
-//        }];
+        if (self.selectedViewController == [self.viewControllers objectAtIndex:2]) {
+            //            [self.newsViewController scrollToTopAndReloadData];
+        } else {
+            self.selectedIndex = 2;
+        }
         
     } else if (button == self.mainTabBar.newsButton) {
-        [JSAccountManager checkLoginStatusComplement:^(BOOL isLogin) {
-            if (isLogin) {
-                if (self.selectedViewController == [self.viewControllers objectAtIndex:2]) {
-                    //            [self.newsViewController scrollToTopAndReloadData];
-                } else {
-                    self.selectedIndex = 2;
-                }
-            }
-        }];
+        if (self.selectedViewController == [self.viewControllers objectAtIndex:3]) {
+            //            [self.newsViewController scrollToTopAndReloadData];
+        } else {
+            self.selectedIndex = 3;
+        }
     } else if (button == self.mainTabBar.profileButton) {
-        [JSAccountManager checkLoginStatusComplement:^(BOOL isLogin) {
-            if (isLogin) {
-                if (self.selectedViewController == [self.viewControllers objectAtIndex:3]) {
-                    //            [self.profileViewController scrollToTopAndReloadData];
-                } else {
-                    self.selectedIndex = 3;
-                }
-            }
-        }];
+        if (self.selectedViewController == [self.viewControllers objectAtIndex:4]) {
+            //            [self.profileViewController scrollToTopAndReloadData];
+        } else {
+            self.selectedIndex = 4;
+        }
     }
 }
 

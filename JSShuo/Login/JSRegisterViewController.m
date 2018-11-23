@@ -357,7 +357,7 @@
         }
         make.height.mas_equalTo(height);
         CGFloat bottomOffset = IS_IPHONE_X ? 34 : 0;
-        make.bottom.equalTo(self.view).offset(bottomOffset);
+        make.bottom.equalTo(self.view).offset(-bottomOffset);
     }];
 }
 

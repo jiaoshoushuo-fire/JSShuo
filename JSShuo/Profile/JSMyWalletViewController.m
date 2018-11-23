@@ -15,6 +15,7 @@
 #import "JSConvertViewController.h"
 #import "JSIncomeListViewController.h"
 #import "JSShareManager.h"
+#import "JSMyApprenticeViewController.h"
 
 
 @interface JSMyWalletHeaderView : UIView
@@ -489,6 +490,12 @@
             [self.rt_navigationController pushViewController:convertVC animated:YES complete:nil];
         } forControlEvents:UIControlEventTouchUpInside];
         
+        [_headerView.bottomView bk_whenTapped:^{
+            @strongify(self);
+            JSMyApprenticeViewController *myApprentVC = [[JSMyApprenticeViewController alloc]init];
+            myApprentVC.hidesBottomBarWhenPushed = YES;
+            [self.rt_navigationController pushViewController:myApprentVC animated:YES complete:nil];
+        }];
         _headerView.switchView.selectedIndexChangedHandler = ^(NSUInteger index) {
             @strongify(self);
             self.isGold = index == 0 ? YES : NO;
@@ -519,7 +526,7 @@
         _tableView.tableFooterView = self.footerLabel;
         
         @weakify(self)
-        _tableView.mj_header = [MJRefreshHeader headerWithRefreshingBlock:^{
+        _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
             @strongify(self)
             [self refreshDataListWithHeaderRefresh:YES];
         }];

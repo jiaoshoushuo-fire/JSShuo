@@ -34,4 +34,16 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy)NSString *publishTime;
 @end
 
+
+@interface JSApprentModel : MTLModel<MTLJSONSerializing>
+
+@property (nonatomic, assign)NSInteger apprenticeId;
+@property (nonatomic, assign)NSInteger userId;
+@property (nonatomic, assign)NSInteger masterId;
+@property (nonatomic, copy)NSString *portrait;
+@property (nonatomic, copy)NSString *nickname;
+@property (nonatomic, copy)NSString *lastLoginTime;
+@property (nonatomic, copy)NSString *wakeUpTime;
+
+@end
 NS_ASSUME_NONNULL_END
