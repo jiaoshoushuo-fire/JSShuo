@@ -197,6 +197,12 @@
 		7ABD9E652191BA6600E19B6A /* TAAnimatedDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABD9E5B2191BA6500E19B6A /* TAAnimatedDotView.m */; };
 		7ABD9E662191BA6600E19B6A /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABD9E5C2191BA6500E19B6A /* TAAbstractDotView.m */; };
 		7ABD9E692191C03400E19B6A /* JSProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABD9E682191C03400E19B6A /* JSProfileCell.m */; };
+		7AD5489721AE303900244C78 /* JSActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD5489621AE303900244C78 /* JSActivityCell.m */; };
+		7AD5489A21AE426F00244C78 /* JSActivityHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD5489921AE426F00244C78 /* JSActivityHeaderView.m */; };
+		7AD5489D21AE60C500244C78 /* ULBCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD5489B21AE60C400244C78 /* ULBCollectionViewFlowLayout.m */; };
+		7AD7F1AC21AA713000F56F79 /* JSBaseWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD7F1AB21AA713000F56F79 /* JSBaseWebViewController.m */; };
+		7AD7F1AF21AA730000F56F79 /* JSActivityRuleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD7F1AE21AA730000F56F79 /* JSActivityRuleViewController.m */; };
+		7AD7F1B221AA742500F56F79 /* JSActivityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD7F1B121AA742500F56F79 /* JSActivityModel.m */; };
 		A02B29E2FC7397B33BD05EC7 /* libPods-JSShuo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0C9F621EFFB845046C46704 /* libPods-JSShuo.a */; };
 /* End PBXBuildFile section */
 
@@ -587,6 +593,18 @@
 		7ABD9E5F2191BA6500E19B6A /* TAPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAPageControl.h; sourceTree = "<group>"; };
 		7ABD9E672191C03400E19B6A /* JSProfileCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSProfileCell.h; sourceTree = "<group>"; };
 		7ABD9E682191C03400E19B6A /* JSProfileCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSProfileCell.m; sourceTree = "<group>"; };
+		7AD5489521AE303900244C78 /* JSActivityCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSActivityCell.h; sourceTree = "<group>"; };
+		7AD5489621AE303900244C78 /* JSActivityCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSActivityCell.m; sourceTree = "<group>"; };
+		7AD5489821AE426F00244C78 /* JSActivityHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSActivityHeaderView.h; sourceTree = "<group>"; };
+		7AD5489921AE426F00244C78 /* JSActivityHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSActivityHeaderView.m; sourceTree = "<group>"; };
+		7AD5489B21AE60C400244C78 /* ULBCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ULBCollectionViewFlowLayout.m; sourceTree = "<group>"; };
+		7AD5489C21AE60C400244C78 /* ULBCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ULBCollectionViewFlowLayout.h; sourceTree = "<group>"; };
+		7AD7F1AA21AA713000F56F79 /* JSBaseWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSBaseWebViewController.h; sourceTree = "<group>"; };
+		7AD7F1AB21AA713000F56F79 /* JSBaseWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSBaseWebViewController.m; sourceTree = "<group>"; };
+		7AD7F1AD21AA730000F56F79 /* JSActivityRuleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSActivityRuleViewController.h; sourceTree = "<group>"; };
+		7AD7F1AE21AA730000F56F79 /* JSActivityRuleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSActivityRuleViewController.m; sourceTree = "<group>"; };
+		7AD7F1B021AA742500F56F79 /* JSActivityModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSActivityModel.h; sourceTree = "<group>"; };
+		7AD7F1B121AA742500F56F79 /* JSActivityModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSActivityModel.m; sourceTree = "<group>"; };
 		970737962D02DBFA81E8DC67 /* Pods-JSShuoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSShuoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JSShuoTests/Pods-JSShuoTests.release.xcconfig"; sourceTree = "<group>"; };
 		A13FC4DE98462C1E2DE50010 /* Pods-JSShuo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSShuo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JSShuo/Pods-JSShuo.debug.xcconfig"; sourceTree = "<group>"; };
 		B29893048A2739D89BF02B42 /* Pods-JSShuo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSShuo.release.xcconfig"; path = "Pods/Target Support Files/Pods-JSShuo/Pods-JSShuo.release.xcconfig"; sourceTree = "<group>"; };
@@ -1035,6 +1053,8 @@
 			children = (
 				7A5FEE86218AFB3E006CF7EC /* JSBaseViewController.h */,
 				7A5FEE87218AFB3E006CF7EC /* JSBaseViewController.m */,
+				7AD7F1AA21AA713000F56F79 /* JSBaseWebViewController.h */,
+				7AD7F1AB21AA713000F56F79 /* JSBaseWebViewController.m */,
 				7A5FEE89218AFBAC006CF7EC /* JSTabBarViewController.h */,
 				7A5FEE8A218AFBAC006CF7EC /* JSTabBarViewController.m */,
 				7A5FEE8C218AFC39006CF7EC /* JSNavigationBar.h */,
@@ -1084,6 +1104,12 @@
 			children = (
 				7A5FEEAF218B0D4D006CF7EC /* JSActivityCenterViewController.h */,
 				7A5FEEB0218B0D4D006CF7EC /* JSActivityCenterViewController.m */,
+				7AD5489C21AE60C400244C78 /* ULBCollectionViewFlowLayout.h */,
+				7AD5489B21AE60C400244C78 /* ULBCollectionViewFlowLayout.m */,
+				7AD5489521AE303900244C78 /* JSActivityCell.h */,
+				7AD5489621AE303900244C78 /* JSActivityCell.m */,
+				7AD5489821AE426F00244C78 /* JSActivityHeaderView.h */,
+				7AD5489921AE426F00244C78 /* JSActivityHeaderView.m */,
 			);
 			path = Activity;
 			sourceTree = "<group>";
@@ -1215,10 +1241,14 @@
 				7A9108F821A4FDAA005BFDC8 /* JSMissionModel.m */,
 				7A2DDCBE21A6B2E300D77867 /* JSRedPacketViewController.h */,
 				7A2DDCBF21A6B2E300D77867 /* JSRedPacketViewController.m */,
+				7AD7F1AD21AA730000F56F79 /* JSActivityRuleViewController.h */,
+				7AD7F1AE21AA730000F56F79 /* JSActivityRuleViewController.m */,
 				7A5152A321A79B1300116494 /* JSRedPerformViewController.h */,
 				7A5152A421A79B1300116494 /* JSRedPerformViewController.m */,
 				7A5152A921A7D84900116494 /* JSOpenRedPackCell.h */,
 				7A5152AA21A7D84900116494 /* JSOpenRedPackCell.m */,
+				7AD7F1B021AA742500F56F79 /* JSActivityModel.h */,
+				7AD7F1B121AA742500F56F79 /* JSActivityModel.m */,
 			);
 			path = Mission;
 			sourceTree = "<group>";
@@ -1668,6 +1698,7 @@
 				7A898F5F2193E4EF00A7CADD /* UIView+WZLBadge.m in Sources */,
 				7A8F678A21903DD3008A00F4 /* JSAccountManager+Wechat.m in Sources */,
 				7A6E47362199774200D5C559 /* GFCacheUtil.m in Sources */,
+				7AD7F1AF21AA730000F56F79 /* JSActivityRuleViewController.m in Sources */,
 				7A5FEEA0218B07B7006CF7EC /* JSRootViewController.m in Sources */,
 				7A898F3F2193C4F600A7CADD /* JSMessageViewController.m in Sources */,
 				7A1749C921A24CE700E9AA12 /* JSMemberViewController.m in Sources */,
@@ -1695,6 +1726,7 @@
 				7A8F67902190492A008A00F4 /* JSAccountManager+SinaWeibo.m in Sources */,
 				7A846ECA219290AB0048F222 /* JSProfileUserModel.m in Sources */,
 				7A1749DB21A28D7300E9AA12 /* JSMyCollectArticleViewController.m in Sources */,
+				7AD7F1B221AA742500F56F79 /* JSActivityModel.m in Sources */,
 				002B74D8219E5A0700483841 /* JSHotSearchTitleCollectionViewCell.m in Sources */,
 				7A5FEEA9218B0BD0006CF7EC /* JSMainViewController.m in Sources */,
 				7A5FEE98218AFEA1006CF7EC /* UIColor+JSShuo.m in Sources */,
@@ -1738,6 +1770,7 @@
 				7A5FEE61218ACBAE006CF7EC /* main.m in Sources */,
 				7A203E44218BE02A0001F926 /* JSLoginMainViewController.m in Sources */,
 				7A1749C621A24C5F00E9AA12 /* JSGamesViewController.m in Sources */,
+				7AD5489A21AE426F00244C78 /* JSActivityHeaderView.m in Sources */,
 				7A203E4A218BE5650001F926 /* JSRegisterViewController.m in Sources */,
 				7A9108F921A4FDAA005BFDC8 /* JSMissionModel.m in Sources */,
 				004910AC2195586100B85B4F /* JSShowTypeThreePictureTableViewCell.m in Sources */,
@@ -1750,10 +1783,12 @@
 				0045205321900D4300371F10 /* JSVideoTitleBarViewController.m in Sources */,
 				7A898F8821956B0F00A7CADD /* GGPhotoPreviewViewController.m in Sources */,
 				7A898F8D21956B0F00A7CADD /* GGAssetItemCell.m in Sources */,
+				7AD7F1AC21AA713000F56F79 /* JSBaseWebViewController.m in Sources */,
 				7AB931AC219E9763001E5390 /* JSAccountModel.m in Sources */,
 				7A5152AE21A7F22400116494 /* JSBindIPhoneViewController.m in Sources */,
 				7A898F9321956C4D00A7CADD /* GGPhotoLibrary.m in Sources */,
 				7A5FEEA6218B0BC2006CF7EC /* JSStartupViewController.m in Sources */,
+				7AD5489D21AE60C500244C78 /* ULBCollectionViewFlowLayout.m in Sources */,
 				7A2DDCB821A673EF00D77867 /* YUFoldingTableView.m in Sources */,
 				7A898F8721956B0F00A7CADD /* GGPhotoLibraryViewController.m in Sources */,
 				7A898F8921956B0F00A7CADD /* GGCameraViewController.m in Sources */,
@@ -1814,6 +1849,7 @@
 				7A5FEEA3218B0BA7006CF7EC /* JSLaunchViewController.m in Sources */,
 				006043302197C7700080091A /* ZFUtilities.m in Sources */,
 				0060432D2197C7700080091A /* UIViewController+ZFPlayerRotation.m in Sources */,
+				7AD5489721AE303900244C78 /* JSActivityCell.m in Sources */,
 				7A5FEE94218AFD7D006CF7EC /* JSMainTabBar.m in Sources */,
 				006043262197C7700080091A /* ZFPlayerLogManager.m in Sources */,
 				7A898F682194065E00A7CADD /* JSMessageCell.m in Sources */,

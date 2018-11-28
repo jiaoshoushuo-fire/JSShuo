@@ -8,9 +8,14 @@
 
 #import "JSRedPacketViewController.h"
 #import "JSRedPerformViewController.h"
+#import "JSNetworkManager+Mission.h"
+#import "JSActivityRuleViewController.h"
 
 @interface JSRedPacketViewController ()
 @property (nonatomic, strong)UIImageView *backImageView;
+@property (nonatomic, strong)UIImageView *titleLabel;
+@property (nonatomic, strong)UIImageView *subTitleView;
+
 @property (nonatomic, strong)UIButton *ruleButton;
 @property (nonatomic, strong)UIImageView *midView;
 @property (nonatomic, strong)UILabel *midTitleLabel;
@@ -18,14 +23,32 @@
 @property (nonatomic, strong)UIView *moneyView;
 
 @property (nonatomic, strong)UIButton *shareButton;
+@property (nonatomic, copy)NSString *ruleUrl;
 @end
 
 @implementation JSRedPacketViewController
 
+- (UIImageView *)titleLabel{
+    if (!_titleLabel) {
+        _titleLabel = [[UIImageView alloc]init];
+        _titleLabel.image = [UIImage imageNamed:@"js_mission_red_title"];
+        [_titleLabel sizeToFit];
+    }
+    return _titleLabel;
+}
+- (UIImageView *)subTitleView{
+    if (!_subTitleView) {
+        _subTitleView = [[UIImageView alloc]init];
+        _subTitleView.image = [UIImage imageNamed:@"js_mission_subTitle_back"];
+        [_subTitleView sizeToFit];
+    }
+    return _subTitleView;
+}
 - (UIImageView *)backImageView{
     if (!_backImageView) {
         _backImageView = [[UIImageView alloc]init];
-        _backImageView.userInteractionEnabled = YES;
+        _backImageView.image = [UIImage imageNamed:@"js_mission_red_back"];
+//        _backImageView.userInteractionEnabled = YES;
     }
     return _backImageView;
 }
@@ -79,6 +102,8 @@
         @weakify(self)
         [_ruleButton bk_addEventHandler:^(id sender) {
             @strongify(self)
+            JSActivityRuleViewController *webVC = [[JSActivityRuleViewController alloc]initWithUrl:self.ruleUrl];
+            [self.rt_navigationController pushViewController:webVC animated:YES complete:nil];
         } forControlEvents:UIControlEventTouchUpInside];
     }
     return _ruleButton;
@@ -100,7 +125,7 @@
         @weakify(self)
         [_shareButton bk_addEventHandler:^(id sender) {
             @strongify(self)
-            
+            NSLog(@"share action");
         } forControlEvents:UIControlEventTouchUpInside];
         
     }
@@ -130,12 +155,24 @@
     self.title = @"红包专场";
     self.view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.backImageView];
+    [self.view addSubview:self.subTitleView];
+    [self.view addSubview:self.titleLabel];
     [self.view addSubview:self.midView];
     [self.view addSubview:self.shareButton];
     [self.view addSubview:self.ruleButton];
     
     [self.backImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
+    }];
+    [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(self.titleLabel.size);
+        make.centerX.equalTo(self.view);
+        make.top.mas_equalTo(30);
+    }];
+    [self.subTitleView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(self.subTitleView.size);
+        make.centerX.equalTo(self.view);
+        make.top.mas_equalTo(self.titleLabel.mas_bottom).offset(20);
     }];
     [self.midView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view).offset(30);
@@ -178,7 +215,14 @@
         make.bottom.equalTo(self.midView).offset(-10);
     }];
     
-    [self createMoneyViewWithMoney:1000000];
+    
+    [JSNetworkManager requestActivityHomePageComplement:^(BOOL isSuccess, NSDictionary * _Nonnull contentDict) {
+        if (isSuccess) {
+            NSInteger amount = [contentDict[@"amount"] integerValue];
+            self.ruleUrl = contentDict[@"ruleUrl"];
+            [self createMoneyViewWithMoney:amount];
+        }
+    }];
     // Do any additional setup after loading the view.
 }
 

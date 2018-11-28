@@ -26,7 +26,7 @@
         _optionButtonRight.position = JSImagePositionLeft;
         _optionButtonRight.itemSpace = 7;
         [_optionButtonRight setImage:[UIImage imageNamed:@"js_profile_no_selected"] forState:UIControlStateNormal];
-        [_optionButtonRight setImage:[UIImage imageNamed:@"js_profile_no_selected"] forState:UIControlStateSelected];
+        [_optionButtonRight setImage:[UIImage imageNamed:@"js_profile_selected"] forState:UIControlStateSelected];
         _optionButtonRight.titleLabel.font = [UIFont systemFontOfSize:15];
         [_optionButtonRight setTitleColor:[UIColor colorWithHexString:@"F44336"] forState:UIControlStateSelected];
         [_optionButtonRight setTitleColor:[UIColor colorWithHexString:@"666666"] forState:UIControlStateNormal];
@@ -40,7 +40,7 @@
         _optionButtonLeft.frame = CGRectMake(_segmentControl.width/2, 0, _segmentControl.width/2, _segmentControl.height - 2);
         _optionButtonLeft.position = JSImagePositionLeft;
         _optionButtonLeft.itemSpace = 7;
-        [_optionButtonLeft setImage:[UIImage imageNamed:@"js_profile_message_selected"] forState:UIControlStateNormal];
+        [_optionButtonLeft setImage:[UIImage imageNamed:@"js_profile_message_no_selected"] forState:UIControlStateNormal];
         [_optionButtonLeft setImage:[UIImage imageNamed:@"js_profile_message_selected"] forState:UIControlStateSelected];
         _optionButtonLeft.titleLabel.font = [UIFont systemFontOfSize:15];
         [_optionButtonLeft setTitleColor:[UIColor colorWithHexString:@"F44336"] forState:UIControlStateSelected];

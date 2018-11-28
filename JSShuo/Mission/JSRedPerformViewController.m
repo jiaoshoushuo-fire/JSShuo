@@ -9,6 +9,8 @@
 #import "JSRedPerformViewController.h"
 #import "CountDown.h"
 #import "JSOpenRedPackCell.h"
+#import "JSNetworkManager+Mission.h"
+#import "JSActivityModel.h"
 
 @interface JSCountDownView : UIView
 @property (nonatomic, strong)UILabel *titleLabel;
@@ -170,6 +172,9 @@
 @property (nonatomic, strong)UILabel *titleLabel;
 @property (nonatomic, strong)UICollectionView *collectionView;
 
+@property (nonatomic, strong)JSActivityModel *currentModel;
+@property (nonatomic, strong)NSArray *userList;
+
 @end
 
 @implementation JSRedPerformViewController
@@ -208,7 +213,7 @@
 - (UIImageView *)openPackView{
     if (!_openPackView) {
         _openPackView = [[UIImageView alloc]init];
-        _openPackView.image = [UIImage imageNamed:@"js_mission_kai_hui"];
+        _openPackView.image = [UIImage imageNamed:@"js_mission_kai_highlight"];
         [_openPackView sizeToFit];
     }
     return _openPackView;
@@ -348,17 +353,48 @@
         make.centerX.equalTo(self.view);
         make.top.equalTo(self.openPackView.mas_bottom).offset(15);
     }];
-    [self createMoneyViewWithMoney:1000000];
-    self.topTitleLabel.text = @"本场红包数量：10000";
+    [JSNetworkManager requestCurrentActivityComplement:^(BOOL isSuccess, NSDictionary * _Nonnull contentDict) {
+        if (isSuccess) {
+            self.currentModel = [MTLJSONAdapter modelOfClass:[JSActivityModel class] fromJSONDictionary:contentDict error:nil];
+            [self createMoneyViewWithMoney:self.currentModel.amount];
+            self.topTitleLabel.text = [NSString stringWithFormat:@"本场红包数量：%@",@(self.currentModel.num)];
+            
+            NSDateFormatter *dateFormatter=[[NSDateFormatter alloc]init];
+            
+            dateFormatter.dateFormat=@"yyyy-MM-dd hh:mm:ss";
+            NSDate *firDate = [dateFormatter dateFromString:self.currentModel.nextStartTime];
+            
+            [self.countDown countDownWithStratDate:[NSDate date] finishDate:firDate completeBlock:^(NSInteger day, NSInteger hour, NSInteger minute, NSInteger second) {
+                self.countDownView.hourLabel.text = [NSString stringWithFormat:@"%02ld",(long)hour];
+                self.countDownView.minuteLabel.text = [NSString stringWithFormat:@"%02ld",(long)minute];
+                self.countDownView.secondLabel.text = [NSString stringWithFormat:@"%02ld",(long)second];
+            }];
+            
+            [self initOpenViewIsEnable:self.currentModel.canGrab];
+        }
+    }];
+    
+    [JSNetworkManager requestOpenedRedPackageListComplement:^(BOOL isSuccess, NSDictionary * _Nonnull contentDict) {
+        if (isSuccess) {
+            NSArray *dataList = (NSArray *)contentDict;
+            self.userList = [MTLJSONAdapter modelsOfClass:[JSActivityUserModel class] fromJSONArray:dataList error:nil];
+            [self.collectionView reloadData];
+        }
+    }];
+}
+- (void)initOpenViewIsEnable:(BOOL)isEnable{
+    if (isEnable) {
+        self.openPackView.image = [UIImage imageNamed:@"js_mission_kai_highlight"];
+        self.openButton.backgroundColor = [UIColor colorWithHexString:@"F7EC78"];
+    }else{
+        self.openPackView.image = [UIImage imageNamed:@"js_mission_kai_hui"];
+        self.openButton.backgroundColor = [UIColor lightGrayColor];
+    }
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    [self.countDown countDownWithStratTimeStamp:[[NSDate date]timeIntervalSince1970] finishTimeStamp:[[NSDate date]timeIntervalSince1970]+10000 completeBlock:^(NSInteger day, NSInteger hour, NSInteger minute, NSInteger second) {
-        self.countDownView.hourLabel.text = [NSString stringWithFormat:@"%02ld",(long)hour];
-        self.countDownView.minuteLabel.text = [NSString stringWithFormat:@"%02ld",(long)minute];
-        self.countDownView.secondLabel.text = [NSString stringWithFormat:@"%02ld",(long)second];
-    }];
+    
 }
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
@@ -369,11 +405,12 @@
     return 1;
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 8;
+    return self.userList.count;
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     JSOpenRedPackCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"JSOpenRedPackCell" forIndexPath:indexPath];
-    [cell testModel];
+    JSActivityUserModel *model = self.userList[indexPath.row];
+    cell.model = model;
     return cell;
 }
 /*

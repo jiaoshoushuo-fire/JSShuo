@@ -56,12 +56,15 @@
     return self;
 }
 
-- (void)testModel{
-    [self.iconImageView setImageWithURL:[NSURL URLWithString:@"http://192.168.21.49/php/Icon.png"] placeholder:nil];
-    self.nameLabel.text = @"风清扬";
+
+
+- (void)setModel:(JSActivityUserModel *)model{
+    _model = model;
+    [self.iconImageView setImageWithURL:[NSURL URLWithString:model.portrait] placeholder:[UIImage imageNamed:@"js_profile_default_icon"]];
+    self.nameLabel.text = model.nickname;
     [self.nameLabel sizeToFit];
     
-    self.contentLabel.text = @"微信红包50元";
+    self.contentLabel.text = [NSString stringWithFormat:@"微信红包%@元",@(model.amount)];
     [self.contentLabel sizeToFit];
     [self setNeedsLayout];
 }

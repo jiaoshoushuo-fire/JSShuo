@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JSActivityModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface JSOpenRedPackCell : UICollectionViewCell
-
-- (void)testModel;
+@property (nonatomic, strong)JSActivityUserModel *model;
 @end
 
 NS_ASSUME_NONNULL_END

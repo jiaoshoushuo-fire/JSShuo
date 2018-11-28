@@ -37,7 +37,7 @@
     manager.shareUrl = url;
     manager.complementBlock = complement;
     
-    [GFPopMenuView showInView:[UIApplication sharedApplication].keyWindow delegate:manager];
+    [GFPopMenuView showInView:[UIApplication sharedApplication].keyWindow hander:nil delegate:manager];
 }
 
 #pragma mark - GFPopMenuViewDelegate
@@ -46,10 +46,8 @@
     switch (itemIndex) {
         case 0:{
             [JSAccountManager shareURLToQQ:self.shareUrl title:self.title description:self.shareText thumbnail:self.shareImage type:GFShareTypeQQ handler:^(BOOL success, BOOL cancel) {
-                if (success) {
-                    NSLog(@"share qq success");
-                }else{
-                    NSLog(@"share qq failure");
+                if (self.complementBlock) {
+                    self.complementBlock(success);
                 }
             }];
         }break;

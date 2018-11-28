@@ -10,7 +10,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-static NSString *QQ_App_ID = @"1104254720";
+static NSString *QQ_App_ID = @"101521529";
+static NSString *QQ_App_Key = @"f90c3228d41f7a4592822cf581ec5df0";
 
 
 @interface JSAccountManager (QQ)<TencentSessionDelegate, QQApiInterfaceDelegate>

@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "JSAccountManager+Wechat.h"
+#import "JSAccountManager+QQ.h"
 
 @interface AppDelegate ()
 
@@ -68,6 +69,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     [JSAccountManager initWechat];
+    [JSAccountManager initQQ];
     
     [self initRootViewController];
     [self.window makeKeyAndVisible];
@@ -129,7 +131,9 @@
     
     if ([scheme isEqualToString:wechat_App_ID]) {
         return [JSAccountManager handleWechatURL:url];
-    } 
+    }else if ([scheme isEqualToString:@"QQ60D1879"] || [scheme isEqualToString:@"tencent101521529"]) {
+        return [JSAccountManager handleQQURL:url];
+    }
     
     return YES;
     

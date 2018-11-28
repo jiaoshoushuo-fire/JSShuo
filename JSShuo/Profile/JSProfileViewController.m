@@ -24,6 +24,7 @@
 #import "JSCommonQuestionViewController.h"
 #import "JSMyCommentViewController.h"
 #import "JSMyCollectViewController.h"
+#import "AppDelegate.h"
 
 @interface JSProfileItemView : UIView
 @property (nonatomic, strong)UIImageView *itemImageView;
@@ -617,11 +618,9 @@
         inputVC.hidesBottomBarWhenPushed = YES;
         [self.rt_navigationController pushViewController:inputVC animated:YES complete:nil];
     }else if ([title isEqualToString:@"任务中心"]){
-        
+        [[AppDelegate instance].mainViewController switchToViewControllerAtIndex:3];
     }else if ([title isEqualToString:@"游戏大厅"]){
-        JSGamesViewController *gamesVC = [[JSGamesViewController alloc]init];
-        gamesVC.hidesBottomBarWhenPushed = YES;
-        [self.rt_navigationController pushViewController:gamesVC animated:YES complete:nil];
+        [[AppDelegate instance].mainViewController switchToViewControllerAtIndex:2];
         
     }else if ([title isEqualToString:@"会员大促销"]){
         JSMemberViewController *memberVC = [[JSMemberViewController alloc]init];

@@ -170,7 +170,9 @@
         [self setSelectButtonAtIndex:0];
     } else if (button == self.discoverButton) {
         [self setSelectButtonAtIndex:1];
-    } else if (button == self.newsButton) {
+    } else if (button == self.publishButton){
+        [self setSelectButtonAtIndex:2];
+    }else if (button == self.newsButton) {
         [self setSelectButtonAtIndex:3];
     } else if (button == self.profileButton) {
         [self setSelectButtonAtIndex:4];
@@ -184,7 +186,7 @@
 - (void)setSelectButtonAtIndex:(NSInteger)index {
     self.homeButton.selected = (index == 0);
     self.discoverButton.selected = (index == 1);
-    self.publishButton.selected = NO;
+    self.publishButton.selected = (index == 2);
     self.newsButton.selected = (index == 3);
     self.profileButton.selected = (index == 4);
 }
