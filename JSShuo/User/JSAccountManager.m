@@ -33,7 +33,7 @@
         [[NSUserDefaults standardUserDefaults] setObject:accountToken forKey:kUserDefaultsKeyAccessToken];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }else{
-        manager.accountToken = nil;
+        manager.accountToken = @"";
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:kUserDefaultsKeyAccessToken];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }

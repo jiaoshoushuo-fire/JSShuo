@@ -112,7 +112,7 @@
             self.goldLabel.text = [NSString stringWithFormat:@"+%@金币",@(model.coin)];
             self.goldLabel.textColor = [UIColor redColor];
         }else if (model.inOrOut == 2){
-            self.goldLabel.text = [NSString stringWithFormat:@"-%@金币",@(model.coin)];
+            self.goldLabel.text = [NSString stringWithFormat:@"%@金币",@(model.coin)];
             self.goldLabel.textColor = [UIColor greenColor];
         }
         
@@ -121,7 +121,7 @@
             self.goldLabel.text = [NSString stringWithFormat:@"+%@元",@(model.money)];
             self.goldLabel.textColor = [UIColor redColor];
         }else if (model.inOrOut == 2){
-            self.goldLabel.text = [NSString stringWithFormat:@"-%@元",@(model.money)];
+            self.goldLabel.text = [NSString stringWithFormat:@"%@元",@(model.money)];
             self.goldLabel.textColor = [UIColor greenColor];
         }
     }

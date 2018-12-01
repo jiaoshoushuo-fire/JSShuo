@@ -165,13 +165,22 @@
                 money = self.accountModel.money;
             }
             [JSNetworkManager exchangeWithMoney:money complement:^(BOOL isSuccess, NSDictionary * _Nonnull contentDict) {
-                
+                if (isSuccess) {
+                    [self showAutoDismissTextAlert:@"兑换成功"];
+                    [self performSelector:@selector(dismissViewController) withObject:nil afterDelay:2];
+                }
             }];
         } forControlEvents:UIControlEventTouchUpInside];
     }
     return _exchangeButton;
 }
-
+- (void)dismissViewController{
+    [self.rt_navigationController popViewControllerAnimated:YES complete:^(BOOL finished) {
+        if (self.delegate && [self.delegate respondsToSelector:@selector(didRefreshWithdrawViewController)]) {
+            [self.delegate didRefreshWithdrawViewController];
+        }
+    }];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"兑换";
@@ -279,14 +288,14 @@
 
 - (void)configModel:(JSAccountModel *)model{
     self.moneyLabel.text = @(model.money).stringValue;
-    self.subLabel_2.text = [NSString stringWithFormat:@"0.01零钱=%@金币",@(model.exchangeRate)];
+    self.subLabel_2.text = [NSString stringWithFormat:@"1元零钱=%@金币",@(model.exchangeRate)];
     self.inputTextField.placeholder = @(model.money).stringValue;
-    self.subLabel_4.text = @(model.money * 100 * model.exchangeRate).stringValue;
+    self.subLabel_4.text = @(model.money * 1 * model.exchangeRate).stringValue;
 }
 
 
 - (void) textFieldDidChange:(UITextField *) textField {
     
-    self.subLabel_4.text = @(textField.text.integerValue * 100 * _accountModel.exchangeRate).stringValue;
+    self.subLabel_4.text = @(textField.text.integerValue * 1 * _accountModel.exchangeRate).stringValue;
 }
 @end

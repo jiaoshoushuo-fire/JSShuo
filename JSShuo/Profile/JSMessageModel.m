@@ -10,14 +10,6 @@
 
 @implementation JSMessageModel
 
-//"list":[
-//        "userMessageId": "1",
-//        "createTime": "2018-07-04 13:29:54",
-//        "content": "内容",
-//        "type":1,
-//        "isRead":1
-//        },{...}],
-//"totalPage": 10
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{

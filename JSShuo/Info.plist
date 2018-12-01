@@ -30,6 +30,26 @@
 				<string>wx84fd8fba0a29ae12</string>
 			</array>
 		</dict>
+        <dict>
+            <key>CFBundleTypeRole</key>
+            <string>Editor</string>
+            <key>CFBundleURLName</key>
+            <string>qq</string>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>QQ60D1879</string>
+            </array>
+        </dict>
+        <dict>
+            <key>CFBundleTypeRole</key>
+            <string>Editor</string>
+            <key>CFBundleURLName</key>
+            <string>tencent</string>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>tencent101521529</string>
+            </array>
+        </dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>

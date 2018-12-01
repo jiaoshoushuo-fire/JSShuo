@@ -17,7 +17,8 @@ typedef  NS_ENUM(NSInteger, JSRequestSecurityCodeType){
     JSRequestSecurityCodeTypeLogin,
     JSRequestSecurityCodeTypeResetpassword,
     JSRequestSecurityCodeTypeChangepassword,
-    JSRequestSecurityCodeTypeAskteacher
+    JSRequestSecurityCodeTypeAskteacher,
+    JSRequestSecurityCodeTypeBindIPhone
 };
 
 @interface JSNetworkManager (Login)
@@ -28,6 +29,15 @@ typedef  NS_ENUM(NSInteger, JSRequestSecurityCodeType){
 + (void)loginAccountNumberWithPhoneNumber:(NSString *)phoneNumber securityCode:(NSString *)securityCode complement:(void(^)(BOOL isSuccess,NSDictionary *contenDict))complement;
 
 + (void)wechatLoginWithAuthCode:(NSString *)code appid:(NSString *)appid complement:(void(^)(BOOL isSuccess,NSDictionary *contenDict))complement;
+
+//绑定微信
++ (void)bindWechatWithAuthCode:(NSString *)code appid:(NSString *)appid complement:(void(^)(BOOL isSuccess,NSDictionary *contenDict))complement;
+
+//绑定支付宝
++ (void)bindAlipayWithAlipayId:(NSString *)alipayId realName:(NSString *)realName complement:(void(^)(BOOL isSuccess,NSDictionary *contenDict))complement;
+
+//绑定手机号
++ (void)bindMobileWithMobile:(NSString *)mobile validateCode:(NSString *)validateCode complement:(void(^)(BOOL isSuccess,NSDictionary *contenDict))complement;
 
 + (void)loginOutWithComplement:(void(^)(BOOL isSuccess,NSDictionary *contenDict))complement;
 
@@ -60,6 +70,27 @@ typedef  NS_ENUM(NSInteger, JSRequestSecurityCodeType){
 
 //兑换
 + (void)exchangeWithMoney:(NSInteger)money complement:(void(^)(BOOL isSuccess,NSDictionary *contentDict))complement;
+
+//排行榜
++ (void)questListWithWeak:(BOOL)isWeak complement:(void(^)(BOOL isSuccess,NSDictionary *contentDict))complemnt;
+
+//我的评论
++ (void)questCommentListWith:(NSInteger)pageNumber complement:(void(^)(BOOL isSuccess,NSDictionary *contentDict))complemnt;
+
+//收到的评论
++ (void)questRecvCommentListWith:(NSInteger)pageNumber complement:(void(^)(BOOL isSuccess,NSDictionary *contentDict))complemnt;
+
+//清空评论
++ (void)clearCommentComplement:(void(^)(BOOL isSuccess,NSDictionary *contentDict))complement;
+
+//收藏列表
++ (void)requestCollectListWithType:(NSInteger)type pageNumber:(NSInteger)pageIndex complement:(void(^)(BOOL isSuccess, NSDictionary *contentDict))complement;
+
+//删除收藏
++ (void)requestDeleateCollectWithID:(NSInteger)collectId complement:(void(^)(BOOL isSuccess, NSDictionary *contentDict))complement;
+
+//徒弟列表
++ (void)requestApprenticeListWithPageIndex:(NSInteger)pageNumber complement:(void(^)(BOOL isSuccess, NSDictionary *contentDict))complement;
 @end
 
 NS_ASSUME_NONNULL_END

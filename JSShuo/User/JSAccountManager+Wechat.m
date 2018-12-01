@@ -91,7 +91,9 @@ static ShareResponseHandler wechatShareHandler = nil;
                 [self getfunWechatLogin:authResp.code];
             } else {
                 // 分享授权
-                [self getWechatAccessToken:authResp.code];
+//                [self getWechatAccessToken:authResp.code];
+                //绑定微信
+                [self getBindWechat:authResp.code];
             }
         } else {
             if (self.authorizeHandler) {
@@ -135,7 +137,21 @@ static ShareResponseHandler wechatShareHandler = nil;
         }
     }];
 }
-
+- (void)getBindWechat:(NSString *)code{
+    [JSNetworkManager bindWechatWithAuthCode:code appid:wechat_App_ID complement:^(BOOL isSuccess, NSDictionary * _Nonnull contenDict) {
+        if (isSuccess) {
+            if (self.authorizeHandler) {
+                self.authorizeHandler(YES);
+                self.authorizeHandler = nil;
+            }
+        }else{
+            if (self.authorizeHandler) {
+                self.authorizeHandler(NO);
+                self.authorizeHandler = nil;
+            }
+        }
+    }];
+}
 - (void)getWechatAccessToken:(NSString *)code {
     NSString *urlStr = @"https://api.weixin.qq.com/sns/oauth2/access_token";
     

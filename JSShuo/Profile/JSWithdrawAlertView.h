@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface JSWithdrawAlertView : UIView
 
-+ (void)showAlertViewWithSuperView:(UIView *)superView type:(JSWithdrawAlertViewType)type handle:(void(^)(void))hande;
++ (void)showAlertViewWithSuperView:(UIView *)superView type:(JSWithdrawAlertViewType)type isBind:(BOOL)isBind handle:(void(^)(BOOL isSuccess))hande;
 @end
 
 NS_ASSUME_NONNULL_END

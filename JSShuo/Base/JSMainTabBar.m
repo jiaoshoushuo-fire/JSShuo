@@ -83,7 +83,7 @@
     self.publishButton = [self buttonWithNormalImage:[UIImage imageNamed:@"tab_publish"]
                                        selectedImage:[UIImage imageNamed:@"tab_publish"]
                                                title:@""
-                                                size:itemSize];
+                                                size:CGSizeMake(self.width / 5, self.width / 5 / 1.27)];
     self.newsButton = [self buttonWithNormalImage:[UIImage imageNamed:@"tab_news_normal"]
                                     selectedImage:[UIImage imageNamed:@"tab_news_selected"]
                                             title:@"任务"
@@ -95,7 +95,7 @@
     
     self.homeButton.origin = CGPointMake(0, 0);
     self.discoverButton.origin = CGPointMake(self.homeButton.right, 0);
-    self.publishButton.origin = CGPointMake(self.discoverButton.right, 0);
+    self.publishButton.origin = CGPointMake(self.discoverButton.right, -8);
     self.newsButton.origin = CGPointMake(self.publishButton.right, 0);
     self.profileButton.origin = CGPointMake(self.newsButton.right, 0);
     
@@ -118,7 +118,7 @@
     [button setImage:selectedImage forState:UIControlStateSelected];
     [button setTitle:title forState:UIControlStateNormal];
     [button setTitleColor:[UIColor colorWithHexString:@"98a4ab"] forState:UIControlStateNormal];
-    [button setTitleColor:[UIColor colorWithIndex:4] forState:UIControlStateSelected];
+    [button setTitleColor:[UIColor colorWithHexString:@"F44336"] forState:UIControlStateSelected];
     if (SYSTEM_VERSION_NOT_LESS_THAN(@"8.2")) {
         button.titleLabel.font = [UIFont systemFontOfSize:11 weight:UIFontWeightLight];
     } else {
@@ -152,16 +152,15 @@
 
 - (void)didSelectedButton:(id)sender {
     UIButton *button = (UIButton *)sender;
-//    if (button == self.newsButton || button == self.profileButton) {
-//        [GFAccountManager checkLoginStatusCompletion:^(BOOL isLogin, GFUserMTL *user, BOOL justLogin) {
-//            if (isLogin) {
-//                [self processButtonAction:sender];
-//            }
-//        }];
-//    } else {
-//        [self processButtonAction:sender];
-//    }
-    [self processButtonAction:sender];
+    if (button == self.newsButton || button == self.profileButton) {
+        [JSAccountManager checkLoginStatusComplement:^(BOOL isLogin) {
+            if (isLogin) {
+                [self processButtonAction:sender];
+            }
+        }];
+    } else {
+        [self processButtonAction:sender];
+    }
 }
 
 - (void)processButtonAction:(id)sender {
@@ -171,7 +170,9 @@
         [self setSelectButtonAtIndex:0];
     } else if (button == self.discoverButton) {
         [self setSelectButtonAtIndex:1];
-    } else if (button == self.newsButton) {
+    } else if (button == self.publishButton){
+        [self setSelectButtonAtIndex:2];
+    }else if (button == self.newsButton) {
         [self setSelectButtonAtIndex:3];
     } else if (button == self.profileButton) {
         [self setSelectButtonAtIndex:4];
@@ -185,7 +186,7 @@
 - (void)setSelectButtonAtIndex:(NSInteger)index {
     self.homeButton.selected = (index == 0);
     self.discoverButton.selected = (index == 1);
-    self.publishButton.selected = NO;
+    self.publishButton.selected = (index == 2);
     self.newsButton.selected = (index == 3);
     self.profileButton.selected = (index == 4);
 }

@@ -12,7 +12,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 static NSString *wechat_App_ID = @"wx84fd8fba0a29ae12";
-static NSString *wechat_APP_SECRET = @"92c8d5c2c18f65302839d9aef5c94494";
+static NSString *wechat_APP_SECRET = @"67a6c908c17e7861442f3560c9434c09";
 
 @interface JSAccountManager (Wechat)<WXApiDelegate>
 

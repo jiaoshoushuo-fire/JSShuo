@@ -86,11 +86,33 @@
 		6797051512B36A0CAA259324 /* libPods-JSShuoUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 45918ABA94D7C616D6E9C28A /* libPods-JSShuoUITests.a */; };
 		7A015E11219A75BE0025D24F /* JSWithdrawViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A015E10219A75BE0025D24F /* JSWithdrawViewController.m */; };
 		7A015E14219AF9740025D24F /* JSWithdrawModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A015E13219AF9740025D24F /* JSWithdrawModel.m */; };
+		7A1749BD21A064E000E9AA12 /* JSShareManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1749BC21A064E000E9AA12 /* JSShareManager.m */; };
+		7A1749C021A066B500E9AA12 /* GFPopMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1749BF21A066B500E9AA12 /* GFPopMenuView.m */; };
+		7A1749C321A0789000E9AA12 /* JSInputCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1749C221A0789000E9AA12 /* JSInputCodeViewController.m */; };
+		7A1749C621A24C5F00E9AA12 /* JSGamesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1749C521A24C5F00E9AA12 /* JSGamesViewController.m */; };
+		7A1749C921A24CE700E9AA12 /* JSMemberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1749C821A24CE700E9AA12 /* JSMemberViewController.m */; };
+		7A1749CC21A24D3C00E9AA12 /* JSCommonQuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1749CB21A24D3C00E9AA12 /* JSCommonQuestionViewController.m */; };
+		7A1749CF21A24D8900E9AA12 /* JSMyCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1749CE21A24D8900E9AA12 /* JSMyCommentViewController.m */; };
+		7A1749D221A24DB900E9AA12 /* JSMyCollectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1749D121A24DB900E9AA12 /* JSMyCollectViewController.m */; };
+		7A1749D521A25A8C00E9AA12 /* JSSubMyCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1749D421A25A8C00E9AA12 /* JSSubMyCommentViewController.m */; };
+		7A1749D821A25C0C00E9AA12 /* JSMyCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1749D721A25C0C00E9AA12 /* JSMyCommentCell.m */; };
+		7A1749DB21A28D7300E9AA12 /* JSMyCollectArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1749DA21A28D7300E9AA12 /* JSMyCollectArticleViewController.m */; };
+		7A1749DE21A28D8300E9AA12 /* JSMyCollectVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1749DD21A28D8300E9AA12 /* JSMyCollectVideoViewController.m */; };
+		7A1749E121A2ADC900E9AA12 /* JSCollectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1749E021A2ADC900E9AA12 /* JSCollectModel.m */; };
 		7A203E44218BE02A0001F926 /* JSLoginMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A203E43218BE02A0001F926 /* JSLoginMainViewController.m */; };
 		7A203E47218BE53F0001F926 /* JSLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A203E46218BE53F0001F926 /* JSLoginViewController.m */; };
 		7A203E4A218BE5650001F926 /* JSRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A203E49218BE5650001F926 /* JSRegisterViewController.m */; };
 		7A203E4E218BF2430001F926 /* JSAccountManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A203E4D218BF2430001F926 /* JSAccountManager.m */; };
 		7A203E51218C77350001F926 /* JSForgetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A203E50218C77350001F926 /* JSForgetPasswordViewController.m */; };
+		7A2DDCB821A673EF00D77867 /* YUFoldingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A2DDCB321A673EE00D77867 /* YUFoldingTableView.m */; };
+		7A2DDCB921A673EF00D77867 /* YUFoldingSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A2DDCB421A673EE00D77867 /* YUFoldingSectionHeader.m */; };
+		7A2DDCBA21A673EF00D77867 /* YUFolding_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A2DDCB621A673EE00D77867 /* YUFolding_arrow.png */; };
+		7A2DDCBD21A68C3C00D77867 /* JSMissionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A2DDCBC21A68C3C00D77867 /* JSMissionCell.m */; };
+		7A2DDCC021A6B2E300D77867 /* JSRedPacketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A2DDCBF21A6B2E300D77867 /* JSRedPacketViewController.m */; };
+		7A5152A521A79B1300116494 /* JSRedPerformViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5152A421A79B1300116494 /* JSRedPerformViewController.m */; };
+		7A5152A821A7AAB500116494 /* CountDown.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5152A721A7AAB400116494 /* CountDown.m */; };
+		7A5152AB21A7D84900116494 /* JSOpenRedPackCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5152AA21A7D84900116494 /* JSOpenRedPackCell.m */; };
+		7A5152AE21A7F22400116494 /* JSBindIPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5152AD21A7F22400116494 /* JSBindIPhoneViewController.m */; };
 		7A5FEE53218ACBAD006CF7EC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5FEE52218ACBAD006CF7EC /* AppDelegate.m */; };
 		7A5FEE56218ACBAD006CF7EC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5FEE55218ACBAD006CF7EC /* ViewController.m */; };
 		7A5FEE59218ACBAD006CF7EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A5FEE57218ACBAD006CF7EC /* Main.storyboard */; };
@@ -131,6 +153,7 @@
 		7A600EC6219C1A3E0033F6DF /* JSShopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A600EC5219C1A3E0033F6DF /* JSShopViewController.m */; };
 		7A600EC9219C1B2D0033F6DF /* JSInvitationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A600EC8219C1B2D0033F6DF /* JSInvitationViewController.m */; };
 		7A600ECC219C1BA40033F6DF /* JSMyWalletViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A600ECB219C1BA40033F6DF /* JSMyWalletViewController.m */; };
+		7A605B9021A3991F00D6AD67 /* JSMyApprenticeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A605B8F21A3991F00D6AD67 /* JSMyApprenticeViewController.m */; };
 		7A6E47362199774200D5C559 /* GFCacheUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6E47352199774200D5C559 /* GFCacheUtil.m */; };
 		7A6E473921997B8C00D5C559 /* JSFontChangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6E473821997B8C00D5C559 /* JSFontChangeViewController.m */; };
 		7A6E473C21997C5B00D5C559 /* JSPrivacyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6E473B21997C5B00D5C559 /* JSPrivacyViewController.m */; };
@@ -169,10 +192,13 @@
 		7A8F678A21903DD3008A00F4 /* JSAccountManager+Wechat.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8F678921903DD3008A00F4 /* JSAccountManager+Wechat.m */; };
 		7A8F678D2190473B008A00F4 /* JSAccountManager+QQ.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8F678C2190473B008A00F4 /* JSAccountManager+QQ.m */; };
 		7A8F67902190492A008A00F4 /* JSAccountManager+SinaWeibo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8F678F2190492A008A00F4 /* JSAccountManager+SinaWeibo.m */; };
+		7A9108F921A4FDAA005BFDC8 /* JSMissionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9108F821A4FDAA005BFDC8 /* JSMissionModel.m */; };
+		7A9108FC21A53775005BFDC8 /* JSNetworkManager+Mission.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9108FB21A53775005BFDC8 /* JSNetworkManager+Mission.m */; };
 		7AB931A3219E6218001E5390 /* JSWalletSwitchSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB931A2219E6218001E5390 /* JSWalletSwitchSegmentView.m */; };
 		7AB931A6219E6BBF001E5390 /* JSMyWalletCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB931A5219E6BBF001E5390 /* JSMyWalletCell.m */; };
 		7AB931A9219E9490001E5390 /* JSConvertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB931A8219E9490001E5390 /* JSConvertViewController.m */; };
 		7AB931AC219E9763001E5390 /* JSAccountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB931AB219E9763001E5390 /* JSAccountModel.m */; };
+		7AB931AF219EDF89001E5390 /* JSIncomeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB931AE219EDF89001E5390 /* JSIncomeListViewController.m */; };
 		7ABD9E602191BA6600E19B6A /* SDCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABD9E542191BA6500E19B6A /* SDCycleScrollView.m */; };
 		7ABD9E612191BA6600E19B6A /* UIView+SDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABD9E552191BA6500E19B6A /* UIView+SDExtension.m */; };
 		7ABD9E622191BA6600E19B6A /* SDCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABD9E562191BA6500E19B6A /* SDCollectionViewCell.m */; };
@@ -181,6 +207,12 @@
 		7ABD9E652191BA6600E19B6A /* TAAnimatedDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABD9E5B2191BA6500E19B6A /* TAAnimatedDotView.m */; };
 		7ABD9E662191BA6600E19B6A /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABD9E5C2191BA6500E19B6A /* TAAbstractDotView.m */; };
 		7ABD9E692191C03400E19B6A /* JSProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABD9E682191C03400E19B6A /* JSProfileCell.m */; };
+		7AD5489721AE303900244C78 /* JSActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD5489621AE303900244C78 /* JSActivityCell.m */; };
+		7AD5489A21AE426F00244C78 /* JSActivityHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD5489921AE426F00244C78 /* JSActivityHeaderView.m */; };
+		7AD5489D21AE60C500244C78 /* ULBCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD5489B21AE60C400244C78 /* ULBCollectionViewFlowLayout.m */; };
+		7AD7F1AC21AA713000F56F79 /* JSBaseWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD7F1AB21AA713000F56F79 /* JSBaseWebViewController.m */; };
+		7AD7F1AF21AA730000F56F79 /* JSActivityRuleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD7F1AE21AA730000F56F79 /* JSActivityRuleViewController.m */; };
+		7AD7F1B221AA742500F56F79 /* JSActivityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD7F1B121AA742500F56F79 /* JSActivityModel.m */; };
 		A02B29E2FC7397B33BD05EC7 /* libPods-JSShuo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0C9F621EFFB845046C46704 /* libPods-JSShuo.a */; };
 /* End PBXBuildFile section */
 
@@ -358,6 +390,32 @@
 		7A015E10219A75BE0025D24F /* JSWithdrawViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSWithdrawViewController.m; sourceTree = "<group>"; };
 		7A015E12219AF9740025D24F /* JSWithdrawModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSWithdrawModel.h; sourceTree = "<group>"; };
 		7A015E13219AF9740025D24F /* JSWithdrawModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSWithdrawModel.m; sourceTree = "<group>"; };
+		7A1749BB21A064E000E9AA12 /* JSShareManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSShareManager.h; sourceTree = "<group>"; };
+		7A1749BC21A064E000E9AA12 /* JSShareManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSShareManager.m; sourceTree = "<group>"; };
+		7A1749BE21A066B400E9AA12 /* GFPopMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFPopMenuView.h; sourceTree = "<group>"; };
+		7A1749BF21A066B500E9AA12 /* GFPopMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFPopMenuView.m; sourceTree = "<group>"; };
+		7A1749C121A0789000E9AA12 /* JSInputCodeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSInputCodeViewController.h; sourceTree = "<group>"; };
+		7A1749C221A0789000E9AA12 /* JSInputCodeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSInputCodeViewController.m; sourceTree = "<group>"; };
+		7A1749C421A24C5F00E9AA12 /* JSGamesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSGamesViewController.h; sourceTree = "<group>"; };
+		7A1749C521A24C5F00E9AA12 /* JSGamesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSGamesViewController.m; sourceTree = "<group>"; };
+		7A1749C721A24CE700E9AA12 /* JSMemberViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSMemberViewController.h; sourceTree = "<group>"; };
+		7A1749C821A24CE700E9AA12 /* JSMemberViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSMemberViewController.m; sourceTree = "<group>"; };
+		7A1749CA21A24D3C00E9AA12 /* JSCommonQuestionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSCommonQuestionViewController.h; sourceTree = "<group>"; };
+		7A1749CB21A24D3C00E9AA12 /* JSCommonQuestionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSCommonQuestionViewController.m; sourceTree = "<group>"; };
+		7A1749CD21A24D8900E9AA12 /* JSMyCommentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSMyCommentViewController.h; sourceTree = "<group>"; };
+		7A1749CE21A24D8900E9AA12 /* JSMyCommentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSMyCommentViewController.m; sourceTree = "<group>"; };
+		7A1749D021A24DB900E9AA12 /* JSMyCollectViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSMyCollectViewController.h; sourceTree = "<group>"; };
+		7A1749D121A24DB900E9AA12 /* JSMyCollectViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSMyCollectViewController.m; sourceTree = "<group>"; };
+		7A1749D321A25A8C00E9AA12 /* JSSubMyCommentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSSubMyCommentViewController.h; sourceTree = "<group>"; };
+		7A1749D421A25A8C00E9AA12 /* JSSubMyCommentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSSubMyCommentViewController.m; sourceTree = "<group>"; };
+		7A1749D621A25C0C00E9AA12 /* JSMyCommentCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSMyCommentCell.h; sourceTree = "<group>"; };
+		7A1749D721A25C0C00E9AA12 /* JSMyCommentCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSMyCommentCell.m; sourceTree = "<group>"; };
+		7A1749D921A28D7300E9AA12 /* JSMyCollectArticleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSMyCollectArticleViewController.h; sourceTree = "<group>"; };
+		7A1749DA21A28D7300E9AA12 /* JSMyCollectArticleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSMyCollectArticleViewController.m; sourceTree = "<group>"; };
+		7A1749DC21A28D8300E9AA12 /* JSMyCollectVideoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSMyCollectVideoViewController.h; sourceTree = "<group>"; };
+		7A1749DD21A28D8300E9AA12 /* JSMyCollectVideoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSMyCollectVideoViewController.m; sourceTree = "<group>"; };
+		7A1749DF21A2ADC900E9AA12 /* JSCollectModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSCollectModel.h; sourceTree = "<group>"; };
+		7A1749E021A2ADC900E9AA12 /* JSCollectModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSCollectModel.m; sourceTree = "<group>"; };
 		7A203E42218BE02A0001F926 /* JSLoginMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSLoginMainViewController.h; sourceTree = "<group>"; };
 		7A203E43218BE02A0001F926 /* JSLoginMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSLoginMainViewController.m; sourceTree = "<group>"; };
 		7A203E45218BE53F0001F926 /* JSLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSLoginViewController.h; sourceTree = "<group>"; };
@@ -368,6 +426,23 @@
 		7A203E4D218BF2430001F926 /* JSAccountManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSAccountManager.m; sourceTree = "<group>"; };
 		7A203E4F218C77350001F926 /* JSForgetPasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSForgetPasswordViewController.h; sourceTree = "<group>"; };
 		7A203E50218C77350001F926 /* JSForgetPasswordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSForgetPasswordViewController.m; sourceTree = "<group>"; };
+		7A2DDCB321A673EE00D77867 /* YUFoldingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YUFoldingTableView.m; sourceTree = "<group>"; };
+		7A2DDCB421A673EE00D77867 /* YUFoldingSectionHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YUFoldingSectionHeader.m; sourceTree = "<group>"; };
+		7A2DDCB521A673EE00D77867 /* YUFoldingTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YUFoldingTableView.h; sourceTree = "<group>"; };
+		7A2DDCB621A673EE00D77867 /* YUFolding_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = YUFolding_arrow.png; sourceTree = "<group>"; };
+		7A2DDCB721A673EE00D77867 /* YUFoldingSectionHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YUFoldingSectionHeader.h; sourceTree = "<group>"; };
+		7A2DDCBB21A68C3C00D77867 /* JSMissionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSMissionCell.h; sourceTree = "<group>"; };
+		7A2DDCBC21A68C3C00D77867 /* JSMissionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSMissionCell.m; sourceTree = "<group>"; };
+		7A2DDCBE21A6B2E300D77867 /* JSRedPacketViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSRedPacketViewController.h; sourceTree = "<group>"; };
+		7A2DDCBF21A6B2E300D77867 /* JSRedPacketViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSRedPacketViewController.m; sourceTree = "<group>"; };
+		7A5152A321A79B1300116494 /* JSRedPerformViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSRedPerformViewController.h; sourceTree = "<group>"; };
+		7A5152A421A79B1300116494 /* JSRedPerformViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSRedPerformViewController.m; sourceTree = "<group>"; };
+		7A5152A621A7AAB400116494 /* CountDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountDown.h; sourceTree = "<group>"; };
+		7A5152A721A7AAB400116494 /* CountDown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountDown.m; sourceTree = "<group>"; };
+		7A5152A921A7D84900116494 /* JSOpenRedPackCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSOpenRedPackCell.h; sourceTree = "<group>"; };
+		7A5152AA21A7D84900116494 /* JSOpenRedPackCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSOpenRedPackCell.m; sourceTree = "<group>"; };
+		7A5152AC21A7F22400116494 /* JSBindIPhoneViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSBindIPhoneViewController.h; sourceTree = "<group>"; };
+		7A5152AD21A7F22400116494 /* JSBindIPhoneViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSBindIPhoneViewController.m; sourceTree = "<group>"; };
 		7A5FEE4E218ACBAD006CF7EC /* JSShuo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JSShuo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A5FEE51218ACBAD006CF7EC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7A5FEE52218ACBAD006CF7EC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -438,6 +513,8 @@
 		7A600EC8219C1B2D0033F6DF /* JSInvitationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSInvitationViewController.m; sourceTree = "<group>"; };
 		7A600ECA219C1BA40033F6DF /* JSMyWalletViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSMyWalletViewController.h; sourceTree = "<group>"; };
 		7A600ECB219C1BA40033F6DF /* JSMyWalletViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSMyWalletViewController.m; sourceTree = "<group>"; };
+		7A605B8E21A3991F00D6AD67 /* JSMyApprenticeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSMyApprenticeViewController.h; sourceTree = "<group>"; };
+		7A605B8F21A3991F00D6AD67 /* JSMyApprenticeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSMyApprenticeViewController.m; sourceTree = "<group>"; };
 		7A6E47342199774200D5C559 /* GFCacheUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFCacheUtil.h; sourceTree = "<group>"; };
 		7A6E47352199774200D5C559 /* GFCacheUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFCacheUtil.m; sourceTree = "<group>"; };
 		7A6E473721997B8C00D5C559 /* JSFontChangeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSFontChangeViewController.h; sourceTree = "<group>"; };
@@ -517,6 +594,10 @@
 		7A8F678C2190473B008A00F4 /* JSAccountManager+QQ.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "JSAccountManager+QQ.m"; sourceTree = "<group>"; };
 		7A8F678E2190492A008A00F4 /* JSAccountManager+SinaWeibo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JSAccountManager+SinaWeibo.h"; sourceTree = "<group>"; };
 		7A8F678F2190492A008A00F4 /* JSAccountManager+SinaWeibo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "JSAccountManager+SinaWeibo.m"; sourceTree = "<group>"; };
+		7A9108F721A4FDAA005BFDC8 /* JSMissionModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSMissionModel.h; sourceTree = "<group>"; };
+		7A9108F821A4FDAA005BFDC8 /* JSMissionModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSMissionModel.m; sourceTree = "<group>"; };
+		7A9108FA21A53775005BFDC8 /* JSNetworkManager+Mission.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JSNetworkManager+Mission.h"; sourceTree = "<group>"; };
+		7A9108FB21A53775005BFDC8 /* JSNetworkManager+Mission.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "JSNetworkManager+Mission.m"; sourceTree = "<group>"; };
 		7AB931A1219E6218001E5390 /* JSWalletSwitchSegmentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSWalletSwitchSegmentView.h; sourceTree = "<group>"; };
 		7AB931A2219E6218001E5390 /* JSWalletSwitchSegmentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSWalletSwitchSegmentView.m; sourceTree = "<group>"; };
 		7AB931A4219E6BBF001E5390 /* JSMyWalletCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSMyWalletCell.h; sourceTree = "<group>"; };
@@ -525,6 +606,8 @@
 		7AB931A8219E9490001E5390 /* JSConvertViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSConvertViewController.m; sourceTree = "<group>"; };
 		7AB931AA219E9763001E5390 /* JSAccountModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSAccountModel.h; sourceTree = "<group>"; };
 		7AB931AB219E9763001E5390 /* JSAccountModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSAccountModel.m; sourceTree = "<group>"; };
+		7AB931AD219EDF89001E5390 /* JSIncomeListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSIncomeListViewController.h; sourceTree = "<group>"; };
+		7AB931AE219EDF89001E5390 /* JSIncomeListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSIncomeListViewController.m; sourceTree = "<group>"; };
 		7ABD9E512191BA6500E19B6A /* UIView+SDExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SDExtension.h"; sourceTree = "<group>"; };
 		7ABD9E522191BA6500E19B6A /* SDCycleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDCycleScrollView.h; sourceTree = "<group>"; };
 		7ABD9E532191BA6500E19B6A /* SDCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDCollectionViewCell.h; sourceTree = "<group>"; };
@@ -541,6 +624,18 @@
 		7ABD9E5F2191BA6500E19B6A /* TAPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAPageControl.h; sourceTree = "<group>"; };
 		7ABD9E672191C03400E19B6A /* JSProfileCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSProfileCell.h; sourceTree = "<group>"; };
 		7ABD9E682191C03400E19B6A /* JSProfileCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSProfileCell.m; sourceTree = "<group>"; };
+		7AD5489521AE303900244C78 /* JSActivityCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSActivityCell.h; sourceTree = "<group>"; };
+		7AD5489621AE303900244C78 /* JSActivityCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSActivityCell.m; sourceTree = "<group>"; };
+		7AD5489821AE426F00244C78 /* JSActivityHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSActivityHeaderView.h; sourceTree = "<group>"; };
+		7AD5489921AE426F00244C78 /* JSActivityHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSActivityHeaderView.m; sourceTree = "<group>"; };
+		7AD5489B21AE60C400244C78 /* ULBCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ULBCollectionViewFlowLayout.m; sourceTree = "<group>"; };
+		7AD5489C21AE60C400244C78 /* ULBCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ULBCollectionViewFlowLayout.h; sourceTree = "<group>"; };
+		7AD7F1AA21AA713000F56F79 /* JSBaseWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSBaseWebViewController.h; sourceTree = "<group>"; };
+		7AD7F1AB21AA713000F56F79 /* JSBaseWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSBaseWebViewController.m; sourceTree = "<group>"; };
+		7AD7F1AD21AA730000F56F79 /* JSActivityRuleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSActivityRuleViewController.h; sourceTree = "<group>"; };
+		7AD7F1AE21AA730000F56F79 /* JSActivityRuleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSActivityRuleViewController.m; sourceTree = "<group>"; };
+		7AD7F1B021AA742500F56F79 /* JSActivityModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSActivityModel.h; sourceTree = "<group>"; };
+		7AD7F1B121AA742500F56F79 /* JSActivityModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSActivityModel.m; sourceTree = "<group>"; };
 		970737962D02DBFA81E8DC67 /* Pods-JSShuoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSShuoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JSShuoTests/Pods-JSShuoTests.release.xcconfig"; sourceTree = "<group>"; };
 		A13FC4DE98462C1E2DE50010 /* Pods-JSShuo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSShuo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JSShuo/Pods-JSShuo.debug.xcconfig"; sourceTree = "<group>"; };
 		B29893048A2739D89BF02B42 /* Pods-JSShuo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSShuo.release.xcconfig"; path = "Pods/Target Support Files/Pods-JSShuo/Pods-JSShuo.release.xcconfig"; sourceTree = "<group>"; };
@@ -905,6 +1000,10 @@
 			children = (
 				7A203E4C218BF2430001F926 /* JSAccountManager.h */,
 				7A203E4D218BF2430001F926 /* JSAccountManager.m */,
+				7A1749BB21A064E000E9AA12 /* JSShareManager.h */,
+				7A1749BC21A064E000E9AA12 /* JSShareManager.m */,
+				7A1749BE21A066B400E9AA12 /* GFPopMenuView.h */,
+				7A1749BF21A066B500E9AA12 /* GFPopMenuView.m */,
 				7A8F678821903DD3008A00F4 /* JSAccountManager+Wechat.h */,
 				7A8F678921903DD3008A00F4 /* JSAccountManager+Wechat.m */,
 				7A8F678B2190473B008A00F4 /* JSAccountManager+QQ.h */,
@@ -913,6 +1012,18 @@
 				7A8F678F2190492A008A00F4 /* JSAccountManager+SinaWeibo.m */,
 			);
 			path = User;
+			sourceTree = "<group>";
+		};
+		7A2DDCB221A673EE00D77867 /* YUFoldingTableView */ = {
+			isa = PBXGroup;
+			children = (
+				7A2DDCB321A673EE00D77867 /* YUFoldingTableView.m */,
+				7A2DDCB421A673EE00D77867 /* YUFoldingSectionHeader.m */,
+				7A2DDCB521A673EE00D77867 /* YUFoldingTableView.h */,
+				7A2DDCB621A673EE00D77867 /* YUFolding_arrow.png */,
+				7A2DDCB721A673EE00D77867 /* YUFoldingSectionHeader.h */,
+			);
+			path = YUFoldingTableView;
 			sourceTree = "<group>";
 		};
 		7A5FEE45218ACBAD006CF7EC = {
@@ -994,6 +1105,8 @@
 			children = (
 				7A5FEE86218AFB3E006CF7EC /* JSBaseViewController.h */,
 				7A5FEE87218AFB3E006CF7EC /* JSBaseViewController.m */,
+				7AD7F1AA21AA713000F56F79 /* JSBaseWebViewController.h */,
+				7AD7F1AB21AA713000F56F79 /* JSBaseWebViewController.m */,
 				7A5FEE89218AFBAC006CF7EC /* JSTabBarViewController.h */,
 				7A5FEE8A218AFBAC006CF7EC /* JSTabBarViewController.m */,
 				7A5FEE8C218AFC39006CF7EC /* JSNavigationBar.h */,
@@ -1047,6 +1160,12 @@
 			children = (
 				7A5FEEAF218B0D4D006CF7EC /* JSActivityCenterViewController.h */,
 				7A5FEEB0218B0D4D006CF7EC /* JSActivityCenterViewController.m */,
+				7AD5489C21AE60C400244C78 /* ULBCollectionViewFlowLayout.h */,
+				7AD5489B21AE60C400244C78 /* ULBCollectionViewFlowLayout.m */,
+				7AD5489521AE303900244C78 /* JSActivityCell.h */,
+				7AD5489621AE303900244C78 /* JSActivityCell.m */,
+				7AD5489821AE426F00244C78 /* JSActivityHeaderView.h */,
+				7AD5489921AE426F00244C78 /* JSActivityHeaderView.m */,
 			);
 			path = Activity;
 			sourceTree = "<group>";
@@ -1097,6 +1216,8 @@
 				7A898F412193C50500A7CADD /* JSSettingViewController.m */,
 				7A898F6E21951D7B00A7CADD /* JSPerfectUserInfoViewController.h */,
 				7A898F6F21951D7B00A7CADD /* JSPerfectUserInfoViewController.m */,
+				7A5152AC21A7F22400116494 /* JSBindIPhoneViewController.h */,
+				7A5152AD21A7F22400116494 /* JSBindIPhoneViewController.m */,
 				7A6E473721997B8C00D5C559 /* JSFontChangeViewController.h */,
 				7A6E473821997B8C00D5C559 /* JSFontChangeViewController.m */,
 				7A6E473A21997C5B00D5C559 /* JSPrivacyViewController.h */,
@@ -1113,8 +1234,32 @@
 				7A600EC8219C1B2D0033F6DF /* JSInvitationViewController.m */,
 				7A600ECA219C1BA40033F6DF /* JSMyWalletViewController.h */,
 				7A600ECB219C1BA40033F6DF /* JSMyWalletViewController.m */,
+				7A605B8E21A3991F00D6AD67 /* JSMyApprenticeViewController.h */,
+				7A605B8F21A3991F00D6AD67 /* JSMyApprenticeViewController.m */,
 				7AB931A7219E9490001E5390 /* JSConvertViewController.h */,
 				7AB931A8219E9490001E5390 /* JSConvertViewController.m */,
+				7AB931AD219EDF89001E5390 /* JSIncomeListViewController.h */,
+				7AB931AE219EDF89001E5390 /* JSIncomeListViewController.m */,
+				7A1749C121A0789000E9AA12 /* JSInputCodeViewController.h */,
+				7A1749C221A0789000E9AA12 /* JSInputCodeViewController.m */,
+				7A1749C421A24C5F00E9AA12 /* JSGamesViewController.h */,
+				7A1749C521A24C5F00E9AA12 /* JSGamesViewController.m */,
+				7A1749C721A24CE700E9AA12 /* JSMemberViewController.h */,
+				7A1749C821A24CE700E9AA12 /* JSMemberViewController.m */,
+				7A1749CA21A24D3C00E9AA12 /* JSCommonQuestionViewController.h */,
+				7A1749CB21A24D3C00E9AA12 /* JSCommonQuestionViewController.m */,
+				7A1749CD21A24D8900E9AA12 /* JSMyCommentViewController.h */,
+				7A1749CE21A24D8900E9AA12 /* JSMyCommentViewController.m */,
+				7A1749D321A25A8C00E9AA12 /* JSSubMyCommentViewController.h */,
+				7A1749D421A25A8C00E9AA12 /* JSSubMyCommentViewController.m */,
+				7A1749D621A25C0C00E9AA12 /* JSMyCommentCell.h */,
+				7A1749D721A25C0C00E9AA12 /* JSMyCommentCell.m */,
+				7A1749D021A24DB900E9AA12 /* JSMyCollectViewController.h */,
+				7A1749D121A24DB900E9AA12 /* JSMyCollectViewController.m */,
+				7A1749D921A28D7300E9AA12 /* JSMyCollectArticleViewController.h */,
+				7A1749DA21A28D7300E9AA12 /* JSMyCollectArticleViewController.m */,
+				7A1749DC21A28D8300E9AA12 /* JSMyCollectVideoViewController.h */,
+				7A1749DD21A28D8300E9AA12 /* JSMyCollectVideoViewController.m */,
 				7AB931A4219E6BBF001E5390 /* JSMyWalletCell.h */,
 				7AB931A5219E6BBF001E5390 /* JSMyWalletCell.m */,
 				7A898F71219528D500A7CADD /* JSPerfectUserInfoCell.h */,
@@ -1129,6 +1274,8 @@
 				7A898F6A21941D8900A7CADD /* JSMessageModel.m */,
 				7AB931AA219E9763001E5390 /* JSAccountModel.h */,
 				7AB931AB219E9763001E5390 /* JSAccountModel.m */,
+				7A1749DF21A2ADC900E9AA12 /* JSCollectModel.h */,
+				7A1749E021A2ADC900E9AA12 /* JSCollectModel.m */,
 				7A898F9A2195865200A7CADD /* JSInputBar.h */,
 				7A898F9B2195865200A7CADD /* JSInputBar.m */,
 				7A600EC1219BFAC90033F6DF /* JSWithdrawAlertView.h */,
@@ -1144,6 +1291,20 @@
 			children = (
 				7A5FEEBB218B0D8A006CF7EC /* JSMissionViewController.h */,
 				7A5FEEBC218B0D8A006CF7EC /* JSMissionViewController.m */,
+				7A2DDCBB21A68C3C00D77867 /* JSMissionCell.h */,
+				7A2DDCBC21A68C3C00D77867 /* JSMissionCell.m */,
+				7A9108F721A4FDAA005BFDC8 /* JSMissionModel.h */,
+				7A9108F821A4FDAA005BFDC8 /* JSMissionModel.m */,
+				7A2DDCBE21A6B2E300D77867 /* JSRedPacketViewController.h */,
+				7A2DDCBF21A6B2E300D77867 /* JSRedPacketViewController.m */,
+				7AD7F1AD21AA730000F56F79 /* JSActivityRuleViewController.h */,
+				7AD7F1AE21AA730000F56F79 /* JSActivityRuleViewController.m */,
+				7A5152A321A79B1300116494 /* JSRedPerformViewController.h */,
+				7A5152A421A79B1300116494 /* JSRedPerformViewController.m */,
+				7A5152A921A7D84900116494 /* JSOpenRedPackCell.h */,
+				7A5152AA21A7D84900116494 /* JSOpenRedPackCell.m */,
+				7AD7F1B021AA742500F56F79 /* JSActivityModel.h */,
+				7AD7F1B121AA742500F56F79 /* JSActivityModel.m */,
 			);
 			path = Mission;
 			sourceTree = "<group>";
@@ -1151,6 +1312,7 @@
 		7A5FEEBE218B2429006CF7EC /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				7A2DDCB221A673EE00D77867 /* YUFoldingTableView */,
 				006042E52197C7700080091A /* ZFPlayer */,
 				0049109721951DA400B85B4F /* FDTemplateLayoutCell */,
 				7A898F4D2193E4EE00A7CADD /* WZLBadge */,
@@ -1194,6 +1356,8 @@
 				7A898F482193D88F00A7CADD /* JSAdjustButton.m */,
 				7A6E47342199774200D5C559 /* GFCacheUtil.h */,
 				7A6E47352199774200D5C559 /* GFCacheUtil.m */,
+				7A5152A621A7AAB400116494 /* CountDown.h */,
+				7A5152A721A7AAB400116494 /* CountDown.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -1286,6 +1450,8 @@
 				7A8F6779218FCF72008A00F4 /* JSNetworkManager.m */,
 				7A8F677E218FE30C008A00F4 /* JSNetworkManager+Login.h */,
 				7A8F677F218FE30C008A00F4 /* JSNetworkManager+Login.m */,
+				7A9108FA21A53775005BFDC8 /* JSNetworkManager+Mission.h */,
+				7A9108FB21A53775005BFDC8 /* JSNetworkManager+Mission.m */,
 				004520672191A27700371F10 /* JSNetworkManager+Channel.h */,
 				004520682191A27700371F10 /* JSNetworkManager+Channel.m */,
 				0045206A2191C05B00371F10 /* JSNetworkManager+LongVideo.h */,
@@ -1475,6 +1641,7 @@
 				7A5FEE59218ACBAD006CF7EC /* Main.storyboard in Resources */,
 				00452050218FDEDF00371F10 /* nav_headr_search.png in Resources */,
 				00452046218EED9E00371F10 /* nav_header_login_normal.png in Resources */,
+				7A2DDCBA21A673EF00D77867 /* YUFolding_arrow.png in Resources */,
 				00452049218EED9E00371F10 /* nav_header_login_selected.png in Resources */,
 				006043352197C7700080091A /* ZFPlayer.bundle in Resources */,
 			);
@@ -1591,32 +1758,42 @@
 				002D6AAB21A3D2DC00BADF5C /* JSDetailBottomSendCommentView.m in Sources */,
 				7A8F678A21903DD3008A00F4 /* JSAccountManager+Wechat.m in Sources */,
 				7A6E47362199774200D5C559 /* GFCacheUtil.m in Sources */,
+				7AD7F1AF21AA730000F56F79 /* JSActivityRuleViewController.m in Sources */,
 				7A5FEEA0218B07B7006CF7EC /* JSRootViewController.m in Sources */,
 				7A898F3F2193C4F600A7CADD /* JSMessageViewController.m in Sources */,
+				7A1749C921A24CE700E9AA12 /* JSMemberViewController.m in Sources */,
 				7ABD9E662191BA6600E19B6A /* TAAbstractDotView.m in Sources */,
 				7A5FEE91218AFC92006CF7EC /* JSTabBar.m in Sources */,
 				002B74D5219D677900483841 /* JSSearchTopNavView.m in Sources */,
 				7A6E473C21997C5B00D5C559 /* JSPrivacyViewController.m in Sources */,
+				7A1749C321A0789000E9AA12 /* JSInputCodeViewController.m in Sources */,
 				0045205B2190484700371F10 /* JSLongVideoModel.m in Sources */,
 				7A6E474221997DCE00D5C559 /* JSAboutUsViewController.m in Sources */,
+				7A1749CC21A24D3C00E9AA12 /* JSCommonQuestionViewController.m in Sources */,
 				7A8F677A218FCF72008A00F4 /* JSNetworkManager.m in Sources */,
+				7A2DDCBD21A68C3C00D77867 /* JSMissionCell.m in Sources */,
 				7A898F73219528D500A7CADD /* JSPerfectUserInfoCell.m in Sources */,
 				004910A92195584B00B85B4F /* JSShowTypeSmallPictureTableViewCell.m in Sources */,
 				002B74D2219D648300483841 /* JSSearchResultView.m in Sources */,
 				004521192192DFB600371F10 /* JSHomeModel.m in Sources */,
 				004910A221951DB700B85B4F /* UITableView+FDKeyedHeightCache.m in Sources */,
 				006043472197CAA20080091A /* ZFDouYinCell.m in Sources */,
+				7A1749D221A24DB900E9AA12 /* JSMyCollectViewController.m in Sources */,
 				0060434D2197D35D0080091A /* JSNetworkManager+ShortVideo.m in Sources */,
+				7A5152A521A79B1300116494 /* JSRedPerformViewController.m in Sources */,
 				7A8F677A218FCF72008A00F4 /* JSNetworkManager.m in Sources */,
 				0060432F2197C7700080091A /* ZFAVPlayerManager.m in Sources */,
 				7A8F67902190492A008A00F4 /* JSAccountManager+SinaWeibo.m in Sources */,
 				7A846ECA219290AB0048F222 /* JSProfileUserModel.m in Sources */,
+				7A1749DB21A28D7300E9AA12 /* JSMyCollectArticleViewController.m in Sources */,
+				7AD7F1B221AA742500F56F79 /* JSActivityModel.m in Sources */,
 				002B74D8219E5A0700483841 /* JSHotSearchTitleCollectionViewCell.m in Sources */,
 				7A5FEEA9218B0BD0006CF7EC /* JSMainViewController.m in Sources */,
 				7A5FEE98218AFEA1006CF7EC /* UIColor+JSShuo.m in Sources */,
 				7A898F8C21956B0F00A7CADD /* GGAssetsPickerViewController.m in Sources */,
 				7A8F6780218FE30C008A00F4 /* JSNetworkManager+Login.m in Sources */,
 				002B74CF219D647300483841 /* JSSearchNormalView.m in Sources */,
+				7A5152A821A7AAB500116494 /* CountDown.m in Sources */,
 				7A898F8A21956B0F00A7CADD /* GGAssetCollectionView.m in Sources */,
 				006043242197C7700080091A /* ZFPlayerController.m in Sources */,
 				002B752321A11A6F00483841 /* JSCommentListModel.m in Sources */,
@@ -1625,6 +1802,7 @@
 				002D6B7321A92F3300BADF5C /* UILabel+QLAdd.m in Sources */,
 				7ABD9E652191BA6600E19B6A /* TAAnimatedDotView.m in Sources */,
 				002B7404219862AB00483841 /* JSComputeTime.m in Sources */,
+				7A1749BD21A064E000E9AA12 /* JSShareManager.m in Sources */,
 				0045206121904AE600371F10 /* JSLongVideoCell.m in Sources */,
 				7A600EC6219C1A3E0033F6DF /* JSShopViewController.m in Sources */,
 				006043442197CA8A0080091A /* ZFDouYinControlView.m in Sources */,
@@ -1634,16 +1812,19 @@
 				002B752D21A263C100483841 /* JSRecommentTableViewCell.m in Sources */,
 				002B74DF219EC79000483841 /* JSArticleDetailViewController.m in Sources */,
 				7A5FEE88218AFB3E006CF7EC /* JSBaseViewController.m in Sources */,
+				7A2DDCC021A6B2E300D77867 /* JSRedPacketViewController.m in Sources */,
 				7ABD9E622191BA6600E19B6A /* SDCollectionViewCell.m in Sources */,
 				0045204C218EEE3500371F10 /* JSNavSearchView.m in Sources */,
 				009601AD21AD91C2001BE083 /* JSBottomPopSendCommentView.m in Sources */,
 				006043232197C7700080091A /* ZFPlayerGestureControl.m in Sources */,
+				7A1749CF21A24D8900E9AA12 /* JSMyCommentViewController.m in Sources */,
 				006043272197C7700080091A /* UIScrollView+ZFPlayer.m in Sources */,
 				0045211C2192E02700371F10 /* JSHomeTableViewCell.m in Sources */,
 				7A5FEEBD218B0D8A006CF7EC /* JSMissionViewController.m in Sources */,
 				004910A121951DB700B85B4F /* UITableView+FDIndexPathHeightCache.m in Sources */,
 				004910A321951DB700B85B4F /* UITableView+FDTemplateLayoutCell.m in Sources */,
 				7A898F462193CCAD00A7CADD /* JSSwitchSegmentView.m in Sources */,
+				7A2DDCB921A673EF00D77867 /* YUFoldingSectionHeader.m in Sources */,
 				7A5FEEB4218B0D5E006CF7EC /* JSHomeViewController.m in Sources */,
 				7A5FEE56218ACBAD006CF7EC /* ViewController.m in Sources */,
 				7A898F4C2193E05100A7CADD /* UIImage+Extension.m in Sources */,
@@ -1652,19 +1833,27 @@
 				7A898F5E2193E4EF00A7CADD /* UITabBarItem+WZLBadge.m in Sources */,
 				7A5FEE61218ACBAE006CF7EC /* main.m in Sources */,
 				7A203E44218BE02A0001F926 /* JSLoginMainViewController.m in Sources */,
+				7A1749C621A24C5F00E9AA12 /* JSGamesViewController.m in Sources */,
+				7AD5489A21AE426F00244C78 /* JSActivityHeaderView.m in Sources */,
 				7A203E4A218BE5650001F926 /* JSRegisterViewController.m in Sources */,
+				7A9108F921A4FDAA005BFDC8 /* JSMissionModel.m in Sources */,
 				004910AC2195586100B85B4F /* JSShowTypeThreePictureTableViewCell.m in Sources */,
 				006043372197C7700080091A /* ZFPlayerControlView.m in Sources */,
 				7A5FEEB7218B0D6D006CF7EC /* JSVideoViewController.m in Sources */,
 				006043342197C7700080091A /* ZFNetworkSpeedMonitor.m in Sources */,
+				7A5152AB21A7D84900116494 /* JSOpenRedPackCell.m in Sources */,
 				7AB931A9219E9490001E5390 /* JSConvertViewController.m in Sources */,
 				006043392197C7700080091A /* ZFLoadingView.m in Sources */,
 				0045205321900D4300371F10 /* JSVideoTitleBarViewController.m in Sources */,
 				7A898F8821956B0F00A7CADD /* GGPhotoPreviewViewController.m in Sources */,
 				7A898F8D21956B0F00A7CADD /* GGAssetItemCell.m in Sources */,
+				7AD7F1AC21AA713000F56F79 /* JSBaseWebViewController.m in Sources */,
 				7AB931AC219E9763001E5390 /* JSAccountModel.m in Sources */,
+				7A5152AE21A7F22400116494 /* JSBindIPhoneViewController.m in Sources */,
 				7A898F9321956C4D00A7CADD /* GGPhotoLibrary.m in Sources */,
 				7A5FEEA6218B0BC2006CF7EC /* JSStartupViewController.m in Sources */,
+				7AD5489D21AE60C500244C78 /* ULBCollectionViewFlowLayout.m in Sources */,
+				7A2DDCB821A673EF00D77867 /* YUFoldingTableView.m in Sources */,
 				7A898F8721956B0F00A7CADD /* GGPhotoLibraryViewController.m in Sources */,
 				7A898F8921956B0F00A7CADD /* GGCameraViewController.m in Sources */,
 				7A898F7021951D7B00A7CADD /* JSPerfectUserInfoViewController.m in Sources */,
@@ -1676,13 +1865,16 @@
 				7A5FEE9C218B0058006CF7EC /* UIFont+JSShuo.m in Sources */,
 				004910A021951DB700B85B4F /* UITableView+FDTemplateLayoutCellDebug.m in Sources */,
 				7AB931A6219E6BBF001E5390 /* JSMyWalletCell.m in Sources */,
+				7A1749D821A25C0C00E9AA12 /* JSMyCommentCell.m in Sources */,
 				006043252197C7700080091A /* ZFOrientationObserver.m in Sources */,
 				0060433A2197C7700080091A /* ZFSpeedLoadingView.m in Sources */,
+				7A1749DE21A28D8300E9AA12 /* JSMyCollectVideoViewController.m in Sources */,
 				7A898F492193D88F00A7CADD /* JSAdjustButton.m in Sources */,
 				7A898F622193FFE100A7CADD /* JSNotificationViewController.m in Sources */,
 				7A203E47218BE53F0001F926 /* JSLoginViewController.m in Sources */,
 				006043412197CA740080091A /* NSString+Size.m in Sources */,
 				002B752021A11A2D00483841 /* JSNetworkManager+Comment.m in Sources */,
+				7A9108FC21A53775005BFDC8 /* JSNetworkManager+Mission.m in Sources */,
 				006043362197C7700080091A /* ZFSliderView.m in Sources */,
 				006043282197C7700080091A /* ZFPlayerNotification.m in Sources */,
 				7A203E51218C77350001F926 /* JSForgetPasswordViewController.m in Sources */,
@@ -1690,6 +1882,7 @@
 				7A898F8B21956B0F00A7CADD /* GGAssetCollectionCell.m in Sources */,
 				7A015E11219A75BE0025D24F /* JSWithdrawViewController.m in Sources */,
 				7A5FEE8B218AFBAC006CF7EC /* JSTabBarViewController.m in Sources */,
+				7AB931AF219EDF89001E5390 /* JSIncomeListViewController.m in Sources */,
 				00452056219011F200371F10 /* JSShortVideoViewController.m in Sources */,
 				0060432E2197C7700080091A /* ZFIJKPlayerManager.m in Sources */,
 				002D6B7021A92A4500BADF5C /* NSMutableAttributedString+JSRangeTextColor.m in Sources */,
@@ -1698,6 +1891,7 @@
 				7A015E14219AF9740025D24F /* JSWithdrawModel.m in Sources */,
 				7ABD9E602191BA6600E19B6A /* SDCycleScrollView.m in Sources */,
 				7ABD9E642191BA6600E19B6A /* TAPageControl.m in Sources */,
+				7A605B9021A3991F00D6AD67 /* JSMyApprenticeViewController.m in Sources */,
 				002B74CA219D514100483841 /* JSSearchViewController.m in Sources */,
 				7A898F5C2193E4EF00A7CADD /* CAAnimation+WAnimation.m in Sources */,
 				7AB931A3219E6218001E5390 /* JSWalletSwitchSegmentView.m in Sources */,
@@ -1724,12 +1918,16 @@
 				7A5FEEA3218B0BA7006CF7EC /* JSLaunchViewController.m in Sources */,
 				006043302197C7700080091A /* ZFUtilities.m in Sources */,
 				0060432D2197C7700080091A /* UIViewController+ZFPlayerRotation.m in Sources */,
+				7AD5489721AE303900244C78 /* JSActivityCell.m in Sources */,
 				7A5FEE94218AFD7D006CF7EC /* JSMainTabBar.m in Sources */,
 				006043262197C7700080091A /* ZFPlayerLogManager.m in Sources */,
 				7A898F682194065E00A7CADD /* JSMessageCell.m in Sources */,
 				7A846ECD219333D10048F222 /* NSDictionary+SetNullWithStr.m in Sources */,
+				7A1749E121A2ADC900E9AA12 /* JSCollectModel.m in Sources */,
 				7A5FEE94218AFD7D006CF7EC /* JSMainTabBar.m in Sources */,
+				7A1749D521A25A8C00E9AA12 /* JSSubMyCommentViewController.m in Sources */,
 				7A898F6B21941D8900A7CADD /* JSMessageModel.m in Sources */,
+				7A1749C021A066B500E9AA12 /* GFPopMenuView.m in Sources */,
 				7A600EC3219BFACA0033F6DF /* JSWithdrawAlertView.m in Sources */,
 				002B753021A263D400483841 /* JSCommentTableViewCell.m in Sources */,
 			);

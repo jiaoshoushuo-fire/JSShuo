@@ -630,30 +630,31 @@
 }
 - (void)getMoneyAction:(UIButton *)button{
     if (self.currentItemModel && self.currentMethod) {
-//        [JSNetworkManager getMoneyWithMethod:self.currentMethod count:self.currentItemModel.amount complement:^(NSInteger code, NSString * _Nonnull message) {
-//            switch (code) {
-//                case 0:{//提现成功
-//
-//                }break;
-//                case 101:{//绑定手机号
-//                    [JSWithdrawAlertView showAlertViewWithSuperView:self.navigationController.view type:JSWithdrawAlertViewTypeBindIPhone handle:^{
-//                        NSLog(@"绑定手机号");
-//                    }];
-//                }break;
-//
-//                default:
-//                    break;
-//            }
-//        }];
-//        [JSWithdrawAlertView showAlertViewWithSuperView:self.navigationController.view type:JSWithdrawAlertViewTypeBindIPhone handle:^{
-//            NSLog(@"绑定手机号");
-//        }];
-        [JSWithdrawAlertView showAlertViewWithSuperView:self.navigationController.view type:JSWithdrawAlertViewTypeWechat handle:^{
-            NSLog(@"绑定支付宝");
+        [JSNetworkManager getMoneyWithMethod:self.currentMethod count:self.currentItemModel.amount complement:^(NSInteger code, NSString * _Nonnull message) {
+            switch (code) {
+                case 0:{//提现成功
+                    [self showAutoDismissTextAlert:@"提现成功"];
+                    [self performSelector:@selector(dismissSelfVC) withObject:nil afterDelay:2];
+                }break;
+                case 101:{//绑定手机号
+                    [JSWithdrawAlertView showAlertViewWithSuperView:self.navigationController.view type:JSWithdrawAlertViewTypeBindIPhone isBind:NO handle:^(BOOL isSuccess) {
+                        if (isSuccess) {
+                            [self getMoneyAction:nil];
+                        }
+                    }];
+                    
+                }break;
+
+                default:
+                    break;
+            }
         }];
+
     }
 }
-
+- (void)dismissSelfVC{
+    [self.rt_navigationController popViewControllerAnimated:YES complete:nil];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.

@@ -89,7 +89,7 @@
     if (model.imageUrl) {
         self.avaterIcon.hidden = NO;
         self.subLabel.hidden = YES;
-        [self.avaterIcon setImageWithURL:[NSURL URLWithString:model.imageUrl] placeholder:nil];
+        [self.avaterIcon setImageWithURL:[NSURL URLWithString:model.imageUrl] placeholder:[UIImage imageNamed:@"js_profile_default_icon"]];
     }else{
         self.avaterIcon.hidden = YES;
         self.subLabel.hidden = NO;

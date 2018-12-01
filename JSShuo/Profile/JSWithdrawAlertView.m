@@ -8,6 +8,10 @@
 
 #import "JSWithdrawAlertView.h"
 #import "JSAdjustButton.h"
+#import "JSAccountManager+Wechat.h"
+#import "JSNetworkManager+Login.h"
+#import "JSBindIPhoneViewController.h"
+
 @interface JSWithdrawAlertView()<YYTextKeyboardObserver>
 @property (nonatomic, strong)UIView *contentView;
 @property (nonatomic, strong)UIButton *actionButton;
@@ -22,7 +26,12 @@
 @property (nonatomic, strong)JSAdjustButton *bindWechatButton;
 @property (nonatomic, strong)UILabel *bindWechatLabel;
 
-@property (nonatomic, copy)void(^actionBlock)(void);
+@property (nonatomic, copy)void(^actionBlock)(BOOL isSuccess);
+
+@property (nonatomic, assign)JSWithdrawAlertViewType alertType;
+
+@property (nonatomic, assign)BOOL isBindWechat;
+@property (nonatomic, assign)BOOL isBindType;
 @end
 
 @implementation JSWithdrawAlertView
@@ -48,7 +57,11 @@
         @weakify(self)
         [_bindWechatButton bk_addEventHandler:^(id sender) {
             @strongify(self)
-            
+            [JSAccountManager wechatAuthorizeFromLogin:NO completion:^(BOOL success) {
+                if (success) {
+                    self.isBindWechat = success;
+                }
+            }];
         } forControlEvents:UIControlEventTouchUpInside];
     }
     return _bindWechatButton;
@@ -124,13 +137,15 @@
     }
     return _realNameTextfield;
 }
-- (instancetype)initWithFrame:(CGRect)frame type:(JSWithdrawAlertViewType)type
+- (instancetype)initWithFrame:(CGRect)frame type:(JSWithdrawAlertViewType)type isBindType:(BOOL)isBind
 {
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor colorWithRed:169/255.0f green:169/255.0f blue:169/255.0f alpha:0.5];
         [self addSubview:self.contentView];
         self.contentView.frame = CGRectMake(0, self.height - 250, self.width, 250);
+        self.alertType = type;
+        self.isBindType = isBind;
         switch (type) {
             case JSWithdrawAlertViewTypeAlipay:{
                 
@@ -139,6 +154,11 @@
                 [self.contentView addSubview:self.realNameIcon];
                 [self.contentView addSubview:self.realNameTextfield];
                 [self.contentView addSubview:self.actionButton];
+                
+                if (self.isBindType) {
+                    [self.actionButton setTitle:@"绑定支付宝" forState:UIControlStateNormal];
+                }
+                
                 
                 [self.accountIcon mas_makeConstraints:^(MASConstraintMaker *make) {
                     make.size.mas_equalTo(CGSizeMake(20, 23));
@@ -186,6 +206,9 @@
                 [self.contentView addSubview:self.realNameIcon];
                 [self.contentView addSubview:self.realNameTextfield];
                 [self.contentView addSubview:self.actionButton];
+                if (self.isBindType) {
+                    [self.actionButton setTitle:@"绑定微信" forState:UIControlStateNormal];
+                }
                 
                 
                 [self.accountIcon mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -237,6 +260,10 @@
                 [self.contentView addSubview:self.alertLabel];
                 [self.contentView addSubview:self.actionButton];
                 
+                if (self.isBindType) {
+                    [self.actionButton setTitle:@"绑定手机号" forState:UIControlStateNormal];
+                }
+                
                 [self.iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
                     make.size.mas_equalTo(self.iconImageView.size);
                     make.top.mas_equalTo(20);
@@ -267,9 +294,69 @@
         @weakify(self)
         [self.actionButton bk_addEventHandler:^(id sender) {
             @strongify(self)
-            if (self.actionBlock) {
-                self.actionBlock();
+            
+            switch (self.alertType) {
+                case JSWithdrawAlertViewTypeAlipay:{
+                    if (self.accountTextField.text.length > 0 && self.realNameTextfield.text.length > 0) {
+                        [JSNetworkManager bindAlipayWithAlipayId:self.accountTextField.text realName:self.realNameTextfield.text complement:^(BOOL isSuccess, NSDictionary * _Nonnull contenDict) {
+                            if (isSuccess) {
+                                [self endEditing:YES];
+                                [self removeFromSuperview];
+                                if (self.actionBlock) {
+                                    self.actionBlock(YES);
+                                }
+                            }
+                        }];
+                    }else{
+                        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self animated:YES];
+                        
+                        hud.mode = MBProgressHUDModeText;
+                        hud.label.text = @"请输入支付宝账号或真实姓名";
+                        [hud hideAnimated:YES afterDelay:2.f];
+                    }
+                }break;
+                case JSWithdrawAlertViewTypeWechat:{
+                    if (!self.isBindWechat) {
+                        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self animated:YES];
+                        
+                        hud.mode = MBProgressHUDModeText;
+                        hud.label.text = @"请先绑定微信";
+                        [hud hideAnimated:YES afterDelay:2.f];
+                        return ;
+                    }
+                    
+                    if (self.realNameTextfield.text.length <= 0) {
+                        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self animated:YES];
+                        
+                        hud.mode = MBProgressHUDModeText;
+                        hud.label.text = @"请输入真实姓名";
+                        [hud hideAnimated:YES afterDelay:2.f];
+                        return;
+                    }
+                    
+                    
+                    
+                }break;
+                case JSWithdrawAlertViewTypeBindIPhone:{
+                    JSBindIPhoneViewController *bindVC = [[JSBindIPhoneViewController alloc]init];
+                    bindVC.codeType = JSRequestSecurityCodeTypeBindIPhone;
+                    bindVC.complement = ^(BOOL isFinished) {
+                        if (isFinished) {
+                            [self endEditing:YES];
+                            [self removeFromSuperview];
+                            if (self.actionBlock) {
+                                self.actionBlock(YES);
+                            }
+                        }
+                    };
+                    [self.viewController.rt_navigationController pushViewController:bindVC animated:YES complete:nil];
+                    
+                }break;
+                    
+                default:
+                    break;
             }
+            
         } forControlEvents:UIControlEventTouchUpInside];
         [[YYTextKeyboardManager defaultManager] addObserver:self];
     }
@@ -290,9 +377,10 @@
     }
     
 }
-+ (void)showAlertViewWithSuperView:(UIView *)superView type:(JSWithdrawAlertViewType)type handle:(void(^)(void))hande{
-    JSWithdrawAlertView *alertView = [[JSWithdrawAlertView alloc]initWithFrame:superView.bounds type:type];
++ (void)showAlertViewWithSuperView:(UIView *)superView type:(JSWithdrawAlertViewType)type isBind:(BOOL)isBind handle:(void(^)(BOOL isSuccess))hande{
+    JSWithdrawAlertView *alertView = [[JSWithdrawAlertView alloc]initWithFrame:superView.bounds type:type isBindType:isBind];
     alertView.actionBlock = hande;
+    
     [superView addSubview:alertView];
 }
 

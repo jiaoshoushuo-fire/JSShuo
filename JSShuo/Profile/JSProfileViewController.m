@@ -18,6 +18,13 @@
 #import "JSShopViewController.h"
 #import "JSInvitationViewController.h"
 #import "JSMyWalletViewController.h"
+#import "JSInputCodeViewController.h"
+#import "JSGamesViewController.h"
+#import "JSMemberViewController.h"
+#import "JSCommonQuestionViewController.h"
+#import "JSMyCommentViewController.h"
+#import "JSMyCollectViewController.h"
+#import "AppDelegate.h"
 
 @interface JSProfileItemView : UIView
 @property (nonatomic, strong)UIImageView *itemImageView;
@@ -361,9 +368,10 @@
     return self;
 }
 - (void)setUserModel:(JSProfileUserModel *)userModel{
+    _userModel = userModel;
     self.titleLabel.text = userModel.nickname;
     self.subLabel.text = userModel.inviteCode;
-    [self.avaterIcon setImageWithURL:[NSURL URLWithString:userModel.portrait] placeholder:nil];
+    [self.avaterIcon setImageWithURL:[NSURL URLWithString:userModel.portrait] placeholder:[UIImage imageNamed:@"js_profile_default_icon"]];
     self.myGoldNumber.text = @(userModel.coin).stringValue;
     self.myReadTime.text = @(userModel.readTime).stringValue;
     self.myPocketMoney.text = @(userModel.money).stringValue;
@@ -602,7 +610,39 @@
     return 0.00000001f;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSDictionary *dict = self.profileInfoArray[indexPath.row];
+    NSString *title = dict[@"title"];
     
+    if ([title isEqualToString:@"输入邀请码"]) {
+        JSInputCodeViewController *inputVC = [[JSInputCodeViewController alloc]init];
+        inputVC.hidesBottomBarWhenPushed = YES;
+        [self.rt_navigationController pushViewController:inputVC animated:YES complete:nil];
+    }else if ([title isEqualToString:@"任务中心"]){
+        [[AppDelegate instance].mainViewController switchToViewControllerAtIndex:3];
+    }else if ([title isEqualToString:@"游戏大厅"]){
+        [[AppDelegate instance].mainViewController switchToViewControllerAtIndex:2];
+        
+    }else if ([title isEqualToString:@"会员大促销"]){
+        JSMemberViewController *memberVC = [[JSMemberViewController alloc]init];
+        memberVC.hidesBottomBarWhenPushed = YES;
+        [self.rt_navigationController pushViewController:memberVC animated:YES complete:nil];
+        
+    }else if ([title isEqualToString:@"常见问题"]){
+        JSCommonQuestionViewController *commonVC = [[JSCommonQuestionViewController alloc]init];
+        commonVC.hidesBottomBarWhenPushed = YES;
+        [self.rt_navigationController pushViewController:commonVC animated:YES complete:nil];
+        
+    }else if ([title isEqualToString:@"我的评论"]){
+        JSMyCommentViewController *myCommentVC = [[JSMyCommentViewController alloc]init];
+        myCommentVC.userModel = self.headerView.userModel;
+        myCommentVC.hidesBottomBarWhenPushed = YES;
+        [self.rt_navigationController pushViewController:myCommentVC animated:YES complete:nil];
+        
+    }else if ([title isEqualToString:@"我的收藏"]){
+        JSMyCollectViewController *myCollectVC = [[JSMyCollectViewController alloc]init];
+        myCollectVC.hidesBottomBarWhenPushed = YES;
+        [self.rt_navigationController pushViewController:myCollectVC animated:YES complete:nil];
+    }
 }
 - (void)dealloc{
     [[NSNotificationCenter defaultCenter]removeObserver:self];
