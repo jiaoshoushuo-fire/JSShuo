@@ -35,6 +35,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface JSArticleDetailViewController : UIViewController
 
+@property (nonatomic,strong) NSNumber *articleId;
+
 @end
 
 NS_ASSUME_NONNULL_END

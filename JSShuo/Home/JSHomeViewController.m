@@ -15,6 +15,7 @@
 #import "JSShowTypeSmallPictureTableViewCell.h"
 #import "JSShowTypeThreePictureTableViewCell.h"
 #import "JSNetworkManager+Search.h"
+#import "JSArticleDetailViewController.h"
 
 
 @interface JSHomeViewController () <UITableViewDelegate,UITableViewDataSource>
@@ -112,6 +113,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    JSArticleDetailViewController *vc = [JSArticleDetailViewController new];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.rt_navigationController pushViewController:vc animated:YES complete:nil];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

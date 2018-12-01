@@ -16,6 +16,16 @@
 		002B74D8219E5A0700483841 /* JSHotSearchTitleCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 002B74D7219E5A0700483841 /* JSHotSearchTitleCollectionViewCell.m */; };
 		002B74DB219E647000483841 /* JSNetworkManager+Search.m in Sources */ = {isa = PBXBuildFile; fileRef = 002B74DA219E647000483841 /* JSNetworkManager+Search.m */; };
 		002B74DF219EC79000483841 /* JSArticleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 002B74DE219EC79000483841 /* JSArticleDetailViewController.m */; };
+		002B752021A11A2D00483841 /* JSNetworkManager+Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 002B751F21A11A2D00483841 /* JSNetworkManager+Comment.m */; };
+		002B752321A11A6F00483841 /* JSCommentListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 002B752221A11A6F00483841 /* JSCommentListModel.m */; };
+		002B752621A2576600483841 /* JSRecommendModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 002B752521A2576600483841 /* JSRecommendModel.m */; };
+		002B752921A2592300483841 /* JSNetworkManager+Recommend.m in Sources */ = {isa = PBXBuildFile; fileRef = 002B752821A2592300483841 /* JSNetworkManager+Recommend.m */; };
+		002B752D21A263C100483841 /* JSRecommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 002B752C21A263C100483841 /* JSRecommentTableViewCell.m */; };
+		002B753021A263D400483841 /* JSCommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 002B752F21A263D400483841 /* JSCommentTableViewCell.m */; };
+		002D6AA821A3AB2A00BADF5C /* JSDetailNavView.m in Sources */ = {isa = PBXBuildFile; fileRef = 002D6AA721A3AB2A00BADF5C /* JSDetailNavView.m */; };
+		002D6AAB21A3D2DC00BADF5C /* JSDetailBottomSendCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 002D6AAA21A3D2DC00BADF5C /* JSDetailBottomSendCommentView.m */; };
+		002D6B7021A92A4500BADF5C /* NSMutableAttributedString+JSRangeTextColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 002D6B6F21A92A4400BADF5C /* NSMutableAttributedString+JSRangeTextColor.m */; };
+		002D6B7321A92F3300BADF5C /* UILabel+QLAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 002D6B7121A92F3300BADF5C /* UILabel+QLAdd.m */; };
 		00452037218EDD5C00371F10 /* JSHomeTitleBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00452036218EDD5C00371F10 /* JSHomeTitleBarViewController.m */; };
 		00452046218EED9E00371F10 /* nav_header_login_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 00452042218EED9D00371F10 /* nav_header_login_normal.png */; };
 		00452049218EED9E00371F10 /* nav_header_login_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 00452045218EED9E00371F10 /* nav_header_login_selected.png */; };
@@ -28,7 +38,6 @@
 		0045205E2190485600371F10 /* JSShortVideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0045205D2190485600371F10 /* JSShortVideoModel.m */; };
 		0045206121904AE600371F10 /* JSLongVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0045206021904AE600371F10 /* JSLongVideoCell.m */; };
 		004520642190656E00371F10 /* comment.png in Resources */ = {isa = PBXBuildFile; fileRef = 004520632190656D00371F10 /* comment.png */; };
-		0045206621913BB500371F10 /* praise.png in Resources */ = {isa = PBXBuildFile; fileRef = 0045206521913BB500371F10 /* praise.png */; };
 		004520692191A27700371F10 /* JSNetworkManager+Channel.m in Sources */ = {isa = PBXBuildFile; fileRef = 004520682191A27700371F10 /* JSNetworkManager+Channel.m */; };
 		0045206C2191C05B00371F10 /* JSNetworkManager+LongVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0045206B2191C05B00371F10 /* JSNetworkManager+LongVideo.m */; };
 		004521192192DFB600371F10 /* JSHomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 004521182192DFB600371F10 /* JSHomeModel.m */; };
@@ -72,6 +81,7 @@
 		006043472197CAA20080091A /* ZFDouYinCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 006043462197CAA20080091A /* ZFDouYinCell.m */; };
 		0060434A2197CAB20080091A /* ZFTableViewCellLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 006043492197CAB20080091A /* ZFTableViewCellLayout.m */; };
 		0060434D2197D35D0080091A /* JSNetworkManager+ShortVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0060434C2197D35D0080091A /* JSNetworkManager+ShortVideo.m */; };
+		009601AD21AD91C2001BE083 /* JSBottomPopSendCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 009601AC21AD91C2001BE083 /* JSBottomPopSendCommentView.m */; };
 		2D4BE293799FA8F9CF3BD9E0 /* libPods-JSShuoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07D21E4F3FE796E0EC111709 /* libPods-JSShuoTests.a */; };
 		6797051512B36A0CAA259324 /* libPods-JSShuoUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 45918ABA94D7C616D6E9C28A /* libPods-JSShuoUITests.a */; };
 		7A015E11219A75BE0025D24F /* JSWithdrawViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A015E10219A75BE0025D24F /* JSWithdrawViewController.m */; };
@@ -210,6 +220,26 @@
 		002B74DA219E647000483841 /* JSNetworkManager+Search.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "JSNetworkManager+Search.m"; sourceTree = "<group>"; };
 		002B74DD219EC79000483841 /* JSArticleDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSArticleDetailViewController.h; sourceTree = "<group>"; };
 		002B74DE219EC79000483841 /* JSArticleDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSArticleDetailViewController.m; sourceTree = "<group>"; };
+		002B751E21A11A2D00483841 /* JSNetworkManager+Comment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JSNetworkManager+Comment.h"; sourceTree = "<group>"; };
+		002B751F21A11A2D00483841 /* JSNetworkManager+Comment.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "JSNetworkManager+Comment.m"; sourceTree = "<group>"; };
+		002B752121A11A6F00483841 /* JSCommentListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSCommentListModel.h; sourceTree = "<group>"; };
+		002B752221A11A6F00483841 /* JSCommentListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSCommentListModel.m; sourceTree = "<group>"; };
+		002B752421A2576600483841 /* JSRecommendModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSRecommendModel.h; sourceTree = "<group>"; };
+		002B752521A2576600483841 /* JSRecommendModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSRecommendModel.m; sourceTree = "<group>"; };
+		002B752721A2592200483841 /* JSNetworkManager+Recommend.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JSNetworkManager+Recommend.h"; sourceTree = "<group>"; };
+		002B752821A2592300483841 /* JSNetworkManager+Recommend.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "JSNetworkManager+Recommend.m"; sourceTree = "<group>"; };
+		002B752B21A263C100483841 /* JSRecommentTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSRecommentTableViewCell.h; sourceTree = "<group>"; };
+		002B752C21A263C100483841 /* JSRecommentTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSRecommentTableViewCell.m; sourceTree = "<group>"; };
+		002B752E21A263D400483841 /* JSCommentTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSCommentTableViewCell.h; sourceTree = "<group>"; };
+		002B752F21A263D400483841 /* JSCommentTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSCommentTableViewCell.m; sourceTree = "<group>"; };
+		002D6AA621A3AB2A00BADF5C /* JSDetailNavView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSDetailNavView.h; sourceTree = "<group>"; };
+		002D6AA721A3AB2A00BADF5C /* JSDetailNavView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSDetailNavView.m; sourceTree = "<group>"; };
+		002D6AA921A3D2DC00BADF5C /* JSDetailBottomSendCommentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSDetailBottomSendCommentView.h; sourceTree = "<group>"; };
+		002D6AAA21A3D2DC00BADF5C /* JSDetailBottomSendCommentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSDetailBottomSendCommentView.m; sourceTree = "<group>"; };
+		002D6B6E21A92A4400BADF5C /* NSMutableAttributedString+JSRangeTextColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSMutableAttributedString+JSRangeTextColor.h"; sourceTree = "<group>"; };
+		002D6B6F21A92A4400BADF5C /* NSMutableAttributedString+JSRangeTextColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSMutableAttributedString+JSRangeTextColor.m"; sourceTree = "<group>"; };
+		002D6B7121A92F3300BADF5C /* UILabel+QLAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+QLAdd.m"; sourceTree = "<group>"; };
+		002D6B7221A92F3300BADF5C /* UILabel+QLAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+QLAdd.h"; sourceTree = "<group>"; };
 		00452035218EDD5C00371F10 /* JSHomeTitleBarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSHomeTitleBarViewController.h; sourceTree = "<group>"; };
 		00452036218EDD5C00371F10 /* JSHomeTitleBarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSHomeTitleBarViewController.m; sourceTree = "<group>"; };
 		00452042218EED9D00371F10 /* nav_header_login_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav_header_login_normal.png; sourceTree = "<group>"; };
@@ -229,7 +259,6 @@
 		0045205F21904AE600371F10 /* JSLongVideoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSLongVideoCell.h; sourceTree = "<group>"; };
 		0045206021904AE600371F10 /* JSLongVideoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSLongVideoCell.m; sourceTree = "<group>"; };
 		004520632190656D00371F10 /* comment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = comment.png; sourceTree = "<group>"; };
-		0045206521913BB500371F10 /* praise.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = praise.png; sourceTree = "<group>"; };
 		004520672191A27700371F10 /* JSNetworkManager+Channel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JSNetworkManager+Channel.h"; sourceTree = "<group>"; };
 		004520682191A27700371F10 /* JSNetworkManager+Channel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "JSNetworkManager+Channel.m"; sourceTree = "<group>"; };
 		0045206A2191C05B00371F10 /* JSNetworkManager+LongVideo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JSNetworkManager+LongVideo.h"; sourceTree = "<group>"; };
@@ -318,6 +347,8 @@
 		006043492197CAB20080091A /* ZFTableViewCellLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFTableViewCellLayout.m; sourceTree = "<group>"; };
 		0060434B2197D35D0080091A /* JSNetworkManager+ShortVideo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JSNetworkManager+ShortVideo.h"; sourceTree = "<group>"; };
 		0060434C2197D35D0080091A /* JSNetworkManager+ShortVideo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "JSNetworkManager+ShortVideo.m"; sourceTree = "<group>"; };
+		009601AB21AD91C2001BE083 /* JSBottomPopSendCommentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSBottomPopSendCommentView.h; sourceTree = "<group>"; };
+		009601AC21AD91C2001BE083 /* JSBottomPopSendCommentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSBottomPopSendCommentView.m; sourceTree = "<group>"; };
 		07D21E4F3FE796E0EC111709 /* libPods-JSShuoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JSShuoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		35A90D49D7D66324E387894E /* Pods-JSShuoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSShuoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JSShuoUITests/Pods-JSShuoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		428D5311982CDC892743DA34 /* Pods-JSShuoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSShuoUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JSShuoUITests/Pods-JSShuoUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -576,6 +607,10 @@
 				004910AB2195586100B85B4F /* JSShowTypeThreePictureTableViewCell.m */,
 				002B74D6219E5A0700483841 /* JSHotSearchTitleCollectionViewCell.h */,
 				002B74D7219E5A0700483841 /* JSHotSearchTitleCollectionViewCell.m */,
+				002B752B21A263C100483841 /* JSRecommentTableViewCell.h */,
+				002B752C21A263C100483841 /* JSRecommentTableViewCell.m */,
+				002B752E21A263D400483841 /* JSCommentTableViewCell.h */,
+				002B752F21A263D400483841 /* JSCommentTableViewCell.m */,
 			);
 			path = cells;
 			sourceTree = "<group>";
@@ -604,9 +639,23 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
+		002D6AA521A3AB1400BADF5C /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				002D6AA621A3AB2A00BADF5C /* JSDetailNavView.h */,
+				002D6AA721A3AB2A00BADF5C /* JSDetailNavView.m */,
+				002D6AA921A3D2DC00BADF5C /* JSDetailBottomSendCommentView.h */,
+				002D6AAA21A3D2DC00BADF5C /* JSDetailBottomSendCommentView.m */,
+				009601AB21AD91C2001BE083 /* JSBottomPopSendCommentView.h */,
+				009601AC21AD91C2001BE083 /* JSBottomPopSendCommentView.m */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
 		00452038218EE1DD00371F10 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				002D6AA521A3AB1400BADF5C /* Detail */,
 				002B74DC219E96D600483841 /* Home */,
 				002B74CC219D645B00483841 /* search */,
 				002B74CB219D642E00483841 /* cells */,
@@ -666,7 +715,6 @@
 			isa = PBXGroup;
 			children = (
 				004520632190656D00371F10 /* comment.png */,
-				0045206521913BB500371F10 /* praise.png */,
 			);
 			path = Video;
 			sourceTree = "<group>";
@@ -676,6 +724,10 @@
 			children = (
 				004521172192DFB600371F10 /* JSHomeModel.h */,
 				004521182192DFB600371F10 /* JSHomeModel.m */,
+				002B752121A11A6F00483841 /* JSCommentListModel.h */,
+				002B752221A11A6F00483841 /* JSCommentListModel.m */,
+				002B752421A2576600483841 /* JSRecommendModel.h */,
+				002B752521A2576600483841 /* JSRecommendModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -957,6 +1009,8 @@
 		7A5FEE95218AFE7B006CF7EC /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				002D6B7221A92F3300BADF5C /* UILabel+QLAdd.h */,
+				002D6B7121A92F3300BADF5C /* UILabel+QLAdd.m */,
 				7A898F4A2193E05100A7CADD /* UIImage+Extension.h */,
 				7A898F4B2193E05100A7CADD /* UIImage+Extension.m */,
 				7A846ECC219333D10048F222 /* NSDictionary+SetNullWithStr.h */,
@@ -967,6 +1021,8 @@
 				7A5FEE9B218B0058006CF7EC /* UIFont+JSShuo.m */,
 				7A898F9721956EB900A7CADD /* NSString+Path.h */,
 				7A898F9821956EB900A7CADD /* NSString+Path.m */,
+				002D6B6E21A92A4400BADF5C /* NSMutableAttributedString+JSRangeTextColor.h */,
+				002D6B6F21A92A4400BADF5C /* NSMutableAttributedString+JSRangeTextColor.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -1238,6 +1294,10 @@
 				0060434C2197D35D0080091A /* JSNetworkManager+ShortVideo.m */,
 				002B74D9219E647000483841 /* JSNetworkManager+Search.h */,
 				002B74DA219E647000483841 /* JSNetworkManager+Search.m */,
+				002B751E21A11A2D00483841 /* JSNetworkManager+Comment.h */,
+				002B751F21A11A2D00483841 /* JSNetworkManager+Comment.m */,
+				002B752721A2592200483841 /* JSNetworkManager+Recommend.h */,
+				002B752821A2592300483841 /* JSNetworkManager+Recommend.m */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1411,7 +1471,6 @@
 				004520642190656E00371F10 /* comment.png in Resources */,
 				7A5FEE5B218ACBAE006CF7EC /* Assets.xcassets in Resources */,
 				7A5FEEC2218B280D006CF7EC /* AlipaySDK.bundle in Resources */,
-				0045206621913BB500371F10 /* praise.png in Resources */,
 				0045204E218EF26B00371F10 /* nav_headr_redpocket.png in Resources */,
 				7A5FEE59218ACBAD006CF7EC /* Main.storyboard in Resources */,
 				00452050218FDEDF00371F10 /* nav_headr_search.png in Resources */,
@@ -1529,6 +1588,7 @@
 				7A898F422193C50500A7CADD /* JSSettingViewController.m in Sources */,
 				7A898F5D2193E4EF00A7CADD /* UIBarButtonItem+WZLBadge.m in Sources */,
 				7A898F5F2193E4EF00A7CADD /* UIView+WZLBadge.m in Sources */,
+				002D6AAB21A3D2DC00BADF5C /* JSDetailBottomSendCommentView.m in Sources */,
 				7A8F678A21903DD3008A00F4 /* JSAccountManager+Wechat.m in Sources */,
 				7A6E47362199774200D5C559 /* GFCacheUtil.m in Sources */,
 				7A5FEEA0218B07B7006CF7EC /* JSRootViewController.m in Sources */,
@@ -1559,8 +1619,10 @@
 				002B74CF219D647300483841 /* JSSearchNormalView.m in Sources */,
 				7A898F8A21956B0F00A7CADD /* GGAssetCollectionView.m in Sources */,
 				006043242197C7700080091A /* ZFPlayerController.m in Sources */,
+				002B752321A11A6F00483841 /* JSCommentListModel.m in Sources */,
 				7A8F6780218FE30C008A00F4 /* JSNetworkManager+Login.m in Sources */,
 				006043312197C7700080091A /* UIView+ZFFrame.m in Sources */,
+				002D6B7321A92F3300BADF5C /* UILabel+QLAdd.m in Sources */,
 				7ABD9E652191BA6600E19B6A /* TAAnimatedDotView.m in Sources */,
 				002B7404219862AB00483841 /* JSComputeTime.m in Sources */,
 				0045206121904AE600371F10 /* JSLongVideoCell.m in Sources */,
@@ -1569,10 +1631,12 @@
 				0060432A2197C7700080091A /* ZFPlayerView.m in Sources */,
 				7A5FEEB1218B0D4D006CF7EC /* JSActivityCenterViewController.m in Sources */,
 				7A203E4E218BF2430001F926 /* JSAccountManager.m in Sources */,
+				002B752D21A263C100483841 /* JSRecommentTableViewCell.m in Sources */,
 				002B74DF219EC79000483841 /* JSArticleDetailViewController.m in Sources */,
 				7A5FEE88218AFB3E006CF7EC /* JSBaseViewController.m in Sources */,
 				7ABD9E622191BA6600E19B6A /* SDCollectionViewCell.m in Sources */,
 				0045204C218EEE3500371F10 /* JSNavSearchView.m in Sources */,
+				009601AD21AD91C2001BE083 /* JSBottomPopSendCommentView.m in Sources */,
 				006043232197C7700080091A /* ZFPlayerGestureControl.m in Sources */,
 				006043272197C7700080091A /* UIScrollView+ZFPlayer.m in Sources */,
 				0045211C2192E02700371F10 /* JSHomeTableViewCell.m in Sources */,
@@ -1618,6 +1682,7 @@
 				7A898F622193FFE100A7CADD /* JSNotificationViewController.m in Sources */,
 				7A203E47218BE53F0001F926 /* JSLoginViewController.m in Sources */,
 				006043412197CA740080091A /* NSString+Size.m in Sources */,
+				002B752021A11A2D00483841 /* JSNetworkManager+Comment.m in Sources */,
 				006043362197C7700080091A /* ZFSliderView.m in Sources */,
 				006043282197C7700080091A /* ZFPlayerNotification.m in Sources */,
 				7A203E51218C77350001F926 /* JSForgetPasswordViewController.m in Sources */,
@@ -1627,6 +1692,7 @@
 				7A5FEE8B218AFBAC006CF7EC /* JSTabBarViewController.m in Sources */,
 				00452056219011F200371F10 /* JSShortVideoViewController.m in Sources */,
 				0060432E2197C7700080091A /* ZFIJKPlayerManager.m in Sources */,
+				002D6B7021A92A4500BADF5C /* NSMutableAttributedString+JSRangeTextColor.m in Sources */,
 				7ABD9E632191BA6600E19B6A /* TADotView.m in Sources */,
 				7A8F678D2190473B008A00F4 /* JSAccountManager+QQ.m in Sources */,
 				7A015E14219AF9740025D24F /* JSWithdrawModel.m in Sources */,
@@ -1636,6 +1702,7 @@
 				7A898F5C2193E4EF00A7CADD /* CAAnimation+WAnimation.m in Sources */,
 				7AB931A3219E6218001E5390 /* JSWalletSwitchSegmentView.m in Sources */,
 				0045205E2190485600371F10 /* JSShortVideoModel.m in Sources */,
+				002B752621A2576600483841 /* JSRecommendModel.m in Sources */,
 				0060434A2197CAB20080091A /* ZFTableViewCellLayout.m in Sources */,
 				0060433C2197C7700080091A /* UIImageView+ZFCache.m in Sources */,
 				7A5FEE53218ACBAD006CF7EC /* AppDelegate.m in Sources */,
@@ -1646,8 +1713,10 @@
 				7ABD9E692191C03400E19B6A /* JSProfileCell.m in Sources */,
 				7A6E473921997B8C00D5C559 /* JSFontChangeViewController.m in Sources */,
 				00452037218EDD5C00371F10 /* JSHomeTitleBarViewController.m in Sources */,
+				002B752921A2592300483841 /* JSNetworkManager+Recommend.m in Sources */,
 				006043292197C7700080091A /* ZFFloatView.m in Sources */,
 				0060432C2197C7700080091A /* ZFReachabilityManager.m in Sources */,
+				002D6AA821A3AB2A00BADF5C /* JSDetailNavView.m in Sources */,
 				004520692191A27700371F10 /* JSNetworkManager+Channel.m in Sources */,
 				7A6E473F21997D7300D5C559 /* JSFeedbackViewController.m in Sources */,
 				006043332197C7700080091A /* ZFLandScapeControlView.m in Sources */,
@@ -1662,6 +1731,7 @@
 				7A5FEE94218AFD7D006CF7EC /* JSMainTabBar.m in Sources */,
 				7A898F6B21941D8900A7CADD /* JSMessageModel.m in Sources */,
 				7A600EC3219BFACA0033F6DF /* JSWithdrawAlertView.m in Sources */,
+				002B753021A263D400483841 /* JSCommentTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

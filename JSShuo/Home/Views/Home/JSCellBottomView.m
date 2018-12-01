@@ -7,7 +7,7 @@
 //
 
 #import "JSCellBottomView.h"
-//#import "JSComputeTime.h"
+#import "JSComputeTime.h"
 
 @interface JSCellBottomView()
 @property (nonatomic,strong) UIView *lineView;
@@ -88,8 +88,8 @@
         }];
         
         _sourceLabel.text = _model.origin;
-            _releaseTimeLabel.text = _model.publishTime;
-//        _releaseTimeLabel.text = [[JSComputeTime new] distanceTimeWithPublistTime:_model.publishTime];
+//            _releaseTimeLabel.text = _model.publishTime;
+        _releaseTimeLabel.text = [[JSComputeTime new] distanceTimeWithPublistTime:_model.publishTime];
         _videoTimeLabel.text = [NSString stringWithFormat:@"%@",_model.duration];
         _commitCountLabel.text = [NSString stringWithFormat:@"%@",_model.commentNum];
         _praiseCountLabel.text = [NSString stringWithFormat:@"%@",_model.praiseNum];
