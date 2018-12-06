@@ -74,6 +74,15 @@ typedef  NS_ENUM(NSInteger, JSRequestSecurityCodeType){
 //排行榜
 + (void)questListWithWeak:(BOOL)isWeak complement:(void(^)(BOOL isSuccess,NSDictionary *contentDict))complemnt;
 
+// 点赞
++ (void) addPraise:(NSDictionary *)params complement:(void(^)(BOOL isSuccess,NSDictionary *contentDic))complement;
+
+//取消点赞
++ (void) deletePraiseWithArticleID:(NSInteger)articleId complement:(void(^)(BOOL isSuccess,NSDictionary *contentDic))complement ;
+
+//发送评论
++ (void) addComment:(NSDictionary *)params complement:(void(^)(BOOL isSuccess, NSDictionary *contentDict))complement;
+
 //我的评论
 + (void)questCommentListWith:(NSInteger)pageNumber complement:(void(^)(BOOL isSuccess,NSDictionary *contentDict))complemnt;
 
@@ -83,8 +92,14 @@ typedef  NS_ENUM(NSInteger, JSRequestSecurityCodeType){
 //清空评论
 + (void)clearCommentComplement:(void(^)(BOOL isSuccess,NSDictionary *contentDict))complement;
 
+// 添加收藏
++ (void) addCollect:(NSDictionary *)params complement:(void(^)(BOOL isSuccess, NSDictionary *contentDic))complement;
+
 //收藏列表
 + (void)requestCollectListWithType:(NSInteger)type pageNumber:(NSInteger)pageIndex complement:(void(^)(BOOL isSuccess, NSDictionary *contentDict))complement;
+
+// 删除收藏 -- 根据文章ID
++ (void)requestDeleateCollectWithArticleId:(NSInteger)collectId complement:(void(^)(BOOL isSuccess, NSDictionary *contentDict))complement;
 
 //删除收藏
 + (void)requestDeleateCollectWithID:(NSInteger)collectId complement:(void(^)(BOOL isSuccess, NSDictionary *contentDict))complement;

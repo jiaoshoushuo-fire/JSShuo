@@ -114,6 +114,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     JSArticleDetailViewController *vc = [JSArticleDetailViewController new];
+    vc.articleId = [self.datas[indexPath.row] articleId];
     vc.hidesBottomBarWhenPushed = YES;
     [self.rt_navigationController pushViewController:vc animated:YES complete:nil];
 }
@@ -181,15 +182,12 @@
     cell.model = [_datas objectAtIndex:indexPath.row];
 }
 
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+// 登录成功后的通知
+- (void)userLoginSuccessNoti:(NSNotification *)notification {
+    
 }
-*/
+
+
+
 
 @end

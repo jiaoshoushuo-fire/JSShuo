@@ -26,9 +26,14 @@ const static NSString *queryAccountUrl = @"/v1/account/query";
 const static NSString *accountRunningwaterList = @"/v1/account/detail/list";
 const static NSString *exchangerUrl = @"/v1/account/exchange";
 const static NSString *rangkListUrl = @"/v1/ranking/list";
+const static NSString *addPraiseUrl = @"/v1/user/praise/add";
+const static NSString *deletePraiseUrl = @"/v1/user/praise/delete";
+
+const static NSString *addCommentListUrl = @"/v1/user/comment/add";
 const static NSString *commentListUrl = @"/v1/user/comment/list";
 const static NSString *recvCommentListUrl = @"/v1/user/comment/recv";
 const static NSString *clearCommentListUrl = @"/v1/user/comment/clear";
+const static NSString *addCollectUrl = @"/v1/user/collect/add";
 const static NSString *collectListUrl = @"/v1/user/collect/list";
 const static NSString *deleateCollectUrl = @"/v1/user/collect/delete";
 const static NSString *apprenticeListUrl = @"/v1/user/apprentice/list";
@@ -306,6 +311,35 @@ const static NSString *apprenticeListUrl = @"/v1/user/apprentice/list";
     }];
 }
 
++ (void) deletePraiseWithArticleID:(NSInteger)articleId complement:(void(^)(BOOL isSuccess,NSDictionary *contentDic))complement {
+    NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,deletePraiseUrl];
+    NSDictionary *param = @{@"token":[JSAccountManager shareManager].accountToken,@"articleId":@(articleId)};
+    [self POST:url parameters:param complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
+        if (complement) {
+            complement(isSuccess,responseDict);
+        }
+    }];
+    
+}
+
++ (void) addPraise:(NSDictionary *)params complement:(void(^)(BOOL isSuccess,NSDictionary *contentDic))complement {
+    NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,addPraiseUrl];
+    [self POST:url parameters:params complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
+        if (complement) {
+            complement(isSuccess,responseDict);
+        }
+    }];
+}
+
++ (void) addComment:(NSDictionary *)params complement:(void(^)(BOOL isSuccess, NSDictionary *contentDict))complement {
+    NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,addCommentListUrl];
+    [self POST:url parameters:params complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
+        if (complement) {
+            complement(isSuccess,responseDict);
+        }
+    }];
+}
+
 //我的评论
 + (void)questCommentListWith:(NSInteger)pageNumber complement:(void(^)(BOOL isSuccess,NSDictionary *contentDict))complemnt{
     NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,commentListUrl];
@@ -338,6 +372,16 @@ const static NSString *apprenticeListUrl = @"/v1/user/apprentice/list";
     }];
 }
 
++ (void) addCollect:(NSDictionary *)params complement:(void(^)(BOOL isSuccess, NSDictionary *contentDic))complement {
+    NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,addCollectUrl];
+    [self POST:url parameters:params complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
+        if (complement) {
+            complement(isSuccess,responseDict);
+        }
+    }];
+}
+
+
 + (void)requestCollectListWithType:(NSInteger)type pageNumber:(NSInteger)pageIndex complement:(void(^)(BOOL isSuccess, NSDictionary *contentDict))complement{
     NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,collectListUrl];
     NSDictionary *param = @{@"token":[JSAccountManager shareManager].accountToken,@"type":@(type),@"pageNum":@(pageIndex),@"pageSize":@(10)};
@@ -346,6 +390,17 @@ const static NSString *apprenticeListUrl = @"/v1/user/apprentice/list";
             complement(isSuccess,responseDict);
         }
     }];
+}
+
++ (void)requestDeleateCollectWithArticleId:(NSInteger)collectId complement:(void(^)(BOOL isSuccess, NSDictionary *contentDict))complement{
+    NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,deleateCollectUrl];
+    NSDictionary *param = @{@"token":[JSAccountManager shareManager].accountToken,@"articleId":@(collectId)};
+    [self POST:url parameters:param complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
+        if (complement) {
+            complement(isSuccess,responseDict);
+        }
+    }];
+    
 }
 
 + (void)requestDeleateCollectWithID:(NSInteger)collectId complement:(void(^)(BOOL isSuccess, NSDictionary *contentDict))complement{

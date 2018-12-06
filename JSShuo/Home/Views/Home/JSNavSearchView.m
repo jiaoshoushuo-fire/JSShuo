@@ -7,6 +7,8 @@
 //
 
 #import "JSNavSearchView.h"
+#import "JSNetworkManager+Login.h"
+
 
 @interface JSNavSearchView ()
 @property (nonatomic,strong) UILabel *searchTitleLabel;
@@ -82,10 +84,22 @@
         _headButton.size = CGSizeMake(26, 26);
         [_headButton setImage:[UIImage imageNamed:@"nav_header_login_normal"] forState:UIControlStateNormal];
         [_headButton setImage:[UIImage imageNamed:@"nav_header_login_selected"] forState:UIControlStateSelected];
+        _headButton.layer.cornerRadius = 13;
+        [self updateHeaderImage];
     }
     return _headButton;
 }
 
+- (void) updateHeaderImage {
+    NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefaultsKeyAccessToken];
+    if (token) {
+        [JSNetworkManager requestProfileDateWithComplement:^(BOOL isSuccess, NSDictionary * _Nonnull dataDict) {
+            [self->_headButton sd_setImageWithURL:dataDict[@"portrait"] forState:UIControlStateNormal];
+        }];
+    } else {
+        [_headButton setImage:[UIImage imageNamed:@"nav_header_login_normal"] forState:UIControlStateNormal];
+    }
+}
 
 // 搜索框
 - (UIView *)searchRectangle {

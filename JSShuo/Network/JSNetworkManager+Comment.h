@@ -15,6 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void) requestCommentListWithParams:(NSDictionary *)params complent:(void(^)(BOOL isSuccess, NSNumber *totalPage,NSArray *modelsArray))complent ;
 
+// 请求详情页是否点赞和收藏
++ (void) requestDetailWithArticleID:(NSInteger)articleId complent:(void(^)(BOOL isSuccess,NSDictionary *contentDic))complent;
+
 @end
 
 NS_ASSUME_NONNULL_END

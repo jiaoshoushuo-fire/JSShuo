@@ -16,6 +16,8 @@ const static NSString *searchResult = @"/v1/content/search";
 
 + (void) requestLongVideoListWithParams:(NSDictionary *)params complent:(void(^)(NSNumber *totalPage,NSArray *modelsArray))complent {
     NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,longVideoList];
+    NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefaultsKeyAccessToken];
+
     [self GET:url parameters:params complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
         if (complent && isSuccess) {
             NSArray *array = [JSLongVideoModel modelsWithArray:responseDict[@"list"]];

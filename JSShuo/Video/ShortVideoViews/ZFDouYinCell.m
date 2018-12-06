@@ -61,7 +61,7 @@
     CGFloat min_view_h = self.height;
     CGFloat margin = 30;
     
-    min_w = 40;
+    min_w = 20;
     min_h = min_w;
     min_x = min_view_w - min_w - 20;
     min_y = min_view_h - min_h - 80;
@@ -91,6 +91,7 @@
         _titleLabel = [UILabel new];
         _titleLabel.textColor = [UIColor whiteColor];
         _titleLabel.font = [UIFont systemFontOfSize:15];
+        _titleLabel.text = @"adfkljaklfja";
     }
     return _titleLabel;
 }
@@ -98,7 +99,7 @@
 - (UIButton *)likeBtn {
     if (!_likeBtn) {
         _likeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_likeBtn setImage:[UIImage imageNamed:@"like"] forState:UIControlStateNormal];
+        [_likeBtn setImage:[UIImage imageNamed:@"praise"] forState:UIControlStateNormal];
     }
     return _likeBtn;
 }
@@ -107,7 +108,7 @@
 - (UIButton *)commentBtn {
     if (!_commentBtn) {
         _commentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_commentBtn setImage:[UIImage imageNamed:@"comment"] forState:UIControlStateNormal];
+        [_commentBtn setImage:[UIImage imageNamed:@"commentIcon"] forState:UIControlStateNormal];
     }
     return _commentBtn;
 }
@@ -115,7 +116,7 @@
 - (UIButton *)shareBtn {
     if (!_shareBtn) {
         _shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_shareBtn setImage:[UIImage imageNamed:@"share"] forState:UIControlStateNormal];
+        [_shareBtn setImage:[UIImage imageNamed:@"shareIcon"] forState:UIControlStateNormal];
     }
     return _shareBtn;
 }

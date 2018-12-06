@@ -30,10 +30,11 @@
  */
 
 #import <UIKit/UIKit.h>
+#import "JSBaseViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface JSSearchViewController : UIViewController
+@interface JSSearchViewController : JSBaseViewController
 
 @end
 
