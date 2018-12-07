@@ -129,6 +129,7 @@
         // 23 * 22
         _chatBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_chatBtn setImage:[UIImage imageNamed:@"commentIcon"] forState:UIControlStateNormal];
+        [_chatBtn setImage:[UIImage imageNamed:@"commentIcon_selected"] forState:UIControlStateSelected];
     }
     return _chatBtn;
 }
@@ -138,6 +139,8 @@
         // 21 * 22
         _praiseBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_praiseBtn setImage:[UIImage imageNamed:@"praise"] forState:UIControlStateNormal];
+//        [_praiseBtn setImage:[UIImage imageNamed:@"praise_selected"] forState:UIControlStateHighlighted];
+        [_praiseBtn setImage:[UIImage imageNamed:@"praise_selected"] forState:UIControlStateSelected];
     }
     return _praiseBtn;
 }
@@ -147,6 +150,8 @@
         // 24 * 23
         _collectionBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_collectionBtn setImage:[UIImage imageNamed:@"collectionIcon"] forState:UIControlStateNormal];
+        [_collectionBtn setImage:[UIImage imageNamed:@"collectionIcon_selected"] forState:UIControlStateSelected];
+//        [_collectionBtn setImage:[UIImage imageNamed:@"collectionIcon_selected"] forState:UIControlStateHighlighted];
     }
     return _collectionBtn;
 }

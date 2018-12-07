@@ -13,15 +13,24 @@
 #import "JSNavSearchView.h"
 #import "JSNetworkManager+Channel.h"
 #import "JSSearchViewController.h"
-
+#import "JSNetworkManager+Login.h"
+#import "JSMainViewController.h"
+#import "AppDelegate.h"
 
 @interface JSHomeTitleBarViewController () <TYTabPagerBarDataSource,TYTabPagerBarDelegate,TYPagerControllerDataSource,TYPagerControllerDelegate>
 @property (nonatomic, weak) TYTabPagerBar *tabBar;
 @property (nonatomic, weak) TYPagerController *pagerController;
 @property (nonatomic, strong) NSArray *datas;
+@property (nonatomic, strong) JSNavSearchView *nav;
+//@property (nonatomic) BOOL haveToken;
 @end
 
 @implementation JSHomeTitleBarViewController
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.nav updateHeaderImage];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -30,7 +39,6 @@
     [self setupNav];
     [self addTabPageBar];
     [self addPagerController];
-    
     
     [JSNetworkManager requestChannelListWithParams:@{} complent:^(NSDictionary * _Nonnull contentDic) {
         self.datas = contentDic[@"list"];
@@ -118,22 +126,48 @@
 }
 
 - (void) setupNav {
-    JSNavSearchView *nav = [[JSNavSearchView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 64)];
-    nav.backgroundColor = [UIColor colorWithHexString:@"F44336"];
+    self.nav = [[JSNavSearchView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 64)];
+    _nav.backgroundColor = [UIColor colorWithHexString:@"F44336"];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pushToSearchVC:)];
-    [nav.searchRectangle addGestureRecognizer:tap];
-    [nav.headButton bk_addEventHandler:^(id sender) {
+    [_nav.searchRectangle addGestureRecognizer:tap];
+    @weakify(self);
+    [_nav.headButton bk_addEventHandler:^(id sender) {
+        NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefaultsKeyAccessToken];
+        __block BOOL haveToken = token.length > 0 ? YES : NO;
+        @strongify(self);
         [JSAccountManager checkLoginStatusComplement:^(BOOL isLogin) {
             if (isLogin) {
-                NSLog(@"跳转到个人页面");
+                if (haveToken) {
+                    JSMainViewController *mainVC = [AppDelegate instance].mainViewController;
+                    [mainVC switchToViewControllerAtIndex:4];
+                }
+                [self.nav updateHeaderImage];
             }
         }];
     } forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:nav];
-    [nav mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.view addSubview:_nav];
+    [_nav mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(self.view);
         make.height.mas_equalTo(64);
         make.top.mas_equalTo(0);
+    }];
+}
+
+// 登录成功后的通知
+- (void)userLoginSuccessNoti:(NSNotification *)notification {
+    
+}
+
+// 刷新用户信息的头部
+- (void)refreshProfileData{
+    [JSNetworkManager requestProfileDateWithComplement:^(BOOL isSuccess, NSDictionary * _Nonnull dataDict) {
+        if (isSuccess) {
+            
+            NSError *error = nil;
+            JSProfileUserModel *userModel = [MTLJSONAdapter modelOfClass:[JSProfileUserModel class] fromJSONDictionary:dataDict error:&error];
+//            [self.headerView setUserModel:userModel];
+        }
+//        [self.profileTableView.mj_header endRefreshing];
     }];
 }
 

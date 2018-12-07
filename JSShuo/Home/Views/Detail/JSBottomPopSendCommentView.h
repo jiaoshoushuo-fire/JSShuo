@@ -7,18 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <objc/runtime.h>
-#import <objc/message.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface JSBottomPopSendCommentView : UIView
 
-@property (nonatomic,strong) UITextView *textView;
-
-- (void) appearView;
-
-- (void) dismissView;
++ (void) showInputBarWithView:(UIView *)superView articleId:(NSString *)articleID complement:(void(^)(NSDictionary *comment))complement;
 
 @end
 

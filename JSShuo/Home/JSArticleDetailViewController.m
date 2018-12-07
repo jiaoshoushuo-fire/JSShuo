@@ -16,7 +16,8 @@
 #import "JSDetailNavView.h"
 #import "JSDetailBottomSendCommentView.h"
 #import "JSBottomPopSendCommentView.h"
-
+#import "JSShareManager.h"
+#import "JSNetworkManager+Login.h"
 
 @interface SectionHeaderView : UITableViewHeaderFooterView
 @property (nonatomic, strong)UIView *colorLineView;
@@ -95,28 +96,44 @@
 @property (nonatomic,strong) NSMutableArray *commentDatas;
 @property (nonatomic,strong) NSMutableArray *recommendDatas;
 @property (nonatomic,strong) JSDetailNavView *navView;
-@property (nonatomic, strong)JSBottomPopSendCommentView *popSendChatView;
+@property (nonatomic, strong)JSDetailBottomSendCommentView *bottomView;
+
 @end
 
 @implementation JSArticleDetailViewController
 
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    [self.popSendChatView.textView resignFirstResponder];
+- (void) reward:(UIBarButtonItem *)item {
+    
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.navigationController setNavigationBarHidden:YES];
+//    [self.navigationController setNavigationBarHidden:YES];
     self.view.backgroundColor = [UIColor whiteColor];
     [self setupWebView];
-    [self setupNav];
+//    [self setupNav];
+    self.title = @"推荐详情";
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(reward:)];
     [self initSendCommentView];
     [self initTableView];
-    self.popSendChatView = [[JSBottomPopSendCommentView alloc] init];
+    self.tableView.hidden = YES;
     _pageNum = 1;
     _pageSize = 10;
-    NSDictionary *commentParams = @{@"articleId":@12950,@"pageNum":[NSNumber numberWithInt:_pageNum],@"pageSize":[NSNumber numberWithInt:_pageSize]};
+    
+    [JSNetworkManager requestDetailWithArticleID:self.articleId.integerValue complent:^(BOOL isSuccess, NSDictionary * _Nonnull contentDic) {
+        if (isSuccess) {
+            NSNumber *collected = contentDic[@"collect"];
+            if ([collected  isEqual: @1]) {
+                self.bottomView.collectionBtn.selected = YES;
+            }
+            NSNumber *praised = contentDic[@"praise"];
+            if ([praised  isEqual: @1]) {
+                self.bottomView.praiseBtn.selected = YES;
+            }
+        }
+    }];
+    
+    NSDictionary *commentParams = @{@"articleId":self.articleId,@"pageNum":[NSNumber numberWithInt:_pageNum],@"pageSize":[NSNumber numberWithInt:_pageSize]};
     [JSNetworkManager requestCommentListWithParams:commentParams complent:^(BOOL isSuccess, NSNumber * _Nonnull totalPage, NSArray * _Nonnull modelsArray) {
         if (isSuccess) {
             self.commentDatas = [NSMutableArray arrayWithArray:modelsArray];
@@ -124,26 +141,130 @@
             [self.tableView reloadData];
         }
     }];
-    NSDictionary *recommendParams = @{@"articleId":@12950,@"type":@1,@"pageSize":@6};
+    NSDictionary *recommendParams = @{@"articleId":self.articleId,@"type":@1,@"pageSize":@6};
     [JSNetworkManager requestRecommendListWithParams:recommendParams complent:^(BOOL isSuccess, NSArray * _Nonnull modelsArray) {
         if (isSuccess) {
             self.recommendDatas = [NSMutableArray arrayWithArray:modelsArray];
             [self.tableView reloadData];
         }
     }];
-    self.tableView.hidden = YES;
 }
 
+// 底部的一排按钮
 - (void) initSendCommentView {
     JSDetailBottomSendCommentView *bottomView = [[JSDetailBottomSendCommentView alloc] initWithFrame:CGRectMake(0, ScreenHeight-40, ScreenWidth, 40)];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showSendChat:)];
     [bottomView.sendCommentLabel addGestureRecognizer:tap];
+    
+    _bottomView = bottomView;
     [self.view addSubview:bottomView];
+    [bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.bottom.equalTo(self.view);
+        make.height.mas_equalTo(40);
+    }];
+    @weakify(self);
+    [_bottomView.shareBtn bk_addEventHandler:^(id sender) {
+        @strongify(self);
+        [JSShareManager shareWithTitle:@"测试title" Text:@"测试text" Image:[UIImage imageNamed:@"js_profile_mywallet_share"] Url:@"https://www.baidu.com/" complement:^(BOOL isSuccess) {
+            if (isSuccess) {
+                [self showAutoDismissTextAlert:@"分享成功"];
+            }else{
+                [self showAutoDismissTextAlert:@"分享失败"];
+            }
+        }];
+    } forControlEvents:UIControlEventTouchUpInside];
+    
+    // 第 2 个按钮
+    [_bottomView.praiseBtn bk_addEventHandler:^(id sender) {
+        @strongify(self);
+        NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefaultsKeyAccessToken];
+        if (token) {
+            self.bottomView.praiseBtn.userInteractionEnabled = NO;
+            if (self.bottomView.praiseBtn.selected) { // 取消点赞
+                [JSNetworkManager deletePraiseWithArticleID:self.articleId.integerValue complement:^(BOOL isSuccess, NSDictionary * _Nonnull contentDic) {
+                    NSLog(@"取消点赞 -- %@",contentDic);
+                    self.bottomView.praiseBtn.userInteractionEnabled = YES;
+                    if (isSuccess) {
+                        self.bottomView.praiseBtn.selected = NO;
+                    }
+                }];
+            } else { // 点赞
+                NSDictionary *params = @{@"token":token,@"articleId":self.articleId};
+                [JSNetworkManager addPraise:params complement:^(BOOL isSuccess, NSDictionary * _Nonnull contentDic) {
+                    NSLog(@"点赞 -- %@",contentDic);
+                    self.bottomView.praiseBtn.userInteractionEnabled = YES;
+                    if (isSuccess) {
+                        self.bottomView.praiseBtn.selected = YES;
+                    }
+                }];
+            }
+            self.bottomView.praiseBtn.selected = !self.bottomView.praiseBtn.selected;
+        } else {
+            [JSAccountManager checkLoginStatusComplement:^(BOOL isLogin) {
+                
+            }];
+        }
+    } forControlEvents:UIControlEventTouchUpInside];
+    
+    // 第 3 个按钮
+    [_bottomView.collectionBtn bk_addEventHandler:^(id sender) {
+        @strongify(self)
+        NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefaultsKeyAccessToken];
+        if (token) {
+            self.bottomView.collectionBtn.userInteractionEnabled = NO;
+            if (self.bottomView.collectionBtn.selected) { // 取消收藏
+                [JSNetworkManager requestDeleateCollectWithArticleId:self.articleId.integerValue complement:^(BOOL isSuccess, NSDictionary * _Nonnull contentDict) {
+                    self.bottomView.collectionBtn.userInteractionEnabled = YES;
+                    if (isSuccess) {
+                        self.bottomView.collectionBtn.selected = NO;
+                        [self showAutoDismissTextAlert:@"取消收藏"];
+                    }
+                }];
+            } else { // 收藏
+                NSDictionary *params = @{@"token":token,@"articleId":self.articleId};
+                [JSNetworkManager addCollect:params complement:^(BOOL isSuccess, NSDictionary * _Nonnull contentDic) {
+                    self.bottomView.collectionBtn.userInteractionEnabled = YES;
+                    NSLog(@"收藏成功 -- %@",contentDic);
+                    if (isSuccess) {
+                        self.bottomView.collectionBtn.selected = YES;
+                        [self showAutoDismissTextAlert:@"收藏成功"];
+                    }
+                }];
+            }
+            self.bottomView.collectionBtn.selected = !self.bottomView.collectionBtn.selected;
+        } else {
+            [JSAccountManager checkLoginStatusComplement:^(BOOL isLogin) {
+                
+            }];
+        }
+    } forControlEvents:UIControlEventTouchUpInside];
+    
+    // 第 1 个按钮
+    [_bottomView.chatBtn bk_addEventHandler:^(id sender) {
+        @strongify(self)
+        if (self.bottomView.chatBtn.selected) {
+            [self.tableView scrollToTop];
+        } else {
+            if (self.commentDatas.count) {
+                [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+            }
+        }
+        self.bottomView.chatBtn.selected = !self.bottomView.chatBtn.selected;
+    } forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void) showSendChat:(UITapGestureRecognizer *)tap {
-    NSLog(@"要弹出发送评论的框");
-    [_popSendChatView appearView];
+    NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefaultsKeyAccessToken];
+    __block BOOL haveToken = token.length > 0 ? YES : NO;
+    if (haveToken) {
+        [JSBottomPopSendCommentView showInputBarWithView:self.navigationController.view articleId:[NSString stringWithFormat:@"%@",self.articleId] complement:^(NSDictionary * _Nonnull comment) {
+            [self showAutoDismissTextAlert:@"发送成功"];
+        }];
+    } else {
+        [JSAccountManager checkLoginStatusComplement:^(BOOL isLogin) {
+            
+        }];
+    }
 }
 
 - (void) setupNav {
@@ -157,6 +278,11 @@
 
 - (void) initTableView {
     [self.view addSubview:self.tableView];
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.right.equalTo(self.view);
+        make.bottom.equalTo(self.bottomView.mas_top);
+        
+    }];
 }
 
 #pragma mark -- UITableViewDelegate
@@ -174,9 +300,19 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    SectionHeaderView *headerView = [[SectionHeaderView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 30)];
+    SectionHeaderView *headerView = [[SectionHeaderView alloc] init];
     [headerView.contentView setBackgroundColor:[UIColor whiteColor]];
-    section == 0 ? [headerView.titleLabel setText:@"相关推荐"] : [headerView.titleLabel setText:@"热门评论"];
+    if (section == 0) {
+        headerView.frame = CGRectMake(0, 0, ScreenWidth, 30);
+        [headerView.titleLabel setText:@"相关推荐"];
+    } else {
+        if (self.commentDatas.count > 0) {
+            headerView.frame = CGRectMake(0, 0, ScreenWidth, 30);
+            [headerView.titleLabel setText:@"热门评论"];
+        } else {
+            headerView.frame = CGRectMake(0, 0, ScreenWidth, 1);
+        }
+    }
     return headerView;
 }
 
@@ -197,7 +333,17 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 30;
+    CGFloat height;
+    if (section == 0) {
+        height = 30;
+    } else {
+        if (self.commentDatas.count > 0) {
+            height = 30;
+        } else {
+            height = 1;
+        }
+    }
+    return height;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
@@ -238,7 +384,7 @@
 
 - (void) setupWebView {
     wkWebViewHeight = 0.f;
-    NSURL *url = [NSURL URLWithString:@"https://www.jianshu.com/p/22f39afdaa44"];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://api.jiaoshoutt.com/v1/page/article/%@",self.articleId]];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
     [self.wkWebView loadRequest:urlRequest];
 }
@@ -251,7 +397,12 @@
 }
 
 #pragma mark ------ < WKUIDelegate,WKNavigationDelegate > ------
+- (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(null_unspecified WKNavigation *)navigation {
+    [self showWaitingHUD];
+}
+
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
+    [self hideWaitingHUD];
     [webView evaluateJavaScript:@"document.body.scrollHeight" completionHandler:^(id _Nullable result, NSError * _Nullable error) {
         CGFloat documentHeight = [result doubleValue];
         CGRect webFrame = webView.frame;
