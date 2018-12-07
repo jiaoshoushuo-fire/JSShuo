@@ -19,7 +19,8 @@
              @"remainNum":@"remainNum",
              
              @"canGrab":@"canGrab",
-             @"nextStartTime":@"nextStartTime"
+             @"nextStartTime":@"nextStartTime",
+             @"countDown":@"countDown"
              };
 }
 @end
@@ -32,6 +33,20 @@
              @"nickname" : @"nickname",
              @"portrait" : @"portrait",
              @"amount" : @"amount"
+             };
+}
+
+@end
+
+@implementation JSActivityOpenPackageModel
+
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    return @{
+             @"amount" : @"amount",
+             @"amountType" : @"amountType",
+             @"message" : @"message",
+             @"rewardCode" : @"rewardCode",
+             @"rewardType":@"rewardType"
              };
 }
 

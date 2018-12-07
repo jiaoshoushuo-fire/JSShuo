@@ -9,6 +9,7 @@
 #import "JSMessageViewController.h"
 #import "JSSwitchSegmentView.h"
 #import "JSNotificationViewController.h"
+#import "JSNetworkManager+Login.h"
 
 
 @interface JSMessageViewController ()<UIPageViewControllerDelegate,UIPageViewControllerDataSource>
@@ -95,14 +96,30 @@
         self.currentPage = 0;
     }];
     // Do any additional setup after loading the view.
+    UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [rightButton setTitle:@"清空" forState:UIControlStateNormal];
+    [rightButton setTitleColor:[UIColor colorWithHexString:@"F44336"] forState:UIControlStateNormal];
+    rightButton.titleLabel.font = [UIFont systemFontOfSize:16];
+    [rightButton sizeToFit];
+    [rightButton addTarget:self action:@selector(rightButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:rightButton];
     self.segmentView.selectedIndexChangedHandler = ^(NSUInteger index) {
         @strongify(self);
         
         [self switchPageViewControllerAtIndex:index];
     };
 }
-
+- (void)rightButtonAction:(UIButton *)button{
+    NSInteger type = self.currentPage == 0 ? 1 : 2;
+    [JSNetworkManager requestClearMessageType:type complement:^(BOOL isSuccess, NSDictionary * _Nonnull contentDict) {
+        if (isSuccess) {
+            [self showAutoDismissTextAlert:@"清空成功"];
+            JSNotificationViewController *vc = self.allVC[self.currentPage];
+            [vc reloadListData];
+        }
+    }];
+}
 #pragma mark - UIPageViewControllerDataSource
 - (nullable UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
     NSInteger index = [self.allVC indexOfObject:viewController];

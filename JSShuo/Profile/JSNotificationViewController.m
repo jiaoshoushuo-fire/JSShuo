@@ -76,6 +76,9 @@
     [self.tableView.mj_header beginRefreshing];
     // Do any additional setup after loading the view.
 }
+- (void)reloadListData{
+    [self.tableView.mj_header beginRefreshing];
+}
 - (void)refreshMessageDataListWithHeaderRefresh:(BOOL)isHeaderRefresh{
     if (isHeaderRefresh) {
         self.currentPage = 1;
@@ -93,8 +96,8 @@
             NSError *error = nil;
             JSMessageListModel *listModel = [MTLJSONAdapter modelOfClass:[JSMessageListModel class] fromJSONDictionary:contenDict error:&error];
             self.totalPage = listModel.totalPage;
-//            [self.dataList addObjectsFromArray:listModel.list];
-            [self.dataList addObjectsFromArray:[self testList]];
+            [self.dataList addObjectsFromArray:listModel.list];
+//            [self.dataList addObjectsFromArray:[self testList]];
             
             
             if (self.dataList.count > 0) {

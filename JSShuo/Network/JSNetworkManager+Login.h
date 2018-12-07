@@ -91,6 +91,12 @@ typedef  NS_ENUM(NSInteger, JSRequestSecurityCodeType){
 
 //徒弟列表
 + (void)requestApprenticeListWithPageIndex:(NSInteger)pageNumber complement:(void(^)(BOOL isSuccess, NSDictionary *contentDict))complement;
+
+//清空消息
++ (void)requestClearMessageType:(NSInteger)type complement:(void(^)(BOOL isSuccess, NSDictionary *contentDict))complement;
+
+//邀请好友
++ (void)requestCreateApprenticeWithInvitateCode:(NSString *)invitate complement:(void(^)(BOOL isSuccess, NSDictionary *contentDict))complement;
 @end
 
 NS_ASSUME_NONNULL_END

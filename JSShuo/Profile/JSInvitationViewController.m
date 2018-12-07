@@ -8,14 +8,82 @@
 
 #import "JSInvitationViewController.h"
 #import "JSAdjustButton.h"
+#import "JSNetworkManager+Login.h"
+#import <WMPageController.h>
+#import "JSInvitationSubViewController.h"
+#import "JSInvitationSubListViewController.h"
+#import "JSInvitationSubAweakViewController.h"
+#import "JSMyApprenticeViewController.h"
+#import "JSShareManager.h"
 
-@interface JSInvitationViewController ()
+#import "HJTabViewControllerPlugin_HeaderScroll.h"
+#import "HJTabViewControllerPlugin_TabViewBar.h"
+#import "HJDefaultTabViewBar.h"
+
+
+@interface JSInvitationBottomItem : UIView
+@property (nonatomic, strong)UIImageView *itemImage;
+@property (nonatomic, strong)UILabel *label;
+
+@end
+
+@implementation JSInvitationBottomItem
+
+- (UIImageView *)itemImage{
+    if (!_itemImage) {
+        _itemImage = [[UIImageView alloc]init];
+        _itemImage.size = CGSizeMake(22, 23);
+    }
+    return _itemImage;
+}
+- (UILabel *)label{
+    if (!_label) {
+        _label = [[UILabel alloc]init];
+        _label.font = [UIFont systemFontOfSize:12];
+        _label.textColor = [UIColor colorWithHexString:@"A7A7A7"];
+    }
+    return _label;
+}
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self addSubview:self.itemImage];
+        [self addSubview:self.label];
+    }
+    return self;
+}
+- (void)configImageUrl:(NSString *)imageUrl text:(NSString *)text{
+    self.itemImage.image = [UIImage imageNamed:imageUrl];
+    self.label.text = text;
+    [self.label sizeToFit];
+    if (text.length > 0) {
+        CGFloat top = (50-self.itemImage.height-self.label.height)/2.0f;
+        self.itemImage.top = top;
+        self.label.top = self.itemImage.bottom;
+        
+        self.itemImage.centerX = self.label.centerX = self.width/2.0f;
+    }else{
+        [self.itemImage sizeToFit];
+        self.itemImage.centerX = self.width/2.0f;
+        self.itemImage.bottom = self.height;
+    }
+    
+}
+@end
+
+@interface JSInvitationViewController ()<WMPageControllerDelegate,WMPageControllerDataSource,HJTabViewControllerDataSource,HJTabViewControllerDelagate,HJDefaultTabViewBarDelegate>
 @property (nonatomic, strong)UIImageView *headerView;
 @property (nonatomic, strong)UIButton *shareButton;
 @property (nonatomic, strong)UILabel *shareCodeLabel;
 @property (nonatomic, strong)YYLabel *alertLabel;
 
+@property (nonatomic, strong)WMPageController *pageController;
+@property (nonatomic, strong)NSArray *topTitles;
+@property (nonatomic, strong)NSArray *subVCs;
+
 @property (nonatomic, strong)UIView *bottomBar;
+
 @end
 
 @implementation JSInvitationViewController
@@ -46,6 +114,17 @@
         _shareButton.size = CGSizeMake(125, 30);
         _shareButton.clipsToBounds = YES;
         _shareButton.layer.cornerRadius = _shareButton.height/2.0f;
+        @weakify(self)
+        [_shareButton bk_addEventHandler:^(id sender) {
+            @strongify(self)
+            [JSShareManager shareWithTitle:@"测试title" Text:@"测试text" Image:[UIImage imageNamed:@"js_profile_mywallet_share"] Url:@"https://www.baidu.com/" complement:^(BOOL isSuccess) {
+                if (isSuccess) {
+                    [self showAutoDismissTextAlert:@"分享成功"];
+                }else{
+                    [self showAutoDismissTextAlert:@"分享失败"];
+                }
+            }];
+        } forControlEvents:UIControlEventTouchUpInside];
     }
     return _shareButton;
 }
@@ -59,6 +138,46 @@
     }
     return _shareCodeLabel;
 }
+- (NSArray *)topTitles{
+    if (!_topTitles) {
+        _topTitles = @[@"邀请好友",@"好友列表",@"唤醒好友"];
+    }
+    return _topTitles;
+}
+- (NSArray *)subVCs{
+    if (!_subVCs) {
+        JSInvitationSubViewController *subVC = [[JSInvitationSubViewController alloc]init];
+        JSMyApprenticeViewController *subVC2 = [[JSMyApprenticeViewController alloc]init];
+        subVC2.celltype = JSMyApprenticeCellTypeNormalList;
+        JSMyApprenticeViewController *subVC3 = [[JSMyApprenticeViewController alloc]init];
+        subVC3.celltype = JSMyApprenticeCellTypeWeakUpList;
+        
+        _subVCs = @[subVC,subVC2,subVC3];
+    }
+    return _subVCs;
+}
+- (WMPageController *)pageController{
+    if (!_pageController) {
+        _pageController = [[WMPageController alloc]init];
+        _pageController.menuViewStyle = WMMenuViewStyleLine;
+        _pageController.menuView.lineColor = [UIColor colorWithHexString:@"F44336"];
+        //        _pageController.menuBGColor = [UIColor whiteColor];
+        //        _pageController.menuHeight = 42.f;
+        _pageController.menuItemWidth = kScreenWidth/3.0f;
+        
+        _pageController.titleColorNormal = [UIColor colorWithHexString:@"666666"];
+        _pageController.titleSizeNormal = 15;
+        _pageController.titleColorSelected = [UIColor colorWithHexString:@"F44336"];
+        _pageController.titleSizeSelected = 15;
+        _pageController.bounces = YES;
+        _pageController.delegate = self;
+        _pageController.dataSource = self;
+        _pageController.selectIndex = 0;
+    }
+    return _pageController;
+}
+
+
 - (YYLabel *)alertLabel{
     if (!_alertLabel) {
         _alertLabel = [[YYLabel alloc]init];
@@ -121,8 +240,36 @@
         make.centerX.equalTo(self.headerView);
         make.bottom.equalTo(self.shareCodeLabel.mas_top).offset(-10);
     }];
+
+    [JSNetworkManager queryUserInformationWitchComplement:^(BOOL isSuccess, JSProfileUserModel * _Nonnull userModel) {
+        if (isSuccess) {
+            NSString *shareCode = [NSString stringWithFormat:@"我的邀请码:%@",userModel.inviteCode];
+            NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:shareCode  attributes:@{NSUnderlineStyleAttributeName : @(NSUnderlineStyleSingle)}];
+            
+            self.shareCodeLabel.attributedText = attrStr;
+        }
+    }];
+    [self addChildViewController:self.pageController];
+    self.pageController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [self.view addSubview:self.pageController.view];
+    
     
     [self initBottomBar];
+    [self.pageController.view mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.left.equalTo(self.view);
+        make.top.equalTo(self.headerView.mas_bottom);
+        make.bottom.equalTo(self.bottomBar.mas_top);
+    }];
+    
+//    self.tabDataSource = self;
+//    self.tabDelegate = self;
+//
+//    HJDefaultTabViewBar *tabViewBar = [HJDefaultTabViewBar new];
+//    tabViewBar.delegate = self;
+//    HJTabViewControllerPlugin_TabViewBar *tabViewBarPlugin = [[HJTabViewControllerPlugin_TabViewBar alloc] initWithTabViewBar:tabViewBar delegate:nil];
+//    [self enablePlugin:tabViewBarPlugin];
+//
+//    [self enablePlugin:[HJTabViewControllerPlugin_HeaderScroll new]];
 }
 
 - (void)initBottomBar{
@@ -139,27 +286,95 @@
     
     CGFloat width = kScreenWidth/5.0f;
     CGFloat height = 50;
-    NSArray *images = @[@"js_profile_invi_firend",@"js_profile_invi_firend",@"js_profile_invi_face",@"js_profile_invi_message",@"js_profile_invi_message"];
+    NSArray *images = @[@"js_bind_wechat",@"js_profile_invi_firend",@"js_profile_invi_face",@"icon_l_qq_normal",@"js_profile_invi_message"];
     NSArray *titles = @[@"微信邀请",@"朋友圈分享",@"",@"QQ分享",@"短信分享"];
     for (int i = 0; i<5; i++) {
-        JSAdjustButton *button = [JSAdjustButton buttonWithType:UIButtonTypeCustom];
-        button.frame = CGRectMake(width*i, 0, width, height);
-        [button setImage:[UIImage imageNamed:images[i]] forState:UIControlStateNormal];
-        [button setTitle:titles[i] forState:UIControlStateNormal];
-        button.titleLabel.font = [UIFont systemFontOfSize:12];
-        [button setTitleColor:[UIColor colorWithHexString:@"A7A7A7"] forState:UIControlStateNormal];
-        [self.bottomBar addSubview:button];
+        JSInvitationBottomItem *item = [[JSInvitationBottomItem alloc]initWithFrame:CGRectMake(width*i, 0, width, height)];
+        [item configImageUrl:images[i] text:titles[i]];
+        
+        [self.bottomBar addSubview:item];
     }
 
 }
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark - WMPageControllerDataSource
+- (NSInteger)numbersOfChildControllersInPageController:(WMPageController *)pageController {
+    return self.topTitles.count;
 }
-*/
+
+- (__kindof UIViewController *)pageController:(WMPageController *)pageController viewControllerAtIndex:(NSInteger)index {
+    if (index < 0 || index > self.topTitles.count - 1) {
+        return nil;
+    }
+    
+    
+    return self.subVCs[index];
+}
+
+- (NSString *)pageController:(WMPageController *)pageController titleAtIndex:(NSInteger)index{
+    
+    return self.topTitles[index];
+}
+- (CGRect)pageController:(WMPageController *)pageController preferredFrameForMenuView:(WMMenuView *)menuView {
+    return CGRectMake(0, 0, self.view.width, 42);
+}
+
+- (CGRect)pageController:(WMPageController *)pageController preferredFrameForContentView:(WMScrollView *)contentView {
+    CGFloat originY = 42;
+    return CGRectMake(0, originY, self.view.width, self.pageController.view.height - originY);
+}
+
+- (void)pageController:(WMPageController *)pageController willEnterViewController:(__kindof UIViewController * _Nonnull)viewController withInfo:(NSDictionary * _Nonnull)info{
+    
+}
+
+
+
+#pragma mark -
+
+- (NSInteger)numberOfTabForTabViewBar:(HJDefaultTabViewBar *)tabViewBar {
+    return [self numberOfViewControllerForTabViewController:self];
+}
+
+- (id)tabViewBar:(HJDefaultTabViewBar *)tabViewBar titleForIndex:(NSInteger)index {
+    
+    return self.topTitles[index];
+}
+
+- (void)tabViewBar:(HJDefaultTabViewBar *)tabViewBar didSelectIndex:(NSInteger)index {
+//    BOOL anim = labs(index - self.curIndex) > 1 ? NO: YES;
+//    [self scrollToIndex:index animated:YES];
+}
+
+
+#pragma mark -
+
+- (void)tabViewController:(HJTabViewController *)tabViewController scrollViewVerticalScroll:(CGFloat)contentPercentY {
+    // 博主很傻，用此方法渐变导航栏是偷懒表现，只是为了demo演示。正确科学方法请自行百度 iOS导航栏透明
+//    self.navigationController.navigationBar.alpha = contentPercentY;
+}
+
+- (NSInteger)numberOfViewControllerForTabViewController:(HJTabViewController *)tabViewController {
+    return self.subVCs.count;
+}
+
+- (UIViewController *)tabViewController:(HJTabViewController *)tabViewController viewControllerForIndex:(NSInteger)index {
+    
+    return self.subVCs[index];
+}
+
+- (UIView *)tabHeaderViewForTabViewController:(HJTabViewController *)tabViewController {
+    
+    return self.headerView;
+}
+
+- (CGFloat)tabHeaderBottomInsetForTabViewController:(HJTabViewController *)tabViewController {
+    return HJTabViewBarDefaultHeight ;
+}
+
+- (UIEdgeInsets)containerInsetsForTabViewController:(HJTabViewController *)tabViewController {
+    return UIEdgeInsetsMake(0, 0, 50, 0);
+}
+
 
 @end

@@ -193,7 +193,7 @@
     if (!_collectionView) {
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc]init];
         layout.itemSize = CGSizeMake((kScreenWidth-30)/2.0f, 35);
-        layout.minimumLineSpacing = 10;
+        layout.minimumLineSpacing = 5;
         layout.minimumInteritemSpacing = 10;
         layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
         _collectionView = [[UICollectionView alloc]initWithFrame:CGRectZero collectionViewLayout:layout];
@@ -215,6 +215,11 @@
         _openPackView = [[UIImageView alloc]init];
         _openPackView.image = [UIImage imageNamed:@"js_mission_kai_highlight"];
         [_openPackView sizeToFit];
+        @weakify(self)
+        [_openPackView bk_whenTapped:^{
+            @strongify(self)
+            [self openRedPackage];
+        }];
     }
     return _openPackView;
 }
@@ -228,6 +233,11 @@
         _openButton.size = CGSizeMake(84, 27);
         _openButton.clipsToBounds = YES;
         _openButton.layer.cornerRadius = _openButton.height/2.0f;
+        @weakify(self)
+        [_openButton bk_addEventHandler:^(id sender) {
+            @strongify(self)
+            [self openRedPackage];
+        } forControlEvents:UIControlEventTouchUpInside];
     }
     return _openButton;
 }
@@ -356,7 +366,7 @@
     [JSNetworkManager requestCurrentActivityComplement:^(BOOL isSuccess, NSDictionary * _Nonnull contentDict) {
         if (isSuccess) {
             self.currentModel = [MTLJSONAdapter modelOfClass:[JSActivityModel class] fromJSONDictionary:contentDict error:nil];
-            [self createMoneyViewWithMoney:self.currentModel.amount];
+            [self createMoneyViewWithMoney:self.currentModel.amount/100];
             self.topTitleLabel.text = [NSString stringWithFormat:@"本场红包数量：%@",@(self.currentModel.num)];
             
             NSDateFormatter *dateFormatter=[[NSDateFormatter alloc]init];
@@ -368,6 +378,10 @@
                 self.countDownView.hourLabel.text = [NSString stringWithFormat:@"%02ld",(long)hour];
                 self.countDownView.minuteLabel.text = [NSString stringWithFormat:@"%02ld",(long)minute];
                 self.countDownView.secondLabel.text = [NSString stringWithFormat:@"%02ld",(long)second];
+                
+                if (day == 0 && hour == 0 && minute == 0 & second == 0) {
+                    [self initOpenViewIsEnable:YES];
+                }
             }];
             
             [self initOpenViewIsEnable:self.currentModel.canGrab];
@@ -395,6 +409,18 @@
     [super viewWillAppear:animated];
     
     
+}
+- (void)openRedPackage{
+    [self showWaitingHUD];
+    [JSNetworkManager requestOpenedPackageWithID:self.currentModel.grabRedPackageId Complement:^(BOOL isSuccess, NSDictionary * _Nonnull contentDict) {
+        [self hideWaitingHUD];
+        if (isSuccess) {
+            NSDictionary *openedDict = contentDict[@"reward"];
+            NSError *error = nil;
+            JSActivityOpenPackageModel *model = [MTLJSONAdapter modelOfClass:[JSActivityOpenPackageModel class] fromJSONDictionary:openedDict error:&error];
+            [self showAutoDismissTextAlert:@(model.amount).stringValue];
+        }
+    }];
 }
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];

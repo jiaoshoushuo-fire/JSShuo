@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface JSNotificationViewController : JSBaseViewController
 
 @property (nonatomic, assign)NSInteger messageType;
+
+- (void)reloadListData;
 @end
 
 NS_ASSUME_NONNULL_END

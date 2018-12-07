@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign)NSInteger remainNum;
 @property (nonatomic, assign)BOOL canGrab;
 @property (nonatomic, copy)NSString *nextStartTime;
+@property (nonatomic, assign)NSInteger countDown;
 @end
 
 @interface JSActivityUserModel : MTLModel<MTLJSONSerializing>
@@ -26,6 +27,16 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy)NSString *nickname;
 @property (nonatomic, copy)NSString *portrait;
 @property (nonatomic, assign)NSInteger amount;
+
+@end
+
+
+@interface JSActivityOpenPackageModel : MTLModel<MTLJSONSerializing>
+@property (nonatomic, assign)NSInteger amount;
+@property (nonatomic, assign)NSInteger amountType;
+@property (nonatomic, copy)NSString *message;
+@property (nonatomic, assign)NSInteger rewardCode;
+@property (nonatomic, assign)NSInteger rewardType;
 
 @end
 

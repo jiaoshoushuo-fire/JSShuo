@@ -13,6 +13,7 @@ const static NSString *getTaskListUrl = @"/v1/task/list";
 const static NSString *getActivityUrl = @"/v1/activity/grabredpackage/info";
 const static NSString *getCurrentActUrl = @"/v1/activity/grabredpackage/current";
 const static NSString *getOpenedRedListUrl = @"/v1/activity/grabredpackage/rank";
+const static NSString *postOpenPackageUrl = @"/v1/activity/grabredpackage/grab";
 
 @implementation JSNetworkManager (Mission)
 
@@ -76,6 +77,17 @@ const static NSString *getOpenedRedListUrl = @"/v1/activity/grabredpackage/rank"
     
     NSDictionary *param = @{@"limit":@"10"};
     [self GET:url parameters:param complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
+        if (complement) {
+            complement(isSuccess,responseDict);
+        }
+    }];
+}
+
+//抢红包接口
++ (void)requestOpenedPackageWithID:(NSInteger)ID Complement:(void(^)(BOOL isSuccess, NSDictionary *contentDict))complement{
+    NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,postOpenPackageUrl];
+    NSDictionary *param = @{@"token":[JSAccountManager shareManager].accountToken,@"grabRedPackageId":@(ID)};
+    [self POST:url parameters:param complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
         if (complement) {
             complement(isSuccess,responseDict);
         }

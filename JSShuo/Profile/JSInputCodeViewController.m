@@ -103,6 +103,19 @@
         [_openButton bk_addEventHandler:^(id sender) {
             @strongify(self)
             //
+            if (self.textField.text.length > 0) {
+                [self showWaitingHUD];
+                [JSNetworkManager requestCreateApprenticeWithInvitateCode:self.textField.text complement:^(BOOL isSuccess, NSDictionary * _Nonnull contentDict) {
+                    [self hideWaitingHUD];
+                    if (isSuccess) {
+                        [self showAutoDismissTextAlert:@"拜师成功"];
+                        [self performSelector:@selector(dismissSelfVC) withObject:nil afterDelay:2];
+                    }
+                }];
+            }else{
+                [self showAutoDismissTextAlert:@"请输入邀请码"];
+            }
+            
         } forControlEvents:UIControlEventTouchUpInside];
     }
     return _openButton;
@@ -136,7 +149,7 @@
         _bottom_Label_2.font = [UIFont systemFontOfSize:12];
         _bottom_Label_2.numberOfLines = 0;
         _bottom_Label_2.textColor = [UIColor colorWithHexString:@"EE9714"];
-        _bottom_Label_2.text = @"输入您好友的邀请码并绑定微信点击‘拆’可以领取最好88零钱大红包，好运等你来";
+        _bottom_Label_2.text = @"输入您好友的邀请码并绑定微信点击‘拆’可以领取最高88零钱大红包，好运等你来";
         CGFloat height = [_bottom_Label_2 sizeThatFits:CGSizeMake(kScreenWidth-60, MAXFLOAT)].height;
         _bottom_Label_2.size = CGSizeMake(kScreenWidth-60, height);
     }
@@ -149,6 +162,9 @@
         _backImageView.userInteractionEnabled = YES;
     }
     return _backImageView;
+}
+- (void)dismissSelfVC{
+    [self.rt_navigationController popViewControllerAnimated:YES complete:nil];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
