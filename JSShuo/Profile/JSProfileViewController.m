@@ -409,12 +409,12 @@
         
         [_headerView.rightButton bk_addEventHandler:^(id sender) {//设置
             @strongify(self)
-//            JSSettingViewController *settingVC = [[JSSettingViewController alloc]init];
-//            settingVC.hidesBottomBarWhenPushed = YES;
-//            [self.rt_navigationController pushViewController:settingVC animated:YES complete:nil];
-            [JSAlertView showAlertViewWithType:JSALertTypeSignIn rewardModel:nil superView:self.tabBarController.view handle:^{
-                NSLog(@"点击跳转");
-            }];
+            JSSettingViewController *settingVC = [[JSSettingViewController alloc]init];
+            settingVC.hidesBottomBarWhenPushed = YES;
+            [self.rt_navigationController pushViewController:settingVC animated:YES complete:nil];
+//            [JSAlertView showAlertViewWithType:JSALertTypeGold rewardModel:nil superView:self.tabBarController.view handle:^{
+//                NSLog(@"点击跳转");
+//            }];
             
         } forControlEvents:UIControlEventTouchUpInside];
     }

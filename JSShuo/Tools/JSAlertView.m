@@ -7,6 +7,7 @@
 //
 
 #import "JSAlertView.h"
+#import "UIImage+Extension.h"
 
 
 @interface JSAlertView()
@@ -18,6 +19,7 @@
 @property (nonatomic, strong)UILabel *titleLabel;
 @property (nonatomic, strong)UILabel *subLabel;
 @property (nonatomic, assign)JSALertType alertType;
+@property (nonatomic, strong)UIImageView *goldImageView;
 
 @property (nonatomic, copy)void(^handleBlock)(void);
 @end
@@ -42,6 +44,14 @@
         } forControlEvents:UIControlEventTouchUpInside];
     }
     return _actionButton;
+}
+- (UIImageView *)goldImageView{
+    if (!_goldImageView) {
+        _goldImageView = [[UIImageView alloc]init];
+        _goldImageView.image = [UIImage imageNamed:@"js_mession_gold_icon"];
+        _goldImageView.size = CGSizeMake(280, 256);
+    }
+    return _goldImageView;
 }
 - (UILabel *)titleLabel{
     if (!_titleLabel) {
@@ -77,6 +87,41 @@
         [_cancelButton addTarget:self action:@selector(dismissAlertView) forControlEvents:UIControlEventTouchUpInside];
     }
     return _cancelButton;
+}
+
+- (instancetype)initWithFrame:(CGRect)frame withUrl:(NSString *)url{
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self addSubview:self.cancelButton];
+        [self addSubview:self.contentView];
+        
+        // 1.创建过滤器，这里的@"CIQRCodeGenerator"是固定的
+        CIFilter *filter = [CIFilter filterWithName:@"CIQRCodeGenerator"];
+        
+        // 2.恢复默认设置
+        [filter setDefaults];
+        
+        // 3. 给过滤器添加数据
+        NSString *dataString = url;
+        NSData *data = [dataString dataUsingEncoding:NSUTF8StringEncoding];
+        // 注意，这里的value必须是NSData类型
+        [filter setValue:data forKeyPath:@"inputMessage"];
+        
+        // 4. 生成二维码
+        CIImage *outputImage = [filter outputImage];
+        
+        // 5. 显示二维码
+        self.contentView.image = [UIImage creatNonInterpolatedUIImageFormCIImage:outputImage withSize:250];
+        self.contentView.size = CGSizeMake(250, 250);
+        
+        
+        self.cancelButton.center = CGPointMake(self.width/2.0f, self.height/2.0 + self.contentView.height/2.0f + 40);
+        
+        self.contentView.center = CGPointMake(self.width/2.0f, self.height/2.0f);
+        self.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5];
+    }
+    return self;
+    
 }
 
 - (instancetype)initWithFrame:(CGRect)frame withType:(JSALertType)alertType
@@ -145,6 +190,36 @@
                 self.titleLabel.centerX = self.subLabel.centerX = self.actionButton.centerX = self.contentView.width/2.0f;
                 
             }break;
+            case JSALertTypeGold:{
+                self.contentView.size = CGSizeMake(280, 326);
+                [self.contentView addSubview:self.goldImageView];
+                self.subLabel.font = [UIFont systemFontOfSize:18];
+                self.subLabel.textAlignment = NSTextAlignmentCenter;
+                self.subLabel.textColor = [UIColor redColor];
+                
+                self.subLabel.size = CGSizeMake(200, 20);
+                
+                [self.actionButton setTitle:@"点击领取" forState:UIControlStateNormal];
+                [self.actionButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+                self.actionButton.titleLabel.font = [UIFont systemFontOfSize:15];
+                self.actionButton.backgroundColor = [UIColor colorWithHexString:@"FBD207"];
+                
+                self.actionButton.size = CGSizeMake(150, 30);
+                self.actionButton.clipsToBounds = YES;
+                self.actionButton.layer.cornerRadius = self.actionButton.height/2.0f;
+                [self.contentView addSubview:self.subLabel];
+                [self.contentView addSubview:self.actionButton];
+                self.goldImageView.top = 0;
+                self.subLabel.top = self.goldImageView.bottom + 10 ;
+                self.actionButton.top = self.subLabel.bottom + 10 ;
+                
+                
+                self.cancelButton.center = CGPointMake(self.width/2.0f, self.height/2.0 + self.contentView.height/2.0f + 40);
+                
+                self.contentView.center = CGPointMake(self.width/2.0f, self.height/2.0f);
+                self.subLabel.centerX = self.goldImageView.centerX = self.actionButton.centerX = self.contentView.width/2.0f;
+                
+            }break;
                 
             default:
                 break;
@@ -163,6 +238,10 @@
         case JSALertTypeSignIn:{
             
         }break;
+        case JSALertTypeGold:{
+            NSString *typeString = rewardModel.amountType == 1 ? @"金币":@"元";
+            self.subLabel.text = [NSString stringWithFormat:@"获得%@%@",@(rewardModel.amount),typeString];
+        }break;
             
         default:
             break;
@@ -173,6 +252,10 @@
     JSAlertView *alertView = [[JSAlertView alloc]initWithFrame:superView.bounds withType:alertType];
     alertView.rewardModel = model;
     alertView.handleBlock = handle;
+    [superView addSubview:alertView];
+}
++ (void)showCIQRCodeImageWithUrl:(NSString *)url superView:(UIView *)superView{
+    JSAlertView *alertView = [[JSAlertView alloc]initWithFrame:superView.bounds withUrl:url];
     [superView addSubview:alertView];
 }
 

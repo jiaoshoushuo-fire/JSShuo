@@ -11,13 +11,16 @@
 
 NS_ASSUME_NONNULL_BEGIN
 typedef NS_ENUM(NSInteger,JSALertType){
-    JSALertTypeFirstLoginIn,
-    JSALertTypeSignIn
+    JSALertTypeFirstLoginIn,//邀请和d第一次登录注册  弹出
+    JSALertTypeSignIn,
+    JSALertTypeGold
 };
 
 @interface JSAlertView : UIView
 
 + (void)showAlertViewWithType:(JSALertType)alertType rewardModel:(JSMissionRewardModel *)model superView:(UIView *)superView handle:(void(^)(void)) handle;
+
++ (void)showCIQRCodeImageWithUrl:(NSString *)url superView:(UIView *)superView;
 @end
 
 NS_ASSUME_NONNULL_END

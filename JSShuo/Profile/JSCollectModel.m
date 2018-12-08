@@ -35,7 +35,8 @@
              @"portrait" : @"portrait",
              @"nickname" : @"nickname",
              @"lastLoginTime" : @"lastLoginTime",
-             @"wakeUpTime" : @"wakeUpTime"
+             @"wakeUpTime" : @"wakeUpTime",
+             @"canWakeUp" : @"canWakeUp"
              };
 }
 

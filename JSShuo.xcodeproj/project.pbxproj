@@ -86,6 +86,7 @@
 		6797051512B36A0CAA259324 /* libPods-JSShuoUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 45918ABA94D7C616D6E9C28A /* libPods-JSShuoUITests.a */; };
 		7A015E11219A75BE0025D24F /* JSWithdrawViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A015E10219A75BE0025D24F /* JSWithdrawViewController.m */; };
 		7A015E14219AF9740025D24F /* JSWithdrawModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A015E13219AF9740025D24F /* JSWithdrawModel.m */; };
+		7A139ECD21BB6EAB009EC742 /* JSNewUserGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A139ECC21BB6EAB009EC742 /* JSNewUserGuideViewController.m */; };
 		7A1749BD21A064E000E9AA12 /* JSShareManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1749BC21A064E000E9AA12 /* JSShareManager.m */; };
 		7A1749C021A066B500E9AA12 /* GFPopMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1749BF21A066B500E9AA12 /* GFPopMenuView.m */; };
 		7A1749C321A0789000E9AA12 /* JSInputCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1749C221A0789000E9AA12 /* JSInputCodeViewController.m */; };
@@ -402,6 +403,8 @@
 		7A015E10219A75BE0025D24F /* JSWithdrawViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSWithdrawViewController.m; sourceTree = "<group>"; };
 		7A015E12219AF9740025D24F /* JSWithdrawModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSWithdrawModel.h; sourceTree = "<group>"; };
 		7A015E13219AF9740025D24F /* JSWithdrawModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSWithdrawModel.m; sourceTree = "<group>"; };
+		7A139ECB21BB6EAB009EC742 /* JSNewUserGuideViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSNewUserGuideViewController.h; sourceTree = "<group>"; };
+		7A139ECC21BB6EAB009EC742 /* JSNewUserGuideViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSNewUserGuideViewController.m; sourceTree = "<group>"; };
 		7A1749BB21A064E000E9AA12 /* JSShareManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSShareManager.h; sourceTree = "<group>"; };
 		7A1749BC21A064E000E9AA12 /* JSShareManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSShareManager.m; sourceTree = "<group>"; };
 		7A1749BE21A066B400E9AA12 /* GFPopMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFPopMenuView.h; sourceTree = "<group>"; };
@@ -1203,6 +1206,8 @@
 				7AD5489621AE303900244C78 /* JSActivityCell.m */,
 				7AD5489821AE426F00244C78 /* JSActivityHeaderView.h */,
 				7AD5489921AE426F00244C78 /* JSActivityHeaderView.m */,
+				7A139ECB21BB6EAB009EC742 /* JSNewUserGuideViewController.h */,
+				7A139ECC21BB6EAB009EC742 /* JSNewUserGuideViewController.m */,
 			);
 			path = Activity;
 			sourceTree = "<group>";
@@ -1857,6 +1862,7 @@
 				002B74D2219D648300483841 /* JSSearchResultView.m in Sources */,
 				004521192192DFB600371F10 /* JSHomeModel.m in Sources */,
 				7AB5541F21B6786600DEF2CC /* JSAlertView.m in Sources */,
+				7A139ECD21BB6EAB009EC742 /* JSNewUserGuideViewController.m in Sources */,
 				004910A221951DB700B85B4F /* UITableView+FDKeyedHeightCache.m in Sources */,
 				006043472197CAA20080091A /* ZFDouYinCell.m in Sources */,
 				7A1749D221A24DB900E9AA12 /* JSMyCollectViewController.m in Sources */,

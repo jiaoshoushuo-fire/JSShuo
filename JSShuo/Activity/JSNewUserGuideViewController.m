@@ -1,22 +1,22 @@
 //
-//  JSMemberViewController.m
+//  JSNewUserGuideViewController.m
 //  JSShuo
 //
-//  Created by  乔中祥 on 2018/11/19.
+//  Created by  乔中祥 on 2018/12/8.
 //  Copyright © 2018年  乔中祥. All rights reserved.
 //
 
-#import "JSMemberViewController.h"
+#import "JSNewUserGuideViewController.h"
 
-@interface JSMemberViewController ()
+@interface JSNewUserGuideViewController ()
 
 @end
 
-@implementation JSMemberViewController
+@implementation JSNewUserGuideViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"会员大促销";
+    self.title = @"新手指南";
     self.view.backgroundColor = [UIColor whiteColor];
     // Do any additional setup after loading the view.
 }

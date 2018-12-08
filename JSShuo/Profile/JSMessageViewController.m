@@ -29,8 +29,8 @@
         _segmentView = [[JSSwitchSegmentView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 50)];
         [_segmentView.optionButtonLeft setTitle:@"通知" forState:UIControlStateNormal];
         [_segmentView.optionButtonRight setTitle:@"公告" forState:UIControlStateNormal];
-        [_segmentView.optionButtonRight showBadgeWithStyle:WBadgeStyleNumber value:99 animationType:WBadgeAnimTypeNone];
-        [_segmentView.optionButtonLeft showBadgeWithStyle:WBadgeStyleNumber value:99 animationType:WBadgeAnimTypeNone];
+        [_segmentView.optionButtonRight showBadgeWithStyle:WBadgeStyleNumber value:0 animationType:WBadgeAnimTypeNone];
+        [_segmentView.optionButtonLeft showBadgeWithStyle:WBadgeStyleNumber value:0 animationType:WBadgeAnimTypeNone];
         
         _segmentView.optionButtonRight.badgeCenterOffset = CGPointMake(kScreenWidth/3.0f, 7);
         _segmentView.optionButtonLeft.badgeCenterOffset = CGPointMake(kScreenWidth/3.0f, 7);

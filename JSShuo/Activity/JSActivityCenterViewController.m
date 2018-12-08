@@ -11,8 +11,10 @@
 #import "JSActivityHeaderView.h"
 #import "ULBCollectionViewFlowLayout.h"
 #import "JSShareManager.h"
+#import "JSNewUserGuideViewController.h"
+#import "JSRedPacketViewController.h"
 
-@interface JSActivityCenterViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,ULBCollectionViewDelegateFlowLayout>
+@interface JSActivityCenterViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,ULBCollectionViewDelegateFlowLayout,JSActivityHeaderViewDelegate>
 @property (nonatomic, strong)UICollectionView *collectionView;
 @property (nonatomic, strong)UILabel *titleLabel;
 @property (nonatomic, strong)UIImageView *titleBottomView;
@@ -48,6 +50,14 @@
         [_bottomLeftButton setTitleColor:[UIColor colorWithHexString:@"AA1B11"] forState:UIControlStateNormal];
         _bottomLeftButton.titleLabel.font = [UIFont systemFontOfSize:15];
         [_bottomLeftButton sizeToFit];
+        @weakify(self)
+        [_bottomLeftButton bk_addEventHandler:^(id sender) {
+            @strongify(self)
+            JSNewUserGuideViewController *newVC = [[JSNewUserGuideViewController alloc]init];
+            newVC.hidesBottomBarWhenPushed = YES;
+            [self.rt_navigationController pushViewController:newVC animated:YES complete:nil];
+            
+        } forControlEvents:UIControlEventTouchUpInside];
     }
     return _bottomLeftButton;
 }
@@ -146,6 +156,7 @@
     
     if ([kind isEqualToString:UICollectionElementKindSectionHeader]){
         JSActivityHeaderView *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"JSActivityHeaderView" forIndexPath:indexPath];
+        header.delegate = self;
         return header;
     }else {
         return nil;
@@ -167,6 +178,12 @@
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     self.navigationController.navigationBar.hidden = NO;
+}
+#pragma mark - JSActivityHeaderViewDelegate
+- (void)didSelectedHeaderView{
+    JSRedPacketViewController *redPackVC = [[JSRedPacketViewController alloc]init];
+    redPackVC.hidesBottomBarWhenPushed = YES;
+    [self.rt_navigationController pushViewController:redPackVC animated:YES complete:nil];
 }
 /*
 #pragma mark - Navigation

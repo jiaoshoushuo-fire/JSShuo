@@ -132,8 +132,8 @@
     self.titleLabel.text = model.nickname;
     self.timeLabel.text = model.lastLoginTime;
     
-    NSTimeInterval durationTime = [self pleaseInsertStarTime:model.lastLoginTime andInsertEndTime:[self getCurrentTimes]];
-    if (durationTime >= 60*60*24*7) {
+//    NSTimeInterval durationTime = [self pleaseInsertStarTime:model.lastLoginTime andInsertEndTime:[self getCurrentTimes]];
+    if (model.canWakeUp) {
         self.weakupButton.enabled = YES;
         self.weakupButton.backgroundColor = [UIColor colorWithHexString:@"F44336"];
         [self.weakupButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -156,7 +156,7 @@
             make.centerY.equalTo(self.backView);
         }];
         [self.timeLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.size.mas_equalTo(CGSizeMake(120, 20));
+            make.size.mas_equalTo(CGSizeMake(130, 20));
             make.right.equalTo(self.backView).offset(-10);
             make.centerY.equalTo(self.backView);
         }];

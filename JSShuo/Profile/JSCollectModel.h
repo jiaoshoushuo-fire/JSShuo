@@ -44,6 +44,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy)NSString *nickname;
 @property (nonatomic, copy)NSString *lastLoginTime;
 @property (nonatomic, copy)NSString *wakeUpTime;
+@property (nonatomic, assign)BOOL canWakeUp;
 
 @end
 NS_ASSUME_NONNULL_END

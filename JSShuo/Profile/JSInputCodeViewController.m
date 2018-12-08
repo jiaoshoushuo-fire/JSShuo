@@ -9,6 +9,7 @@
 #import "JSInputCodeViewController.h"
 #import "JSNetworkManager+Login.h"
 #import "JSAccountManager+Wechat.h"
+#import "JSAlertView.h"
 
 @interface JSInputCodeViewController ()
 @property (nonatomic, strong)UITextField *textField;
@@ -108,6 +109,10 @@
                 [JSNetworkManager requestCreateApprenticeWithInvitateCode:self.textField.text complement:^(BOOL isSuccess, NSDictionary * _Nonnull contentDict) {
                     [self hideWaitingHUD];
                     if (isSuccess) {
+                        //这里需要弹出奖励alert 现在接口没有model
+//                        [JSAlertView showAlertViewWithType:JSALertTypeFirstLoginIn rewardModel:nil superView:self.navigationController.view handle:^{
+//
+//                        }];
                         [self showAutoDismissTextAlert:@"拜师成功"];
                         [self performSelector:@selector(dismissSelfVC) withObject:nil afterDelay:2];
                     }

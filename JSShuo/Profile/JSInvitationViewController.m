@@ -19,6 +19,7 @@
 #import "HJTabViewControllerPlugin_HeaderScroll.h"
 #import "HJTabViewControllerPlugin_TabViewBar.h"
 #import "HJDefaultTabViewBar.h"
+#import "JSAlertView.h"
 
 
 @interface JSInvitationBottomItem : UIView
@@ -93,6 +94,7 @@
         _headerView = [[UIImageView alloc]init];
         _headerView.image = [UIImage imageNamed:@"js_share_header_back"];
         _headerView.size = CGSizeMake(kScreenWidth-20, (kScreenWidth-20)/2.536);
+        _headerView.userInteractionEnabled = YES;
     }
     return _headerView;
 }
@@ -292,9 +294,34 @@
         JSInvitationBottomItem *item = [[JSInvitationBottomItem alloc]initWithFrame:CGRectMake(width*i, 0, width, height)];
         [item configImageUrl:images[i] text:titles[i]];
         
+        item.tag = 100 + i;
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction:)];
+        [item addGestureRecognizer:tap];
         [self.bottomBar addSubview:item];
     }
 
+}
+- (void)tapAction:(UITapGestureRecognizer *)tap{
+    switch (tap.view.tag - 100) {
+        case 0:
+        case 1:
+        case 3:
+        case 4:{
+            [JSShareManager shareWithTitle:@"测试title" Text:@"测试text" Image:[UIImage imageNamed:@"js_profile_mywallet_share"] Url:@"https://www.baidu.com/" complement:^(BOOL isSuccess) {
+                if (isSuccess) {
+                    [self showAutoDismissTextAlert:@"分享成功"];
+                }else{
+                    [self showAutoDismissTextAlert:@"分享失败"];
+                }
+            }];
+        }break;
+        case 2:{
+            [JSAlertView showCIQRCodeImageWithUrl:@"https://www.baidu.com/" superView:self.navigationController.view];
+        }break;
+            
+        default:
+            break;
+    }
 }
 
 #pragma mark - WMPageControllerDataSource

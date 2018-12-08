@@ -10,7 +10,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol JSActivityHeaderViewDelegate <NSObject>
+
+- (void)didSelectedHeaderView;
+
+@end
+
 @interface JSActivityHeaderView : UICollectionReusableView
+
+@property (nonatomic, weak)id<JSActivityHeaderViewDelegate>delegate;
 
 @end
 
