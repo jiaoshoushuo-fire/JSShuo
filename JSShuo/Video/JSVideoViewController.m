@@ -9,6 +9,7 @@
 #import "JSVideoViewController.h"
 #import "JSLongVideoCell.h"
 #import "JSNetworkManager+LongVideo.h"
+#import "JSVideoDetailViewController.h"
 
 @interface JSVideoViewController () <UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) UITableView *tableView;
@@ -70,6 +71,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    JSVideoDetailViewController *vc = [JSVideoDetailViewController new];
+    JSLongVideoModel *model = self.datas[indexPath.row];
+    vc.urlStr = model.videoUrl;
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.rt_navigationController pushViewController:vc animated:YES complete:nil];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
