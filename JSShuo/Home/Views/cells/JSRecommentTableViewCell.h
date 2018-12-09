@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong) UIImageView *iconImgView;
 @property (nonatomic,strong) UIImageView *commentImgView;
 @property (nonatomic,strong) UILabel *commentNumLabel;
+@property (nonatomic,strong) UIView *bottomLineView;
 
 @property (nonatomic,strong) JSRecommendModel *model;
 

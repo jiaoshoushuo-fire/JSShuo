@@ -36,7 +36,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface JSVideoDetailViewController : JSBaseViewController
 
-@property (nonatomic,strong) NSString *urlStr;
+@property (nonatomic,copy) NSString *urlStr;
+@property (nonatomic,copy) NSString *title;
 
 @end
 

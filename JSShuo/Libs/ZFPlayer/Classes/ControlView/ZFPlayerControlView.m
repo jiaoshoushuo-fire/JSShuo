@@ -43,9 +43,9 @@ static const CGFloat ZFPlayerControlViewAutoFadeOutTimeInterval = 0.25f;
 
 @interface ZFPlayerControlView () <ZFSliderViewDelegate>
 /// 竖屏控制层的View
-@property (nonatomic, strong) ZFPortraitControlView *portraitControlView;
+//@property (nonatomic, strong) ZFPortraitControlView *portraitControlView;
 /// 横屏控制层的View
-@property (nonatomic, strong) ZFLandScapeControlView *landScapeControlView;
+//@property (nonatomic, strong) ZFLandScapeControlView *landScapeControlView;
 /// 加载loading
 @property (nonatomic, strong) ZFSpeedLoadingView *activity;
 /// 快进快退View

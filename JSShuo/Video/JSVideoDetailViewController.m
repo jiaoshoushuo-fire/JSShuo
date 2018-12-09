@@ -37,6 +37,7 @@ static NSString *kVideoCover = @"https://upload-images.jianshu.io/upload_images/
     self.player = [ZFPlayerController playerWithPlayerManager:playerManager containerView:self.containerView];
     self.player.assetURL = [NSURL URLWithString:self.urlStr];
     self.player.controlView = self.controlView;
+    
     /// 设置退到后台继续播放
     self.player.pauseWhenAppResignActive = NO;
     @weakify(self)
@@ -95,6 +96,9 @@ static NSString *kVideoCover = @"https://upload-images.jianshu.io/upload_images/
     if (!_controlView) {
         _controlView = [ZFPlayerControlView new];
         _controlView.fastViewAnimated = YES;
+        _controlView.landScapeControlView.titleLabel.text = self.title;
+        _controlView.portraitControlView.titleLabel.text = self.title;
+        [_controlView.portraitControlView.backBtn addTarget:self action:@selector(goBack:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _controlView;
 }
@@ -118,8 +122,11 @@ static NSString *kVideoCover = @"https://upload-images.jianshu.io/upload_images/
 
 - (void)playClick:(UIButton *)sender {
     [self.player playTheIndex:0];
-    [self.controlView showTitle:@"视频标题" coverURLString:kVideoCover fullScreenMode:ZFFullScreenModeLandscape];
+    [self.controlView showTitle:self.title coverURLString:kVideoCover fullScreenMode:ZFFullScreenModeLandscape];
 }
 
+- (void) goBack:(UIButton *)btn {
+    [self.rt_navigationController popViewControllerAnimated:YES complete:nil];
+}
 
 @end

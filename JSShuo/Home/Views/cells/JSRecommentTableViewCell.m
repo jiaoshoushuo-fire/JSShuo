@@ -27,7 +27,8 @@
         [self.contentView addSubview:self.iconImgView];
         [self.contentView addSubview:self.commentImgView];
         [self.contentView addSubview:self.commentNumLabel];
-        
+        [self.contentView addSubview:self.bottomLineView];
+
         self.titleLabel.preferredMaxLayoutWidth = ScreenWidth-30-100-10;
         [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(15);
@@ -47,6 +48,13 @@
             make.bottom.mas_equalTo(-5);
             make.top.mas_equalTo(self.titleLabel.mas_bottom).offset(5);
         }];
+        [self.bottomLineView mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(15);
+            make.right.mas_equalTo(-15);
+            make.top.mas_equalTo(self.commentNumLabel.mas_bottom).offset(3);
+            make.height.mas_equalTo(2);
+            make.bottom.mas_equalTo(0);
+        }];
         [self.commentImgView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.size.mas_equalTo(CGSizeMake(19, 18));
             make.right.mas_equalTo(self.commentNumLabel.mas_left).offset(-5);
@@ -58,7 +66,7 @@
 
 - (void)setModel:(JSRecommendModel *)model {
     _model = model;
-    _titleLabel.text = model.Description;
+    _titleLabel.text = model.title;
 //    _titleLabel.text = @"sdfl;kajdf;klajfasiopfulmremqw;lj;fldmsflasdmf;lkjalfdsdmsflasdmf;lkjalfds";
     [self.iconImgView sd_setImageWithURL:[NSURL URLWithString:model.cover[0]]];
     _commentNumLabel.text = [NSString stringWithFormat:@"%@",model.commentNum];
@@ -106,7 +114,13 @@
     return _commentNumLabel;
 }
 
-
+- (UIView *)bottomLineView {
+    if (!_bottomLineView) {
+        _bottomLineView = [[UIView alloc] init];
+        _bottomLineView.backgroundColor = [UIColor colorWithHexString:@"F6F6F6"];
+    }
+    return _bottomLineView;
+}
 
 
 @end

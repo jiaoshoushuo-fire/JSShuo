@@ -33,6 +33,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readonly) UIView *bottomToolView;
 /// 顶部工具栏
 @property (nonatomic, strong, readonly) UIView *topToolView;
+/// 返回按钮
+@property (nonatomic, strong) UIButton *backBtn;
 /// 标题
 @property (nonatomic, strong, readonly) UILabel *titleLabel;
 /// 播放或暂停按钮
