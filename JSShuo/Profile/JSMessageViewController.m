@@ -9,6 +9,7 @@
 #import "JSMessageViewController.h"
 #import "JSSwitchSegmentView.h"
 #import "JSNotificationViewController.h"
+#import "JSNetworkManager+Login.h"
 
 
 @interface JSMessageViewController ()<UIPageViewControllerDelegate,UIPageViewControllerDataSource>
@@ -28,8 +29,8 @@
         _segmentView = [[JSSwitchSegmentView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 50)];
         [_segmentView.optionButtonLeft setTitle:@"通知" forState:UIControlStateNormal];
         [_segmentView.optionButtonRight setTitle:@"公告" forState:UIControlStateNormal];
-        [_segmentView.optionButtonRight showBadgeWithStyle:WBadgeStyleNumber value:99 animationType:WBadgeAnimTypeNone];
-        [_segmentView.optionButtonLeft showBadgeWithStyle:WBadgeStyleNumber value:99 animationType:WBadgeAnimTypeNone];
+        [_segmentView.optionButtonRight showBadgeWithStyle:WBadgeStyleNumber value:0 animationType:WBadgeAnimTypeNone];
+        [_segmentView.optionButtonLeft showBadgeWithStyle:WBadgeStyleNumber value:0 animationType:WBadgeAnimTypeNone];
         
         _segmentView.optionButtonRight.badgeCenterOffset = CGPointMake(kScreenWidth/3.0f, 7);
         _segmentView.optionButtonLeft.badgeCenterOffset = CGPointMake(kScreenWidth/3.0f, 7);
@@ -95,14 +96,30 @@
         self.currentPage = 0;
     }];
     // Do any additional setup after loading the view.
+    UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [rightButton setTitle:@"清空" forState:UIControlStateNormal];
+    [rightButton setTitleColor:[UIColor colorWithHexString:@"F44336"] forState:UIControlStateNormal];
+    rightButton.titleLabel.font = [UIFont systemFontOfSize:16];
+    [rightButton sizeToFit];
+    [rightButton addTarget:self action:@selector(rightButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:rightButton];
     self.segmentView.selectedIndexChangedHandler = ^(NSUInteger index) {
         @strongify(self);
         
         [self switchPageViewControllerAtIndex:index];
     };
 }
-
+- (void)rightButtonAction:(UIButton *)button{
+    NSInteger type = self.currentPage == 0 ? 1 : 2;
+    [JSNetworkManager requestClearMessageType:type complement:^(BOOL isSuccess, NSDictionary * _Nonnull contentDict) {
+        if (isSuccess) {
+            [self showAutoDismissTextAlert:@"清空成功"];
+            JSNotificationViewController *vc = self.allVC[self.currentPage];
+            [vc reloadListData];
+        }
+    }];
+}
 #pragma mark - UIPageViewControllerDataSource
 - (nullable UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
     NSInteger index = [self.allVC indexOfObject:viewController];

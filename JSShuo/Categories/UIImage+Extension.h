@@ -50,4 +50,5 @@
 
 + (void)loadWebImage:(NSString *)url completion:(void (^)(UIImage *))completion;
 
++ (UIImage *)creatNonInterpolatedUIImageFormCIImage:(CIImage *)image withSize:(CGFloat)size;
 @end

@@ -423,7 +423,10 @@
 }
 - (void)uploadAvaterImage:(UIImage *)image{
     [self showWaitingHUD];
-    [JSNetworkManager uploadImage:image complement:^(BOOL isSuccess, NSDictionary * _Nonnull contentDict) {
+    NSData *data = UIImageJPEGRepresentation(image, 0.5);
+    UIImage *resultImage = [UIImage imageWithData:data];
+    
+    [JSNetworkManager uploadImage:resultImage complement:^(BOOL isSuccess, NSDictionary * _Nonnull contentDict) {
         if (isSuccess) {
             NSString *imageUrl = contentDict[@"url"];
             [JSNetworkManager modifyUserInfoWithDict:@{@"portrait":imageUrl} complement:^(BOOL isSuccess, NSDictionary * _Nonnull contenDict) {
@@ -431,9 +434,13 @@
                     [self hideWaitingHUD];
                     JSPerfectUserInfoCell *userInfoCell = [self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
                     userInfoCell.avaterIconImage = image;
+                }else{
+                    [self hideWaitingHUD];
                 }
             }];
             
+        }else{
+            [self hideWaitingHUD];
         }
     }];
 }

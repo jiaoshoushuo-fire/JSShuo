@@ -7,6 +7,7 @@
 //
 
 #import "JSBaseViewController.h"
+#import "HJTabViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

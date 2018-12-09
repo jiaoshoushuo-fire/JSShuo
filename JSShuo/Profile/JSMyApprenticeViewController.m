@@ -7,26 +7,12 @@
 //
 
 #import "JSMyApprenticeViewController.h"
-#import "JSCollectModel.h"
+
 #import "JSNetworkManager+Login.h"
+#import "JSShareManager.h"
 
-@protocol JSMyApprenticeCellDelegate <NSObject>
 
-- (void)didSelectedWeakupButton:(JSApprentModel *)model;
 
-@end
-
-@interface JSMyApprenticeCell : UITableViewCell
-@property (nonatomic, strong)UIImageView *iconImage;
-@property (nonatomic, strong)UILabel *titleLabel;
-@property (nonatomic, strong)UILabel *timeLabel;
-@property (nonatomic, strong)UIButton *weakupButton;
-@property (nonatomic, strong)UIView *backView;
-
-@property (nonatomic, strong)JSApprentModel *model;
-
-@property (nonatomic, weak)id<JSMyApprenticeCellDelegate>delegate;
-@end
 @implementation JSMyApprenticeCell
 
 - (UIImageView *)iconImage{
@@ -72,6 +58,8 @@
         [_weakupButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         _weakupButton.clipsToBounds = YES;
         _weakupButton.layer.cornerRadius = 5;
+        _weakupButton.layer.borderColor = [[UIColor colorWithHexString:@"F44336"]CGColor];
+        _weakupButton.layer.borderWidth = 1.0f;
         @weakify(self)
         [_weakupButton bk_addEventHandler:^(id sender) {
             @strongify(self)
@@ -122,11 +110,57 @@
     }
     return self;
 }
-- (void)setModel:(JSApprentModel *)model{
+- (NSTimeInterval)pleaseInsertStarTime:(NSString *)starTime andInsertEndTime:(NSString *)endTime{
+    NSDateFormatter* formater = [[NSDateFormatter alloc] init];
+    [formater setDateFormat:@"YYYY-MM-dd HH:mm:ss"];//根据自己的需求定义格式
+    NSDate* startDate = [formater dateFromString:starTime];
+    NSDate* endDate = [formater dateFromString:endTime];
+    NSTimeInterval time = [endDate timeIntervalSinceDate:startDate];
+    return time;
+}
+- (NSString*)getCurrentTimes{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
+    NSDate *datenow = [NSDate date];
+    NSString *currentTimeString = [formatter stringFromDate:datenow];
+    return currentTimeString;
+    
+}
+- (void)setModel:(JSApprentModel *)model withType:(JSMyApprenticeCellType)type{
     _model = model;
     [self.iconImage setImageWithURL:[NSURL URLWithString:model.portrait] placeholder:nil];
     self.titleLabel.text = model.nickname;
     self.timeLabel.text = model.lastLoginTime;
+    
+//    NSTimeInterval durationTime = [self pleaseInsertStarTime:model.lastLoginTime andInsertEndTime:[self getCurrentTimes]];
+    if (model.canWakeUp) {
+        self.weakupButton.enabled = YES;
+        self.weakupButton.backgroundColor = [UIColor colorWithHexString:@"F44336"];
+        [self.weakupButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        self.weakupButton.layer.borderColor = [[UIColor colorWithHexString:@"F44336"]CGColor];
+    }else{
+        self.weakupButton.enabled = NO;
+        self.weakupButton.backgroundColor = [UIColor whiteColor];
+        [self.weakupButton setTitleColor:[UIColor colorWithHexString:@"666666"] forState:UIControlStateNormal];
+        self.weakupButton.layer.borderColor = [[UIColor colorWithHexString:@"999999"]CGColor];
+    }
+    if (type == JSMyApprenticeCellTypeNormalList){
+        self.weakupButton.hidden = YES;
+        self.timeLabel.textAlignment = NSTextAlignmentRight;
+        
+        
+        [self.titleLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(self.iconImage.mas_right).offset(10);
+            make.right.mas_equalTo(self.timeLabel.mas_left).offset(-10);
+            make.height.mas_equalTo(20);
+            make.centerY.equalTo(self.backView);
+        }];
+        [self.timeLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.size.mas_equalTo(CGSizeMake(130, 20));
+            make.right.equalTo(self.backView).offset(-10);
+            make.centerY.equalTo(self.backView);
+        }];
+    }
 }
 @end
 
@@ -196,6 +230,13 @@
                 JSApprentModel *model = [MTLJSONAdapter modelOfClass:[JSApprentModel class] fromJSONDictionary:dict error:nil];
                 [self.dataArray addObject:model];
             }
+//            for (int i=0; i<10; i++) {
+//                JSApprentModel *model = [[JSApprentModel alloc]init];
+//                model.portrait = @"https://192.168.21.49/php/Icon.png";
+//                model.nickname = @"张三张三";
+//                model.lastLoginTime = @"2018-11-28 23:00:00";
+//                [self.dataArray addObject:model];
+//            }
             
             if (listArray.count < 10) {
                 [self.tableView.mj_footer endRefreshingWithNoMoreData];
@@ -222,7 +263,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"我的徒弟";
-    
+    self.view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.nodataLabel];
     
     [self.nodataLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -247,7 +288,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     JSMyApprenticeCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JSMyApprenticeCell" forIndexPath:indexPath];
     JSApprentModel *model = self.dataArray[indexPath.row];
-    cell.model = model;
+    [cell setModel:model withType:self.celltype];
     cell.delegate = self;
     return cell;
 }
@@ -259,6 +300,13 @@
 #pragma mark - JSMyApprenticeCellDelegate
 - (void)didSelectedWeakupButton:(JSApprentModel *)model{
     //点击唤醒
+    [JSShareManager shareWithTitle:@"测试title" Text:@"测试text" Image:[UIImage imageNamed:@"js_profile_mywallet_share"] Url:@"https://www.baidu.com/" complement:^(BOOL isSuccess) {
+        if (isSuccess) {
+            [self showAutoDismissTextAlert:@"分享成功"];
+        }else{
+            [self showAutoDismissTextAlert:@"分享失败"];
+        }
+    }];
 }
 
 @end

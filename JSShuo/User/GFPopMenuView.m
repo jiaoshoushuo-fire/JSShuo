@@ -281,8 +281,10 @@ static const NSTimeInterval kSelectDuration = 0.25f;
 //        self.linelayer2.top = self.cancelButton.top;
 //        self.linelayer2.left = 0;
 //    }else{
+    unsigned long maxLine = self.menuItems.count <= 3 ? 1 : 2;
+    
         self.shareUIContentLabel.hidden = self.shareUITitleLabel.hidden = YES;
-        self.size = CGSizeMake(self.width, kPopMenuPadding + 20 + kPopMenuPadding*2 + itemH + kPopMenuPadding*2 + 40);
+        self.size = CGSizeMake(self.width, kPopMenuPadding + 20 + kPopMenuPadding*2 + (itemH + kPopMenuPadding)*(maxLine) + kPopMenuPadding + 40);
         self.titleLabel.left = kPopMenuPadding;
         self.titleLabel.top = kPopMenuPadding;
         self.cancelButton.bottom = self.height - kPopMenuPadding;
@@ -356,12 +358,13 @@ static const NSTimeInterval kSelectDuration = 0.25f;
     int number = (int)MIN(3, self.menuItems.count);
 //    CGFloat kPadding = (self.width - itemW * number - tap * (number - 1))/2.0f;
     CGFloat kPadding = tap = (self.width - itemW * number)/(number + 1);
+    unsigned long maxLine = self.menuItems.count <= 3 ? 1 : 2;
     
     for (int i=0; i<self.menuItems.count; i++) {
         GFPopMenuItem *item = self.menuItems[i];
         CGFloat itemX, itemY;
         itemX = (i % number) * (itemW + tap) + kPadding;
-        itemY = self.height - kPopMenuPadding *2 - itemH - 40;
+        itemY = self.height - kPopMenuPadding - (kPopMenuPadding + itemH) * (maxLine - i/3) - 40;
         CGRect fromValue = CGRectMake(itemX, self.height, itemW, itemH);
         CGRect toValue = CGRectMake(itemX, itemY, itemW, itemH);
         
@@ -399,12 +402,13 @@ static const NSTimeInterval kSelectDuration = 0.25f;
     int number = (int)MIN(3, self.menuItems.count);
 //    CGFloat kPadding = (self.width - itemW * number - tap * (number-1))/2.0f;
     CGFloat kPadding = tap = (self.width - itemW * number)/(number + 1);
+    unsigned long maxLine = self.menuItems.count <= 3 ? 1 : 2;
     
     for (int i=0; i<self.menuItems.count; i++) {
         GFPopMenuItem *item = self.menuItems[i];
         CGFloat itemX, itemY;
         itemX = (i % number) * (itemW + tap) + kPadding;
-        itemY = self.height -  kPopMenuPadding *2 - itemH - 40;
+        itemY = self.height - kPopMenuPadding - (kPopMenuPadding + itemH) * (maxLine - i/3) - 40;
         
         CGRect toValue = CGRectMake(itemX, self.height, itemW, itemH);
         CGRect fromValue = CGRectMake(itemX, itemY, itemW, itemH);
@@ -594,25 +598,31 @@ static const NSTimeInterval kSelectDuration = 0.25f;
 //        item.positionIndex = 0;
 //        [items addObject:item];
 //    }
-        {
-            UIImage *img = [UIImage imageNamed:@"icon_l_qq_normal"];
-            GFPopMenuItem *item = [GFPopMenuItem menuItemWithImage:img title:@"QQ"];
-            item.positionIndex = 0;
-            [items addObject:item];
-        }
-        {
-            UIImage *img = [UIImage imageNamed:@"icon_l_wechat_session_normal"];
-            GFPopMenuItem *item = [GFPopMenuItem menuItemWithImage:img title:@"微信"];
-            item.positionIndex = 1;
-            [items addObject:item];
-        }
+    {
+        UIImage *img = [UIImage imageNamed:@"icon_l_qq_normal"];
+        GFPopMenuItem *item = [GFPopMenuItem menuItemWithImage:img title:@"QQ"];
+        item.positionIndex = 0;
+        [items addObject:item];
+    }
+    {
+        UIImage *img = [UIImage imageNamed:@"icon_l_wechat_session_normal"];
+        GFPopMenuItem *item = [GFPopMenuItem menuItemWithImage:img title:@"微信"];
+        item.positionIndex = 1;
+        [items addObject:item];
+    }
     
-//    {
-//        UIImage *img = [UIImage imageNamed:@"icon_l_sinaweibo_normal"];
-//        GFPopMenuItem *item = [GFPopMenuItem menuItemWithImage:img title:@"微博"];
-//        item.positionIndex = 4;
-//        [items addObject:item];
-//    }
+    {
+        UIImage *img = [UIImage imageNamed:@"icon_l_wechat_timeline_normal"];
+        GFPopMenuItem *item = [GFPopMenuItem menuItemWithImage:img title:@"朋友圈"];
+        item.positionIndex = 2;
+        [items addObject:item];
+    }
+    {
+        UIImage *img = [UIImage imageNamed:@"icon_l_sinaweibo_normal"];
+        GFPopMenuItem *item = [GFPopMenuItem menuItemWithImage:img title:@"短信"];
+        item.positionIndex = 3;
+        [items addObject:item];
+    }
     
     GFPopMenuView *popMenuView = [[GFPopMenuView alloc] initWithFrame:view.bounds];
     popMenuView.contentView.menuItems = items;

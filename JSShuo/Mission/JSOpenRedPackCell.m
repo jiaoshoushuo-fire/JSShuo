@@ -64,7 +64,7 @@
     self.nameLabel.text = model.nickname;
     [self.nameLabel sizeToFit];
     
-    self.contentLabel.text = [NSString stringWithFormat:@"微信红包%@元",@(model.amount)];
+    self.contentLabel.text = [NSString stringWithFormat:@"%@元",@(model.amount)];
     [self.contentLabel sizeToFit];
     [self setNeedsLayout];
 }
@@ -72,7 +72,8 @@
     [super layoutSubviews];
     self.iconImageView.left = 10;
     self.nameLabel.left = self.iconImageView.right + 10;
-    self.contentLabel.right = self.contentView.width-10;
+    self.contentLabel.right = self.contentView.width;
+    
     
     self.iconImageView.centerY = self.nameLabel.centerY = self.contentLabel.centerY = self.contentView.height/2.0f;
 }

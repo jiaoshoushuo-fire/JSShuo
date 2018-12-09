@@ -19,6 +19,7 @@
     if (!_imageView) {
         _imageView = [[UIImageView alloc]init];
         _imageView.backgroundColor = [UIColor cyanColor];
+        _imageView.userInteractionEnabled = YES;
     }
     return _imageView;
 }
@@ -35,6 +36,14 @@
 //            make.edges.equalTo(self);
             make.left.right.top.equalTo(self);
             make.height.mas_equalTo(75);
+        }];
+        @weakify(self)
+        [self.imageView bk_whenTapped:^{
+            @strongify(self)
+            if (self.delegate && [self.delegate respondsToSelector:@selector(didSelectedHeaderView)]) {
+                [self.delegate didSelectedHeaderView];
+            
+            }
         }];
     }
     return self;

@@ -56,6 +56,7 @@ static ShareResponseHandler qqShareHandler = nil;
     }
     
     qqShareHandler = handler;
+//    QQApiWebImageObject *webImageObject = [QQApiWebImageObject objectWithPreviewImageURL:[NSURL URLWithString:@"https://192.168.21.49/php/lauch.jpg"] title:title description:description];
     
     QQApiNewsObject* newsObject = [QQApiNewsObject objectWithURL:[NSURL URLWithString:url] title:title description:description previewImageData:UIImageJPEGRepresentation(thumbnail, 0.5)];
     

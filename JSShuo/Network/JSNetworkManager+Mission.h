@@ -8,6 +8,7 @@
 
 #import "JSNetworkManager.h"
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface JSNetworkManager (Mission)
@@ -29,6 +30,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 //昨日抢红包人
 + (void)requestOpenedRedPackageListComplement:(void(^)(BOOL isSuccess, NSDictionary *contentDict))complement;
+
+//抢红包接口
++ (void)requestOpenedPackageWithID:(NSInteger)ID Complement:(void(^)(BOOL isSuccess, NSDictionary *contentDict))complement;
 @end
 
 NS_ASSUME_NONNULL_END

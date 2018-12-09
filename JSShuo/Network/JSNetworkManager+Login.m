@@ -37,6 +37,8 @@ const static NSString *addCollectUrl = @"/v1/user/collect/add";
 const static NSString *collectListUrl = @"/v1/user/collect/list";
 const static NSString *deleateCollectUrl = @"/v1/user/collect/delete";
 const static NSString *apprenticeListUrl = @"/v1/user/apprentice/list";
+const static NSString *messageClearUrl = @"/v1/user/message/clear";
+const static NSString *createApprenticeUrl = @"/v1/user/apprentice/create";
 
 @implementation JSNetworkManager (Login)
 
@@ -44,10 +46,11 @@ const static NSString *apprenticeListUrl = @"/v1/user/apprentice/list";
     NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,getSecurityCodeUrl];
     NSDictionary *param = @{@"mobile":phoneNumber,@"type":@(type)};
     [self POST:url parameters:param complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
+#ifdef DEBUG
         //测试用
         NSString *validCode = responseDict[@"validCode"];
         [self showErrorMessgae:validCode];
-        
+#endif
         if (complement) {
             complement(isSuccess,responseDict);
         }
@@ -62,6 +65,17 @@ const static NSString *apprenticeListUrl = @"/v1/user/apprentice/list";
         if (isSuccess) {
             NSString *token = responseDict[@"token"];
             [JSAccountManager refreshAccountToken:token];
+            
+            NSDictionary *rewardDict = responseDict[@"reward"];
+            if (rewardDict) {
+                JSMissionRewardModel *rewardModel = [MTLJSONAdapter modelOfClass:[JSMissionRewardModel class] fromJSONDictionary:rewardDict error:nil];
+                if (rewardModel.rewardCode == 0) {
+                    [JSAlertView showAlertViewWithType:JSALertTypeFirstLoginIn rewardModel:rewardModel superView:[UIApplication sharedApplication].keyWindow handle:^{
+                        
+                    }];
+                }
+            }
+            
         }
         
         if (complement) {
@@ -423,5 +437,26 @@ const static NSString *apprenticeListUrl = @"/v1/user/apprentice/list";
         }
     }];
     
+}
+
++ (void)requestClearMessageType:(NSInteger)type complement:(void(^)(BOOL isSuccess, NSDictionary *contentDict))complement{
+    NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,messageClearUrl];
+    NSDictionary *param = @{@"token":[JSAccountManager shareManager].accountToken,@"type":@(type)};
+    [self POST:url parameters:param complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
+        if (complement) {
+            complement(isSuccess,responseDict);
+        }
+    }];
+}
+//createApprenticeUrl
+
++ (void)requestCreateApprenticeWithInvitateCode:(NSString *)invitate complement:(void(^)(BOOL isSuccess, NSDictionary *contentDict))complement{
+    NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,createApprenticeUrl];
+    NSDictionary *param = @{@"token":[JSAccountManager shareManager].accountToken,@"inviteCode":invitate};
+    [self POST:url parameters:param complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
+        if (complement) {
+            complement(isSuccess,responseDict);
+        }
+    }];
 }
 @end

@@ -10,6 +10,7 @@
 #import "JSRedPerformViewController.h"
 #import "JSNetworkManager+Mission.h"
 #import "JSActivityRuleViewController.h"
+#import "JSShareManager.h"
 
 @interface JSRedPacketViewController ()
 @property (nonatomic, strong)UIImageView *backImageView;
@@ -126,6 +127,14 @@
         [_shareButton bk_addEventHandler:^(id sender) {
             @strongify(self)
             NSLog(@"share action");
+            //[UIImage imageNamed:@"js_profile_mywallet_share"]
+            [JSShareManager shareWithTitle:@"测试title" Text:@"测试text" Image:[UIImage imageNamed:@"js_profile_mywallet_share"] Url:@"https://www.baidu.com/" complement:^(BOOL isSuccess) {
+                if (isSuccess) {
+                    [self showAutoDismissTextAlert:@"分享成功"];
+                }else{
+                    [self showAutoDismissTextAlert:@"分享失败"];
+                }
+            }];
         } forControlEvents:UIControlEventTouchUpInside];
         
     }
@@ -220,6 +229,7 @@
         if (isSuccess) {
             NSInteger amount = [contentDict[@"amount"] integerValue];
             self.ruleUrl = contentDict[@"ruleUrl"];
+            amount = amount/100;
             [self createMoneyViewWithMoney:amount];
         }
     }];
