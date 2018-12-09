@@ -59,7 +59,7 @@
         self.currentPage = @1;
         [self requestData];
     }];
-    self.tableView.mj_footer = [MJRefreshFooter footerWithRefreshingBlock:^{
+    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         @strongify(self);
         int temp = self.currentPage.intValue + 1;
         self.currentPage = [NSNumber numberWithInt:temp];

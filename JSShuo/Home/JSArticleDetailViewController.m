@@ -332,7 +332,12 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    if (self.recommendDatas.count > 0 && self.commentDatas.count > 0) {
+        return 2;
+    } else if (self.commentDatas.count >0 || self.recommendDatas.count > 0) {
+        return 1;
+    }
+    return 0;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {

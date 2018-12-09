@@ -35,6 +35,11 @@ static NSString *kIdentifier = @"ZFDouYinCell";
 
 @implementation JSShortVideoViewController
 
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [self.player.currentPlayerManager pause];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     

@@ -85,6 +85,7 @@
         [_headButton setImage:[UIImage imageNamed:@"nav_header_login_normal"] forState:UIControlStateNormal];
         [_headButton setImage:[UIImage imageNamed:@"nav_header_login_selected"] forState:UIControlStateSelected];
         _headButton.layer.cornerRadius = 13;
+        _headButton.clipsToBounds = YES;
         [self updateHeaderImage];
     }
     return _headButton;

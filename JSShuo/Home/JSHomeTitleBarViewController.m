@@ -16,6 +16,7 @@
 #import "JSNetworkManager+Login.h"
 #import "JSMainViewController.h"
 #import "AppDelegate.h"
+#import "JSRedPacketViewController.h"
 
 @interface JSHomeTitleBarViewController () <TYTabPagerBarDataSource,TYTabPagerBarDelegate,TYPagerControllerDataSource,TYPagerControllerDelegate>
 @property (nonatomic, weak) TYTabPagerBar *tabBar;
@@ -144,6 +145,12 @@
                 [self.nav updateHeaderImage];
             }
         }];
+    } forControlEvents:UIControlEventTouchUpInside];
+    
+    [_nav.redPocketButton bk_addEventHandler:^(id sender) {
+        JSRedPacketViewController *vc = [JSRedPacketViewController new];
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.rt_navigationController pushViewController:vc animated:YES complete:nil];
     } forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_nav];
     [_nav mas_makeConstraints:^(MASConstraintMaker *make) {

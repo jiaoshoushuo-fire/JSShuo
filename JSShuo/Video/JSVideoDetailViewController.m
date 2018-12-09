@@ -106,7 +106,6 @@ static NSString *kVideoCover = @"https://upload-images.jianshu.io/upload_images/
 - (UIView *)containerView {
     if (!_containerView) {
         _containerView = [UIView new];
-        _containerView.backgroundColor = [UIColor orangeColor];
     }
     return _containerView;
 }
