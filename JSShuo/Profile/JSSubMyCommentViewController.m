@@ -166,6 +166,7 @@
     JSMyCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JSMyCommentCell" forIndexPath:indexPath];
     JSMyCommentModel *model = self.dataArray[indexPath.row];
     cell.model = model;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 

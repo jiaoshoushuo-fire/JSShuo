@@ -644,6 +644,20 @@
                     }];
                     
                 }break;
+                case 102:{//微信未绑定
+                    [JSWithdrawAlertView showAlertViewWithSuperView:self.navigationController.view type:JSWithdrawAlertViewTypeWechat isBind:NO handle:^(BOOL isSuccess) {
+                        if (isSuccess) {
+                            [self getMoneyAction:nil];
+                        }
+                    }];
+                }break;
+                case 103:{//支付宝未绑定
+                    [JSWithdrawAlertView showAlertViewWithSuperView:self.navigationController.view type:JSWithdrawAlertViewTypeAlipay isBind:NO handle:^(BOOL isSuccess) {
+                        if (isSuccess) {
+                            [self getMoneyAction:nil];
+                        }
+                    }];
+                }break;
 
                 default:
                     break;

@@ -204,7 +204,7 @@
         self.currentPage ++;
     }
     
-    [JSNetworkManager requestCollectListWithType:2 pageNumber:self.currentPage complement:^(BOOL isSuccess, NSDictionary * _Nonnull contentDict) {
+    [JSNetworkManager requestCollectListWithType:3 pageNumber:self.currentPage complement:^(BOOL isSuccess, NSDictionary * _Nonnull contentDict) {
         [self.tableView.mj_header endRefreshing];
         [self.tableView.mj_footer endRefreshing];
         if (isSuccess) {

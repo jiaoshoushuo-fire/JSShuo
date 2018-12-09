@@ -110,9 +110,16 @@
                     [self hideWaitingHUD];
                     if (isSuccess) {
                         //这里需要弹出奖励alert 现在接口没有model
-//                        [JSAlertView showAlertViewWithType:JSALertTypeFirstLoginIn rewardModel:nil superView:self.navigationController.view handle:^{
-//
-//                        }];
+
+                        NSDictionary *rewardDict = contentDict[@"reward"];
+                        if (rewardDict) {
+                            JSMissionRewardModel *rewardModel = [MTLJSONAdapter modelOfClass:[JSMissionRewardModel class] fromJSONDictionary:rewardDict error:nil];
+                            if (rewardModel.rewardCode == 0) {
+                                [JSAlertView showAlertViewWithType:JSALertTypeFirstLoginIn rewardModel:rewardModel superView:[UIApplication sharedApplication].keyWindow handle:^{
+                                    
+                                }];
+                            }
+                        }
                         [self showAutoDismissTextAlert:@"拜师成功"];
                         [self performSelector:@selector(dismissSelfVC) withObject:nil afterDelay:2];
                     }

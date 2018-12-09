@@ -50,6 +50,16 @@
                 <string>tencent101521529</string>
             </array>
         </dict>
+        <dict>
+            <key>CFBundleTypeRole</key>
+            <string>Editor</string>
+            <key>CFBundleURLName</key>
+            <string>JSS</string>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>jiaoshoushuo</string>
+            </array>
+        </dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>

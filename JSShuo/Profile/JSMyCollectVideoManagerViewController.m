@@ -1,36 +1,34 @@
 //
-//  JSMyCollectViewController.m
+//  JSMyCollectVideoManagerViewController.m
 //  JSShuo
 //
-//  Created by  乔中祥 on 2018/11/19.
+//  Created by  乔中祥 on 2018/12/9.
 //  Copyright © 2018年  乔中祥. All rights reserved.
 //
 
-#import "JSMyCollectViewController.h"
-#import <WMPageController.h>
-#import "JSMyCollectArticleViewController.h"
-#import "JSMyCollectVideoViewController.h"
 #import "JSMyCollectVideoManagerViewController.h"
+#import "JSMyCollectVideoViewController.h"
+#import "JSMyCollectShortVideoViewController.h"
+#import <WMPageController.h>
 
-@interface JSMyCollectViewController ()<WMPageControllerDelegate,WMPageControllerDataSource>
+@interface JSMyCollectVideoManagerViewController ()<WMPageControllerDelegate,WMPageControllerDataSource>
 @property (nonatomic, strong)WMPageController *pageController;
 @property (nonatomic, strong)NSArray *topTitles;
 @property (nonatomic, strong)NSArray *subVCs;
-
 @end
 
-@implementation JSMyCollectViewController
+@implementation JSMyCollectVideoManagerViewController
 
 - (NSArray *)topTitles{
     if (!_topTitles) {
-        _topTitles = @[@"文章",@"视频"];
+        _topTitles = @[@"视频",@"短视频"];
     }
     return _topTitles;
 }
 - (NSArray *)subVCs{
     if (!_subVCs) {
-        JSMyCollectArticleViewController *subVC = [[JSMyCollectArticleViewController alloc]init];
-        JSMyCollectVideoManagerViewController *subVC2 = [[JSMyCollectVideoManagerViewController alloc]init];
+        JSMyCollectVideoViewController *subVC = [[JSMyCollectVideoViewController alloc]init];
+        JSMyCollectShortVideoViewController *subVC2 = [[JSMyCollectShortVideoViewController alloc]init];
         _subVCs = @[subVC,subVC2];
     }
     return _subVCs;
@@ -59,7 +57,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"我的收藏";
+    // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
     // Do any additional setup after loading the view.
     [self addChildViewController:self.pageController];
