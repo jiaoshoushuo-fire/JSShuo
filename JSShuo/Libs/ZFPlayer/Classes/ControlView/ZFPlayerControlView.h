@@ -30,9 +30,9 @@
 
 @interface ZFPlayerControlView : UIView <ZFPlayerMediaControl>
 /// 竖屏控制层的View
-@property (nonatomic, strong, readonly) ZFPortraitControlView *portraitControlView;
+@property (nonatomic, strong) ZFPortraitControlView *portraitControlView;
 /// 横屏控制层的View
-@property (nonatomic, strong, readonly) ZFLandScapeControlView *landScapeControlView;
+@property (nonatomic, strong) ZFLandScapeControlView *landScapeControlView;
 /// 加载loading
 @property (nonatomic, strong, readonly) ZFSpeedLoadingView *activity;
 /// 快进快退View

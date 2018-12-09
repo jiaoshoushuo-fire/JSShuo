@@ -120,6 +120,13 @@
     _pageNum = 1;
     _pageSize = 10;
     
+    [self requestUserInfo];
+    [self requestCommentList];
+    [self requestRecommendList];
+}
+
+// 请求用户点赞、收藏等接口
+- (void) requestUserInfo {
     [JSNetworkManager requestDetailWithArticleID:self.articleId.integerValue complent:^(BOOL isSuccess, NSDictionary * _Nonnull contentDic) {
         if (isSuccess) {
             NSNumber *collected = contentDic[@"collect"];
@@ -132,7 +139,10 @@
             }
         }
     }];
-    
+}
+
+// 请求评论列表
+- (void) requestCommentList {
     NSDictionary *commentParams = @{@"articleId":self.articleId,@"pageNum":[NSNumber numberWithInt:_pageNum],@"pageSize":[NSNumber numberWithInt:_pageSize]};
     [JSNetworkManager requestCommentListWithParams:commentParams complent:^(BOOL isSuccess, NSNumber * _Nonnull totalPage, NSArray * _Nonnull modelsArray) {
         if (isSuccess) {
@@ -141,6 +151,10 @@
             [self.tableView reloadData];
         }
     }];
+}
+
+// 请求相关推荐列表
+- (void) requestRecommendList {
     NSDictionary *recommendParams = @{@"articleId":self.articleId,@"type":@1,@"pageSize":@6};
     [JSNetworkManager requestRecommendListWithParams:recommendParams complent:^(BOOL isSuccess, NSArray * _Nonnull modelsArray) {
         if (isSuccess) {
@@ -259,6 +273,7 @@
     if (haveToken) {
         [JSBottomPopSendCommentView showInputBarWithView:self.navigationController.view articleId:[NSString stringWithFormat:@"%@",self.articleId] complement:^(NSDictionary * _Nonnull comment) {
             [self showAutoDismissTextAlert:@"发送成功"];
+            [self requestCommentList];
         }];
     } else {
         [JSAccountManager checkLoginStatusComplement:^(BOOL isLogin) {

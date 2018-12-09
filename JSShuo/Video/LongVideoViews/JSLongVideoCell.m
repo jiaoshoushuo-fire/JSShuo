@@ -111,7 +111,7 @@
         make.top.mas_equalTo(self.sourceLabel.mas_bottom).offset(8);
     }];
     
-    _titleLabel.text = _model.Description; // 暂时用描述字段来代替_playerIconImg
+    _titleLabel.text = _model.title; // 暂时用描述字段来代替_playerIconImg
     [self.playerIconImg sd_setImageWithURL:[NSURL URLWithString:model.cover[0]]];
     _sourceLabel.text = _model.origin;
 //    _releaseTimeLabel.text = _model.publishTime;
