@@ -15,6 +15,7 @@
 #import "JSPrivacyViewController.h"
 #import "JSFeedbackViewController.h"
 #import "JSAboutUsViewController.h"
+#import "JSTool.h"
 
 @interface JSSettingViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -146,7 +147,7 @@
         [hud hideAnimated:YES afterDelay:1.0f];
         
     }else if ([title isEqualToString:@"给叫兽说评分"]){
-        [self appStoreComent];
+        [JSTool appStoreComent];
     }else if ([title isEqualToString:@"隐私协议"]){
         JSPrivacyViewController *privacyVC = [[JSPrivacyViewController alloc]init];
         [self.rt_navigationController pushViewController:privacyVC animated:YES complete:nil];
@@ -158,14 +159,7 @@
         [self.rt_navigationController pushViewController:aboutUsVC animated:YES complete:nil];
     }
 }
-/**
- * 可评分评论，无次数限制
- */
-- (void)appStoreComent{
-    NSString  * nsStringToOpen = [NSString  stringWithFormat: @"itms-apps://itunes.apple.com/app/id%@?action=write-review",@"1242757440"];//替换为对应的APPID
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:nsStringToOpen]];
-    
-}
+
 
 /*
 #pragma mark - Navigation

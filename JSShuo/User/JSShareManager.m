@@ -12,6 +12,7 @@
 #import "JSAccountManager+Wechat.h"
 #import <MessageUI/MessageUI.h>
 #import "AppDelegate.h"
+#import "JSNetworkManager+Login.h"
 
 @interface JSShareManager()<GFPopMenuViewDelegate,MFMessageComposeViewControllerDelegate>
 @property (nonatomic, copy)NSString *title;
@@ -48,6 +49,9 @@
     switch (itemIndex) {
         case 0:{
             [JSAccountManager shareURLToQQ:self.shareUrl title:self.title description:self.shareText thumbnail:self.shareImage type:GFShareTypeQQ handler:^(BOOL success, BOOL cancel) {
+                if (success) {
+                    [self reportShareSuccessMessage];
+                }
                 if (self.complementBlock) {
                     self.complementBlock(success);
                 }
@@ -55,6 +59,9 @@
         }break;
         case 1:{
             [JSAccountManager shareURLToWechat:self.shareUrl title:self.title description:self.shareText thumbnail:self.shareImage type:GFShareTypeWechatSession handler:^(BOOL success, BOOL cancel) {
+                if (success) {
+                    [self reportShareSuccessMessage];
+                }
                 if (self.complementBlock) {
                     self.complementBlock(success);
                 }
@@ -62,6 +69,9 @@
         }break;
         case 2:{
             [JSAccountManager shareURLToWechat:self.shareUrl title:self.title description:self.shareText thumbnail:self.shareImage type:GFShareTypeWechatTimeline handler:^(BOOL success, BOOL cancel) {
+                if (success) {
+                    [self reportShareSuccessMessage];
+                }
                 if (self.complementBlock) {
                     self.complementBlock(success);
                 }
@@ -109,6 +119,8 @@
             if (self.complementBlock) {
                 self.complementBlock(YES);
             }
+            [self reportShareSuccessMessage];
+            
             break;
         case MessageComposeResultFailed:
             //信息传送失败
@@ -125,6 +137,12 @@
         default:
             break;
     }
+}
+
+- (void)reportShareSuccessMessage{
+    [JSNetworkManager requestShareSuccessWithUrl:self.shareUrl complement:^(BOOL isSuccess, NSDictionary * _Nonnull contentDict) {
+        
+    }];
 }
 
 @end

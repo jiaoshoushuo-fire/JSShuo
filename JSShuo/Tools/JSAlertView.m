@@ -128,6 +128,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        self.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5];
         [self addSubview:self.cancelButton];
         _alertType = alertType;
         switch (alertType) {
@@ -195,7 +196,7 @@
                 [self.contentView addSubview:self.goldImageView];
                 self.subLabel.font = [UIFont systemFontOfSize:18];
                 self.subLabel.textAlignment = NSTextAlignmentCenter;
-                self.subLabel.textColor = [UIColor redColor];
+                self.subLabel.textColor = [UIColor whiteColor];
                 
                 self.subLabel.size = CGSizeMake(200, 20);
                 

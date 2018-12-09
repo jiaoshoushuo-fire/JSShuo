@@ -112,6 +112,9 @@ typedef  NS_ENUM(NSInteger, JSRequestSecurityCodeType){
 
 //邀请好友
 + (void)requestCreateApprenticeWithInvitateCode:(NSString *)invitate complement:(void(^)(BOOL isSuccess, NSDictionary *contentDict))complement;
+
+//分享成功
++ (void)requestShareSuccessWithUrl:(NSString *)shareUrl complement:(void(^)(BOOL isSuccess, NSDictionary *contentDict))complement;
 @end
 
 NS_ASSUME_NONNULL_END

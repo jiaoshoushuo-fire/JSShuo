@@ -201,6 +201,7 @@
     [super viewWillDisappear:animated];
     self.navigationController.navigationBarHidden = NO;
     [self.registerVC stopTimerIfNeed];
+    [self.view endEditing:YES];
 }
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     [self.view endEditing:YES];

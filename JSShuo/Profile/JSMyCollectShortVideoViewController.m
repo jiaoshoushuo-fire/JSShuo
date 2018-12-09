@@ -20,6 +20,7 @@
 - (UIImageView *)imageView{
     if (!_imageView) {
         _imageView = [[UIImageView alloc]init];
+        _imageView.backgroundColor = [UIColor randomColor];
     }
     return _imageView;
 }
@@ -43,7 +44,7 @@
             make.edges.equalTo(self.contentView);
         }];
         [self.timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.size.mas_equalTo(CGSizeMake(40, 20));
+            make.size.mas_equalTo(CGSizeMake(60, 20));
             make.left.bottom.equalTo(self.contentView);
             
         }];
@@ -83,6 +84,7 @@
         layout.minimumInteritemSpacing = 0;
         layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
         _collectionView = [[UICollectionView alloc]initWithFrame:self.view.bounds collectionViewLayout:layout];
+        _collectionView.backgroundColor = [UIColor whiteColor];
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
         [_collectionView registerClass:[JSMyCollectShortVideoCell class] forCellWithReuseIdentifier:@"JSMyCollectShortVideoCell"];
@@ -164,7 +166,7 @@
     return 1;
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return self.dataArray.count;
+    return 10;//self.dataArray.count;
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     JSMyCollectShortVideoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"JSMyCollectShortVideoCell" forIndexPath:indexPath];

@@ -10,9 +10,42 @@
 
 @interface JSMissionSubCell()
 @property (nonatomic, strong)UILabel *titleLabel;
+@property (nonatomic, strong)UIButton *actionButton;
+@property (nonatomic, strong)UILabel *complementedLabel;
 @end
 @implementation JSMissionSubCell
 
+- (UILabel *)complementedLabel{
+    if (!_complementedLabel) {
+        _complementedLabel  = [[UILabel alloc]init];
+        _complementedLabel.text = @"已完成";
+        _complementedLabel.font = [UIFont systemFontOfSize:15];
+        _complementedLabel.textAlignment = NSTextAlignmentCenter;
+        _complementedLabel.textColor = [UIColor colorWithHexString:@"999999"];
+        _complementedLabel.size = CGSizeMake(60, 20);
+        _complementedLabel.clipsToBounds = YES;
+        _complementedLabel.layer.cornerRadius = 10;
+        _complementedLabel.layer.borderColor = [[UIColor colorWithHexString:@"999999"]CGColor];
+        _complementedLabel.layer.borderWidth = 0.5f;
+    }
+    return _complementedLabel;
+}
+- (UIButton *)actionButton{
+    if (!_actionButton) {
+        _actionButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_actionButton setImage:[UIImage imageNamed:@"js_mission_finished"] forState:UIControlStateNormal];
+        [_actionButton sizeToFit];
+        @weakify(self)
+        [_actionButton bk_addEventHandler:^(id sender) {
+            @strongify(self)
+            if (self.delegate && [self.delegate respondsToSelector:@selector(didSelectedGoFinishedCellWithModel:)]) {
+                [self.delegate didSelectedGoFinishedCellWithModel:self.subModel];
+            }
+            
+        } forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _actionButton;
+}
 - (UILabel *)titleLabel{
     if (!_titleLabel) {
         _titleLabel = [[UILabel alloc]init];
@@ -40,28 +73,44 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         [self.contentView addSubview:self.titleLabel];
+        [self.contentView addSubview:self.complementedLabel];
+        [self.contentView addSubview:self.actionButton];
     }
     return self;
 }
-
-- (void)setSubText:(NSString *)subText{
-    _subText = subText;
-    self.titleLabel.text = subText;
-    
+- (void)setSubModel:(JSMissSubModel *)subModel{
+    _subModel = subModel;
+    self.titleLabel.text = subModel.misDescription;
+    if (![subModel.taskNo isEqualToString:@"T5"]) {
+        if (subModel.isDone == 1) {//已完成
+            self.complementedLabel.hidden = NO;
+            self.actionButton.hidden = YES;
+        }else{//未完成
+            self.complementedLabel.hidden = YES;
+            self.actionButton.hidden = NO;
+        }
+    }else{
+        self.complementedLabel.hidden = YES;
+        self.actionButton.hidden = YES;
+    }
     [self setNeedsLayout];
 }
+
 + (CGFloat)heightForString:(NSString *)text{
     CGFloat height = 20;
-    CGFloat contentHeight = [text heightForFont:[UIFont systemFontOfSize:14] width:kScreenWidth-60];
+    CGFloat contentHeight = [text heightForFont:[UIFont systemFontOfSize:14] width:kScreenWidth-120];
     return height += contentHeight;
 }
 - (void)layoutSubviews{
     [super layoutSubviews];
     
-    CGSize size = [self.titleLabel sizeThatFits:CGSizeMake(kScreenWidth-60, MAXFLOAT)];
+    CGSize size = [self.titleLabel sizeThatFits:CGSizeMake(kScreenWidth-120, MAXFLOAT)];
     self.titleLabel.size = size;
     self.titleLabel.left = 30;
     self.titleLabel.top = 10;
+    
+    self.complementedLabel.right = self.actionButton.right = kScreenWidth - 20;
+    self.complementedLabel.centerY = self.actionButton.centerY = self.titleLabel.centerY;
     
     [self createCGPath:size.height+20];
 }

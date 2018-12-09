@@ -90,6 +90,7 @@
 		7A139ECD21BB6EAB009EC742 /* JSNewUserGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A139ECC21BB6EAB009EC742 /* JSNewUserGuideViewController.m */; };
 		7A139ED021BCD608009EC742 /* JSMyCollectVideoManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A139ECF21BCD608009EC742 /* JSMyCollectVideoManagerViewController.m */; };
 		7A139ED321BCD6B5009EC742 /* JSMyCollectShortVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A139ED221BCD6B5009EC742 /* JSMyCollectShortVideoViewController.m */; };
+		7A139ED621BD4264009EC742 /* JSTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A139ED521BD4264009EC742 /* JSTool.m */; };
 		7A1749BD21A064E000E9AA12 /* JSShareManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1749BC21A064E000E9AA12 /* JSShareManager.m */; };
 		7A1749C021A066B500E9AA12 /* GFPopMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1749BF21A066B500E9AA12 /* GFPopMenuView.m */; };
 		7A1749C321A0789000E9AA12 /* JSInputCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1749C221A0789000E9AA12 /* JSInputCodeViewController.m */; };
@@ -414,6 +415,8 @@
 		7A139ECF21BCD608009EC742 /* JSMyCollectVideoManagerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSMyCollectVideoManagerViewController.m; sourceTree = "<group>"; };
 		7A139ED121BCD6B5009EC742 /* JSMyCollectShortVideoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSMyCollectShortVideoViewController.h; sourceTree = "<group>"; };
 		7A139ED221BCD6B5009EC742 /* JSMyCollectShortVideoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSMyCollectShortVideoViewController.m; sourceTree = "<group>"; };
+		7A139ED421BD4264009EC742 /* JSTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSTool.h; sourceTree = "<group>"; };
+		7A139ED521BD4264009EC742 /* JSTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSTool.m; sourceTree = "<group>"; };
 		7A1749BB21A064E000E9AA12 /* JSShareManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSShareManager.h; sourceTree = "<group>"; };
 		7A1749BC21A064E000E9AA12 /* JSShareManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSShareManager.m; sourceTree = "<group>"; };
 		7A1749BE21A066B400E9AA12 /* GFPopMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFPopMenuView.h; sourceTree = "<group>"; };
@@ -1425,6 +1428,8 @@
 				7A5152A721A7AAB400116494 /* CountDown.m */,
 				7AB5541D21B6786600DEF2CC /* JSAlertView.h */,
 				7AB5541E21B6786600DEF2CC /* JSAlertView.m */,
+				7A139ED421BD4264009EC742 /* JSTool.h */,
+				7A139ED521BD4264009EC742 /* JSTool.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -1931,6 +1936,7 @@
 				7AB5541321B6211E00DEF2CC /* HJTabViewController.m in Sources */,
 				004910A321951DB700B85B4F /* UITableView+FDTemplateLayoutCell.m in Sources */,
 				7A898F462193CCAD00A7CADD /* JSSwitchSegmentView.m in Sources */,
+				7A139ED621BD4264009EC742 /* JSTool.m in Sources */,
 				7A2DDCB921A673EF00D77867 /* YUFoldingSectionHeader.m in Sources */,
 				7A5FEEB4218B0D5E006CF7EC /* JSHomeViewController.m in Sources */,
 				7A5FEE56218ACBAD006CF7EC /* ViewController.m in Sources */,

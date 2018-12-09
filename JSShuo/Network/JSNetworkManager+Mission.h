@@ -33,6 +33,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 //抢红包接口
 + (void)requestOpenedPackageWithID:(NSInteger)ID Complement:(void(^)(BOOL isSuccess, NSDictionary *contentDict))complement;
+//完成任务
++ (void)requestTaskDoneWithNo:(NSString *)taskNo complement:(void(^)(BOOL isSuccess, NSDictionary *contentDict))complement;
 @end
 
 NS_ASSUME_NONNULL_END

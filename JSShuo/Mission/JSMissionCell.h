@@ -11,8 +11,16 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol JSMissionSubCellDelegate <NSObject>
+
+- (void)didSelectedGoFinishedCellWithModel:(JSMissSubModel *)subModel;
+
+@end
+
 @interface JSMissionSubCell : UITableViewCell
-@property (nonatomic, copy)NSString *subText;
+//@property (nonatomic, copy)NSString *subText;
+@property (nonatomic, strong)JSMissSubModel *subModel;
+@property (nonatomic, weak)id<JSMissionSubCellDelegate>delegate;
 
 + (CGFloat)heightForString:(NSString *)text;
 @end
