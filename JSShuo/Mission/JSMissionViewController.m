@@ -12,6 +12,7 @@
 #import "YUFoldingTableView.h"
 #import "JSMissionCell.h"
 #import "JSRedPacketViewController.h"
+#import "JSAlertView.h"
 
 @interface JSMissionTableHeaderView : UITableViewHeaderFooterView
 @property (nonatomic, strong)UILabel *titleLabel;
@@ -482,7 +483,11 @@
             JSMissionRewardModel *rewardModel = [MTLJSONAdapter modelOfClass:[JSMissionRewardModel class] fromJSONDictionary:rewardDict error:nil];
             if (rewardModel.rewardCode == 0) {//成功
                 //弹框
-                [self showAutoDismissTextAlert:@"签到成功"];
+                [JSAlertView showAlertViewWithType:JSALertTypeGold rewardModel:rewardModel superView:self.navigationController.view handle:^{
+                    
+                }];
+//                [self showAutoDismissTextAlert:@"签到成功"];
+                
             }
             [JSNetworkManager requestMissonRulComplement:^(BOOL isSuccess, NSDictionary *contentDict) {
                 if (isSuccess) {

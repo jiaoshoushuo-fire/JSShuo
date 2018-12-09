@@ -88,6 +88,8 @@
 		7A015E11219A75BE0025D24F /* JSWithdrawViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A015E10219A75BE0025D24F /* JSWithdrawViewController.m */; };
 		7A015E14219AF9740025D24F /* JSWithdrawModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A015E13219AF9740025D24F /* JSWithdrawModel.m */; };
 		7A139ECD21BB6EAB009EC742 /* JSNewUserGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A139ECC21BB6EAB009EC742 /* JSNewUserGuideViewController.m */; };
+		7A139ED021BCD608009EC742 /* JSMyCollectVideoManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A139ECF21BCD608009EC742 /* JSMyCollectVideoManagerViewController.m */; };
+		7A139ED321BCD6B5009EC742 /* JSMyCollectShortVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A139ED221BCD6B5009EC742 /* JSMyCollectShortVideoViewController.m */; };
 		7A1749BD21A064E000E9AA12 /* JSShareManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1749BC21A064E000E9AA12 /* JSShareManager.m */; };
 		7A1749C021A066B500E9AA12 /* GFPopMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1749BF21A066B500E9AA12 /* GFPopMenuView.m */; };
 		7A1749C321A0789000E9AA12 /* JSInputCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1749C221A0789000E9AA12 /* JSInputCodeViewController.m */; };
@@ -408,6 +410,10 @@
 		7A015E13219AF9740025D24F /* JSWithdrawModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSWithdrawModel.m; sourceTree = "<group>"; };
 		7A139ECB21BB6EAB009EC742 /* JSNewUserGuideViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSNewUserGuideViewController.h; sourceTree = "<group>"; };
 		7A139ECC21BB6EAB009EC742 /* JSNewUserGuideViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSNewUserGuideViewController.m; sourceTree = "<group>"; };
+		7A139ECE21BCD608009EC742 /* JSMyCollectVideoManagerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSMyCollectVideoManagerViewController.h; sourceTree = "<group>"; };
+		7A139ECF21BCD608009EC742 /* JSMyCollectVideoManagerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSMyCollectVideoManagerViewController.m; sourceTree = "<group>"; };
+		7A139ED121BCD6B5009EC742 /* JSMyCollectShortVideoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSMyCollectShortVideoViewController.h; sourceTree = "<group>"; };
+		7A139ED221BCD6B5009EC742 /* JSMyCollectShortVideoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSMyCollectShortVideoViewController.m; sourceTree = "<group>"; };
 		7A1749BB21A064E000E9AA12 /* JSShareManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSShareManager.h; sourceTree = "<group>"; };
 		7A1749BC21A064E000E9AA12 /* JSShareManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSShareManager.m; sourceTree = "<group>"; };
 		7A1749BE21A066B400E9AA12 /* GFPopMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFPopMenuView.h; sourceTree = "<group>"; };
@@ -1311,8 +1317,12 @@
 				7A1749D121A24DB900E9AA12 /* JSMyCollectViewController.m */,
 				7A1749D921A28D7300E9AA12 /* JSMyCollectArticleViewController.h */,
 				7A1749DA21A28D7300E9AA12 /* JSMyCollectArticleViewController.m */,
+				7A139ECE21BCD608009EC742 /* JSMyCollectVideoManagerViewController.h */,
+				7A139ECF21BCD608009EC742 /* JSMyCollectVideoManagerViewController.m */,
 				7A1749DC21A28D8300E9AA12 /* JSMyCollectVideoViewController.h */,
 				7A1749DD21A28D8300E9AA12 /* JSMyCollectVideoViewController.m */,
+				7A139ED121BCD6B5009EC742 /* JSMyCollectShortVideoViewController.h */,
+				7A139ED221BCD6B5009EC742 /* JSMyCollectShortVideoViewController.m */,
 				7AB931A4219E6BBF001E5390 /* JSMyWalletCell.h */,
 				7AB931A5219E6BBF001E5390 /* JSMyWalletCell.m */,
 				7A898F71219528D500A7CADD /* JSPerfectUserInfoCell.h */,
@@ -1871,6 +1881,7 @@
 				004910A221951DB700B85B4F /* UITableView+FDKeyedHeightCache.m in Sources */,
 				006043472197CAA20080091A /* ZFDouYinCell.m in Sources */,
 				7A1749D221A24DB900E9AA12 /* JSMyCollectViewController.m in Sources */,
+				7A139ED021BCD608009EC742 /* JSMyCollectVideoManagerViewController.m in Sources */,
 				0060434D2197D35D0080091A /* JSNetworkManager+ShortVideo.m in Sources */,
 				7A5152A521A79B1300116494 /* JSRedPerformViewController.m in Sources */,
 				7A8F677A218FCF72008A00F4 /* JSNetworkManager.m in Sources */,
@@ -1975,6 +1986,7 @@
 				7A9108FC21A53775005BFDC8 /* JSNetworkManager+Mission.m in Sources */,
 				006043362197C7700080091A /* ZFSliderView.m in Sources */,
 				006043282197C7700080091A /* ZFPlayerNotification.m in Sources */,
+				7A139ED321BCD6B5009EC742 /* JSMyCollectShortVideoViewController.m in Sources */,
 				7A203E51218C77350001F926 /* JSForgetPasswordViewController.m in Sources */,
 				7A898F8F21956B0F00A7CADD /* GFImageCropView.m in Sources */,
 				7A898F8B21956B0F00A7CADD /* GGAssetCollectionCell.m in Sources */,
