@@ -479,7 +479,7 @@
         _profileInfoArray = @[@{@"imagePath":@"js_profile_input_code",@"title":@"输入邀请码",@"subTitle":@"0.5-88零钱大抽奖"},
                               @{@"imagePath":@"js_profile_mession",@"title":@"任务中心",@"subTitle":@"红包金币拿到手软"},
                               @{@"imagePath":@"js_profile_game",@"title":@"游戏大厅",@"subTitle":@"金币赚不停"},
-                              @{@"imagePath":@"js_profile_huiyuan",@"title":@"会员大促销",@"subTitle":@"特价返利最后七天"},
+                              /*@{@"imagePath":@"js_profile_huiyuan",@"title":@"会员大促销",@"subTitle":@"特价返利最后七天"},*/
                               @{@"imagePath":@"js_profile_question",@"title":@"常见问题",@"subTitle":@""},
                               @{@"imagePath":@"js_profile_pinglun",@"title":@"我的评论",@"subTitle":@""},
                               @{@"imagePath":@"js_profile_shoucang",@"title":@"我的收藏",@"subTitle":@""},
@@ -540,9 +540,10 @@
             [self.rt_navigationController pushViewController:vc animated:YES complete:nil];
         }break;
         case 1:{//商城
-            JSShopViewController *shopVC = [[JSShopViewController alloc]init];
-            shopVC.hidesBottomBarWhenPushed = YES;
-            [self.rt_navigationController pushViewController:shopVC animated:YES complete:nil];
+            [self showAutoDismissTextAlert:@"开发中，敬请期待"];
+//            JSShopViewController *shopVC = [[JSShopViewController alloc]init];
+//            shopVC.hidesBottomBarWhenPushed = YES;
+//            [self.rt_navigationController pushViewController:shopVC animated:YES complete:nil];
         }break;
         case 2:{//邀请好友
             JSInvitationViewController *invitationVC = [[JSInvitationViewController alloc]init];

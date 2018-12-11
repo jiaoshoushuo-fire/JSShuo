@@ -340,6 +340,8 @@ const static NSString *shareSuccessUrl = @"/v1/user/share/success";
     [self POST:url parameters:params complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
         if (complement) {
             complement(isSuccess,responseDict);
+            NSDictionary *rewardDict = responseDict[@"reward"];
+            [JSTool showAlertType:JSALertTypeGold withRewardDictiony:rewardDict];
         }
     }];
 }
@@ -349,6 +351,8 @@ const static NSString *shareSuccessUrl = @"/v1/user/share/success";
     [self POST:url parameters:params complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
         if (complement) {
             complement(isSuccess,responseDict);
+            NSDictionary *rewaredDict = responseDict[@"reward"];
+            [JSTool showAlertType:JSALertTypeGold withRewardDictiony:rewaredDict];
         }
     }];
 }

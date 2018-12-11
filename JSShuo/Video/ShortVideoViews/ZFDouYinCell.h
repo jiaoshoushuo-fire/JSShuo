@@ -9,8 +9,18 @@
 #import <UIKit/UIKit.h>
 #import "JSShortVideoModel.h"
 
+@protocol ZFDouYinCellDelegate <NSObject>
+
+- (void)didSelectedLikeButtonWithModel:(JSShortVideoModel *)model;
+- (void)didSelectedShareButtonWithModel:(JSShortVideoModel *)model;
+- (void)didSelectedCommentButtonWithModel:(JSShortVideoModel *)model;
+
+
+@end
+
 @interface ZFDouYinCell : UITableViewCell 
 
 @property (nonatomic, strong) JSShortVideoModel *data;
+@property (nonatomic, weak)id<ZFDouYinCellDelegate>delegate;
 
 @end

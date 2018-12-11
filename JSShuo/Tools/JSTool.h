@@ -17,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)showAlertType:(JSALertType)alertType withRewardDictiony:(NSDictionary *)rewardDict;
 
+
++ (NSString *)compareCurrentTime:(NSString *)str;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -88,6 +88,15 @@
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
         [_collectionView registerClass:[JSMyCollectShortVideoCell class] forCellWithReuseIdentifier:@"JSMyCollectShortVideoCell"];
+        @weakify(self)
+        _collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+            @strongify(self)
+            [self refreshDataWithHeaderRefresh:YES];
+        }];
+        _collectionView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+            @strongify(self)
+            [self refreshDataWithHeaderRefresh:NO];
+        }];
     }
     return _collectionView;
 }

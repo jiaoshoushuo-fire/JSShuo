@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 // 请求详情页是否点赞和收藏
 + (void) requestDetailWithArticleID:(NSInteger)articleId complent:(void(^)(BOOL isSuccess,NSDictionary *contentDic))complent;
 
++ (void)requestVideoCommentDataWithArticleId:(NSInteger )articleId pageNumber:(NSInteger)pageNumber complement:(void(^)(BOOL isSuccess,NSArray *commentList,NSInteger totolNumber))complement;
 @end
 
 NS_ASSUME_NONNULL_END
