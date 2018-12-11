@@ -39,9 +39,9 @@
     return _contentLabel;
 }
 - (UIButton *)button1{
-    if (!_button1) {
+    if (!_button1) {//2896941882
         _button1 = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_button1 setTitle:@"联系客服QQ：3466850259" forState:UIControlStateNormal];
+        [_button1 setTitle:@"联系客服QQ：2896941882" forState:UIControlStateNormal];
         _button1.backgroundColor = [UIColor colorWithHexString:@"F44336"];
         [_button1 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         _button1.titleLabel.font = [UIFont systemFontOfSize:16];
@@ -54,7 +54,7 @@
             if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"mqq://"]]) {
                 
                 UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectZero];
-                NSURL * url=[NSURL URLWithString:[NSString stringWithFormat:@"mqq://im/chat?chat_type=wpa&uin=%@&version=1&src_type=web",@"3466850259"]];
+                NSURL * url=[NSURL URLWithString:[NSString stringWithFormat:@"mqq://im/chat?chat_type=wpa&uin=%@&version=1&src_type=web",@"2896941882"]];
                 NSURLRequest *request = [NSURLRequest requestWithURL:url];
                 
                 [webView loadRequest:request];
@@ -67,7 +67,7 @@
 - (UIButton *)button2{
     if (!_button2) {
         _button2 = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_button2 setTitle:@"商务洽谈邮箱：3466850259@qq.com" forState:UIControlStateNormal];
+        [_button2 setTitle:@"商务洽谈邮箱：2896941882@qq.com" forState:UIControlStateNormal];
         _button2.backgroundColor = [UIColor blackColor];
         [_button2 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         _button2.titleLabel.font = [UIFont systemFontOfSize:16];

@@ -188,5 +188,8 @@
     }
     return _coverImageView;
 }
-
+- (void)prepareForReuse{
+    self.likeBtn.selected = NO;
+    self.data = nil;
+}
 @end

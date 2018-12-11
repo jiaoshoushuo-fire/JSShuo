@@ -56,10 +56,13 @@
 - (void)setCommentModel:(JSCommentModel *)commentModel{
     _commentModel = commentModel;
     if (commentModel) {
+        
         self.inputTextView.placeholderText = [NSString stringWithFormat:@"回复 %@ ",commentModel.nickname];
-        [self.inputTextView becomeFirstResponder];
+//        [self.inputTextView becomeFirstResponder];
     }else{
-        self.inputTextView.placeholderText = @"留下您精彩的评论吧";
+        //留下您精彩的评论吧
+//        self.inputTextView.placeholderText = [NSString stringWithFormat:@"%@",@"回复 张三"];
+        self.inputTextView.placeholderText = [NSString stringWithFormat:@"%@ ",@"留下您精彩的评论吧"];
     }
     
 }
@@ -253,7 +256,7 @@
     
 //    self.replayNumberLabel.right = kScreenWidth - 10;
 //    self.replyButton.right = self.replayNumberLabel.left - 5;
-//    self.likeNumberLabel.right = self.replyButton.left - 10;
+    self.likeNumberLabel.right = kScreenWidth - 10;
     self.likeButton.right = self.likeNumberLabel.left - 5;
     
 //    self.replayNumberLabel.centerY = self.replyButton.centerY = self.likeNumberLabel.centerY = self.likeButton.centerY = self.iconImageView.centerY;
@@ -572,6 +575,7 @@
     springAnimation.completionBlock = ^(POPAnimation *anim, BOOL finished) {
         if (finished) {
             self.originalTop = self.commentView.top;
+            
         }
     };
     [self.commentView pop_addAnimation:springAnimation forKey:@"js_show_springAnimation"];
@@ -594,6 +598,7 @@
     if (self.superview) {
         [self showCommentView];
         self.inputBar.commentModel = nil;
+        
     }
 }
 - (void)refreshDataListWithHeaderRefresh:(BOOL)isHeaderRefresh{

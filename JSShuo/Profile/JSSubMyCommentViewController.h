@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface JSSubMyCommentViewController : JSBaseViewController
 
 @property (nonatomic, assign)BOOL isReceive;
-
+@property (nonatomic, strong,readonly)NSMutableArray *dataArray;
 @property (nonatomic, strong)JSProfileUserModel *userModel;
 @end
 

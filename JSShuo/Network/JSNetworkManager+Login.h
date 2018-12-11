@@ -90,7 +90,7 @@ typedef  NS_ENUM(NSInteger, JSRequestSecurityCodeType){
 + (void)questRecvCommentListWith:(NSInteger)pageNumber complement:(void(^)(BOOL isSuccess,NSDictionary *contentDict))complemnt;
 
 //清空评论
-+ (void)clearCommentComplement:(void(^)(BOOL isSuccess,NSDictionary *contentDict))complement;
++ (void)clearCommentWithIs:(NSString *)ids Complement:(void(^)(BOOL isSuccess,NSDictionary *contentDict))complement;
 
 // 添加收藏
 + (void) addCollect:(NSDictionary *)params complement:(void(^)(BOOL isSuccess, NSDictionary *contentDic))complement;

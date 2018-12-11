@@ -13,6 +13,7 @@
 @interface JSMyCollectShortVideoCell : UICollectionViewCell
 @property (nonatomic, strong)UIImageView *imageView;
 @property (nonatomic, strong)UILabel *timeLabel;
+@property (nonatomic, strong)JSCollectModel *model;
 @end
 
 @implementation JSMyCollectShortVideoCell
@@ -50,6 +51,11 @@
         }];
     }
     return self;
+}
+- (void)setModel:(JSCollectModel *)model{
+    _model = model;
+    self.imageView.backgroundColor = [UIColor redColor];
+    self.timeLabel.text = model.createTime;
 }
 
 
@@ -175,10 +181,12 @@
     return 1;
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 10;//self.dataArray.count;
+    return self.dataArray.count;
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     JSMyCollectShortVideoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"JSMyCollectShortVideoCell" forIndexPath:indexPath];
+    JSCollectModel *model = self.dataArray[indexPath.row];
+    cell.model = model;
     return cell;
 }
 

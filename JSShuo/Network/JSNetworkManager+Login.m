@@ -379,9 +379,9 @@ const static NSString *shareSuccessUrl = @"/v1/user/share/success";
     }];
 }
 
-+ (void)clearCommentComplement:(void(^)(BOOL isSuccess,NSDictionary *contentDict))complement{
++ (void)clearCommentWithIs:(NSString *)ids Complement:(void(^)(BOOL isSuccess,NSDictionary *contentDict))complement{
     NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,clearCommentListUrl];
-    NSDictionary *param = @{@"token":[JSAccountManager shareManager].accountToken};
+    NSDictionary *param = @{@"token":[JSAccountManager shareManager].accountToken,@"ids":ids};
     [self POST:url parameters:param complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
         if (complement) {
             complement(isSuccess,responseDict);

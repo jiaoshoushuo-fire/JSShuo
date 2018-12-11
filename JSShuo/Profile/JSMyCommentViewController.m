@@ -10,6 +10,7 @@
 #import <WMPageController.h>
 #import "JSSubMyCommentViewController.h"
 #import "JSNetworkManager+Login.h"
+#import "JSMyCommentCell.h"
 
 @interface JSMyCommentViewController ()<WMPageControllerDelegate,WMPageControllerDataSource>
 @property (nonatomic, strong)WMPageController *pageController;
@@ -84,12 +85,21 @@
 - (void)cleanUpComment{
     UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:nil message:@"你确定要清空评论吗?" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *makeAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [JSNetworkManager clearCommentComplement:^(BOOL isSuccess, NSDictionary * _Nonnull contentDict) {
-            if (isSuccess) {
-                [self showAutoDismissTextAlert:@"清除成功"];
-                [self performSelector:@selector(dismissSelfVC) withObject:nil afterDelay:2];
+        JSSubMyCommentViewController *vc = self.subVCs[self.pageController.selectIndex];
+        if (vc.dataArray.count > 0) {
+            NSMutableArray *idsArray = [NSMutableArray array];
+            for (JSMyCommentModel *model in vc.dataArray) {
+                [idsArray addObject:@(model.commentId).stringValue];
             }
-        }];
+            NSString *string = [idsArray componentsJoinedByString:@","];
+            [JSNetworkManager clearCommentWithIs:string Complement:^(BOOL isSuccess, NSDictionary * _Nonnull contentDict) {
+                if (isSuccess) {
+                    [self showAutoDismissTextAlert:@"清除成功"];
+                    [self performSelector:@selector(dismissSelfVC) withObject:nil afterDelay:2];
+                }
+            }];
+        }
+        
     }];
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
