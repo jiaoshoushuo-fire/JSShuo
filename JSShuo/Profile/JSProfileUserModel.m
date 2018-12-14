@@ -50,4 +50,13 @@
              };
 }
 
++ (NSValueTransformer *)JSONTransformerForKey:(NSString *)key{
+    if ([key isEqualToString:@"money"]){
+        return [MTLValueTransformer transformerUsingForwardBlock:^id(id value, BOOL *success, NSError *__autoreleasing *error) {
+            NSString *valueString = [NSString stringWithFormat:@"%.2f",[value integerValue]/100.00f];
+            return valueString;
+        }];
+    }
+    return nil;
+}
 @end

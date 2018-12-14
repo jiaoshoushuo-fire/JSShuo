@@ -23,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *intro;
 @property (nonatomic, assign)NSInteger apprenticeNum;
 @property (nonatomic, assign)NSInteger coin;
-@property (nonatomic, assign)NSInteger money;
+@property (nonatomic, copy)NSString *money;
 @property (nonatomic, assign)NSInteger readTime;
 
 @property (nonatomic, copy)NSString *jobCategory;

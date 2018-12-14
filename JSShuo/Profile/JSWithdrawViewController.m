@@ -698,7 +698,7 @@
     UITableViewCell *cell = nil;
     if (indexPath.row == 0) {
         JSWithdrawFirstCell *firstCell = [tableView dequeueReusableCellWithIdentifier:@"JSWithdrawFirstCell" forIndexPath:indexPath];
-        firstCell.moneyLabel.text = @(self.withdrawModel.amount).stringValue;
+        firstCell.moneyLabel.text = self.withdrawModel.amount;
         firstCell.delegate = self;
         cell = firstCell;
     }else if (indexPath.row == 1){

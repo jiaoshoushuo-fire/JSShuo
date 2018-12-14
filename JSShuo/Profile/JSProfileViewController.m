@@ -374,7 +374,7 @@
     [self.avaterIcon setImageWithURL:[NSURL URLWithString:userModel.portrait] placeholder:[UIImage imageNamed:@"js_profile_default_icon"]];
     self.myGoldNumber.text = @(userModel.coin).stringValue;
     self.myReadTime.text = @(userModel.readTime).stringValue;
-    self.myPocketMoney.text = @(userModel.money).stringValue;
+    self.myPocketMoney.text = userModel.money;
     
 }
 @end
@@ -432,7 +432,8 @@
         _cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(10, 0, kScreenWidth-20, 80) delegate:self placeholderImage:nil];
         _cycleScrollView.currentPageDotColor = [UIColor redColor];   // 自定义分页控件小圆标颜色，当前分页控件为红色
         _cycleScrollView.pageDotColor = [UIColor whiteColor];
-        _cycleScrollView.imageURLStringsGroup = @[@"https://192.168.21.49/php/wenda_live_zhibojiantiwen_a@2x.png",@"https://192.168.21.49/php/lauch.jpg"];
+        _cycleScrollView.localizationImageNamesGroup = @[@"js_profile_image"];
+//        _cycleScrollView.imageURLStringsGroup = @[@"https://192.168.21.49/php/wenda_live_zhibojiantiwen_a@2x.png",@"https://192.168.21.49/php/lauch.jpg"];
     }
     return _cycleScrollView;
 }
@@ -566,7 +567,9 @@
     
 }
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
-    
+    JSInvitationViewController *invitationVC = [[JSInvitationViewController alloc]init];
+    invitationVC.hidesBottomBarWhenPushed = YES;
+    [self.rt_navigationController pushViewController:invitationVC animated:YES complete:nil];
 }
 
 #pragma mark - UITableViewDelegate
