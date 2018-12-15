@@ -179,7 +179,7 @@
     @weakify(self);
     [_bottomView.shareBtn bk_addEventHandler:^(id sender) {
         @strongify(self);
-        [JSShareManager shareWithTitle:@"测试title" Text:@"测试text" Image:[UIImage imageNamed:@"js_profile_mywallet_share"] Url:@"https://www.baidu.com/" complement:^(BOOL isSuccess) {
+        [JSShareManager shareWithTitle:@"叫兽说" Text:@"文章详情" Image:[UIImage imageNamed:@"js_share_image"] Url:[NSString stringWithFormat:@"http://api.jiaoshoutt.com/v1/page/article/%@",self.articleId] complement:^(BOOL isSuccess) {
             if (isSuccess) {
                 [self showAutoDismissTextAlert:@"分享成功"];
             }else{

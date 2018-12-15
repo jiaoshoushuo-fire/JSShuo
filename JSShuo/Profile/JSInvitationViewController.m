@@ -119,7 +119,7 @@
         @weakify(self)
         [_shareButton bk_addEventHandler:^(id sender) {
             @strongify(self)
-            [JSShareManager shareWithTitle:@"测试title" Text:@"测试text" Image:[UIImage imageNamed:@"js_profile_mywallet_share"] Url:@"https://www.baidu.com/" complement:^(BOOL isSuccess) {
+            [JSShareManager shareWithTitle:@"叫兽说" Text:@"红包大放送，运气好最高能领到188注册红包+88零钱的邀请红包。" Image:[UIImage imageNamed:@"js_share_image"] Url:kShareUrl QQImageURL:kShareQQImage_1 shareType:JSShareManagerTypeFour complement:^(BOOL isSuccess) {
                 if (isSuccess) {
                     [self showAutoDismissTextAlert:@"分享成功"];
                 }else{
@@ -307,7 +307,7 @@
         case 1:
         case 3:
         case 4:{
-            [JSShareManager shareWithTitle:@"测试title" Text:@"测试text" Image:[UIImage imageNamed:@"js_profile_mywallet_share"] Url:@"https://www.baidu.com/" complement:^(BOOL isSuccess) {
+            [JSShareManager shareWithTitle:@"叫兽说" Text:@"红包大放送，运气好最高能领到188注册红包+88零钱的邀请红包。" Image:[UIImage imageNamed:@"js_share_image"] Url:kShareUrl QQImageURL:kShareQQImage_1 shareType:JSShareManagerTypeFour complement:^(BOOL isSuccess) {
                 if (isSuccess) {
                     [self showAutoDismissTextAlert:@"分享成功"];
                 }else{
@@ -316,7 +316,7 @@
             }];
         }break;
         case 2:{
-            [JSAlertView showCIQRCodeImageWithUrl:@"https://www.baidu.com/" superView:self.navigationController.view];
+            [JSAlertView showCIQRCodeImageWithUrl:kShareUrl superView:self.navigationController.view];
         }break;
             
         default:

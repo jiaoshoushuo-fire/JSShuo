@@ -56,7 +56,7 @@ static ShareResponseHandler qqShareHandler = nil;
     }
     
     qqShareHandler = handler;
-//    QQApiWebImageObject *webImageObject = [QQApiWebImageObject objectWithPreviewImageURL:[NSURL URLWithString:@"https://192.168.21.49/php/lauch.jpg"] title:title description:description];
+//    QQApiWebImageObject *webImageObject = [QQApiWebImageObject objectWithPreviewImageURL:[NSURL URLWithString:url] title:title description:description];
     
     QQApiNewsObject* newsObject = [QQApiNewsObject objectWithURL:[NSURL URLWithString:url] title:title description:description previewImageData:UIImageJPEGRepresentation(thumbnail, 0.5)];
     
@@ -72,6 +72,28 @@ static ShareResponseHandler qqShareHandler = nil;
     return YES;
 }
 
++ (BOOL)shareWebImageToQQ:(NSString *)url
+                    title:(NSString *)title
+              description:(NSString *)description
+                     type:(GFShareType)type
+                  handler:(ShareResponseHandler)handler{
+    if (![url isNotBlank] || ![title isNotBlank]) {
+        return NO;
+    }
+    qqShareHandler = handler;
+    
+    QQApiWebImageObject *webImageObject = [QQApiWebImageObject objectWithPreviewImageURL:[NSURL URLWithString:url] title:title description:description];
+    SendMessageToQQReq* req = [SendMessageToQQReq reqWithContent:webImageObject];
+    
+    QQApiSendResultCode code = EQQAPISENDSUCESS;
+    if (type == GFShareTypeQZone) {
+        code = [QQApiInterface SendReqToQZone:req];
+    } else {
+        code = [QQApiInterface sendReq:req];
+    }
+    
+    return YES;
+}
 
 #pragma mark - TencentLoginDelegate
 - (void)tencentDidLogin {

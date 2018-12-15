@@ -64,6 +64,18 @@ static ShareResponseHandler wechatShareHandler = nil;
     return [WXApi sendReq:request];
 }
 
++ (BOOL)shareTextToWechat:(NSString *)text
+                     type:(GFShareType)type
+                  handler:(ShareResponseHandler)handler{
+    wechatShareHandler = handler;
+    
+    SendMessageToWXReq *request = [[SendMessageToWXReq alloc] init];
+    request.bText = YES;
+    request.text = text;
+    request.scene = (type == GFShareTypeWechatTimeline) ? WXSceneTimeline : WXSceneSession;
+    
+    return [WXApi sendReq:request];
+}
 
 #pragma mark - WXApiDelegate
 - (void)onReq:(BaseReq *)req {
