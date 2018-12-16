@@ -16,38 +16,60 @@
 #import "JSShowTypeThreePictureTableViewCell.h"
 #import "JSNetworkManager+Search.h"
 #import "JSArticleDetailViewController.h"
-
+#import "JSNoSearchResultView.h"
 
 @interface JSHomeViewController () <UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) NSMutableArray *datas;
 @property (nonatomic,strong) NSNumber *currentPage;
+@property (nonatomic,strong) JSNoSearchResultView *noResultView;
 @end
 
 @implementation JSHomeViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
     _currentPage = @1;
     [self initTableView];
+    [self.view addSubview:self.noResultView];
+    _noResultView.hidden = YES;
     _type == JSHomePage ? [self requestData] : [self requestSearchResultData];
 }
 
 - (void) requestData {
-    NSLog(@"第%@页",_currentPage);
+//    NSLog(@"第%@页",_currentPage);
     NSDictionary *params = @{@"pageNum":_currentPage,@"channel":self.genreID,@"pageSize":@5};
     [JSNetworkManager requestLongVideoListWithParams:params complent:^(NSNumber * _Nonnull totalPage, NSArray * _Nonnull modelsArray) {
         [self dealData:modelsArray];
+        if (totalPage == self.currentPage) {
+            self.tableView.mj_footer.hidden = YES;
+        }
     }];
 }
 
 - (void) requestSearchResultData {
+    self.title = self.keywrod;
+//    NSLog(@"第%@页",_currentPage);
     NSDictionary *params = @{@"keyword":self.keywrod,@"type":[NSString stringWithFormat:@"%i",_searchType],@"pageNum":_currentPage,@"pageSize":@5};
     [JSNetworkManager requestKeywordWihtParmas:params complent:^(BOOL isSuccess, NSNumber * _Nonnull totalPage, NSArray * _Nonnull modelsArray) {
         if (isSuccess) {
+            if (!modelsArray.count) {
+                self.noResultView.hidden = NO;
+                [self.tableView removeFromSuperview];
+                return ;
+            }
+            self.noResultView.hidden = YES;
             [self dealData:modelsArray];
+            if (totalPage.intValue == self.currentPage.intValue) {
+                self.tableView.mj_footer.hidden = YES;
+            } else {
+                self.tableView.mj_footer.hidden = NO;
+            }
         } else {
             NSLog(@"请求数据失败");
+            [self.tableView.mj_footer endRefreshing];
+            self.tableView.mj_footer.hidden = YES;
         }
     }];
 }
@@ -99,13 +121,13 @@
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         @strongify(self)
         self.currentPage = @1;
-        [self requestData];
+        self.type == JSHomePage ? [self requestData] : [self requestSearchResultData];
     }];
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         @strongify(self)
         int temp = self.currentPage.intValue + 1;
         self.currentPage = [NSNumber numberWithInt:temp];
-        [self requestData];
+        self.type == JSHomePage ? [self requestData] : [self requestSearchResultData];
     }];
 }
 
@@ -180,6 +202,15 @@
 
 - (void)setupModelOfThreePictureCell:(JSShowTypeThreePictureTableViewCell *)cell AtIndexPath:(NSIndexPath *)indexPath{
     cell.model = [_datas objectAtIndex:indexPath.row];
+}
+
+- (JSNoSearchResultView *)noResultView {
+    if (!_noResultView) {
+        _noResultView = [[JSNoSearchResultView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight-64)];
+        _noResultView.titleLabelOne.text = @"当前手机暂无网络连接！";
+        _noResultView.titleLabelTwo.text = @"请检查网络设置后下拉刷新";
+    }
+    return _noResultView;
 }
 
 // 登录成功后的通知

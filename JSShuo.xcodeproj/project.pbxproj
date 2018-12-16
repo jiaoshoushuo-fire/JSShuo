@@ -82,6 +82,8 @@
 		0060434A2197CAB20080091A /* ZFTableViewCellLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 006043492197CAB20080091A /* ZFTableViewCellLayout.m */; };
 		0060434D2197D35D0080091A /* JSNetworkManager+ShortVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0060434C2197D35D0080091A /* JSNetworkManager+ShortVideo.m */; };
 		0065B4BC21BC150A003AEA5D /* JSVideoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0065B4BB21BC150A003AEA5D /* JSVideoDetailViewController.m */; };
+		0065B4BF21BE0FA8003AEA5D /* JSDetailSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0065B4BE21BE0FA8003AEA5D /* JSDetailSectionHeaderView.m */; };
+		0065B4C221BF54C5003AEA5D /* JSNoSearchResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0065B4C121BF54C5003AEA5D /* JSNoSearchResultView.m */; };
 		009601AD21AD91C2001BE083 /* JSBottomPopSendCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 009601AC21AD91C2001BE083 /* JSBottomPopSendCommentView.m */; };
 		2D4BE293799FA8F9CF3BD9E0 /* libPods-JSShuoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07D21E4F3FE796E0EC111709 /* libPods-JSShuoTests.a */; };
 		6797051512B36A0CAA259324 /* libPods-JSShuoUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 45918ABA94D7C616D6E9C28A /* libPods-JSShuoUITests.a */; };
@@ -252,6 +254,7 @@
 /* Begin PBXFileReference section */
 		0023C2152193212300960DF1 /* JSCellBottomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSCellBottomView.h; sourceTree = "<group>"; };
 		0023C2162193212300960DF1 /* JSCellBottomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSCellBottomView.m; sourceTree = "<group>"; };
+		00265D0321C54F930045C733 /* JSShuo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = JSShuo.entitlements; sourceTree = "<group>"; };
 		002B7402219862AA00483841 /* JSComputeTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSComputeTime.m; sourceTree = "<group>"; };
 		002B7403219862AB00483841 /* JSComputeTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSComputeTime.h; sourceTree = "<group>"; };
 		002B74C8219D514100483841 /* JSSearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSSearchViewController.h; sourceTree = "<group>"; };
@@ -397,6 +400,10 @@
 		0060434C2197D35D0080091A /* JSNetworkManager+ShortVideo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "JSNetworkManager+ShortVideo.m"; sourceTree = "<group>"; };
 		0065B4BA21BC150A003AEA5D /* JSVideoDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSVideoDetailViewController.h; sourceTree = "<group>"; };
 		0065B4BB21BC150A003AEA5D /* JSVideoDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSVideoDetailViewController.m; sourceTree = "<group>"; };
+		0065B4BD21BE0FA8003AEA5D /* JSDetailSectionHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSDetailSectionHeaderView.h; sourceTree = "<group>"; };
+		0065B4BE21BE0FA8003AEA5D /* JSDetailSectionHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSDetailSectionHeaderView.m; sourceTree = "<group>"; };
+		0065B4C021BF54C5003AEA5D /* JSNoSearchResultView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSNoSearchResultView.h; sourceTree = "<group>"; };
+		0065B4C121BF54C5003AEA5D /* JSNoSearchResultView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSNoSearchResultView.m; sourceTree = "<group>"; };
 		009601AB21AD91C2001BE083 /* JSBottomPopSendCommentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSBottomPopSendCommentView.h; sourceTree = "<group>"; };
 		009601AC21AD91C2001BE083 /* JSBottomPopSendCommentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSBottomPopSendCommentView.m; sourceTree = "<group>"; };
 		07D21E4F3FE796E0EC111709 /* libPods-JSShuoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JSShuoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -768,6 +775,8 @@
 				002B74D1219D648300483841 /* JSSearchResultView.m */,
 				002B74D3219D677900483841 /* JSSearchTopNavView.h */,
 				002B74D4219D677900483841 /* JSSearchTopNavView.m */,
+				0065B4C021BF54C5003AEA5D /* JSNoSearchResultView.h */,
+				0065B4C121BF54C5003AEA5D /* JSNoSearchResultView.m */,
 			);
 			path = search;
 			sourceTree = "<group>";
@@ -788,6 +797,8 @@
 			children = (
 				002D6AA621A3AB2A00BADF5C /* JSDetailNavView.h */,
 				002D6AA721A3AB2A00BADF5C /* JSDetailNavView.m */,
+				0065B4BD21BE0FA8003AEA5D /* JSDetailSectionHeaderView.h */,
+				0065B4BE21BE0FA8003AEA5D /* JSDetailSectionHeaderView.m */,
 				002D6AA921A3D2DC00BADF5C /* JSDetailBottomSendCommentView.h */,
 				002D6AAA21A3D2DC00BADF5C /* JSDetailBottomSendCommentView.m */,
 				009601AB21AD91C2001BE083 /* JSBottomPopSendCommentView.h */,
@@ -1101,6 +1112,7 @@
 		7A5FEE50218ACBAD006CF7EC /* JSShuo */ = {
 			isa = PBXGroup;
 			children = (
+				00265D0321C54F930045C733 /* JSShuo.entitlements */,
 				7A898F432193CC8700A7CADD /* Tools */,
 				00452039218EEC9300371F10 /* Imgs */,
 				7A8F6777218FCE59008A00F4 /* Network */,
@@ -1695,6 +1707,14 @@
 				TargetAttributes = {
 					7A5FEE4D218ACBAD006CF7EC = {
 						CreatedOnToolsVersion = 10.0;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					7A5FEE65218ACBAE006CF7EC = {
 						CreatedOnToolsVersion = 10.0;
@@ -1940,6 +1960,7 @@
 				7A898F5E2193E4EF00A7CADD /* UITabBarItem+WZLBadge.m in Sources */,
 				7AB5541721B6211E00DEF2CC /* HJTabViewControllerPlugin_Base.m in Sources */,
 				7A5FEE61218ACBAE006CF7EC /* main.m in Sources */,
+				0065B4BF21BE0FA8003AEA5D /* JSDetailSectionHeaderView.m in Sources */,
 				7A203E44218BE02A0001F926 /* JSLoginMainViewController.m in Sources */,
 				7A1749C621A24C5F00E9AA12 /* JSGamesViewController.m in Sources */,
 				7AD5489A21AE426F00244C78 /* JSActivityHeaderView.m in Sources */,
@@ -2028,6 +2049,7 @@
 				004520692191A27700371F10 /* JSNetworkManager+Channel.m in Sources */,
 				7A6E473F21997D7300D5C559 /* JSFeedbackViewController.m in Sources */,
 				006043332197C7700080091A /* ZFLandScapeControlView.m in Sources */,
+				0065B4C221BF54C5003AEA5D /* JSNoSearchResultView.m in Sources */,
 				002B74DB219E647000483841 /* JSNetworkManager+Search.m in Sources */,
 				7A5FEEA3218B0BA7006CF7EC /* JSLaunchViewController.m in Sources */,
 				006043302197C7700080091A /* ZFUtilities.m in Sources */,
@@ -2216,8 +2238,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = A8V3F299DM;
+				CODE_SIGN_ENTITLEMENTS = JSShuo/JSShuo.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer: PING LI (R485636QBD)";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = JB8ZC9V4MM;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/JSShuo/Libs/AliPay",
@@ -2226,13 +2250,14 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = $SRCROOT/JSShuo/JSShouPrefixHeader.pch;
 				INFOPLIST_FILE = JSShuo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.guagua.JSShuo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.callthebeast.jiaoshoushuo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = JSShuo_develop;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -2243,8 +2268,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = A8V3F299DM;
+				CODE_SIGN_ENTITLEMENTS = JSShuo/JSShuo.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Zijiefeiyang Science A Nd Technology Ltd. (JB8ZC9V4MM)";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = JB8ZC9V4MM;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/JSShuo/Libs/AliPay",
@@ -2253,13 +2280,14 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = $SRCROOT/JSShuo/JSShouPrefixHeader.pch;
 				INFOPLIST_FILE = JSShuo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.guagua.JSShuo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.callthebeast.jiaoshoushuo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = JSShuo_distribution;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

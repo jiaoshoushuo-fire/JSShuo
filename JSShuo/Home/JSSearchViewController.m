@@ -12,6 +12,7 @@
 #import "JSHotSearchTitleCollectionViewCell.h"
 #import "JSNetworkManager+Search.h"
 #import "JSHomeViewController.h"
+#import "JSArticleDetailViewController.h"
 
 @interface JSSearchViewController () <UICollectionViewDelegate,UICollectionViewDataSource,sendKeywordDelegate>
 @property (nonatomic,strong) JSSearchTopNavView *navView;
@@ -52,17 +53,26 @@
 
 #pragma mark - sendKeywordDelegate
 - (void)passKeyword:(NSString *)keyword {
-    self.collectionView.hidden = YES;
-    self.headerView.hidden = YES;
+//    self.collectionView.hidden = YES;
+//    self.headerView.hidden = YES;
     JSHomeViewController *vc = [JSHomeViewController new];
     vc.type = JSSearchResultPage;
     vc.keywrod = keyword;
     vc.searchType = 0;
-    vc.view.frame = CGRectMake(0, 64, ScreenWidth, ScreenHeight-64);
-    [self.view addSubview:vc.view];
+//    vc.view.frame = CGRectMake(0, 64, ScreenWidth, ScreenHeight-64);
+//    [self.view addSubview:vc.view];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.rt_navigationController pushViewController:vc animated:YES complete:nil];
 }
 
 #pragma mark - collectionView代理
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    JSArticleDetailViewController *vc = [[JSArticleDetailViewController alloc] init];
+    vc.articleId = [self.datas[indexPath.row] objectForKey:@"articleId"];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.rt_navigationController pushViewController:vc animated:YES complete:nil];
+}
+
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 1;
 }

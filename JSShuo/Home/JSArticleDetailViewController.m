@@ -18,70 +18,7 @@
 #import "JSBottomPopSendCommentView.h"
 #import "JSShareManager.h"
 #import "JSNetworkManager+Login.h"
-
-@interface SectionHeaderView : UITableViewHeaderFooterView
-@property (nonatomic, strong)UIView *colorLineView;
-@property (nonatomic, strong)UIView *grayLineView;
-@property (nonatomic, strong)UILabel *titleLabel;
-@end
-
-@implementation SectionHeaderView
-- (instancetype)initWithFrame:(CGRect)frame {
-    if (self = [super initWithFrame:frame]) {
-        [self addSubview:self.grayLineView];
-        [self addSubview:self.colorLineView];
-        [self addSubview:self.titleLabel];
-        
-        [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(5);
-            make.height.mas_equalTo(20);
-            make.width.mas_equalTo(56);
-            make.left.mas_equalTo(15);
-        }];
-        [self.colorLineView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(self.titleLabel.mas_bottom).offset(4);
-            make.height.mas_equalTo(1);
-            make.width.mas_equalTo(self.titleLabel);
-            make.left.mas_equalTo(15);
-        }];
-        [self.grayLineView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(self.colorLineView);
-            make.left.mas_equalTo(self.titleLabel);
-            make.right.mas_equalTo(-15);
-            make.height.mas_equalTo(1);
-        }];
-    }
-    return self;
-}
-
--(UIView *)colorLineView {
-    if (!_colorLineView) {
-        _colorLineView = [[UIView alloc] init];
-        _colorLineView.backgroundColor = [UIColor colorWithHexString:@"F44336"];
-    }
-    return _colorLineView;
-}
-
-- (UIView *)grayLineView {
-    if (!_grayLineView) {
-        _grayLineView = [[UIView alloc] init];
-        _grayLineView.backgroundColor = [UIColor colorWithHexString:@"E9E9E9"];
-    }
-    return _grayLineView;
-}
-
-- (UILabel *)titleLabel {
-    if (!_titleLabel) {
-        _titleLabel = [[UILabel alloc] init];
-        _titleLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:14];
-        _titleLabel.textColor = [UIColor colorWithHexString:@"0D0D0D"];
-        _titleLabel.textAlignment = NSTextAlignmentLeft;
-        _titleLabel.backgroundColor = [UIColor whiteColor];
-    }
-    return _titleLabel;
-}
-
-@end
+#import "JSDetailSectionHeaderView.h"
 
 
 @interface JSArticleDetailViewController () <WKNavigationDelegate,WKUIDelegate,UITableViewDelegate,UITableViewDataSource>
@@ -97,7 +34,6 @@
 @property (nonatomic,strong) NSMutableArray *recommendDatas;
 @property (nonatomic,strong) JSDetailNavView *navView;
 @property (nonatomic, strong)JSDetailBottomSendCommentView *bottomView;
-
 @end
 
 @implementation JSArticleDetailViewController
@@ -119,7 +55,10 @@
     self.tableView.hidden = YES;
     _pageNum = 1;
     _pageSize = 10;
-    
+    [self reloadView];
+}
+
+- (void) reloadView {
     [self requestUserInfo];
     [self requestCommentList];
     [self requestRecommendList];
@@ -301,6 +240,17 @@
 }
 
 #pragma mark -- UITableViewDelegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0) {
+        JSRecommendModel *model = self.recommendDatas[indexPath.row];
+        self.articleId = model.articleId;
+        self.wkWebView = nil;
+        self.bottomView.chatBtn.selected = NO;
+        [self setupWebView];
+        [self reloadView];
+    }
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         JSRecommentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JSRecommentTableViewCell" forIndexPath:indexPath];
@@ -315,7 +265,7 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    SectionHeaderView *headerView = [[SectionHeaderView alloc] init];
+    JSDetailSectionHeaderView *headerView = [[JSDetailSectionHeaderView alloc] init];
     [headerView.contentView setBackgroundColor:[UIColor whiteColor]];
     if (section == 0) {
         headerView.frame = CGRectMake(0, 0, ScreenWidth, 30);
@@ -485,7 +435,7 @@
         _tableView.backgroundColor = [UIColor clearColor];
         [_tableView registerClass:[JSRecommentTableViewCell class] forCellReuseIdentifier:@"JSRecommentTableViewCell"];
         [_tableView registerClass:[JSCommentTableViewCell class] forCellReuseIdentifier:@"JSCommentTableViewCell"];
-        [_tableView registerClass:[SectionHeaderView class] forHeaderFooterViewReuseIdentifier:@"SectionHeaderView"];
+        [_tableView registerClass:[JSDetailSectionHeaderView class] forHeaderFooterViewReuseIdentifier:@"JSDetailSectionHeaderView"];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 //        if (@available(iOS 11.0, *)) {
 //            _tableView.estimatedRowHeight = 0;

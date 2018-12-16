@@ -26,7 +26,13 @@ const static NSString *detail = @"/v1/content/detail";
 
 + (void) requestDetailWithArticleID:(NSInteger)articleId complent:(void(^)(BOOL isSuccess,NSDictionary *contentDic))complent {
     NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,detail];
-    NSDictionary *param = @{@"token":[JSAccountManager shareManager].accountToken,@"articleId":@(articleId)};
+    NSString *token = [JSAccountManager shareManager].accountToken;
+    NSDictionary *param;
+    if (token) {
+        param = @{@"token":[JSAccountManager shareManager].accountToken,@"articleId":@(articleId)};
+    } else {
+        param = @{@"articleId":@(articleId)};
+    }
     [self GET:url parameters:param complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
         if (complent) {
             complent(isSuccess,responseDict);
