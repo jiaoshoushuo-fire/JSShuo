@@ -233,7 +233,8 @@
     switch (self.alertType) {
         case JSALertTypeFirstLoginIn:{
             NSString *typeString = rewardModel.amountType == 1 ? @"金币":@"元";
-            self.titleLabel.text = [NSString stringWithFormat:@"%@%@",@(rewardModel.amount),typeString];
+            NSString *countString = [NSString stringWithFormat:@"%.02f",rewardModel.amount/100.0f];
+            self.titleLabel.text = [NSString stringWithFormat:@"%@%@",countString,typeString];
             self.subLabel.text = [NSString stringWithFormat:@"恭喜你获得%@红包",self.titleLabel.text];
         }break;
         case JSALertTypeSignIn:{
@@ -241,7 +242,8 @@
         }break;
         case JSALertTypeGold:{
             NSString *typeString = rewardModel.amountType == 1 ? @"金币":@"元";
-            self.subLabel.text = [NSString stringWithFormat:@"获得%@%@",@(rewardModel.amount),typeString];
+            NSString *countString = [NSString stringWithFormat:@"%.02f",rewardModel.amount/100.0f];
+            self.subLabel.text = [NSString stringWithFormat:@"获得%@%@",countString,typeString];
         }break;
             
         default:

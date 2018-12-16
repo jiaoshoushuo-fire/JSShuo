@@ -201,8 +201,8 @@
         [self.contentView addSubview:self.nickNameLabel];
         [self.contentView addSubview:self.timelabel];
         [self.contentView addSubview:self.contentLabel];
-        [self.contentView addSubview:self.likeButton];
-        [self.contentView addSubview:self.likeNumberLabel];
+//        [self.contentView addSubview:self.likeButton];
+//        [self.contentView addSubview:self.likeNumberLabel];
 //        [self.contentView addSubview:self.replyButton];
 //        [self.contentView addSubview:self.replayNumberLabel];
     }
