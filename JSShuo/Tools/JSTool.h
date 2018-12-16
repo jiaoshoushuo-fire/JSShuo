@@ -19,6 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 + (NSString *)compareCurrentTime:(NSString *)str;
+
++ (NSString *)timeFormatted:(int)totalSeconds;
 @end
 
 NS_ASSUME_NONNULL_END

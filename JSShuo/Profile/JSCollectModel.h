@@ -25,9 +25,14 @@ NS_ASSUME_NONNULL_BEGIN
 @interface JSCollectModel : MTLModel<MTLJSONSerializing>
 
 @property (nonatomic, assign)NSInteger collectId;
+@property (nonatomic, assign)NSInteger articleId;
 @property (nonatomic, assign)NSInteger userId;
 @property (nonatomic, assign)NSInteger type;
+@property (nonatomic, assign)NSInteger mediaType;
+@property (nonatomic, assign)NSInteger duration;
+@property (nonatomic, strong)NSArray *cover;
 @property (nonatomic, copy)NSString *title;
+@property (nonatomic, copy)NSString *summary;
 @property (nonatomic, copy)NSString *channel;
 @property (nonatomic, copy)NSString *videoUrl;
 @property (nonatomic, copy)NSString *createTime;
