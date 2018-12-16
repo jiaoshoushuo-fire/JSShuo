@@ -49,7 +49,7 @@
     [self setupWebView];
 //    [self setupNav];
     self.title = @"推荐详情";
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(reward:)];
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(reward:)];
     [self initSendCommentView];
     [self initTableView];
     self.tableView.hidden = YES;

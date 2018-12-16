@@ -195,21 +195,23 @@
     NSString *ID = [userInfo objectForKey:@"ID"];
     NSString *type = [userInfo objectForKey:@"type"];
     
-    if([type isEqualToString:@"0"]) {
-        JSArticleDetailViewController *vc = [JSArticleDetailViewController new];
-        vc.articleId = [NSNumber numberWithString:ID];
-        vc.hidesBottomBarWhenPushed = YES;
-        RTRootNavigationController *nav = self.mainViewController.viewControllers[0];
-        [nav pushViewController:vc animated:YES complete:nil];
-    } else if ([type isEqualToString:@"1"]) {
-        JSVideoDetailViewController *vc = [JSVideoDetailViewController new];
-        vc.urlStr = [userInfo objectForKey:@"urlStr"];
-        vc.videoTitle = [userInfo objectForKey:@"videoTitle"];
-        vc.articleId = [userInfo objectForKey:@"ID"];
-        vc.hidesBottomBarWhenPushed = YES;
-        RTRootNavigationController *nav = self.mainViewController.viewControllers[0];
-        [nav pushViewController:vc animated:YES complete:nil];
-    }
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if([type isEqualToString:@"0"]) {
+            JSArticleDetailViewController *vc = [JSArticleDetailViewController new];
+            vc.articleId = [NSNumber numberWithString:ID];
+            vc.hidesBottomBarWhenPushed = YES;
+            RTRootNavigationController *nav = self.mainViewController.viewControllers[0];
+            [nav pushViewController:vc animated:YES complete:nil];
+        } else if ([type isEqualToString:@"1"]) {
+            JSVideoDetailViewController *vc = [JSVideoDetailViewController new];
+            vc.urlStr = [userInfo objectForKey:@"urlStr"];
+            vc.videoTitle = [userInfo objectForKey:@"videoTitle"];
+            vc.articleId = [userInfo objectForKey:@"ID"];
+            vc.hidesBottomBarWhenPushed = YES;
+            RTRootNavigationController *nav = self.mainViewController.viewControllers[0];
+            [nav pushViewController:vc animated:YES complete:nil];
+        }
+    });
 }
 
 
