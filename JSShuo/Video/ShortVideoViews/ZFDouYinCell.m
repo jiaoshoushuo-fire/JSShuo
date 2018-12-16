@@ -18,6 +18,7 @@
 #import "ZFUtilities.h"
 #import "JSNetworkManager+Login.h"
 #import "ZFLoadingView.h"
+#import "JSBaseViewController.h"
 
 @interface ZFDouYinCell ()
 
@@ -50,25 +51,36 @@
         [self.likeBtn bk_addEventHandler:^(UIButton *sender) {
             @strongify(self)
             sender.userInteractionEnabled = NO;
-            if (sender.selected) { // 取消点赞
-                [JSNetworkManager deletePraiseWithArticleID:self.data.articleId.integerValue complement:^(BOOL isSuccess, NSDictionary * _Nonnull contentDic) {
-                    NSLog(@"取消点赞 -- %@",contentDic);
-                    sender.userInteractionEnabled = YES;
-                    if (isSuccess) {
-                        sender.selected = NO;
+            [JSAccountManager checkLoginStatusComplement:^(BOOL isLogin) {
+                if (isLogin) {
+                    if (sender.selected) { // 取消收藏
+//                        addCollectUrl
+                        [JSNetworkManager requestDeleateCollectWithArticleId:self.data.articleId.integerValue complement:^(BOOL isSuccess, NSDictionary * _Nonnull contentDict) {
+                            sender.userInteractionEnabled = YES;
+                            if (isSuccess) {
+                                sender.selected = NO;
+                            }
+                        }];
+                    } else { // 取消收藏
+                        NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefaultsKeyAccessToken];
+                        NSDictionary *params = @{@"token":token,@"articleId":self.data.articleId};
+                        [JSNetworkManager addCollect:params complement:^(BOOL isSuccess, NSDictionary * _Nonnull contentDic) {
+                            NSLog(@"点赞 -- %@",contentDic);
+                            sender.userInteractionEnabled = YES;
+                            if (isSuccess) {
+                                sender.selected = YES;
+                            }
+                        }];
+//                        [JSNetworkManager addPraise:params complement:^(BOOL isSuccess, NSDictionary * _Nonnull contentDic) {
+//                            NSLog(@"点赞 -- %@",contentDic);
+//                            sender.userInteractionEnabled = YES;
+//                            if (isSuccess) {
+//                                sender.selected = YES;
+//                            }
+//                        }];
                     }
-                }];
-            } else { // 点赞
-                NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefaultsKeyAccessToken];
-                NSDictionary *params = @{@"token":token,@"articleId":self.data.articleId};
-                [JSNetworkManager addPraise:params complement:^(BOOL isSuccess, NSDictionary * _Nonnull contentDic) {
-                    NSLog(@"点赞 -- %@",contentDic);
-                    sender.userInteractionEnabled = YES;
-                    if (isSuccess) {
-                        sender.selected = YES;
-                    }
-                }];
-            }
+                }
+            }];
             if (self.delegate && [self.delegate respondsToSelector:@selector(didSelectedLikeButtonWithModel:)]) {
                 [self.delegate didSelectedLikeButtonWithModel:self.data];
             }
@@ -76,9 +88,14 @@
         
         [self.commentBtn bk_addEventHandler:^(id sender) {
             @strongify(self)
-            if (self.delegate && [self.delegate respondsToSelector:@selector(didSelectedCommentButtonWithModel:)]) {
-                [self.delegate didSelectedCommentButtonWithModel:self.data];
-            }
+            [JSAccountManager checkLoginStatusComplement:^(BOOL isLogin) {
+                if (isLogin) {
+                    if (self.delegate && [self.delegate respondsToSelector:@selector(didSelectedCommentButtonWithModel:)]) {
+                        [self.delegate didSelectedCommentButtonWithModel:self.data];
+                    }
+                }
+            }];
+            
         } forControlEvents:UIControlEventTouchUpInside];
         
         [self.shareBtn bk_addEventHandler:^(id sender) {

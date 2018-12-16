@@ -45,7 +45,7 @@
             make.edges.equalTo(self.contentView);
         }];
         [self.timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.size.mas_equalTo(CGSizeMake(60, 20));
+            make.size.mas_equalTo(CGSizeMake(40, 20));
             make.left.bottom.equalTo(self.contentView);
             
         }];
@@ -54,9 +54,10 @@
 }
 - (void)setModel:(JSCollectModel *)model{
     _model = model;
-    self.imageView.backgroundColor = [UIColor redColor];
-    self.timeLabel.text = model.createTime;
+    [self.imageView setImageWithURL:[NSURL URLWithString:model.cover.firstObject] placeholder:[UIImage imageNamed:@""]];
+    self.timeLabel.text = [NSString stringWithFormat:@"%@",[JSTool timeFormatted:model.duration]];
 }
+
 
 
 @end
@@ -131,13 +132,7 @@
                 [self.dataArray addObject:model];
             }
             
-            //            for (int i=0; i<10; i++) {
-            //                JSCollectModel *model = [[JSCollectModel alloc]init];
-            //                model.title = @"这是弄啥这是弄啥这是弄啥这是弄啥这是弄啥";
-            //                model.channel = @"这是弄啥这是弄啥这是弄啥这是弄啥这是弄啥这是弄啥这是弄啥这是弄啥这是弄啥这是弄啥这是弄啥这是弄啥这是弄啥这是弄啥这是弄啥这是弄啥这是弄啥这是弄啥这是弄啥这是弄啥这是弄啥这是弄啥这是弄啥这是弄啥这是弄啥这是弄啥这是弄啥这是弄啥这是弄啥这是弄啥这是弄啥这是弄啥这是弄啥这是弄啥这是弄啥这是弄啥这是弄啥这是弄啥这是弄啥这是弄啥这是弄啥这是弄啥这是弄啥这是弄啥这是弄啥这是弄啥这是弄啥这是弄啥这是弄啥这是弄啥";
-            //                model.publishTime = @"1018-11-11 11:11:11";
-            //                [self.dataArray addObject:model];
-            //            }
+           
             if (listArray.count < 10) {
                 [self.collectionView.mj_footer endRefreshingWithNoMoreData];
             }
