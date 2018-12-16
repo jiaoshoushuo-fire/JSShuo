@@ -16,7 +16,7 @@
              @"userMessageId" : @"userMessageId",
              @"createTime" : @"createTime",
              @"content" : @"content",
-             @"nickname" : @"nickname",
+             @"title" : @"title",
              @"type" : @"type",
              @"isRead" : @"isRead"
              };

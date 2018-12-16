@@ -21,11 +21,13 @@
 #import "UINavigationController+FDFullscreenPopGesture.h"
 #import <MJRefresh/MJRefresh.h>
 #import "JSNetworkManager+ShortVideo.h"
+#import "JSCommentView.h"
+#import "JSShareManager.h"
 
 
 static NSString *kIdentifier = @"ZFDouYinCell";
 
-@interface JSShortVideoViewController () <UITableViewDelegate,UITableViewDataSource>
+@interface JSShortVideoViewController () <UITableViewDelegate,UITableViewDataSource,ZFDouYinCellDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) ZFPlayerController *player;
 @property (nonatomic, strong) ZFDouYinControlView *controlView;
@@ -151,6 +153,7 @@ static NSString *kIdentifier = @"ZFDouYinCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ZFDouYinCell *cell = [tableView dequeueReusableCellWithIdentifier:kIdentifier];
     cell.data = self.dataSource[indexPath.row];
+    cell.delegate = self;
     return cell;
 }
 
@@ -238,6 +241,22 @@ static NSString *kIdentifier = @"ZFDouYinCell";
     return _urls;
 }
 
-
+#pragma mark - ZFDouYinCellDelegate
+- (void)didSelectedLikeButtonWithModel:(JSShortVideoModel *)model{
+    
+}
+- (void)didSelectedShareButtonWithModel:(JSShortVideoModel *)model{
+    [JSShareManager shareWithTitle:@"叫兽说" Text:model.Description Image:[UIImage imageNamed:@"js_share_image"] Url:model.videoUrl complement:^(BOOL isSuccess) {
+        if (isSuccess) {
+            [self showAutoDismissTextAlert:@"分享成功"];
+        }else{
+            [self showAutoDismissTextAlert:@"分享失败"];
+        }
+    }];
+}
+- (void)didSelectedCommentButtonWithModel:(JSShortVideoModel *)model{
+    
+    [JSCommentView showCommentViewWithSuperView:[UIApplication sharedApplication].keyWindow authModel:model];
+}
 
 @end

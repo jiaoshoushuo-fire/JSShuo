@@ -258,16 +258,16 @@
     }else if ([scheme isEqualToString:@"QQ60D1879"] || [scheme isEqualToString:@"tencent101521529"]) {
         return [JSAccountManager handleQQURL:url];
     }else if ([scheme isEqualToString:@"jiaoshoushuo"]){
-        //跳整点抢红包
-        JSMainViewController *mainViewController = [AppDelegate instance].mainViewController;
-        [mainViewController switchToViewControllerAtIndex:3];
-        
-        RTRootNavigationController *currentNav = mainViewController.selectedViewController;
-        UIViewController *currentVC = currentNav.rt_topViewController;
-        
-        JSRedPacketViewController *redVC = [[JSRedPacketViewController alloc]init];
-        redVC.hidesBottomBarWhenPushed = YES;
-        [currentVC.rt_navigationController pushViewController:redVC animated:YES complete:nil];
+//        //跳整点抢红包
+//        JSMainViewController *mainViewController = [AppDelegate instance].mainViewController;
+//        [mainViewController switchToViewControllerAtIndex:3];
+//        
+//        RTRootNavigationController *currentNav = mainViewController.selectedViewController;
+//        UIViewController *currentVC = currentNav.rt_topViewController;
+//        
+//        JSRedPacketViewController *redVC = [[JSRedPacketViewController alloc]init];
+//        redVC.hidesBottomBarWhenPushed = YES;
+//        [currentVC.rt_navigationController pushViewController:redVC animated:YES complete:nil];
         
         return YES;
     }

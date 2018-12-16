@@ -13,6 +13,7 @@
 @interface JSMyCollectShortVideoCell : UICollectionViewCell
 @property (nonatomic, strong)UIImageView *imageView;
 @property (nonatomic, strong)UILabel *timeLabel;
+@property (nonatomic, strong)JSCollectModel *model;
 @end
 
 @implementation JSMyCollectShortVideoCell
@@ -20,6 +21,7 @@
 - (UIImageView *)imageView{
     if (!_imageView) {
         _imageView = [[UIImageView alloc]init];
+        _imageView.backgroundColor = [UIColor randomColor];
     }
     return _imageView;
 }
@@ -43,12 +45,17 @@
             make.edges.equalTo(self.contentView);
         }];
         [self.timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.size.mas_equalTo(CGSizeMake(40, 20));
+            make.size.mas_equalTo(CGSizeMake(60, 20));
             make.left.bottom.equalTo(self.contentView);
             
         }];
     }
     return self;
+}
+- (void)setModel:(JSCollectModel *)model{
+    _model = model;
+    self.imageView.backgroundColor = [UIColor redColor];
+    self.timeLabel.text = model.createTime;
 }
 
 
@@ -83,9 +90,19 @@
         layout.minimumInteritemSpacing = 0;
         layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
         _collectionView = [[UICollectionView alloc]initWithFrame:self.view.bounds collectionViewLayout:layout];
+        _collectionView.backgroundColor = [UIColor whiteColor];
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
         [_collectionView registerClass:[JSMyCollectShortVideoCell class] forCellWithReuseIdentifier:@"JSMyCollectShortVideoCell"];
+        @weakify(self)
+        _collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+            @strongify(self)
+            [self refreshDataWithHeaderRefresh:YES];
+        }];
+        _collectionView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+            @strongify(self)
+            [self refreshDataWithHeaderRefresh:NO];
+        }];
     }
     return _collectionView;
 }
@@ -168,6 +185,8 @@
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     JSMyCollectShortVideoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"JSMyCollectShortVideoCell" forIndexPath:indexPath];
+    JSCollectModel *model = self.dataArray[indexPath.row];
+    cell.model = model;
     return cell;
 }
 

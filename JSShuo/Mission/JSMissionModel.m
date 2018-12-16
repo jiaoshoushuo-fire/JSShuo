@@ -55,3 +55,18 @@
              };
 }
 @end
+
+@implementation JSMissSubModel
+
+- (instancetype)initWithModel:(JSMissionModel *)model{
+    self = [super init];
+    if (self) {
+        self.misDescription = model.misDescription;
+        self.isDone = model.isDone;
+        self.taskId = model.taskId;
+        self.taskNo = model.taskNo;
+    }
+    return self;
+}
+
+@end

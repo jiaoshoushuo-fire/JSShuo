@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy)NSString *content;
 @property (nonatomic, assign)NSInteger type;
 @property (nonatomic, assign)BOOL isRead;
+@property (nonatomic, copy)NSString *title;
 @end
 
 @interface JSMessageListModel : MTLModel <MTLJSONSerializing>

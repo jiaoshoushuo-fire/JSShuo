@@ -90,7 +90,7 @@ typedef  NS_ENUM(NSInteger, JSRequestSecurityCodeType){
 + (void)questRecvCommentListWith:(NSInteger)pageNumber complement:(void(^)(BOOL isSuccess,NSDictionary *contentDict))complemnt;
 
 //清空评论
-+ (void)clearCommentComplement:(void(^)(BOOL isSuccess,NSDictionary *contentDict))complement;
++ (void)clearCommentWithIs:(NSString *)ids Complement:(void(^)(BOOL isSuccess,NSDictionary *contentDict))complement;
 
 // 添加收藏
 + (void) addCollect:(NSDictionary *)params complement:(void(^)(BOOL isSuccess, NSDictionary *contentDic))complement;
@@ -112,6 +112,9 @@ typedef  NS_ENUM(NSInteger, JSRequestSecurityCodeType){
 
 //邀请好友
 + (void)requestCreateApprenticeWithInvitateCode:(NSString *)invitate complement:(void(^)(BOOL isSuccess, NSDictionary *contentDict))complement;
+
+//分享成功
++ (void)requestShareSuccessWithUrl:(NSString *)shareUrl complement:(void(^)(BOOL isSuccess, NSDictionary *contentDict))complement;
 @end
 
 NS_ASSUME_NONNULL_END

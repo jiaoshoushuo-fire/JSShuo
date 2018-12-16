@@ -11,6 +11,7 @@
 #import "JSOpenRedPackCell.h"
 #import "JSNetworkManager+Mission.h"
 #import "JSActivityModel.h"
+#import "JSAlertView.h"
 
 @interface JSCountDownView : UIView
 @property (nonatomic, strong)UILabel *titleLabel;
@@ -417,8 +418,11 @@
         if (isSuccess) {
             NSDictionary *openedDict = contentDict[@"reward"];
             NSError *error = nil;
-            JSActivityOpenPackageModel *model = [MTLJSONAdapter modelOfClass:[JSActivityOpenPackageModel class] fromJSONDictionary:openedDict error:&error];
-            [self showAutoDismissTextAlert:@(model.amount).stringValue];
+            JSMissionRewardModel *model = [MTLJSONAdapter modelOfClass:[JSMissionRewardModel class] fromJSONDictionary:openedDict error:&error];
+            [JSAlertView showAlertViewWithType:JSALertTypeFirstLoginIn rewardModel:model superView:self.navigationController.view handle:^{
+                
+            }];
+//            [self showAutoDismissTextAlert:@(model.amount).stringValue];
         }
     }];
 }

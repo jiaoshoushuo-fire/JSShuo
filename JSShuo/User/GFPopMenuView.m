@@ -611,17 +611,19 @@ static const NSTimeInterval kSelectDuration = 0.25f;
         [items addObject:item];
     }
     
-    {
-        UIImage *img = [UIImage imageNamed:@"icon_l_wechat_timeline_normal"];
-        GFPopMenuItem *item = [GFPopMenuItem menuItemWithImage:img title:@"朋友圈"];
-        item.positionIndex = 2;
-        [items addObject:item];
-    }
-    {
-        UIImage *img = [UIImage imageNamed:@"icon_l_sinaweibo_normal"];
-        GFPopMenuItem *item = [GFPopMenuItem menuItemWithImage:img title:@"短信"];
-        item.positionIndex = 3;
-        [items addObject:item];
+    if ([model intValue] == 1) {
+        {
+            UIImage *img = [UIImage imageNamed:@"icon_l_wechat_timeline_normal"];
+            GFPopMenuItem *item = [GFPopMenuItem menuItemWithImage:img title:@"朋友圈"];
+            item.positionIndex = 2;
+            [items addObject:item];
+        }
+        {
+            UIImage *img = [UIImage imageNamed:@"icon_l_sinaweibo_normal"];
+            GFPopMenuItem *item = [GFPopMenuItem menuItemWithImage:img title:@"短信"];
+            item.positionIndex = 3;
+            [items addObject:item];
+        }
     }
     
     GFPopMenuView *popMenuView = [[GFPopMenuView alloc] initWithFrame:view.bounds];

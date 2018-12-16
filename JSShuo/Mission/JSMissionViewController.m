@@ -13,6 +13,14 @@
 #import "JSMissionCell.h"
 #import "JSRedPacketViewController.h"
 #import "JSAlertView.h"
+#import "AppDelegate.h"
+#import "JSAccountManager+Wechat.h"
+#import "JSTool.h"
+#import "JSPerfectUserInfoViewController.h"
+#import "JSInvitationViewController.h"
+#import "JSShopViewController.h"
+#import "JSShareManager.h"
+#import "JSSettingViewController.h"
 
 @interface JSMissionTableHeaderView : UITableViewHeaderFooterView
 @property (nonatomic, strong)UILabel *titleLabel;
@@ -377,7 +385,7 @@
 @end
 
 
-@interface JSMissionViewController ()<YUFoldingTableViewDelegate>
+@interface JSMissionViewController ()<YUFoldingTableViewDelegate,JSMissionSubCellDelegate>
 @property (nonatomic, strong)YUFoldingTableView *tableView;
 @property (nonatomic, strong)JSMissionViewHeader *headerView;
 
@@ -480,15 +488,7 @@
         if (isSuccess) {
             //弹框
             NSDictionary *rewardDict = contentDict[@"reward"];
-            JSMissionRewardModel *rewardModel = [MTLJSONAdapter modelOfClass:[JSMissionRewardModel class] fromJSONDictionary:rewardDict error:nil];
-            if (rewardModel.rewardCode == 0) {//成功
-                //弹框
-                [JSAlertView showAlertViewWithType:JSALertTypeGold rewardModel:rewardModel superView:self.navigationController.view handle:^{
-                    
-                }];
-//                [self showAutoDismissTextAlert:@"签到成功"];
-                
-            }
+            [JSTool showAlertType:JSALertTypeGold withRewardDictiony:rewardDict];
             [JSNetworkManager requestMissonRulComplement:^(BOOL isSuccess, NSDictionary *contentDict) {
                 if (isSuccess) {
                     NSArray *rulesArray = contentDict[@"rules"];
@@ -539,12 +539,12 @@
 - (CGFloat )yuFoldingTableView:(YUFoldingTableView *)yuTableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
-        if ([self.newTaskList[indexPath.row] isKindOfClass:[NSString class]]){
+        if ([self.newTaskList[indexPath.row] isKindOfClass:[JSMissSubModel class]]){
             JSMissionModel *model = self.newTaskList[indexPath.row-1];
             return [JSMissionSubCell heightForString:model.misDescription];
         }
     }else{
-        if ([self.dayTaskList[indexPath.row] isKindOfClass:[NSString class]]) {
+        if ([self.dayTaskList[indexPath.row] isKindOfClass:[JSMissSubModel class]]) {
             JSMissionModel *model = self.dayTaskList[indexPath.row-1];
             return [JSMissionSubCell heightForString:model.misDescription];
         }
@@ -561,9 +561,10 @@
             subCell.model = model;
             cell = subCell;
         }else{
-            NSString *text = self.newTaskList[indexPath.row];
+            JSMissSubModel *subModel = self.newTaskList[indexPath.row];
             JSMissionSubCell *subCell = [yuTableView dequeueReusableCellWithIdentifier:@"JSMissionSubCell" forIndexPath:indexPath];
-            subCell.subText = text;
+            subCell.subModel = subModel;
+            subCell.delegate = self;
             cell = subCell;
         }
     }else if (indexPath.section == 1){
@@ -573,9 +574,10 @@
             subCell.model = model;
             cell = subCell;
         }else{
-            NSString *text = self.dayTaskList[indexPath.row];
+            JSMissSubModel *subModel = self.dayTaskList[indexPath.row];
             JSMissionSubCell *subCell = [yuTableView dequeueReusableCellWithIdentifier:@"JSMissionSubCell" forIndexPath:indexPath];
-            subCell.subText = text;
+            subCell.subModel = subModel;
+            subCell.delegate = self;
             cell = subCell;
         }
     }
@@ -607,7 +609,8 @@
                 
             }else{
                 NSIndexPath *path =[NSIndexPath indexPathForRow:indexPath.row+1 inSection:indexPath.section];
-                [self.newTaskList insertObject:model.misDescription atIndex:indexPath.row+1];
+                JSMissSubModel *subModel = [[JSMissSubModel alloc]initWithModel:model];
+                [self.newTaskList insertObject:subModel atIndex:indexPath.row+1];
                 model.isOpen =YES;
                 
                 [yuTableView beginUpdates];
@@ -631,8 +634,9 @@
                 [yuTableView endUpdates];
                 
             }else{
+                JSMissSubModel *subModel = [[JSMissSubModel alloc]initWithModel:model];
                 NSIndexPath *path =[NSIndexPath indexPathForRow:indexPath.row+1 inSection:indexPath.section];
-                [self.dayTaskList insertObject:model.misDescription atIndex:indexPath.row+1];
+                [self.dayTaskList insertObject:subModel atIndex:indexPath.row+1];
                 model.isOpen =YES;
                 
                 [yuTableView beginUpdates];
@@ -667,7 +671,111 @@
     return [UIFont boldSystemFontOfSize:16];
 }
 
-
+#pragma mark JSMissionSubCellDelegate
+- (void)didSelectedGoFinishedCellWithModel:(JSMissSubModel *)subModel{
+    if ([subModel.taskNo isEqualToString:@"T1"]) {
+        [JSAccountManager wechatAuthorizeFromLogin:NO completion:^(BOOL success) {
+            if (success) {
+                NSLog(@"绑定微信成功");
+            }
+        }];
+    }else if ([subModel.taskNo isEqualToString:@"T2"]){
+        [JSTool appStoreComent];
+        [JSNetworkManager requestTaskDoneWithNo:subModel.taskNo complement:^(BOOL isSuccess, NSDictionary * _Nonnull contentDict) {
+            if (isSuccess) {
+                
+            }
+        }];
+        
+    }else if ([subModel.taskNo isEqualToString:@"T3"]){//完善资料
+        JSMainViewController *mainVC = [AppDelegate instance].mainViewController;
+        [mainVC switchToViewControllerAtIndex:4];
+        
+        RTRootNavigationController *currentNav = mainVC.selectedViewController;
+        
+        
+        JSPerfectUserInfoViewController *perfectVC = [[JSPerfectUserInfoViewController alloc]init];
+        perfectVC.hidesBottomBarWhenPushed = YES;
+        [currentNav.rt_topViewController.rt_navigationController pushViewController:perfectVC animated:YES complete:nil];
+        
+        
+    }else if ([subModel.taskNo isEqualToString:@"T4"]){//邀请好友
+        JSMainViewController *mainVC = [AppDelegate instance].mainViewController;
+        [mainVC switchToViewControllerAtIndex:4];
+        
+        RTRootNavigationController *currentNav = mainVC.selectedViewController;
+        
+        
+        JSInvitationViewController *perfectVC = [[JSInvitationViewController alloc]init];
+        perfectVC.hidesBottomBarWhenPushed = YES;
+        [currentNav.rt_topViewController.rt_navigationController pushViewController:perfectVC animated:YES complete:nil];
+        
+    }else if ([subModel.taskNo isEqualToString:@"T5"]){//无
+        
+    }else if ([subModel.taskNo isEqualToString:@"T6"]){//商城页
+        JSMainViewController *mainVC = [AppDelegate instance].mainViewController;
+        [mainVC switchToViewControllerAtIndex:4];
+        
+        RTRootNavigationController *currentNav = mainVC.selectedViewController;
+        
+        
+        JSShopViewController *perfectVC = [[JSShopViewController alloc]init];
+        perfectVC.hidesBottomBarWhenPushed = YES;
+        [currentNav.rt_topViewController.rt_navigationController pushViewController:perfectVC animated:YES complete:nil];
+        
+    }else if ([subModel.taskNo isEqualToString:@"T7"]){
+        JSMainViewController *mainVC = [AppDelegate instance].mainViewController;
+        [mainVC switchToViewControllerAtIndex:0];
+    }else if ([subModel.taskNo isEqualToString:@"T8"]){//短视频
+        JSMainViewController *mainVC = [AppDelegate instance].mainViewController;
+        [mainVC switchToViewControllerAtIndex:1];
+        
+    }else if ([subModel.taskNo isEqualToString:@"T9"]){
+        JSMainViewController *mainVC = [AppDelegate instance].mainViewController;
+        [mainVC switchToViewControllerAtIndex:0];
+    }else if ([subModel.taskNo isEqualToString:@"T10"]){//邀请好友-唤醒好友
+        
+        JSMainViewController *mainVC = [AppDelegate instance].mainViewController;
+        [mainVC switchToViewControllerAtIndex:4];
+        
+        RTRootNavigationController *currentNav = mainVC.selectedViewController;
+        
+        
+        JSInvitationViewController *perfectVC = [[JSInvitationViewController alloc]init];
+        perfectVC.hidesBottomBarWhenPushed = YES;
+        [currentNav.rt_topViewController.rt_navigationController pushViewController:perfectVC animated:YES complete:nil];
+        
+    }else if ([subModel.taskNo isEqualToString:@"T11"]){
+        JSMainViewController *mainVC = [AppDelegate instance].mainViewController;
+        [mainVC switchToViewControllerAtIndex:0];
+    }else if ([subModel.taskNo isEqualToString:@"T12"]){//分享
+        [JSShareManager shareWithTitle:@"叫兽说" Text:@"红包大放送，运气好最高能领到188注册红包+88零钱的邀请红包。" Image:[UIImage imageNamed:@"js_share_image"] Url:kShareUrl QQImageURL:kShareQQImage_1 shareType:JSShareManagerTypeQQWeChat complement:^(BOOL isSuccess) {
+            if (isSuccess) {
+                [self showAutoDismissTextAlert:@"分享成功"];
+            }else{
+                [self showAutoDismissTextAlert:@"分享失败"];
+            }
+        }];
+        
+    }else if ([subModel.taskNo isEqualToString:@"T13"]){
+        JSMainViewController *mainVC = [AppDelegate instance].mainViewController;
+        [mainVC switchToViewControllerAtIndex:0];
+    }else if ([subModel.taskNo isEqualToString:@"T14"]){//设置
+        JSMainViewController *mainVC = [AppDelegate instance].mainViewController;
+        [mainVC switchToViewControllerAtIndex:4];
+        
+        RTRootNavigationController *currentNav = mainVC.selectedViewController;
+        
+        
+        JSSettingViewController *perfectVC = [[JSSettingViewController alloc]init];
+        perfectVC.hidesBottomBarWhenPushed = YES;
+        [currentNav.rt_topViewController.rt_navigationController pushViewController:perfectVC animated:YES complete:nil];
+        
+    }else if ([subModel.taskNo isEqualToString:@"T15"]){
+        JSMainViewController *mainVC = [AppDelegate instance].mainViewController;
+        [mainVC switchToViewControllerAtIndex:0];
+    }
+}
 
 
 @end

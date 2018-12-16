@@ -458,7 +458,7 @@
         
         [_shareButton bk_addEventHandler:^(id sender) {
             
-            [JSShareManager shareWithTitle:@"测试title" Text:@"测试text" Image:[UIImage imageNamed:@"js_profile_mywallet_share"] Url:@"https://www.baidu.com/" complement:^(BOOL isSuccess) {
+            [JSShareManager shareWithTitle:@"叫兽说" Text:@"我在这里赚了好多零花钱了，也分享给你。运气好的话，注册就有188注册红包加88邀请红包哦。" Image:[UIImage imageNamed:@"js_share_image"] Url:kShareUrl QQImageURL:kShareQQImage_1 shareType:JSShareManagerTypeQQWeChat complement:^(BOOL isSuccess) {
                 if (isSuccess) {
                     [self showAutoDismissTextAlert:@"分享成功"];
                 }else{

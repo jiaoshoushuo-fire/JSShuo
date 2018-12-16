@@ -9,6 +9,7 @@
 #import "JSMyCollectArticleViewController.h"
 #import "JSNetworkManager+Login.h"
 #import "JSCollectModel.h"
+#import "JSArticleDetailViewController.h"
 
 
 
@@ -267,11 +268,19 @@
     JSCollectModel *model = self.dataArray[indexPath.row];
     cell.model = model;
     cell.delegate = self;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     JSCollectModel *model = self.dataArray[indexPath.row];
     return [JSMyCollectArticleCell heightForRowWithModel:model];
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    JSArticleDetailViewController *vc = [[JSArticleDetailViewController alloc]init];
+    JSCollectModel *model = self.dataArray[indexPath.row];
+    vc.articleId = @(model.collectId);
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.rt_navigationController pushViewController:vc animated:YES complete:nil];
 }
 
 #pragma mark - JSMyCollectArticleCellDelegate

@@ -8,11 +8,31 @@
 
 #import "JSNetworkManager+Comment.h"
 #import "JSAccountManager.h"
+#import "JSCommentView.h"
 
 const static NSString *commentList = @"/v1/content/commentList";
 const static NSString *detail = @"/v1/content/detail";
 
 @implementation JSNetworkManager (Comment)
+
++ (void)requestVideoCommentDataWithArticleId:(NSInteger )articleId pageNumber:(NSInteger)pageNumber complement:(void(^)(BOOL isSuccess,NSArray *commentList,NSInteger totolNumber))complement{
+    NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,commentList];
+    NSDictionary *dict = @{@"articleId":@(articleId),@"pageNum":@(pageNumber),@"pageSize":@(10)};
+    [self GET:url parameters:dict complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
+        if (isSuccess) {
+            
+            NSArray *listArray = responseDict[@"list"];
+            NSInteger totolNumber = [responseDict[@"total"] integerValue];
+            NSError *error = nil;
+            NSArray *modelList = [MTLJSONAdapter modelsOfClass:[JSCommentModel class] fromJSONArray:listArray error:&error];
+            
+            if (complement) {
+                complement(isSuccess,modelList,totolNumber);
+            }
+        }
+    }];
+    
+}
 
 + (void) requestCommentListWithParams:(NSDictionary *)params complent:(void(^)(BOOL isSuccess, NSNumber *totalPage,NSArray *modelsArray))complent  {
     NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,commentList];

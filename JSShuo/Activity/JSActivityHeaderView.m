@@ -18,7 +18,7 @@
 - (UIImageView *)imageView{
     if (!_imageView) {
         _imageView = [[UIImageView alloc]init];
-        _imageView.backgroundColor = [UIColor cyanColor];
+        _imageView.image = [UIImage imageNamed:@"js_activity_zhengdian"];
         _imageView.userInteractionEnabled = YES;
     }
     return _imageView;

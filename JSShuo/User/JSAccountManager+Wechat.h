@@ -33,6 +33,10 @@ static NSString *wechat_APP_SECRET = @"67a6c908c17e7861442f3560c9434c09";
                     type:(GFShareType)type
                  handler:(ShareResponseHandler)handler;
 
++ (BOOL)shareTextToWechat:(NSString *)text
+                    type:(GFShareType)type
+                 handler:(ShareResponseHandler)handler;
+
 //+ (BOOL)shareImageToWechat:(UIImage *)image
 //                     title:(NSString *)title
 //               description:(NSString *)description

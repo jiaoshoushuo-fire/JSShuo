@@ -112,16 +112,10 @@
                         //这里需要弹出奖励alert 现在接口没有model
 
                         NSDictionary *rewardDict = contentDict[@"reward"];
-                        if (rewardDict) {
-                            JSMissionRewardModel *rewardModel = [MTLJSONAdapter modelOfClass:[JSMissionRewardModel class] fromJSONDictionary:rewardDict error:nil];
-                            if (rewardModel.rewardCode == 0) {
-                                [JSAlertView showAlertViewWithType:JSALertTypeFirstLoginIn rewardModel:rewardModel superView:[UIApplication sharedApplication].keyWindow handle:^{
-                                    
-                                }];
-                            }
-                        }
-                        [self showAutoDismissTextAlert:@"拜师成功"];
-                        [self performSelector:@selector(dismissSelfVC) withObject:nil afterDelay:2];
+
+                        [JSTool showAlertType:JSALertTypeFirstLoginIn withRewardDictiony:rewardDict];
+                        
+//                        [self performSelector:@selector(dismissSelfVC) withObject:nil afterDelay:2];
                     }
                 }];
             }else{

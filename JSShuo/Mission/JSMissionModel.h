@@ -44,6 +44,16 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign)NSInteger type;
 
 @property (nonatomic, assign)BOOL isOpen;
+@end
+
+@interface JSMissSubModel : NSObject
+
+@property (nonatomic, copy)NSString *misDescription;
+@property (nonatomic, assign)NSInteger isDone;
+@property (nonatomic, assign)NSInteger taskId;
+@property (nonatomic, copy)NSString *taskNo;
+
+- (instancetype)initWithModel:(JSMissionModel *)model;
 
 @end
 

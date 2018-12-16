@@ -29,6 +29,13 @@ static NSString *QQ_App_Key = @"f90c3228d41f7a4592822cf581ec5df0";
                 type:(GFShareType)type
              handler:(ShareResponseHandler)handler;
 
+
++ (BOOL)shareWebImageToQQ:(NSString *)url
+                    title:(NSString *)title
+              description:(NSString *)description
+                     type:(GFShareType)type
+                  handler:(ShareResponseHandler)handler;
+
 - (void)handleSendMessageToQQResp:(id)resp;
 
 @end

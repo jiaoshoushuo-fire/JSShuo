@@ -39,6 +39,7 @@ const static NSString *deleateCollectUrl = @"/v1/user/collect/delete";
 const static NSString *apprenticeListUrl = @"/v1/user/apprentice/list";
 const static NSString *messageClearUrl = @"/v1/user/message/clear";
 const static NSString *createApprenticeUrl = @"/v1/user/apprentice/create";
+const static NSString *shareSuccessUrl = @"/v1/user/share/success";
 
 @implementation JSNetworkManager (Login)
 
@@ -67,14 +68,8 @@ const static NSString *createApprenticeUrl = @"/v1/user/apprentice/create";
             [JSAccountManager refreshAccountToken:token];
             
             NSDictionary *rewardDict = responseDict[@"reward"];
-            if (rewardDict) {
-                JSMissionRewardModel *rewardModel = [MTLJSONAdapter modelOfClass:[JSMissionRewardModel class] fromJSONDictionary:rewardDict error:nil];
-                if (rewardModel.rewardCode == 0) {
-                    [JSAlertView showAlertViewWithType:JSALertTypeFirstLoginIn rewardModel:rewardModel superView:[UIApplication sharedApplication].keyWindow handle:^{
-                        
-                    }];
-                }
-            }
+
+            [JSTool showAlertType:JSALertTypeFirstLoginIn withRewardDictiony:rewardDict];
             
         }
         
@@ -106,6 +101,10 @@ const static NSString *createApprenticeUrl = @"/v1/user/apprentice/create";
     
     [self POST:url parameters:param complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
         if (complement) {
+            
+            NSDictionary *rewardDict = responseDict[@"reward"];
+
+            [JSTool showAlertType:JSALertTypeGold withRewardDictiony:rewardDict];
             complement(isSuccess,responseDict);
         }
     }];
@@ -341,6 +340,8 @@ const static NSString *createApprenticeUrl = @"/v1/user/apprentice/create";
     [self POST:url parameters:params complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
         if (complement) {
             complement(isSuccess,responseDict);
+            NSDictionary *rewardDict = responseDict[@"reward"];
+            [JSTool showAlertType:JSALertTypeGold withRewardDictiony:rewardDict];
         }
     }];
 }
@@ -350,6 +351,8 @@ const static NSString *createApprenticeUrl = @"/v1/user/apprentice/create";
     [self POST:url parameters:params complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
         if (complement) {
             complement(isSuccess,responseDict);
+            NSDictionary *rewaredDict = responseDict[@"reward"];
+            [JSTool showAlertType:JSALertTypeGold withRewardDictiony:rewaredDict];
         }
     }];
 }
@@ -376,9 +379,9 @@ const static NSString *createApprenticeUrl = @"/v1/user/apprentice/create";
     }];
 }
 
-+ (void)clearCommentComplement:(void(^)(BOOL isSuccess,NSDictionary *contentDict))complement{
++ (void)clearCommentWithIs:(NSString *)ids Complement:(void(^)(BOOL isSuccess,NSDictionary *contentDict))complement{
     NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,clearCommentListUrl];
-    NSDictionary *param = @{@"token":[JSAccountManager shareManager].accountToken};
+    NSDictionary *param = @{@"token":[JSAccountManager shareManager].accountToken,@"ids":ids};
     [self POST:url parameters:param complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
         if (complement) {
             complement(isSuccess,responseDict);
@@ -454,6 +457,16 @@ const static NSString *createApprenticeUrl = @"/v1/user/apprentice/create";
     NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,createApprenticeUrl];
     NSDictionary *param = @{@"token":[JSAccountManager shareManager].accountToken,@"inviteCode":invitate};
     [self POST:url parameters:param complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
+        if (complement) {
+            complement(isSuccess,responseDict);
+        }
+    }];
+}
+
++ (void)requestShareSuccessWithUrl:(NSString *)shareUrl complement:(void(^)(BOOL isSuccess, NSDictionary *contentDict))complement{
+    NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,shareSuccessUrl];
+    NSDictionary *param = @{@"token":[JSAccountManager shareManager].accountToken,@"url":shareUrl};
+    [self GET:url parameters:param complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
         if (complement) {
             complement(isSuccess,responseDict);
         }

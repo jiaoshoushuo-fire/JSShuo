@@ -374,7 +374,7 @@
     [self.avaterIcon setImageWithURL:[NSURL URLWithString:userModel.portrait] placeholder:[UIImage imageNamed:@"js_profile_default_icon"]];
     self.myGoldNumber.text = @(userModel.coin).stringValue;
     self.myReadTime.text = @(userModel.readTime).stringValue;
-    self.myPocketMoney.text = @(userModel.money).stringValue;
+    self.myPocketMoney.text = userModel.money;
     
 }
 @end
@@ -432,7 +432,8 @@
         _cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(10, 0, kScreenWidth-20, 80) delegate:self placeholderImage:nil];
         _cycleScrollView.currentPageDotColor = [UIColor redColor];   // 自定义分页控件小圆标颜色，当前分页控件为红色
         _cycleScrollView.pageDotColor = [UIColor whiteColor];
-        _cycleScrollView.imageURLStringsGroup = @[@"https://192.168.21.49/php/wenda_live_zhibojiantiwen_a@2x.png",@"https://192.168.21.49/php/lauch.jpg"];
+        _cycleScrollView.localizationImageNamesGroup = @[@"js_profile_image"];
+//        _cycleScrollView.imageURLStringsGroup = @[@"https://192.168.21.49/php/wenda_live_zhibojiantiwen_a@2x.png",@"https://192.168.21.49/php/lauch.jpg"];
     }
     return _cycleScrollView;
 }
@@ -479,7 +480,7 @@
         _profileInfoArray = @[@{@"imagePath":@"js_profile_input_code",@"title":@"输入邀请码",@"subTitle":@"0.5-88零钱大抽奖"},
                               @{@"imagePath":@"js_profile_mession",@"title":@"任务中心",@"subTitle":@"红包金币拿到手软"},
                               @{@"imagePath":@"js_profile_game",@"title":@"游戏大厅",@"subTitle":@"金币赚不停"},
-                              @{@"imagePath":@"js_profile_huiyuan",@"title":@"会员大促销",@"subTitle":@"特价返利最后七天"},
+                              /*@{@"imagePath":@"js_profile_huiyuan",@"title":@"会员大促销",@"subTitle":@"特价返利最后七天"},*/
                               @{@"imagePath":@"js_profile_question",@"title":@"常见问题",@"subTitle":@""},
                               @{@"imagePath":@"js_profile_pinglun",@"title":@"我的评论",@"subTitle":@""},
                               @{@"imagePath":@"js_profile_shoucang",@"title":@"我的收藏",@"subTitle":@""},
@@ -540,9 +541,10 @@
             [self.rt_navigationController pushViewController:vc animated:YES complete:nil];
         }break;
         case 1:{//商城
-            JSShopViewController *shopVC = [[JSShopViewController alloc]init];
-            shopVC.hidesBottomBarWhenPushed = YES;
-            [self.rt_navigationController pushViewController:shopVC animated:YES complete:nil];
+            [self showAutoDismissTextAlert:@"开发中，敬请期待"];
+//            JSShopViewController *shopVC = [[JSShopViewController alloc]init];
+//            shopVC.hidesBottomBarWhenPushed = YES;
+//            [self.rt_navigationController pushViewController:shopVC animated:YES complete:nil];
         }break;
         case 2:{//邀请好友
             JSInvitationViewController *invitationVC = [[JSInvitationViewController alloc]init];
@@ -565,7 +567,9 @@
     
 }
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
-    
+    JSInvitationViewController *invitationVC = [[JSInvitationViewController alloc]init];
+    invitationVC.hidesBottomBarWhenPushed = YES;
+    [self.rt_navigationController pushViewController:invitationVC animated:YES complete:nil];
 }
 
 #pragma mark - UITableViewDelegate
