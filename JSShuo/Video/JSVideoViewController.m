@@ -74,7 +74,8 @@
     JSVideoDetailViewController *vc = [JSVideoDetailViewController new];
     JSLongVideoModel *model = self.datas[indexPath.row];
     vc.urlStr = model.videoUrl;
-    vc.title = model.title;
+    vc.videoTitle = model.title;
+    vc.articleId = model.articleId;
     vc.hidesBottomBarWhenPushed = YES;
     [self.rt_navigationController pushViewController:vc animated:YES complete:nil];
 }
