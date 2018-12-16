@@ -81,6 +81,8 @@
 - (UIImageView *)bigImageView {
     if (!_bigImageView) {
         _bigImageView = [[UIImageView alloc] init];
+        _bigImageView.clipsToBounds = YES;
+        _bigImageView.contentMode = UIViewContentModeScaleAspectFill;
 //        _bigImageView.backgroundColor = [UIColor cyanColor];
     }
     return _bigImageView;

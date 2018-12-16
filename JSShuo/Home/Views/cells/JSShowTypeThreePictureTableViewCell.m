@@ -19,7 +19,8 @@
 - (UIImageView *)firstImgView {
     if (!_firstImgView) {
         _firstImgView = [[UIImageView alloc] init];
-        _firstImgView.backgroundColor = [UIColor cyanColor];
+        _firstImgView.clipsToBounds = YES;
+        _firstImgView.contentMode = UIViewContentModeScaleAspectFill;
     }
     return _firstImgView;
 }
@@ -27,7 +28,8 @@
 - (UIImageView *)secondImgView {
     if (!_secondImgView) {
         _secondImgView = [[UIImageView alloc] init];
-        _secondImgView.backgroundColor = [UIColor cyanColor];
+        _secondImgView.clipsToBounds = YES;
+        _secondImgView.contentMode = UIViewContentModeScaleAspectFill;
     }
     return _secondImgView;
 }
@@ -35,7 +37,8 @@
 - (UIImageView *)thirdImgView {
     if (!_thirdImgView) {
         _thirdImgView = [[UIImageView alloc] init];
-        _thirdImgView.backgroundColor = [UIColor cyanColor];
+        _thirdImgView.clipsToBounds = YES;
+        _thirdImgView.contentMode = UIViewContentModeScaleAspectFill;
     }
     return _thirdImgView;
 }

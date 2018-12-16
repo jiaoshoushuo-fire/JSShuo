@@ -20,6 +20,7 @@
 #import <AdSupport/AdSupport.h>
 #import "JSArticleDetailViewController.h"
 #import "JSVideoDetailViewController.h"
+#import "JSActivityCenterViewController.h"
 
 
 @interface AppDelegate ()<JPUSHRegisterDelegate>
@@ -29,6 +30,7 @@
 @property (nonatomic, strong, readwrite) JSLaunchViewController *launchViewController;
 @property (nonatomic, strong, readwrite) JSStartupViewController *startupViewController;
 @property (nonatomic, strong, readwrite) JSMainViewController *mainViewController;
+@property (nonatomic, copy) NSString *trackViewUrl;
 
 @property (atomic, strong) NSMutableArray<NSNumber *> *indexesOfViewControllersToShow;
 
@@ -192,17 +194,18 @@
 
 - (void) dealNotificationDictionary:(NSDictionary *)userInfo {
     // 根据消息类型，来进入不同页面
-    NSString *ID = [userInfo objectForKey:@"ID"];
     NSString *type = [userInfo objectForKey:@"type"];
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        if([type isEqualToString:@"0"]) {
+        if([type isEqualToString:@"0"]) { // 文章
+            NSString *ID = [userInfo objectForKey:@"ID"];
             JSArticleDetailViewController *vc = [JSArticleDetailViewController new];
             vc.articleId = [NSNumber numberWithString:ID];
             vc.hidesBottomBarWhenPushed = YES;
             RTRootNavigationController *nav = self.mainViewController.viewControllers[0];
             [nav pushViewController:vc animated:YES complete:nil];
-        } else if ([type isEqualToString:@"1"]) {
+        } else if ([type isEqualToString:@"1"]) { // 视频
+            NSString *ID = [userInfo objectForKey:@"ID"];
             JSVideoDetailViewController *vc = [JSVideoDetailViewController new];
             vc.urlStr = [userInfo objectForKey:@"urlStr"];
             vc.videoTitle = [userInfo objectForKey:@"videoTitle"];
@@ -210,6 +213,39 @@
             vc.hidesBottomBarWhenPushed = YES;
             RTRootNavigationController *nav = self.mainViewController.viewControllers[0];
             [nav pushViewController:vc animated:YES complete:nil];
+        } else if ([type isEqualToString:@"2"]) { // 活动
+            JSMainViewController *mainViewController = [AppDelegate instance].mainViewController;
+            [mainViewController switchToViewControllerAtIndex:2];
+        } else if ([type isEqualToString:@"3"]) { // 更新
+            //获取当前bundle中的版本号
+            NSDictionary *infoDic = [[NSBundle mainBundle] infoDictionary];
+            NSString *currentVersion = [infoDic objectForKey:@"CFBundleShortVersionString"];
+            
+            //获取App Store中当前APP的版本号
+            AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+            [manager POST:@"" parameters:nil progress:^(NSProgress * _Nonnull uploadProgress) {
+                
+            } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                NSArray *array = responseObject[@"results"];
+                NSDictionary *dict = [array lastObject];
+                NSLog(@"线上版本：%@", dict[@"version"]);
+                NSString *lineVersion = dict[@"version"];
+                if ([lineVersion compare:currentVersion options:NSNumericSearch] == NSOrderedDescending) {
+                    //appstore 版本更高
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message: [NSString stringWithFormat:@" 新版本 %@ 已发布 ! ", lineVersion] delegate:self cancelButtonTitle:@"以后再说" otherButtonTitles: @"马上更新", nil];
+                    [alert show];
+                    NSLog(@"线上版本:%@ 更高", lineVersion);
+                }
+                else {
+                    NSLog(@"当前版本:%@ 更高", currentVersion);
+                }
+                //返回json中的trackViewUrl就是App Store中当前APP的下载页面
+                self.trackViewUrl = dict[@"trackViewUrl"];
+            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                NSLog(@"错误  ： %@",error);
+            }];
+            //跳转App Store页面进行下载
+            [[UIApplication sharedApplication]openURL:[NSURL URLWithString:self.trackViewUrl]];
         }
     });
 }

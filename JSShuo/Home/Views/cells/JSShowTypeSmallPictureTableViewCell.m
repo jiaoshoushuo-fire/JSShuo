@@ -75,7 +75,8 @@
 - (UIImageView *)smallImageView {
     if (!_smallImageView) {
         _smallImageView = [[UIImageView alloc] init];
-        _smallImageView.backgroundColor = [UIColor cyanColor];
+        _smallImageView.clipsToBounds = YES;
+        _smallImageView.contentMode = UIViewContentModeScaleAspectFill;
     }
     return _smallImageView;
 }
