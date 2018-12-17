@@ -23,7 +23,9 @@
     }
     return self;
 }
-
+- (void)setValue:(id)value forUndefinedKey:(NSString *)key{
+    
+}
 + (JSLongVideoModel *) modelWithDictionary:(NSDictionary *)dic {
     JSLongVideoModel *model = [[JSLongVideoModel new] initWithDictionary:dic];
     return model;

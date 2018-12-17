@@ -238,6 +238,11 @@
         self.goldLabel.textColor = [UIColor whiteColor];
         self.bottomLabel.textColor = [UIColor colorWithHexString:@"333333"];
 //        self.bottomLabel.text = @(signModel.signInRuleId).stringValue;
+        [self.goldLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.equalTo(self.backImageView);
+            make.height.mas_equalTo(20);
+            make.top.mas_equalTo(self.goldIcon.mas_bottom);
+        }];
     }
     self.bottomLabel.text = [NSString stringWithFormat:@"%@天",@(signModel.signInRuleId).stringValue];;
 }
@@ -418,7 +423,7 @@
         [downImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.size.mas_equalTo(downImageView.size);
             make.top.equalTo(upImageView.mas_bottom);
-            make.centerX.equalTo(downImageView);
+            make.centerX.equalTo(self.floatView);
         }];
         @weakify(self)
         [_floatView bk_whenTapped:^{
@@ -457,7 +462,7 @@
         [_tableView registerClass:[JSMissionSubCell class] forCellReuseIdentifier:@"JSMissionSubCell"];
         [_tableView registerClass:[JSMissionTableHeaderView class] forHeaderFooterViewReuseIdentifier:@"JSMissionTableHeaderView"];
         [_tableView registerClass:[JSMissionCell class] forCellReuseIdentifier:@"JSMissionCell"];
-        _tableView.sectionStateArray = @[@"0",@"1"];
+        _tableView.sectionStateArray = @[@"1",@"1"];
         @weakify(self)
         _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
             @strongify(self)
@@ -487,8 +492,8 @@
     [JSNetworkManager requestSignCreateComplement:^(BOOL isSuccess, NSDictionary * _Nonnull contentDict) {
         if (isSuccess) {
             //弹框
-            NSDictionary *rewardDict = contentDict[@"reward"];
-            [JSTool showAlertType:JSALertTypeGold withRewardDictiony:rewardDict];
+//            NSDictionary *rewardDict = contentDict[@"reward"];
+//            [JSTool showAlertType:JSALertTypeGold withRewardDictiony:rewardDict];
             [JSNetworkManager requestMissonRulComplement:^(BOOL isSuccess, NSDictionary *contentDict) {
                 if (isSuccess) {
                     NSArray *rulesArray = contentDict[@"rules"];
@@ -749,7 +754,7 @@
         JSMainViewController *mainVC = [AppDelegate instance].mainViewController;
         [mainVC switchToViewControllerAtIndex:0];
     }else if ([subModel.taskNo isEqualToString:@"T12"]){//分享
-        [JSShareManager shareWithTitle:@"叫兽说" Text:@"红包大放送，运气好最高能领到188注册红包+88零钱的邀请红包。" Image:[UIImage imageNamed:@"js_share_image"] Url:kShareUrl QQImageURL:kShareQQImage_1 shareType:JSShareManagerTypeQQWeChat complement:^(BOOL isSuccess) {
+        [JSShareManager shareWithTitle:@"叫兽说" Text:@"红包大放送，运气好最高能领到188注册红包+最高88零钱的邀请红包。" Image:[UIImage imageNamed:@"js_share_image"] Url:kShareUrl QQImageURL:kShareQQImage_1 shareType:JSShareManagerTypeQQWeChat complement:^(BOOL isSuccess) {
             if (isSuccess) {
                 [self showAutoDismissTextAlert:@"分享成功"];
             }else{

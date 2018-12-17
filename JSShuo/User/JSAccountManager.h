@@ -76,6 +76,8 @@ typedef void(^AuthorizeHandler)(BOOL success);
 //检查登录
 + (void)checkLoginStatusComplement:(void(^)(BOOL isLogin))complement;
 
++ (BOOL)isLogin;
+
 @end
 
 NS_ASSUME_NONNULL_END

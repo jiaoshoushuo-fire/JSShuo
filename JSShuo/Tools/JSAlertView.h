@@ -11,9 +11,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 typedef NS_ENUM(NSInteger,JSALertType){
-    JSALertTypeFirstLoginIn,//邀请和d第一次登录注册  弹出
+    JSALertTypeFirstLoginIn,// 元
     JSALertTypeSignIn,
-    JSALertTypeGold
+    JSALertTypeGold, //彩蛋奖励 金币
+    JSALertTypeNomal //普通奖励 金币
 };
 
 @interface JSAlertView : UIView

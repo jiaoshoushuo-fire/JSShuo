@@ -29,6 +29,7 @@
 @property (nonatomic, strong)UILabel *timeLabel;
 @property (nonatomic, strong)UILabel *contentLabel;
 @property (nonatomic, strong)UIView *lineView;
+@property (nonatomic, strong)UIButton *deleateButton;
 
 @end
 
@@ -41,6 +42,27 @@
         _iconImage.layer.cornerRadius = 20.0f;
     }
     return _iconImage;
+}
+- (UIButton *)deleateButton{
+    if (!_deleateButton) {
+        _deleateButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _deleateButton.size = CGSizeMake(50, 20);
+        _deleateButton.clipsToBounds = YES;
+        _deleateButton.layer.cornerRadius = _deleateButton.height/2.0f;
+        _deleateButton.layer.borderColor = [[UIColor redColor]CGColor];
+        _deleateButton.layer.borderWidth = 0.5f;
+        [_deleateButton setTitle:@"删除" forState:UIControlStateNormal];
+        [_deleateButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+        _deleateButton.titleLabel.font = [UIFont systemFontOfSize:15];
+        @weakify(self)
+        [_deleateButton bk_addEventHandler:^(id sender) {
+            @strongify(self)
+            if (self.delegate && [self.delegate respondsToSelector:@selector(didSelectedDeleateButton:)]) {
+                [self.delegate didSelectedDeleateButton:self.model];
+            }
+        } forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _deleateButton;
 }
 - (UILabel *)nickName{
     if (!_nickName) {
@@ -85,6 +107,7 @@
         [self.contentView addSubview:self.nickName];
         [self.contentView addSubview:self.timeLabel];
         [self.contentView addSubview:self.contentLabel];
+        [self.contentView addSubview:self.deleateButton];
         [self.contentView addSubview:self.lineView];
     }
     return self;
@@ -109,6 +132,9 @@
     
     self.timeLabel.left = self.nickName.left;
     self.timeLabel.top = self.nickName.bottom + 5;
+    
+    self.deleateButton.right = kScreenWidth - 10;
+    self.deleateButton.centerY = self.iconImage.centerY;
     
     CGFloat contentHieght = [self.contentLabel sizeThatFits:CGSizeMake(kScreenWidth - 70, MAXFLOAT)].height;
     self.contentLabel.frame = CGRectMake(self.nickName.left, self.iconImage.bottom + 10, kScreenWidth - 70, contentHieght);

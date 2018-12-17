@@ -25,6 +25,8 @@
 @property (nonatomic, strong) JSMissionViewController           *newsViewController;
 @property (nonatomic, strong) JSProfileViewController           *profileViewController;
 
+@property (nonatomic, assign) BOOL isShowAlert;
+
 @end
 
 @implementation JSMainViewController
@@ -96,7 +98,19 @@
         }
     }
 }
-
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    if (!self.isShowAlert) {
+        if (![JSAccountManager isLogin]) {
+            [JSAlertView showAlertViewWithType:JSALertTypeSignIn rewardModel:nil superView:self.view handle:^{
+                [JSAccountManager checkLoginStatusComplement:^(BOOL isLogin) {
+                    
+                }];
+            }];
+        }
+        self.isShowAlert = YES;
+    }
+}
 
 - (void)switchToViewControllerAtIndex:(NSInteger)index {
     self.selectedIndex = index;

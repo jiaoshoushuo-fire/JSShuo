@@ -300,7 +300,7 @@
 #pragma mark - JSMyApprenticeCellDelegate
 - (void)didSelectedWeakupButton:(JSApprentModel *)model{
     //点击唤醒
-    [JSShareManager shareWithTitle:@"叫兽说" Text:@"亲~想你了！叫兽说特别赠送您200~10000金币，当天不领作废！您的账户余额很高，速速回来领取哦，只要阅读3篇文章即有机会获得高额奖励！（如果您找不到叫兽说APP，可以在手机应用市场搜索 叫兽说 重新下载，奖励仍然有效）" Image:[UIImage imageNamed:@"js_share_image"] Url:nil QQImageURL:kShareQQImage_1 shareType:JSShareManagerTypeQQWeChat complement:^(BOOL isSuccess) {
+    [JSShareManager shareWithTitle:@"叫兽说" Text:@"亲~想你了！叫兽说特别赠送您200~10000金币，当天不领作废！您的账户余额很高，速速回来领取哦，只要阅读3篇文章即有机会获得高额奖励！（如果您找不到叫兽说APP，可以在手机应用市场搜索 叫兽说 重新下载，奖励仍然有效）" Image:[UIImage imageNamed:@"js_share_image"] Url:nil QQImageURL:kShareQQImage_3 shareType:JSShareManagerTypeQQWeChat complement:^(BOOL isSuccess) {
         if (isSuccess) {
             [self showAutoDismissTextAlert:@"分享成功"];
         }else{

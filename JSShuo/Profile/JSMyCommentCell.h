@@ -19,9 +19,17 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy)NSString *createTime;
 @end
 
+@class JSMyCommentModel;
+@protocol JSMyCommentCellDelegate <NSObject>
+
+- (void)didSelectedDeleateButton:(JSMyCommentModel *)model;
+
+@end
+
 @interface JSMyCommentCell : UITableViewCell
 
 @property (nonatomic, strong)JSMyCommentModel *model;
+@property (nonatomic, weak)id<JSMyCommentCellDelegate>delegate;
 
 + (CGFloat)heightForRowWithModel:(JSMyCommentModel *)model;
 @end

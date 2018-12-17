@@ -33,9 +33,11 @@ const static NSString *addCommentListUrl = @"/v1/user/comment/add";
 const static NSString *commentListUrl = @"/v1/user/comment/list";
 const static NSString *recvCommentListUrl = @"/v1/user/comment/recv";
 const static NSString *clearCommentListUrl = @"/v1/user/comment/clear";
+const static NSString *deleateCommentListUrl = @"/v1/user/comment/delete";
 const static NSString *addCollectUrl = @"/v1/user/collect/add";
 const static NSString *collectListUrl = @"/v1/user/collect/list";
 const static NSString *deleateCollectUrl = @"/v1/user/collect/delete";
+const static NSString *queryCollectUrl = @"/v1/user/collect/query";
 const static NSString *apprenticeListUrl = @"/v1/user/apprentice/list";
 const static NSString *messageClearUrl = @"/v1/user/message/clear";
 const static NSString *createApprenticeUrl = @"/v1/user/apprentice/create";
@@ -67,10 +69,6 @@ const static NSString *shareSuccessUrl = @"/v1/user/share/success";
             NSString *token = responseDict[@"token"];
             [JSAccountManager refreshAccountToken:token];
             
-            NSDictionary *rewardDict = responseDict[@"reward"];
-
-            [JSTool showAlertType:JSALertTypeFirstLoginIn withRewardDictiony:rewardDict];
-            
         }
         
         if (complement) {
@@ -101,10 +99,6 @@ const static NSString *shareSuccessUrl = @"/v1/user/share/success";
     
     [self POST:url parameters:param complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
         if (complement) {
-            
-            NSDictionary *rewardDict = responseDict[@"reward"];
-
-            [JSTool showAlertType:JSALertTypeGold withRewardDictiony:rewardDict];
             complement(isSuccess,responseDict);
         }
     }];
@@ -340,8 +334,7 @@ const static NSString *shareSuccessUrl = @"/v1/user/share/success";
     [self POST:url parameters:params complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
         if (complement) {
             complement(isSuccess,responseDict);
-            NSDictionary *rewardDict = responseDict[@"reward"];
-            [JSTool showAlertType:JSALertTypeGold withRewardDictiony:rewardDict];
+            
         }
     }];
 }
@@ -351,8 +344,7 @@ const static NSString *shareSuccessUrl = @"/v1/user/share/success";
     [self POST:url parameters:params complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
         if (complement) {
             complement(isSuccess,responseDict);
-            NSDictionary *rewaredDict = responseDict[@"reward"];
-            [JSTool showAlertType:JSALertTypeGold withRewardDictiony:rewaredDict];
+            
         }
     }];
 }
@@ -389,6 +381,17 @@ const static NSString *shareSuccessUrl = @"/v1/user/share/success";
     }];
 }
 
++ (void)deleateCommentWithIs:(NSString *)ids Complement:(void(^)(BOOL isSuccess,NSDictionary *contentDict))complement{
+    NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,deleateCommentListUrl];
+    NSDictionary *param = @{@"token":[JSAccountManager shareManager].accountToken,@"ids":ids};
+    [self POST:url parameters:param complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
+        if (complement) {
+            complement(isSuccess,responseDict);
+        }
+    }];
+}
+
+
 + (void) addCollect:(NSDictionary *)params complement:(void(^)(BOOL isSuccess, NSDictionary *contentDic))complement {
     NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,addCollectUrl];
     [self POST:url parameters:params complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
@@ -408,7 +411,15 @@ const static NSString *shareSuccessUrl = @"/v1/user/share/success";
         }
     }];
 }
-
++ (void)queryCollectWithArticleId:(NSInteger)collectId complement:(void(^)(BOOL isSuccess, NSDictionary *contentDict))complement{
+    NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,queryCollectUrl];
+    NSDictionary *param = @{@"token":[JSAccountManager shareManager].accountToken,@"articleId":@(collectId)};
+    [self POST:url parameters:param complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
+        if (complement) {
+            complement(isSuccess,responseDict);
+        }
+    }];
+}
 + (void)requestDeleateCollectWithArticleId:(NSInteger)collectId complement:(void(^)(BOOL isSuccess, NSDictionary *contentDict))complement{
     NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,deleateCollectUrl];
     NSDictionary *param = @{@"token":[JSAccountManager shareManager].accountToken,@"articleId":@(collectId)};

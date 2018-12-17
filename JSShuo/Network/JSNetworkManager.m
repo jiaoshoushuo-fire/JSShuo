@@ -10,6 +10,7 @@
 #import "MBProgressHUD.h"
 #import "AppDelegate.h"
 
+
 @implementation JSNetworkManager
 
 + (AFHTTPSessionManager *)shareManager{
@@ -61,7 +62,13 @@
     UIViewController *currentVC = currentNav.rt_topViewController;
     return currentVC;
 }
-
++ (void)checkRewardAlertWith:(NSDictionary *)rewardDict{
+    if (rewardDict) {
+        [JSTool showAlertWithRewardDictiony:rewardDict handle:^{
+            
+        }];
+    }
+}
 + (void)POST:(NSString *)url parameters:(NSDictionary *)parameters complement:(void(^)(BOOL isSuccess,NSDictionary *responseDict))complement{
 //    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[self currentViewController].view animated:YES];
     [[self shareManager]POST:url parameters:[self transformParameters:parameters] progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -71,6 +78,11 @@
             NSDictionary *dataDict = responseObject[@"data"];
             if (complement) {
                 complement(YES,dataDict);
+                if ([dataDict isKindOfClass:[NSDictionary class]]) {
+                    NSDictionary *rewardDict = dataDict[@"reward"];
+                    [self checkRewardAlertWith:rewardDict];
+                }
+                
             }
             
         }else if (state.integerValue == 2){
@@ -104,6 +116,11 @@
             NSDictionary *dataDict = responseObject[@"data"];
             if (complement) {
                 complement(YES,dataDict);
+                if ([dataDict isKindOfClass:[NSDictionary class]]) {
+                    NSDictionary *rewardDict = dataDict[@"reward"];
+                    [self checkRewardAlertWith:rewardDict];
+                }
+                
             }
             
         }else if (state.integerValue == 2){

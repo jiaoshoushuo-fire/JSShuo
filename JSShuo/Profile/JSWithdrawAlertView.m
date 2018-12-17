@@ -55,11 +55,13 @@
         _bindWechatButton.size = CGSizeMake(80, 30);
         
         @weakify(self)
-        [_bindWechatButton bk_addEventHandler:^(id sender) {
+        [_bindWechatButton bk_addEventHandler:^(UIButton *sender) {
             @strongify(self)
             [JSAccountManager wechatAuthorizeFromLogin:NO completion:^(BOOL success) {
                 if (success) {
                     self.isBindWechat = success;
+                    [sender setTitle:@"已绑定" forState:UIControlStateNormal];
+                    sender.enabled = NO;
                 }
             }];
         } forControlEvents:UIControlEventTouchUpInside];

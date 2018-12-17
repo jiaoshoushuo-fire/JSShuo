@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)appStoreComent;
 
-+ (void)showAlertType:(JSALertType)alertType withRewardDictiony:(NSDictionary *)rewardDict;
++ (void)showAlertWithRewardDictiony:(NSDictionary *)rewardDict handle:(void(^)(void))handle;
 
 
 + (NSString *)compareCurrentTime:(NSString *)str;
