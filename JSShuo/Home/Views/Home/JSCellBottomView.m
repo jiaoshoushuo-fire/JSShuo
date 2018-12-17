@@ -37,7 +37,8 @@
         }];
         
         
-        if (!_model.isTop) {
+        
+        if (_model.isTop.integerValue == 2) { // 2是不置顶，1是置顶
             self.hotLabel.hidden = YES;
             [self.sourceLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
                 make.leading.equalTo(self).with.offset(15);
