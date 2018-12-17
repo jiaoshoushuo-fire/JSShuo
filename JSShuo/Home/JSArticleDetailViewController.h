@@ -36,6 +36,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface JSArticleDetailViewController : JSBaseViewController
 
+@property (nonatomic,copy) NSString *titleName;
 @property (nonatomic,strong) NSNumber *articleId;
 
 @end

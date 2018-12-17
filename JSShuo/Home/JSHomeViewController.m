@@ -146,6 +146,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     JSArticleDetailViewController *vc = [JSArticleDetailViewController new];
     vc.articleId = [self.datas[indexPath.row] articleId];
+    vc.title = [self.datas[indexPath.row] title];
     vc.hidesBottomBarWhenPushed = YES;
     [self.rt_navigationController pushViewController:vc animated:YES complete:nil];
 }

@@ -118,7 +118,7 @@
     @weakify(self);
     [_bottomView.shareBtn bk_addEventHandler:^(id sender) {
         @strongify(self);
-        [JSShareManager shareWithTitle:@"叫兽说" Text:@"文章详情" Image:[UIImage imageNamed:@"js_share_image"] Url:[NSString stringWithFormat:@"http://api.jiaoshoutt.com/v1/page/article/%@",self.articleId] complement:^(BOOL isSuccess) {
+        [JSShareManager shareWithTitle:@"叫兽说" Text:self.titleName Image:[UIImage imageNamed:@"js_share_image"] Url:[NSString stringWithFormat:@"http://api.jiaoshoutt.com/v1/page/article/%@",self.articleId] complement:^(BOOL isSuccess) {
             if (isSuccess) {
                 [self showAutoDismissTextAlert:@"分享成功"];
             }else{
@@ -243,6 +243,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         JSRecommendModel *model = self.recommendDatas[indexPath.row];
+        self.title = model.title;
         self.articleId = model.articleId;
         self.wkWebView = nil;
         self.bottomView.chatBtn.selected = NO;
@@ -357,6 +358,7 @@
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://api.jiaoshoutt.com/v1/page/article/%@",self.articleId]];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
     [self.wkWebView loadRequest:urlRequest];
+    [self showWaitingHUD];
 }
 
 #pragma mark ------ < UIScrollViewDeltegate > ------
@@ -368,11 +370,12 @@
 
 #pragma mark ------ < WKUIDelegate,WKNavigationDelegate > ------
 - (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(null_unspecified WKNavigation *)navigation {
-    [self showWaitingHUD];
+    
 }
 
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
     [self hideWaitingHUD];
+    [self.tableView scrollToTop];
     [webView evaluateJavaScript:@"document.body.scrollHeight" completionHandler:^(id _Nullable result, NSError * _Nullable error) {
         CGFloat documentHeight = [result doubleValue];
         CGRect webFrame = webView.frame;
