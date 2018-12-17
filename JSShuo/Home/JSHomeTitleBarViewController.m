@@ -17,12 +17,15 @@
 #import "JSMainViewController.h"
 #import "AppDelegate.h"
 #import "JSRedPacketViewController.h"
+#import "JSNoSearchResultView.h"
+
 
 @interface JSHomeTitleBarViewController () <TYTabPagerBarDataSource,TYTabPagerBarDelegate,TYPagerControllerDataSource,TYPagerControllerDelegate>
 @property (nonatomic, weak) TYTabPagerBar *tabBar;
 @property (nonatomic, weak) TYPagerController *pagerController;
 @property (nonatomic, strong) NSArray *datas;
 @property (nonatomic, strong) JSNavSearchView *nav;
+@property (nonatomic,strong) JSNoSearchResultView *noResultView;
 //@property (nonatomic) BOOL haveToken;
 @end
 
@@ -40,13 +43,22 @@
     [self setupNav];
     [self addTabPageBar];
     [self addPagerController];
-    
-    [JSNetworkManager requestChannelListWithParams:@{} complent:^(NSDictionary * _Nonnull contentDic) {
-        self.datas = contentDic[@"list"];
-        [self loadData];
-    }];
+    [self requestData];
+    [self.view addSubview:self.noResultView];
+    _noResultView.hidden = YES;
 }
 
+- (void) requestData {
+    [JSNetworkManager requestChannelListWithParams:@{} complent:^(BOOL isSuccess, NSDictionary * _Nonnull contentDic) {
+        if (isSuccess) {
+            self.noResultView.hidden = YES;
+            self.datas = contentDic[@"list"];
+            [self loadData];
+        } else {
+            self.noResultView.hidden = NO;
+        }
+    }];
+}
 
 - (void)addTabPageBar {
     TYTabPagerBar *tabBar = [[TYTabPagerBar alloc]init];
@@ -184,5 +196,15 @@
     [self.rt_navigationController pushViewController:vc animated:YES complete:nil];
 }
 
+- (JSNoSearchResultView *)noResultView {
+    if (!_noResultView) {
+        _noResultView = [[JSNoSearchResultView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight-64)];
+        _noResultView.titleLabelOne.text = @"当前手机暂无网络连接！";
+        _noResultView.titleLabelTwo.text = @"请检查网络设置后点击屏幕刷新";
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(requestData)];
+        [_noResultView addGestureRecognizer:tap];
+    }
+    return _noResultView;
+}
 
 @end

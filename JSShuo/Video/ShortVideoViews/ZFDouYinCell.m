@@ -139,8 +139,8 @@
     self.likeBtn.frame = CGRectMake(min_x, min_y, min_w, min_h);
     
     min_x = 20;
-    min_h = 20;
-    min_y = min_view_h - min_h - 50;
+    min_h = 42;
+    min_y = min_view_h - min_h - 40;
     min_w = self.likeBtn.left - margin;
     self.titleLabel.frame = CGRectMake(min_x, min_y, min_w, min_h);
 }
@@ -148,6 +148,8 @@
 - (UILabel *)titleLabel {
     if (!_titleLabel) {
         _titleLabel = [UILabel new];
+        _titleLabel.numberOfLines = 0;
+        _titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
         _titleLabel.textColor = [UIColor whiteColor];
         _titleLabel.font = [UIFont systemFontOfSize:15];
         _titleLabel.text = @"adfkljaklfja";
@@ -191,8 +193,7 @@
 - (void)setData:(JSShortVideoModel *)data {
     _data = data;
     [self.coverImageView setImageWithURLString:data.cover[0] placeholder:[UIImage imageNamed:@"loading_bgView"]];
-    self.titleLabel.text = data.title;
-    
+    self.titleLabel.text = data.Description;
 }
 
 - (UIImageView *)coverImageView {

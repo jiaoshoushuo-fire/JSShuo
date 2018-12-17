@@ -40,10 +40,19 @@
 - (void) requestData {
 //    NSLog(@"第%@页",_currentPage);
     NSDictionary *params = @{@"pageNum":_currentPage,@"channel":self.genreID,@"pageSize":@5};
-    [JSNetworkManager requestLongVideoListWithParams:params complent:^(NSNumber * _Nonnull totalPage, NSArray * _Nonnull modelsArray) {
-        [self dealData:modelsArray];
-        if (totalPage == self.currentPage) {
-            self.tableView.mj_footer.hidden = YES;
+    [JSNetworkManager requestLongVideoListWithParams:params complent:^(BOOL isSuccess, NSNumber * _Nonnull totalPage, NSArray * _Nonnull modelsArray) {
+        if (isSuccess) {
+            [self dealData:modelsArray];
+            if (totalPage == self.currentPage) {
+                self.noResultView.hidden = YES;
+                self.tableView.mj_footer.hidden = YES;
+            }
+        } else {
+            [self.tableView.mj_header endRefreshing];
+            [self.tableView.mj_footer endRefreshing];
+            if (self.datas.count <= 0) {
+                self.noResultView.hidden = NO;
+            }
         }
     }];
 }
@@ -208,7 +217,9 @@
     if (!_noResultView) {
         _noResultView = [[JSNoSearchResultView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight-64)];
         _noResultView.titleLabelOne.text = @"当前手机暂无网络连接！";
-        _noResultView.titleLabelTwo.text = @"请检查网络设置后下拉刷新";
+        _noResultView.titleLabelTwo.text = @"请检查网络设置后点击屏幕刷新";
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(requestData)];
+        [_noResultView addGestureRecognizer:tap];
     }
     return _noResultView;
 }

@@ -13,13 +13,16 @@ const static NSString *longVideoList = @"/v1/content/list";
 
 @implementation JSNetworkManager (ShortVideo)
 
-+ (void) requestLongVideoListWithParams:(NSDictionary *)params complent:(void(^)(NSNumber *totalPage,NSArray *modelsArray))complent {
++ (void) requestLongVideoListWithParams:(NSDictionary *)params complent:(void(^)(BOOL isSuccess,NSNumber *totalPage,NSArray *modelsArray))complent {
     NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,longVideoList];
     [self GET:url parameters:params complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
         if (complent) {
             NSArray *array = [JSShortVideoModel modelsWithArray:responseDict[@"list"]];
             
-            complent(responseDict[@"totalPage"],array);
+            complent(isSuccess,responseDict[@"totalPage"],array);
+        } else {
+            NSArray *tempArr = [NSArray array];
+            complent(isSuccess,@0,tempArr);
         }
     }];
 }

@@ -14,7 +14,7 @@ const static NSString *searchResult = @"/v1/content/search";
 
 @implementation JSNetworkManager (LongVideo)
 
-+ (void) requestLongVideoListWithParams:(NSDictionary *)params complent:(void(^)(NSNumber *totalPage,NSArray *modelsArray))complent {
++ (void) requestLongVideoListWithParams:(NSDictionary *)params complent:(void(^)(BOOL isSuccess,NSNumber *totalPage,NSArray *modelsArray))complent {
     NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,longVideoList];
     NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefaultsKeyAccessToken];
 
@@ -22,10 +22,10 @@ const static NSString *searchResult = @"/v1/content/search";
         if (complent && isSuccess) {
             NSArray *array = [JSLongVideoModel modelsWithArray:responseDict[@"list"]];
             
-            complent(responseDict[@"totalPage"],array);
+            complent(isSuccess,responseDict[@"totalPage"],array);
         } else {
             NSArray *tempArr = [NSArray array];
-            complent(@0,tempArr);
+            complent(isSuccess,@0,tempArr);
         }
     }];
 }

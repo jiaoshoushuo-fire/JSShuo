@@ -67,10 +67,9 @@
 - (void)setModel:(JSRecommendModel *)model {
     _model = model;
     _titleLabel.text = model.title;
-//    _titleLabel.text = @"sdfl;kajdf;klajfasiopfulmremqw;lj;fldmsflasdmf;lkjalfdsdmsflasdmf;lkjalfds";
-    [self.iconImgView sd_setImageWithURL:[NSURL URLWithString:model.cover[0]]];
+    NSString *imgStr0 = [NSString stringWithFormat:@"%@?imageView2/1/w/480/h/270",model.cover[0]];
+    [self.iconImgView sd_setImageWithURL:[NSURL URLWithString:imgStr0] placeholderImage:[UIImage imageNamed:@"placeHolder_1_1"]];
     _commentNumLabel.text = [NSString stringWithFormat:@"%@",model.commentNum];
-//    _commentNumLabel.text = @"123456";
 }
 
 - (UILabel *)titleLabel {

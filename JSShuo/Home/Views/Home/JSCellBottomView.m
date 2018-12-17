@@ -92,7 +92,12 @@
 //            _releaseTimeLabel.text = _model.publishTime;
         _releaseTimeLabel.text = [[JSComputeTime new] distanceTimeWithPublistTime:_model.publishTime];
         _videoTimeLabel.text = [NSString stringWithFormat:@"%@",_model.duration];
-        _commitCountLabel.text = [NSString stringWithFormat:@"%@",_model.commentNum];
+        if (_model.commentNum.integerValue > 0) {
+            _commitCountLabel.hidden = NO;
+            _commitCountLabel.text = [NSString stringWithFormat:@"%@",_model.commentNum];
+        } else {
+            _commitCountLabel.hidden = YES;
+        }
         _praiseCountLabel.text = [NSString stringWithFormat:@"%@",_model.praiseNum];
         
     }
