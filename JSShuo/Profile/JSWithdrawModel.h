@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface JSWithdrawModel : MTLModel<MTLJSONSerializing>
 
-@property (nonatomic, copy)NSString * amount;
+@property (nonatomic, assign)NSInteger amount;
 @property (nonatomic, copy)NSString *noteBody;
 @property (nonatomic, copy)NSString *noteTitle;
 @property (nonatomic, strong)NSArray <JSWithdrawItemModel *>*ruleList;

@@ -19,14 +19,14 @@
              };
 }
 
-+ (NSValueTransformer *)JSONTransformerForKey:(NSString *)key{
-    if ([key isEqualToString:@"amount"] || [key isEqualToString:@"money"]){
-        return [MTLValueTransformer transformerUsingForwardBlock:^id(id value, BOOL *success, NSError *__autoreleasing *error) {
-            return @([value integerValue]/100);
-        }];
-    }
-    return nil;
-}
+//+ (NSValueTransformer *)JSONTransformerForKey:(NSString *)key{
+//    if ([key isEqualToString:@"amount"] || [key isEqualToString:@"money"]){
+//        return [MTLValueTransformer transformerUsingForwardBlock:^id(id value, BOOL *success, NSError *__autoreleasing *error) {
+//            return @([value integerValue]/100);
+//        }];
+//    }
+//    return nil;
+//}
 
 @end
 
@@ -46,13 +46,13 @@
     return [MTLJSONAdapter arrayTransformerWithModelClass:[JSWithdrawItemModel class]];
 }
 
-+ (NSValueTransformer *)JSONTransformerForKey:(NSString *)key{
-    if ([key isEqualToString:@"amount"]){
-        return [MTLValueTransformer transformerUsingForwardBlock:^id(id value, BOOL *success, NSError *__autoreleasing *error) {
-            NSString *valueString = [NSString stringWithFormat:@"%.2f",[value integerValue]/100.00f];
-            return valueString;
-        }];
-    }
-    return nil;
-}
+//+ (NSValueTransformer *)JSONTransformerForKey:(NSString *)key{
+//    if ([key isEqualToString:@"amount"]){
+//        return [MTLValueTransformer transformerUsingForwardBlock:^id(id value, BOOL *success, NSError *__autoreleasing *error) {
+//            NSString *valueString = [NSString stringWithFormat:@"%.2f",[value integerValue]/100.00f];
+//            return valueString;
+//        }];
+//    }
+//    return nil;
+//}
 @end

@@ -155,8 +155,8 @@
             @strongify(self)
             NSInteger money = 0;
             if (self.inputTextField.text.length > 0) {
-                if (self.accountModel.money >= self.inputTextField.text.integerValue) {
-                    money = self.inputTextField.text.integerValue;
+                if (self.accountModel.money >= self.inputTextField.text.integerValue * 100) {
+                    money = self.inputTextField.text.integerValue * 100;
                 }else{
                     [self showAutoDismissTextAlert:@"您还没有这么多零钱"];
                     return ;
@@ -287,15 +287,15 @@
 
 
 - (void)configModel:(JSAccountModel *)model{
-    self.moneyLabel.text = @(model.money).stringValue;
-    self.subLabel_2.text = [NSString stringWithFormat:@"1元零钱=%@金币",@(model.exchangeRate)];
-    self.inputTextField.placeholder = @(model.money).stringValue;
-    self.subLabel_4.text = @(model.money * 1 * model.exchangeRate).stringValue;
+    self.moneyLabel.text = [NSString stringWithFormat:@"%0.2f",model.money/100.0f];
+    self.subLabel_2.text = [NSString stringWithFormat:@"1零钱=%@金币",@(model.exchangeRate * 100)];
+    self.inputTextField.placeholder = [NSString stringWithFormat:@"%0.2f",model.money/100.0f];
+    self.subLabel_4.text = @(model.money/100.0f * 1 * model.exchangeRate * 100).stringValue;
 }
 
 
 - (void) textFieldDidChange:(UITextField *) textField {
     
-    self.subLabel_4.text = @(textField.text.integerValue * 1 * _accountModel.exchangeRate).stringValue;
+    self.subLabel_4.text = @(textField.text.integerValue * 1 * _accountModel.exchangeRate * 100).stringValue;
 }
 @end

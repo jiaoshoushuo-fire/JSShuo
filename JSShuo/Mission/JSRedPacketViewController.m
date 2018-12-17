@@ -79,9 +79,14 @@
         @weakify(self)
         [_enterButton bk_addEventHandler:^(id sender) {
             @strongify(self)
-            JSRedPerformViewController *redVC = [[JSRedPerformViewController alloc]init];
-            redVC.hidesBottomBarWhenPushed = YES;
-            [self.rt_navigationController pushViewController:redVC animated:YES complete:nil];
+            [JSAccountManager checkLoginStatusComplement:^(BOOL isLogin) {
+                if (isLogin) {
+                    JSRedPerformViewController *redVC = [[JSRedPerformViewController alloc]init];
+                    redVC.hidesBottomBarWhenPushed = YES;
+                    [self.rt_navigationController pushViewController:redVC animated:YES complete:nil];
+                }
+            }];
+            
         } forControlEvents:UIControlEventTouchUpInside];
     }
     return _enterButton;
@@ -128,7 +133,7 @@
             @strongify(self)
             NSLog(@"share action");
             //[UIImage imageNamed:@"js_profile_mywallet_share"]
-            [JSShareManager shareWithTitle:@"叫兽说" Text:@"红包大放送，运气好最高能领到188注册红包+88零钱的邀请红包。" Image:[UIImage imageNamed:@"js_share_image"] Url:kShareUrl QQImageURL:kShareQQImage_1 shareType:JSShareManagerTypeQQWeChat complement:^(BOOL isSuccess) {
+            [JSShareManager shareWithTitle:@"叫兽说" Text:@"红包大放送，运气好最高能领到188注册红包+最高88零钱的邀请红包。" Image:[UIImage imageNamed:@"js_share_image"] Url:kShareUrl QQImageURL:kShareQQImage_1 shareType:JSShareManagerTypeQQWeChat complement:^(BOOL isSuccess) {
                 if (isSuccess) {
                     [self showAutoDismissTextAlert:@"分享成功"];
                 }else{

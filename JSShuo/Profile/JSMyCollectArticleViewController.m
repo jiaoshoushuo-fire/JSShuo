@@ -106,7 +106,7 @@
 - (void)setModel:(JSCollectModel *)model{
     _model = model;
     self.titleLabel.text = model.title;
-    self.contentLabel.text = model.channel;
+    self.contentLabel.text = model.summary;
     self.timeLabel.text = model.publishTime;
     
     [self.titleLabel sizeToFit];
@@ -139,7 +139,7 @@
 
 + (CGFloat)heightForRowWithModel:(JSCollectModel *)model{
     CGFloat height = 10 + 10 + 20 + 10 ;
-    CGFloat contentHeight = [model.channel heightForFont:[UIFont systemFontOfSize:12] width:kScreenWidth-40];
+    CGFloat contentHeight = [model.summary heightForFont:[UIFont systemFontOfSize:12] width:kScreenWidth-40];
     height += contentHeight;
     height += 10;
     height += 42;
@@ -256,7 +256,10 @@
     }];
     [self.tableView.mj_header beginRefreshing];
 }
-
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.tableView.mj_header beginRefreshing];
+}
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
@@ -278,7 +281,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     JSArticleDetailViewController *vc = [[JSArticleDetailViewController alloc]init];
     JSCollectModel *model = self.dataArray[indexPath.row];
-    vc.articleId = @(model.collectId);
+    vc.articleId = @(model.articleId);
     vc.hidesBottomBarWhenPushed = YES;
     [self.rt_navigationController pushViewController:vc animated:YES complete:nil];
 }

@@ -44,9 +44,13 @@
              @"jobCategory" : @"jobCategory",
              @"jobInfo" : @"jobInfo",
              @"education" : @"education",
-             @"wechatId" : @"wechatOpenId",
+             @"wechatId" : @"wechatUnionId",
              @"alipayId" : @"alipayId",
-             @"bindStatus" : @"bindStatus"
+             @"bindStatus" : @"bindStatus",
+             @"wechatAccount":@"wechatAccount",
+             @"alipayAccount":@"alipayAccount",
+             @"isAlipayBind":@"isAlipayBind",
+             @"isWechatBind":@"isWechatBind"
              };
 }
 

@@ -192,6 +192,13 @@
     _data = data;
     [self.coverImageView setImageWithURLString:data.cover[0] placeholder:[UIImage imageNamed:@"loading_bgView"]];
     self.titleLabel.text = data.title;
+    //查询是否收藏
+    if ([JSAccountManager isLogin]) {
+        [JSNetworkManager queryCollectWithArticleId:data.articleId.integerValue complement:^(BOOL isSuccess, NSDictionary * _Nonnull contentDict) {
+            BOOL isCollect = [contentDict[@"isCollect"] boolValue];
+            self.likeBtn.selected = isCollect;
+        }];
+    }
     
 }
 
@@ -206,6 +213,7 @@
     return _coverImageView;
 }
 - (void)prepareForReuse{
+    [super prepareForReuse];
     self.likeBtn.selected = NO;
     self.data = nil;
 }

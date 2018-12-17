@@ -111,9 +111,9 @@
                     if (isSuccess) {
                         //这里需要弹出奖励alert 现在接口没有model
 
-                        NSDictionary *rewardDict = contentDict[@"reward"];
-
-                        [JSTool showAlertType:JSALertTypeFirstLoginIn withRewardDictiony:rewardDict];
+//                        NSDictionary *rewardDict = contentDict[@"reward"];
+//
+//                        [JSTool showAlertType:JSALertTypeFirstLoginIn withRewardDictiony:rewardDict];
                         
 //                        [self performSelector:@selector(dismissSelfVC) withObject:nil afterDelay:2];
                     }

@@ -151,14 +151,14 @@
             {
                 JSPerfectUserInfoCellModel *model = [[JSPerfectUserInfoCellModel alloc]init];
                 model.title = @"微信";
-                model.subTitle = userModel.wechatId;
+                model.subTitle = userModel.isWechatBind == 1 ? userModel.wechatAccount : @"未绑定";
                 model.isHasAccessory = YES;
                 [array2 addObject:model];
             }
             {
                 JSPerfectUserInfoCellModel *model = [[JSPerfectUserInfoCellModel alloc]init];
                 model.title = @"支付宝";
-                model.subTitle = userModel.alipayId;
+                model.subTitle = userModel.isAlipayBind == 1 ? userModel.alipayAccount : @"未绑定";
                 model.isHasAccessory = YES;
                 [array2 addObject:model];
             }
@@ -378,7 +378,7 @@
         }
         
     }else if ([model.title isEqualToString:@"微信"]){
-        if (model.subTitle.length <= 0) {
+        if ([model.subTitle isEqualToString:@"未绑定"] ) {
             [JSAccountManager wechatAuthorizeFromLogin:NO completion:^(BOOL success) {
                 if (success) {
                     [self.tableview.mj_header beginRefreshing];
@@ -386,7 +386,7 @@
             }];
         }
     }else if ([model.title isEqualToString:@"支付宝"]){
-        if (model.subTitle.length <= 0) {
+        if ([model.subTitle isEqualToString:@"未绑定"]) {
             [JSWithdrawAlertView showAlertViewWithSuperView:self.navigationController.view type:JSWithdrawAlertViewTypeAlipay isBind:YES handle:^(BOOL isSuccess) {
                 if (isSuccess) {
                     [self.tableview.mj_header beginRefreshing];

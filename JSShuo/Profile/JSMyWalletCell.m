@@ -118,10 +118,10 @@
         
     }else if (type == 2){//零钱
         if (model.inOrOut == 1) {
-            self.goldLabel.text = [NSString stringWithFormat:@"+%@元",@(model.money)];
+            self.goldLabel.text = [NSString stringWithFormat:@"+%.02f元",model.money/100.0f];
             self.goldLabel.textColor = [UIColor redColor];
         }else if (model.inOrOut == 2){
-            self.goldLabel.text = [NSString stringWithFormat:@"%@元",@(model.money)];
+            self.goldLabel.text = [NSString stringWithFormat:@"%.02f元",model.money/100.0f];
             self.goldLabel.textColor = [UIColor greenColor];
         }
     }

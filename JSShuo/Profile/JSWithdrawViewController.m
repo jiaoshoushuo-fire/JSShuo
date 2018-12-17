@@ -11,7 +11,7 @@
 #import "JSNetworkManager+Login.h"
 #import "JSWithdrawModel.h"
 #import "JSWithdrawAlertView.h"
-@interface JSWithdrawItemView:UIView
+@interface JSWithdrawItemView:UIImageView
 @property (nonatomic, strong)UILabel *titleLabel;
 @property (nonatomic, strong)UILabel *subLabel;
 @property (nonatomic, strong)JSWithdrawItemModel *itemModel;
@@ -40,11 +40,15 @@
 - (void)setIsSelected:(BOOL)isSelected{
     _isSelected = isSelected;
     if (isSelected) {
+        self.image = [UIImage imageNamed:@"js_tixian_beijing2"];
         self.titleLabel.textColor = [UIColor redColor];
         self.subLabel.textColor = [UIColor redColor];
+        self.layer.borderWidth = 0.0f;
     }else{
+        self.image = nil;
         self.titleLabel.textColor = [UIColor colorWithHexString:@"333333"];
         self.subLabel.textColor = [UIColor colorWithHexString:@"666666"];
+        self.layer.borderWidth = 1.0f;
     }
 }
 - (instancetype)initWithFrame:(CGRect)frame
@@ -55,6 +59,7 @@
         self.layer.cornerRadius = 5;
         self.layer.borderColor = [[UIColor colorWithHexString:@"999999"]CGColor];
         self.layer.borderWidth = 1.0f;
+        self.userInteractionEnabled = YES;
         [self addSubview:self.titleLabel];
         [self addSubview:self.subLabel];
         [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -73,13 +78,14 @@
 }
 - (void)setItemModel:(JSWithdrawItemModel *)itemModel{
     _itemModel = itemModel;
-    self.titleLabel.text = [NSString stringWithFormat:@"%@元",@(itemModel.amount)];
-    self.subLabel.text = [NSString stringWithFormat:@"售价%@零钱",@(itemModel.money)];
+    self.titleLabel.text = [NSString stringWithFormat:@"%@元",@(itemModel.amount/100)];
+    self.subLabel.text = [NSString stringWithFormat:@"售价%@零钱",@(itemModel.money/100)];
 }
 @end
 
 @protocol JSWithdrawFirstCellDelegate <NSObject>
 - (void)didSelectedAliPlay:(BOOL)isAlipay;
+- (void)didSelectedShoppingButton;
 @end
 
 @interface JSWithdrawFirstCell : UITableViewCell
@@ -129,7 +135,7 @@
         _titleLabel_4 = [[UILabel alloc]init];
         _titleLabel_4.textColor = [UIColor colorWithHexString:@"666666"];
         _titleLabel_4.font = [UIFont systemFontOfSize:16];
-        _titleLabel_4.text = @"提现金额";
+        _titleLabel_4.text = @"注意事项";
         [_titleLabel_4 sizeToFit];
     }
     return _titleLabel_4;
@@ -430,6 +436,14 @@
         _storeButton.backgroundColor = [UIColor whiteColor];
         _storeButton.layer.borderWidth = 1.0f;
         _storeButton.layer.borderColor = [[UIColor colorWithHexString:@"999999"]CGColor];
+        @weakify(self)
+        [_storeButton bk_addEventHandler:^(id sender) {
+            @strongify(self)
+            if (self.delegate && [self.delegate respondsToSelector:@selector(didSelectedShoppingButton)]) {
+                [self.delegate didSelectedShoppingButton];
+            }
+        } forControlEvents:UIControlEventTouchUpInside];
+        
     }
     return _storeButton;
 }
@@ -456,7 +470,7 @@
         _titleLabel_2 = [[UILabel alloc]init];
         _titleLabel_2.textColor = [UIColor colorWithHexString:@"666666"];
         _titleLabel_2.font = [UIFont systemFontOfSize:16];
-        _titleLabel_2.text = @"体现方式";
+        _titleLabel_2.text = @"提现方式";
         [_titleLabel_2 sizeToFit];
     }
     return _titleLabel_2;
@@ -475,11 +489,16 @@
         _aliplayButton.layer.cornerRadius = 5;
         _aliplayButton.layer.borderWidth = 1.0;
         _aliplayButton.layer.borderColor = [[UIColor colorWithHexString:@"999999"]CGColor];
+        [_aliplayButton setBackgroundImage:[UIImage imageNamed:@"js_tixian_beijing1"] forState:UIControlStateSelected];
+        [_aliplayButton setBackgroundImage:nil forState:UIControlStateNormal];
         @weakify(self)
         [_aliplayButton bk_addEventHandler:^(id sender) {
             @strongify(self)
             self.wechatPlayButton.selected = NO;
             self.aliplayButton.selected = YES;
+            self.aliplayButton.layer.borderWidth = 0.0;
+            self.wechatPlayButton.layer.borderWidth = 1.0;
+            
             if (self.delegate && [self.delegate respondsToSelector:@selector(didSelectedAliPlay:)]) {
                 [self.delegate didSelectedAliPlay:YES];
             }
@@ -498,6 +517,8 @@
         [_wechatPlayButton setTitleColor:[UIColor colorWithHexString:@"666666"] forState:UIControlStateNormal];
         [_wechatPlayButton setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
         [_wechatPlayButton setImage:[UIImage imageNamed:@"js_tixian_wechat"] forState:UIControlStateNormal];
+        [_wechatPlayButton setBackgroundImage:[UIImage imageNamed:@"js_tixian_beijing1"] forState:UIControlStateSelected];
+        [_wechatPlayButton setBackgroundImage:nil forState:UIControlStateNormal];
         _wechatPlayButton.clipsToBounds = YES;
         _wechatPlayButton.layer.cornerRadius = 5;
         _wechatPlayButton.layer.borderWidth = 1.0;
@@ -508,6 +529,8 @@
             @strongify(self)
             self.wechatPlayButton.selected = YES;
             self.aliplayButton.selected = NO;
+            self.aliplayButton.layer.borderWidth = 1.0;
+            self.wechatPlayButton.layer.borderWidth = 0.0;
             if (self.delegate && [self.delegate respondsToSelector:@selector(didSelectedAliPlay:)]) {
                 [self.delegate didSelectedAliPlay:NO];
             }
@@ -582,6 +605,8 @@
         //默认选中支付宝
         self.wechatPlayButton.selected = NO;
         self.aliplayButton.selected = YES;
+        self.aliplayButton.layer.borderWidth = 0.0;
+        self.wechatPlayButton.layer.borderWidth = 1.0;
         
     }
     return self;
@@ -698,7 +723,7 @@
     UITableViewCell *cell = nil;
     if (indexPath.row == 0) {
         JSWithdrawFirstCell *firstCell = [tableView dequeueReusableCellWithIdentifier:@"JSWithdrawFirstCell" forIndexPath:indexPath];
-        firstCell.moneyLabel.text = self.withdrawModel.amount;
+        firstCell.moneyLabel.text = [NSString stringWithFormat:@"%0.2f元", self.withdrawModel.amount/100.0f];
         firstCell.delegate = self;
         cell = firstCell;
     }else if (indexPath.row == 1){
@@ -728,7 +753,9 @@
 - (void)didSelectedAliPlay:(BOOL)isAlipay{
     self.currentMethod = isAlipay ? @"ALIPAY":@"WECHAT";
 }
-
+- (void)didSelectedShoppingButton{
+    [self showAutoDismissTextAlert:@"开发中、敬请期待"];
+}
 #pragma mark - JSWithdrawSecondCellDelegate
 - (void)didSelectedItemModel:(JSWithdrawItemModel *)model{
     self.currentItemModel = model;

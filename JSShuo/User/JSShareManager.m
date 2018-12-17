@@ -179,7 +179,7 @@
 }
 
 - (void)reportShareSuccessMessage{
-    if ([self.shareUrl isNotBlank]) {
+    if ([self.shareUrl isNotBlank] && [JSAccountManager isLogin]) {
         [JSNetworkManager requestShareSuccessWithUrl:self.shareUrl complement:^(BOOL isSuccess, NSDictionary * _Nonnull contentDict) {
             
         }];

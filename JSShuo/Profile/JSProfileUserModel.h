@@ -32,6 +32,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy)NSString *wechatId;
 @property (nonatomic, copy)NSString *alipayId;
 @property (nonatomic, assign)NSInteger bindStatus;
+@property (nonatomic, copy)NSString *wechatAccount;
+@property (nonatomic, copy)NSString *alipayAccount;
+@property (nonatomic, assign)NSInteger isWechatBind;
+@property (nonatomic, assign)NSInteger isAlipayBind;
 @end
 
 NS_ASSUME_NONNULL_END

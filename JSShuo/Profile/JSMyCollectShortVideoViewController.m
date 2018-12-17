@@ -22,6 +22,8 @@
     if (!_imageView) {
         _imageView = [[UIImageView alloc]init];
         _imageView.backgroundColor = [UIColor randomColor];
+        _imageView.clipsToBounds = YES;
+        _imageView.contentMode = UIViewContentModeScaleAspectFill;
     }
     return _imageView;
 }

@@ -284,6 +284,8 @@
         [self addSubview:self.lineRight];
         [self addSubview:self.lineLeft];
 
+        self.myReadTitle.hidden = YES;
+        self.myReadTime.hidden = YES;
         
         [self.leftButton mas_makeConstraints:^(MASConstraintMaker *make) {
             make.size.mas_equalTo(CGSizeMake(30, 30));
@@ -370,7 +372,7 @@
 - (void)setUserModel:(JSProfileUserModel *)userModel{
     _userModel = userModel;
     self.titleLabel.text = userModel.nickname;
-    self.subLabel.text = userModel.inviteCode;
+    self.subLabel.text = [NSString stringWithFormat:@"我的邀请码：%@",userModel.inviteCode];
     [self.avaterIcon setImageWithURL:[NSURL URLWithString:userModel.portrait] placeholder:[UIImage imageNamed:@"js_profile_default_icon"]];
     self.myGoldNumber.text = @(userModel.coin).stringValue;
     self.myReadTime.text = @(userModel.readTime).stringValue;
@@ -412,9 +414,7 @@
             JSSettingViewController *settingVC = [[JSSettingViewController alloc]init];
             settingVC.hidesBottomBarWhenPushed = YES;
             [self.rt_navigationController pushViewController:settingVC animated:YES complete:nil];
-//            [JSAlertView showAlertViewWithType:JSALertTypeGold rewardModel:nil superView:self.tabBarController.view handle:^{
-//                NSLog(@"点击跳转");
-//            }];
+
             
         } forControlEvents:UIControlEventTouchUpInside];
     }
@@ -479,7 +479,7 @@
     if (!_profileInfoArray) {
         _profileInfoArray = @[@{@"imagePath":@"js_profile_input_code",@"title":@"输入邀请码",@"subTitle":@"0.5-88零钱大抽奖"},
                               @{@"imagePath":@"js_profile_mession",@"title":@"任务中心",@"subTitle":@"红包金币拿到手软"},
-                              @{@"imagePath":@"js_profile_game",@"title":@"游戏大厅",@"subTitle":@"金币赚不停"},
+                              @{@"imagePath":@"js_profile_game",@"title":@"活动大厅",@"subTitle":@"金币赚不停"},
                               /*@{@"imagePath":@"js_profile_huiyuan",@"title":@"会员大促销",@"subTitle":@"特价返利最后七天"},*/
                               @{@"imagePath":@"js_profile_question",@"title":@"常见问题",@"subTitle":@""},
                               @{@"imagePath":@"js_profile_pinglun",@"title":@"我的评论",@"subTitle":@""},
@@ -626,7 +626,7 @@
         [self.rt_navigationController pushViewController:inputVC animated:YES complete:nil];
     }else if ([title isEqualToString:@"任务中心"]){
         [[AppDelegate instance].mainViewController switchToViewControllerAtIndex:3];
-    }else if ([title isEqualToString:@"游戏大厅"]){
+    }else if ([title isEqualToString:@"活动大厅"]){
         [[AppDelegate instance].mainViewController switchToViewControllerAtIndex:2];
         
     }else if ([title isEqualToString:@"会员大促销"]){

@@ -182,7 +182,7 @@
         _convertTitleLabel = [[UILabel alloc]init];
         _convertTitleLabel.font = [UIFont systemFontOfSize:12];
         _convertTitleLabel.textColor = [UIColor whiteColor];
-        _convertTitleLabel.text = @"汇率：20金币=0.1元";
+        _convertTitleLabel.text = @"汇率：2000金币=1零钱";
         [_convertTitleLabel sizeToFit];
     }
     return _convertTitleLabel;
@@ -360,10 +360,34 @@
 
 - (void)setModel:(JSAccountModel *)model{
     _model = model;
-    self.balanceLabel.text = [NSString stringWithFormat:@"￥%@",@(model.money)];
-    self.totalLabel.text = [NSString stringWithFormat:@"￥%@",@(model.totalMoney)];
-    self.todayLabel.text = [NSString stringWithFormat:@"￥%@",@(model.todayCoin)];
-    self.convertTitleLabel.text = [NSString stringWithFormat: @"汇率：%@金币=1元",@(model.exchangeRate)];
+    NSString *money = [NSString stringWithFormat:@"%.02f",model.money/100.0f];
+    NSString *typeString = @"零钱";
+    NSString *moneyString = [NSString stringWithFormat:@"%@ %@",money,typeString];
+    
+    NSMutableAttributedString *AttributedStr = [[NSMutableAttributedString alloc]initWithString:moneyString];
+    [AttributedStr addAttribute:NSFontAttributeName
+                          value:[UIFont systemFontOfSize:16.0]
+                          range:[moneyString rangeOfString:typeString]];
+    
+    
+    self.balanceLabel.attributedText = AttributedStr;
+    
+    
+    NSString *totalMoney = [NSString stringWithFormat:@"%.02f",model.money/100.0f];
+    
+    NSString *totalMoneyString = [NSString stringWithFormat:@"%@ %@",totalMoney,typeString];
+    
+    NSMutableAttributedString *AttributedStr2 = [[NSMutableAttributedString alloc]initWithString:totalMoneyString];
+    [AttributedStr2 addAttribute:NSFontAttributeName
+                          value:[UIFont systemFontOfSize:16.0]
+                          range:[totalMoneyString rangeOfString:typeString]];
+    
+    
+    self.totalLabel.attributedText = AttributedStr2;//[NSString stringWithFormat:@"%.02f零钱",model.totalMoney/100.0f];
+    
+    
+    self.todayLabel.text = [NSString stringWithFormat:@"%@",@(model.todayCoin)];
+    self.convertTitleLabel.text = [NSString stringWithFormat: @"汇率：%@金币=1零钱",@(model.exchangeRate * 100)];
     
 }
 @end
@@ -458,7 +482,7 @@
         
         [_shareButton bk_addEventHandler:^(id sender) {
             
-            [JSShareManager shareWithTitle:@"叫兽说" Text:@"我在这里赚了好多零花钱了，也分享给你。运气好的话，注册就有188注册红包加88邀请红包哦。" Image:[UIImage imageNamed:@"js_share_image"] Url:kShareUrl QQImageURL:kShareQQImage_1 shareType:JSShareManagerTypeQQWeChat complement:^(BOOL isSuccess) {
+            [JSShareManager shareWithTitle:@"叫兽说" Text:@"我在这里赚了好多零花钱了，也分享给你。运气好的话，注册就有188注册红包加88邀请红包哦。" Image:[UIImage imageNamed:@"js_share_image"] Url:kShareUrl QQImageURL:kShareQQImage_2 shareType:JSShareManagerTypeQQWeChat complement:^(BOOL isSuccess) {
                 if (isSuccess) {
                     [self showAutoDismissTextAlert:@"分享成功"];
                 }else{

@@ -9,6 +9,7 @@
 #import "JSMyCollectVideoViewController.h"
 #import "JSCollectModel.h"
 #import "JSNetworkManager+Login.h"
+#import "JSVideoDetailViewController.h"
 
 @interface JSMyCollectVideoCell : UITableViewCell
 
@@ -44,8 +45,10 @@
 - (UIImageView *)contentImageView{
     if (!_contentImageView) {
         _contentImageView = [[UIImageView alloc]init];
-        _contentImageView.size = CGSizeMake(kScreenWidth-40, (kScreenWidth-40)/2.536f);
-        _contentImageView.backgroundColor = [UIColor randomColor];
+        _contentImageView.size = CGSizeMake(kScreenWidth-40, (kScreenWidth-40)/16.0f * 9);
+//        _contentImageView.backgroundColor = [UIColor randomColor];
+        _contentImageView.contentMode = UIViewContentModeScaleAspectFill;
+        _contentImageView.clipsToBounds = YES;
     }
     return _contentImageView;
 }
@@ -106,6 +109,7 @@
     _model = model;
     self.titleLabel.text = model.title;
 //    self.contentLabel.text = model.channel;
+    [self.contentImageView setImageWithURL:[NSURL URLWithString:model.cover.firstObject] placeholder:nil];
     self.timeLabel.text = model.publishTime;
     
     [self.titleLabel sizeToFit];
@@ -138,7 +142,7 @@
 
 + (CGFloat)heightForRowWithModel:(JSCollectModel *)model{
     CGFloat height = 10 + 10 + 20 + 10 ;
-    CGFloat contentHeight = (kScreenWidth-40)/2.536f;
+    CGFloat contentHeight = (kScreenWidth-40)/16.0f*9;
     height += contentHeight;
     height += 10;
     height += 42;
@@ -259,7 +263,10 @@
     }];
     [self.tableView.mj_header beginRefreshing];
 }
-
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.tableView.mj_header beginRefreshing];
+}
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
@@ -272,6 +279,17 @@
     cell.model = model;
     cell.delegate = self;
     return cell;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    JSVideoDetailViewController *vc = [[JSVideoDetailViewController alloc]init];
+    JSCollectModel *model = self.dataArray[indexPath.row];
+    
+    vc.urlStr = model.videoUrl;
+    vc.videoTitle = model.title;
+    vc.articleId = @(model.articleId);
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.rt_navigationController pushViewController:vc animated:YES complete:nil];
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     JSCollectModel *model = self.dataArray[indexPath.row];

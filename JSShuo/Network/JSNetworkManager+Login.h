@@ -92,9 +92,13 @@ typedef  NS_ENUM(NSInteger, JSRequestSecurityCodeType){
 //清空评论
 + (void)clearCommentWithIs:(NSString *)ids Complement:(void(^)(BOOL isSuccess,NSDictionary *contentDict))complement;
 
+//删除评论
++ (void)deleateCommentWithIs:(NSString *)ids Complement:(void(^)(BOOL isSuccess,NSDictionary *contentDict))complement;
 // 添加收藏
 + (void) addCollect:(NSDictionary *)params complement:(void(^)(BOOL isSuccess, NSDictionary *contentDic))complement;
 
+//s查询收藏
++ (void)queryCollectWithArticleId:(NSInteger)collectId complement:(void(^)(BOOL isSuccess, NSDictionary *contentDict))complement;
 //收藏列表
 + (void)requestCollectListWithType:(NSInteger)type pageNumber:(NSInteger)pageIndex complement:(void(^)(BOOL isSuccess, NSDictionary *contentDict))complement;
 

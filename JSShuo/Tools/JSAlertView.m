@@ -8,6 +8,7 @@
 
 #import "JSAlertView.h"
 #import "UIImage+Extension.h"
+#import "AppDelegate.h"
 
 
 @interface JSAlertView()
@@ -232,7 +233,7 @@
     _rewardModel = rewardModel;
     switch (self.alertType) {
         case JSALertTypeFirstLoginIn:{
-            NSString *typeString = rewardModel.amountType == 1 ? @"金币":@"元";
+            NSString *typeString = @"元";
             NSString *countString = [NSString stringWithFormat:@"%.02f",rewardModel.amount/100.0f];
             self.titleLabel.text = [NSString stringWithFormat:@"%@%@",countString,typeString];
             self.subLabel.text = [NSString stringWithFormat:@"恭喜你获得%@红包",self.titleLabel.text];
@@ -241,8 +242,9 @@
             
         }break;
         case JSALertTypeGold:{
-            NSString *typeString = rewardModel.amountType == 1 ? @"金币":@"元";
-            NSString *countString = [NSString stringWithFormat:@"%.02f",rewardModel.amount/100.0f];
+            NSString *typeString = @"金币";
+//            float amout = rewardModel.amountType == 1 ? rewardModel.amount : rewardModel.amount/100.0f;
+            NSString *countString = [NSString stringWithFormat:@"%ld",(long)rewardModel.amount];
             self.subLabel.text = [NSString stringWithFormat:@"获得%@%@",countString,typeString];
         }break;
             
@@ -252,10 +254,18 @@
     
 }
 + (void)showAlertViewWithType:(JSALertType)alertType rewardModel:(JSMissionRewardModel *)model superView:(UIView *)superView handle:(void(^)(void)) handle{
-    JSAlertView *alertView = [[JSAlertView alloc]initWithFrame:superView.bounds withType:alertType];
-    alertView.rewardModel = model;
-    alertView.handleBlock = handle;
-    [superView addSubview:alertView];
+    if (alertType == JSALertTypeNomal) {
+        NSString *alertString = [NSString stringWithFormat:@"恭喜你获得%ld金币",(long)model.amount];
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
+        hud.mode = MBProgressHUDModeText;
+        hud.label.text = alertString;
+        [hud hideAnimated:YES afterDelay:2.f];
+    }else{
+        JSAlertView *alertView = [[JSAlertView alloc]initWithFrame:superView.bounds withType:alertType];
+        alertView.rewardModel = model;
+        alertView.handleBlock = handle;
+        [superView addSubview:alertView];
+    }
 }
 + (void)showCIQRCodeImageWithUrl:(NSString *)url superView:(UIView *)superView{
     JSAlertView *alertView = [[JSAlertView alloc]initWithFrame:superView.bounds withUrl:url];
@@ -291,5 +301,13 @@
         [self removeFromSuperview];
     };
     [self.contentView pop_addAnimation:anim forKey:@"alpha"];
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    CGPoint point = [[touches anyObject] locationInView:self];
+    point = [self.contentView.layer convertPoint:point fromLayer:self.layer];
+    if (![self.contentView.layer containsPoint:point]) {
+        [self dismissAlertView];
+    }
 }
 @end

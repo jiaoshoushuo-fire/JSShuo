@@ -74,6 +74,7 @@
         _hourLabel.size = CGSizeMake(32, 32);
         _hourLabel.clipsToBounds = YES;
         _hourLabel.layer.cornerRadius = 5;
+        _hourLabel.text = @"00";
     }
     return _hourLabel;
 }
@@ -87,6 +88,7 @@
         _minuteLabel.size = CGSizeMake(32, 32);
         _minuteLabel.clipsToBounds = YES;
         _minuteLabel.layer.cornerRadius = 5;
+        _minuteLabel.text = @"00";
     }
     return _minuteLabel;
 }
@@ -100,6 +102,7 @@
         _secondLabel.size = CGSizeMake(32, 32);
         _secondLabel.clipsToBounds = YES;
         _secondLabel.layer.cornerRadius = 5;
+        _secondLabel.text = @"00";
     }
     return _secondLabel;
 }
@@ -375,7 +378,8 @@
             dateFormatter.dateFormat=@"yyyy-MM-dd hh:mm:ss";
             NSDate *firDate = [dateFormatter dateFromString:self.currentModel.nextStartTime];
             
-            [self.countDown countDownWithStratDate:[NSDate date] finishDate:firDate completeBlock:^(NSInteger day, NSInteger hour, NSInteger minute, NSInteger second) {
+            
+            [self.countDown countDownWithStratTimeStamp:[[NSDate date]timeIntervalSince1970] finishTimeStamp:[[NSDate date]timeIntervalSince1970]+self.currentModel.countDown completeBlock:^(NSInteger day, NSInteger hour, NSInteger minute, NSInteger second) {
                 self.countDownView.hourLabel.text = [NSString stringWithFormat:@"%02ld",(long)hour];
                 self.countDownView.minuteLabel.text = [NSString stringWithFormat:@"%02ld",(long)minute];
                 self.countDownView.secondLabel.text = [NSString stringWithFormat:@"%02ld",(long)second];
@@ -384,6 +388,9 @@
                     [self initOpenViewIsEnable:YES];
                 }
             }];
+//            [self.countDown countDownWithStratDate:[NSDate date] finishDate:firDate completeBlock:^(NSInteger day, NSInteger hour, NSInteger minute, NSInteger second) {
+//
+//            }];
             
             [self initOpenViewIsEnable:self.currentModel.canGrab];
         }
@@ -416,12 +423,12 @@
     [JSNetworkManager requestOpenedPackageWithID:self.currentModel.grabRedPackageId Complement:^(BOOL isSuccess, NSDictionary * _Nonnull contentDict) {
         [self hideWaitingHUD];
         if (isSuccess) {
-            NSDictionary *openedDict = contentDict[@"reward"];
-            NSError *error = nil;
-            JSMissionRewardModel *model = [MTLJSONAdapter modelOfClass:[JSMissionRewardModel class] fromJSONDictionary:openedDict error:&error];
-            [JSAlertView showAlertViewWithType:JSALertTypeFirstLoginIn rewardModel:model superView:self.navigationController.view handle:^{
-                
-            }];
+//            NSDictionary *openedDict = contentDict[@"reward"];
+//            NSError *error = nil;
+//            JSMissionRewardModel *model = [MTLJSONAdapter modelOfClass:[JSMissionRewardModel class] fromJSONDictionary:openedDict error:&error];
+//            [JSAlertView showAlertViewWithType:JSALertTypeFirstLoginIn rewardModel:model superView:self.navigationController.view handle:^{
+//                
+//            }];
 //            [self showAutoDismissTextAlert:@(model.amount).stringValue];
         }
     }];

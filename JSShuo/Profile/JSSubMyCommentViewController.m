@@ -10,7 +10,7 @@
 #import "JSMyCommentCell.h"
 #import "JSNetworkManager+Login.h"
 
-@interface JSSubMyCommentViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface JSSubMyCommentViewController ()<UITableViewDelegate,UITableViewDataSource,JSMyCommentCellDelegate>
 @property (nonatomic, strong)UITableView *tableView;
 @property (nonatomic, strong)NSMutableArray *dataArray;
 @property (nonatomic, assign)NSInteger currentPage;
@@ -166,6 +166,7 @@
     JSMyCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JSMyCommentCell" forIndexPath:indexPath];
     JSMyCommentModel *model = self.dataArray[indexPath.row];
     cell.model = model;
+    cell.delegate = self;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
@@ -175,4 +176,12 @@
     return [JSMyCommentCell heightForRowWithModel:model];
 }
 
+#pragma mark - JSMyCommentCellDelegate
+- (void)didSelectedDeleateButton:(JSMyCommentModel *)model{
+    [JSNetworkManager deleateCommentWithIs:@(model.commentId).stringValue Complement:^(BOOL isSuccess, NSDictionary * _Nonnull contentDict) {
+        if (isSuccess) {
+            [self.tableView.mj_header beginRefreshing];
+        }
+    }];
+}
 @end
