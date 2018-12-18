@@ -91,7 +91,7 @@
 //    } else {
 //        videoHeight = [UIScreen mainScreen].bounds.size.width * self.data.video_height/self.data.video_width;
 //    }
-    return kScreenWidth * 16 / 9;
+    return ScreenHeight-49-60;
 }
 
 @end

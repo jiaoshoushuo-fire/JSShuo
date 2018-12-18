@@ -11,11 +11,11 @@ const static NSString *channelList = @"/v1/content/channel/list";
 
 @implementation JSNetworkManager (Channel)
 
-+ (void) requestChannelListWithParams:(NSDictionary *)params complent:(void(^)(NSDictionary *contentDic))complent {
++ (void) requestChannelListWithParams:(NSDictionary *)params complent:(void(^)(BOOL isSuccess,NSDictionary *contentDic))complent {
     NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,channelList];
     [self GET:url parameters:params complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
         if (complent) {
-            complent(responseDict);
+            complent(isSuccess,responseDict);
         }
     }];
 }

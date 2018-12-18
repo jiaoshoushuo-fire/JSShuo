@@ -178,8 +178,10 @@
         
         self.currentPlayerManager.view.frame = superview.bounds;
         self.currentPlayerManager.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+//        self.currentPlayerManager.view.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin;
         self.controlView.frame = self.currentPlayerManager.view.bounds;
         self.controlView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+//        self.controlView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin;
     }
 }
 

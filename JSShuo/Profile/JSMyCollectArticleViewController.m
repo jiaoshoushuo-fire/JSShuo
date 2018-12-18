@@ -281,6 +281,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     JSArticleDetailViewController *vc = [[JSArticleDetailViewController alloc]init];
     JSCollectModel *model = self.dataArray[indexPath.row];
+    vc.title = model.title;
     vc.articleId = @(model.articleId);
     vc.hidesBottomBarWhenPushed = YES;
     [self.rt_navigationController pushViewController:vc animated:YES complete:nil];

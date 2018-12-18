@@ -130,9 +130,12 @@
     
     
     _titleLabel.text = model.title.length ? model.title : model.Description;
-    [threeContentView.firstImgView sd_setImageWithURL:model.cover[0]];
-    [threeContentView.secondImgView sd_setImageWithURL:model.cover[1]];
-    [threeContentView.thirdImgView sd_setImageWithURL:model.cover[2]];
+    NSString *imgStr0 = [NSString stringWithFormat:@"%@?imageView2/1/w/480/h/270",model.cover[0]];
+    NSString *imgStr1= [NSString stringWithFormat:@"%@?imageView2/1/w/480/h/270",model.cover[1]];
+    NSString *imgStr2 = [NSString stringWithFormat:@"%@?imageView2/1/w/480/h/270",model.cover[2]];
+    [threeContentView.firstImgView sd_setImageWithURL:[NSURL URLWithString:imgStr0] placeholderImage:[UIImage imageNamed:@"placeHolder_16_9"]];
+    [threeContentView.secondImgView sd_setImageWithURL:[NSURL URLWithString:imgStr1] placeholderImage:[UIImage imageNamed:@"placeHolder_16_9"]];
+    [threeContentView.thirdImgView sd_setImageWithURL:[NSURL URLWithString:imgStr2] placeholderImage:[UIImage imageNamed:@"placeHolder_16_9"]];
 }
 
 - (UILabel *)titleLabel {

@@ -33,6 +33,7 @@ static NSString *kIdentifier = @"ZFDouYinCell";
 @property (nonatomic, strong) ZFDouYinControlView *controlView;
 @property (nonatomic, strong) NSMutableArray *dataSource;
 @property (nonatomic, strong) NSMutableArray *urls;
+@property (nonatomic,strong) NSNumber *currentPage;
 @end
 
 @implementation JSShortVideoViewController
@@ -44,7 +45,7 @@ static NSString *kIdentifier = @"ZFDouYinCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    _currentPage = @0;
     self.view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.tableView];
     self.fd_prefersNavigationBarHidden = YES;
@@ -68,7 +69,7 @@ static NSString *kIdentifier = @"ZFDouYinCell";
     /// 1.0是完全消失时候
     self.player.playerDisapperaPercent = 1.0;
     
-    @weakify(self)
+    @weakify(self);
     self.player.playerDidToEnd = ^(id  _Nonnull asset) {
         @strongify(self)
         [self.player.currentPlayerManager replay];
@@ -76,8 +77,14 @@ static NSString *kIdentifier = @"ZFDouYinCell";
 }
 
 - (void)loadNewData {
-    [self.dataSource removeAllObjects];
-    [self.urls removeAllObjects];
+    if (!self.dataSource.count) {
+        [self.tableView.mj_header endRefreshing];
+        [self.tableView.mj_footer endRefreshing];
+        [self showAutoDismissTextAlert:@"请检查网络"];
+    } else {
+        [self.dataSource removeAllObjects];
+        [self.urls removeAllObjects];
+    }
     @weakify(self)
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         /// 下拉时候一定要停止当前播放，不然有新数据，播放位置会错位。
@@ -93,9 +100,11 @@ static NSString *kIdentifier = @"ZFDouYinCell";
 }
 
 - (void)requestData {
-    NSDictionary *params = @{@"pageNum":@1,@"channel":@"12",@"pageSize":@5};
-    [JSNetworkManager requestLongVideoListWithParams:params complent:^(NSNumber * _Nonnull totalPage, NSArray * _Nonnull modelsArray) {
-        self.dataSource = (NSMutableArray *)modelsArray;
+    int temp = self.currentPage.intValue + 1;
+    self.currentPage = [NSNumber numberWithInt:temp];
+    NSDictionary *params = @{@"pageNum":_currentPage,@"channel":@"12",@"pageSize":@5};
+    [JSNetworkManager requestLongVideoListWithParams:params complent:^(BOOL isSuccess,NSNumber * _Nonnull totalPage, NSArray * _Nonnull modelsArray) {
+        [self.dataSource addObjectsFromArray:modelsArray];
         for (int i = 0; i < modelsArray.count; i++) {
             JSShortVideoModel *model = modelsArray[i];
             NSString *URLString = [model.videoUrl stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];

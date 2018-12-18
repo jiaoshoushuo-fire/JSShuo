@@ -27,7 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong) NSNumber *showType;
 @property (nonatomic,copy) NSString *title;
 @property (nonatomic,copy) NSString *videoUrl;
-
+@property (nonatomic,copy) NSString *publishTimeDesc;
 
 + (JSRecommendModel *) modelWithDictionary:(NSDictionary *)dic;
 + (NSArray *) modelsWithArray:(NSArray *)array;

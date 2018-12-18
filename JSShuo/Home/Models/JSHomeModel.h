@@ -42,6 +42,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong) NSNumber *praiseNum;
 /** 发布距离时间 */
 @property (nonatomic,strong) NSString *publishTime;
+/** 发布的时间戳 **/
+@property (nonatomic,strong) NSString *publishTimeDesc;
 
 
 + (JSHomeModel *) modelWithDictionary:(NSDictionary *)dic;

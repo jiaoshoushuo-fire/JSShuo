@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface JSNetworkManager (ShortVideo)
 
-+ (void) requestLongVideoListWithParams:(NSDictionary *)params complent:(void(^)(NSNumber *totalPage,NSArray *modelsArray))complent;
++ (void) requestLongVideoListWithParams:(NSDictionary *)params complent:(void(^)(BOOL isSuccess,NSNumber *totalPage,NSArray *modelsArray))complent;
 
 @end
 

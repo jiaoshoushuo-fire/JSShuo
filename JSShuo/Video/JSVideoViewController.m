@@ -10,11 +10,13 @@
 #import "JSLongVideoCell.h"
 #import "JSNetworkManager+LongVideo.h"
 #import "JSVideoDetailViewController.h"
+#import "JSNoSearchResultView.h"
 
 @interface JSVideoViewController () <UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) NSMutableArray *datas;
 @property (nonatomic,strong) NSNumber *currentPage;
+@property (nonatomic,strong) JSNoSearchResultView *noResultView;
 @end
 
 @implementation JSVideoViewController
@@ -24,24 +26,33 @@
     _currentPage = @1;
     [self requestData];
     [self initTableView];
+    [self.view addSubview:self.noResultView];
+    _noResultView.hidden = YES;
 }
 
 - (void) requestData {
     NSDictionary *params = @{@"pageNum":_currentPage,@"channel":@"11",@"pageSize":@5};
-    [JSNetworkManager requestLongVideoListWithParams:params complent:^(NSNumber * _Nonnull totalPage, NSArray * _Nonnull modelsArray) {
-        if (modelsArray.count < 1) { // 如果数组为空，则说明请求失败
-            [self.tableView.mj_header endRefreshing];
-            [self.tableView.mj_footer endRefreshing];
-        }
-        if (self.currentPage.integerValue == 1) { // 下拉刷新
-            self.datas = [NSMutableArray arrayWithArray:modelsArray];
-            [self.tableView.mj_header endRefreshing];
+    @weakify(self);
+    [JSNetworkManager requestLongVideoListWithParams:params complent:^(BOOL isSuccess,NSNumber * _Nonnull totalPage, NSArray * _Nonnull modelsArray) {
+        @strongify(self);
+        if (isSuccess) {
+            self.noResultView.hidden = YES;
+            self.tableView.hidden = NO;
+            if (self.currentPage.integerValue == 1) { // 下拉刷新
+                self.datas = [NSMutableArray arrayWithArray:modelsArray];
+                [self.tableView.mj_header endRefreshing];
+            } else {
+                [self.datas addObjectsFromArray:modelsArray];
+                [self.tableView.mj_footer endRefreshing];
+            }
+            if (self.tableView) {
+                [self.tableView reloadData];
+            }
         } else {
-            [self.datas addObjectsFromArray:modelsArray];
+            self.tableView.hidden = YES;
+            [self.tableView.mj_header endRefreshing];
             [self.tableView.mj_footer endRefreshing];
-        }
-        if (self.tableView) {
-            [self.tableView reloadData];
+            self.noResultView.hidden = NO;
         }
     }];
 }
@@ -94,6 +105,15 @@
     return 40+(ScreenWidth-30)*9/16+9+25+2;
 }
 
-
+- (JSNoSearchResultView *)noResultView {
+    if (!_noResultView) {
+        _noResultView = [[JSNoSearchResultView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight-64)];
+        _noResultView.titleLabelOne.text = @"当前手机暂无网络连接！";
+        _noResultView.titleLabelTwo.text = @"请检查网络设置后下拉刷新";
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(requestData)];
+        [_noResultView addGestureRecognizer:tap];
+    }
+    return _noResultView;
+}
 
 @end

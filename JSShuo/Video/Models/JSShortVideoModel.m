@@ -43,4 +43,8 @@
     }
 }
 
+- (void)setValue:(id)value forUndefinedKey:(NSString *)key{
+    NSLog(@"class name>> %@----UndefinedKey:%@",NSStringFromClass([self class]),key);
+}
+
 @end

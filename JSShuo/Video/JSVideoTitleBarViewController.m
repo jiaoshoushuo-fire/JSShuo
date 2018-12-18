@@ -45,7 +45,7 @@
 }
 
 - (void) loadData {
-    self.datas = @[@"长视频",@"短视频"];
+    self.datas = @[@"视频",@"短视频"];
     [self scrollToControllerAtIndex:0 animate:YES];
     [self reloadData];
 }

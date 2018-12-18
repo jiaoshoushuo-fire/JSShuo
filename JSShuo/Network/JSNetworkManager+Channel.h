@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface JSNetworkManager (Channel)
 
-+ (void) requestChannelListWithParams:(NSDictionary *)params complent:(void(^)(NSDictionary *contentDic))complent;
++ (void) requestChannelListWithParams:(NSDictionary *)params complent:(void(^)(BOOL isSuccess,NSDictionary *contentDic))complent;
 
 @end
 

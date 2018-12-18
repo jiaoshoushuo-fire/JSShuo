@@ -85,7 +85,7 @@
                 [self.delegate didSelectedLikeButtonWithModel:self.data];
             }
         } forControlEvents:UIControlEventTouchUpInside];
-        
+
         [self.commentBtn bk_addEventHandler:^(id sender) {
             @strongify(self)
             [JSAccountManager checkLoginStatusComplement:^(BOOL isLogin) {
@@ -95,9 +95,9 @@
                     }
                 }
             }];
-            
+
         } forControlEvents:UIControlEventTouchUpInside];
-        
+
         [self.shareBtn bk_addEventHandler:^(id sender) {
             @strongify(self)
             if (self.delegate && [self.delegate respondsToSelector:@selector(didSelectedShareButtonWithModel:)]) {
@@ -111,7 +111,7 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     self.coverImageView.frame = self.contentView.bounds;
-    
+
     CGFloat min_x = 0;
     CGFloat min_y = 0;
     CGFloat min_w = 0;
@@ -119,28 +119,28 @@
     CGFloat min_view_w = self.width;
     CGFloat min_view_h = self.height;
     CGFloat margin = 30;
-    
+
     min_w = 30;
     min_h = min_w;
     min_x = min_view_w - min_w - 20;
     min_y = min_view_h - min_h - 80;
     self.shareBtn.frame = CGRectMake(min_x, min_y, min_w, min_h);
-    
+
     min_w = CGRectGetWidth(self.shareBtn.frame);
     min_h = min_w;
     min_x = CGRectGetMinX(self.shareBtn.frame);
     min_y = CGRectGetMinY(self.shareBtn.frame) - min_h - margin;
     self.commentBtn.frame = CGRectMake(min_x, min_y, min_w, min_h);
-    
+
     min_w = CGRectGetWidth(self.shareBtn.frame);
     min_h = min_w;
     min_x = CGRectGetMinX(self.commentBtn.frame);
     min_y = CGRectGetMinY(self.commentBtn.frame) - min_h - margin;
     self.likeBtn.frame = CGRectMake(min_x, min_y, min_w, min_h);
-    
+
     min_x = 20;
-    min_h = 20;
-    min_y = min_view_h - min_h - 50;
+    min_h = 42;
+    min_y = min_view_h - min_h - 40;
     min_w = self.likeBtn.left - margin;
     self.titleLabel.frame = CGRectMake(min_x, min_y, min_w, min_h);
 }
@@ -148,6 +148,8 @@
 - (UILabel *)titleLabel {
     if (!_titleLabel) {
         _titleLabel = [UILabel new];
+        _titleLabel.numberOfLines = 0;
+        _titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
         _titleLabel.textColor = [UIColor whiteColor];
         _titleLabel.font = [UIFont systemFontOfSize:15];
         _titleLabel.text = @"adfkljaklfja";
@@ -191,7 +193,7 @@
 - (void)setData:(JSShortVideoModel *)data {
     _data = data;
     [self.coverImageView setImageWithURLString:data.cover[0] placeholder:[UIImage imageNamed:@"loading_bgView"]];
-    self.titleLabel.text = data.title;
+    self.titleLabel.text = data.Description;
     //查询是否收藏
     if ([JSAccountManager isLogin]) {
         [JSNetworkManager queryCollectWithArticleId:data.articleId.integerValue complement:^(BOOL isSuccess, NSDictionary * _Nonnull contentDict) {
@@ -199,7 +201,7 @@
             self.likeBtn.selected = isCollect;
         }];
     }
-    
+
 }
 
 - (UIImageView *)coverImageView {

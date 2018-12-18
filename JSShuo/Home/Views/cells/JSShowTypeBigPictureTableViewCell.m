@@ -61,7 +61,8 @@
     
     _titleLabel.text = model.title.length ? model.title : model.Description;
     
-    [self.bigImageView sd_setImageWithURL:[NSURL URLWithString:model.cover[0]]];
+    NSString *imgStr = [NSString stringWithFormat:@"%@?imageView2/1/w/480/h/270",model.cover[0]];
+    [self.bigImageView sd_setImageWithURL:[NSURL URLWithString:imgStr] placeholderImage:[UIImage imageNamed:@"placeHolder_16_9"]];
     
 }
 

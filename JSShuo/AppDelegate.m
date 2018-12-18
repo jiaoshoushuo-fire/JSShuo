@@ -199,7 +199,9 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         if([type isEqualToString:@"0"]) { // 文章
             NSString *ID = [userInfo objectForKey:@"ID"];
+            NSString *titleName = [userInfo objectForKey:@"titleName"];
             JSArticleDetailViewController *vc = [JSArticleDetailViewController new];
+            vc.titleName = titleName;
             vc.articleId = [NSNumber numberWithString:ID];
             vc.hidesBottomBarWhenPushed = YES;
             RTRootNavigationController *nav = self.mainViewController.viewControllers[0];
