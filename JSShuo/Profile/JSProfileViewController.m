@@ -635,7 +635,7 @@
         [self.rt_navigationController pushViewController:memberVC animated:YES complete:nil];
         
     }else if ([title isEqualToString:@"常见问题"]){
-        JSCommonQuestionViewController *commonVC = [[JSCommonQuestionViewController alloc]init];
+        JSCommonQuestionViewController *commonVC = [[JSCommonQuestionViewController alloc]initWithUrl:@"http://api.jiaoshoutt.com/v1/page/question"];
         commonVC.hidesBottomBarWhenPushed = YES;
         [self.rt_navigationController pushViewController:commonVC animated:YES complete:nil];
         

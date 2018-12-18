@@ -6,11 +6,11 @@
 //  Copyright © 2018年  乔中祥. All rights reserved.
 //
 
-#import "JSBaseViewController.h"
+#import "JSBaseWebViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface JSNewUserGuideViewController : JSBaseViewController
+@interface JSNewUserGuideViewController : JSBaseWebViewController
 
 @end
 
