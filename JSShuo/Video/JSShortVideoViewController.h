@@ -30,10 +30,13 @@
  */
 
 #import "JSBaseViewController.h"
+#import "JSShortVideoModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface JSShortVideoViewController : JSBaseViewController
+
+@property (nonatomic,assign) NSInteger ID;
 
 @end
 

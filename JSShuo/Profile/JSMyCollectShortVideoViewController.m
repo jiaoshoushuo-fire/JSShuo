@@ -9,6 +9,8 @@
 #import "JSMyCollectShortVideoViewController.h"
 #import "JSNetworkManager+Login.h"
 #import "JSCollectModel.h"
+#import "JSShortVideoModel.h"
+#import "JSShortVideoViewController.h"
 
 @interface JSMyCollectShortVideoCell : UICollectionViewCell
 @property (nonatomic, strong)UIImageView *imageView;
@@ -187,7 +189,12 @@
     return cell;
 }
 
-
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    JSShortVideoViewController *vc = [JSShortVideoViewController new];
+    JSCollectModel *model = self.dataArray[indexPath.row];
+    vc.ID = model.articleId;
+    [self.rt_navigationController pushViewController:vc animated:YES complete:nil];
+}
 
 
 @end
