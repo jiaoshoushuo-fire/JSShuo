@@ -16,6 +16,7 @@
 #import "JSIncomeListViewController.h"
 #import "JSShareManager.h"
 #import "JSMyApprenticeViewController.h"
+#import "JSNewUserGuideViewController.h"
 
 
 @interface JSMyWalletHeaderView : UIView
@@ -60,6 +61,7 @@
         _alertLabel = [[YYLabel alloc]init];
         _alertLabel.displaysAsynchronously = YES;
         _alertLabel.ignoreCommonProperties = YES;
+        _alertLabel.userInteractionEnabled = YES;
         _alertLabel.backgroundColor = [UIColor colorWithHexString:@"F9F0D5"];
         
         NSString *text = @"新手必看！为什么邀请好友可以赚取千万金币？";
@@ -387,7 +389,7 @@
     
     
     self.todayLabel.text = [NSString stringWithFormat:@"%@",@(model.todayCoin)];
-    self.convertTitleLabel.text = [NSString stringWithFormat: @"汇率：%@金币=1零钱",@(model.exchangeRate * 100)];
+    self.convertTitleLabel.text = [NSString stringWithFormat: @"汇率：%@金币=1零钱",@(model.exchangeRate)];
     
 }
 @end
@@ -505,6 +507,12 @@
             
         } forControlEvents:UIControlEventTouchUpInside];
         
+        [_headerView.alertLabel bk_whenTapped:^{
+            @strongify(self)
+            JSNewUserGuideViewController *newVC = [[JSNewUserGuideViewController alloc]initWithUrl:@"http://api.jiaoshoutt.com/v1/page/zhuanqianzhinan"];
+            newVC.hidesBottomBarWhenPushed = YES;
+            [self.rt_navigationController pushViewController:newVC animated:YES complete:nil];
+        }];
         [_headerView.convertButton bk_addEventHandler:^(id sender) {
             @strongify(self)
             JSConvertViewController *convertVC = [[JSConvertViewController alloc]init];

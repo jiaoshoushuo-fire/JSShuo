@@ -53,7 +53,7 @@
         @weakify(self)
         [_bottomLeftButton bk_addEventHandler:^(id sender) {
             @strongify(self)
-            JSNewUserGuideViewController *newVC = [[JSNewUserGuideViewController alloc]init];
+            JSNewUserGuideViewController *newVC = [[JSNewUserGuideViewController alloc]initWithUrl:@"http://api.jiaoshoutt.com/v1/page/zhuanqianzhinan"];
             newVC.hidesBottomBarWhenPushed = YES;
             [self.rt_navigationController pushViewController:newVC animated:YES complete:nil];
             
