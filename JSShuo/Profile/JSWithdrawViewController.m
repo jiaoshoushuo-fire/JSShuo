@@ -118,6 +118,8 @@
 
 @property (nonatomic, strong)JSWithdrawModel *withDrawModel;
 
+@property (nonatomic, strong)JSWithdrawItemModel *currentItemModel;
+
 @property (nonatomic, weak)id<JSWithdrawSecondCellDelegate>delegate;
 @end
 
@@ -319,17 +321,18 @@
     JSWithdrawItemView *itemView = (JSWithdrawItemView *)tap.view;
     for (JSWithdrawItemView *view in self.withDrawItems) {
         if (view == itemView) {
-            view.isSelected = YES;
+//            view.isSelected = YES;
             if (self.delegate && [self.delegate respondsToSelector:@selector(didSelectedItemModel:)]) {
                 [self.delegate didSelectedItemModel:view.itemModel];
             }
         }else{
-            view.isSelected = NO;
+//            view.isSelected = NO;
         }
     }
 }
-- (void)setWithDrawModel:(JSWithdrawModel *)withDrawModel{
+- (void)setWithDrawModel:(JSWithdrawModel *)withDrawModel currentItemModel:(JSWithdrawItemModel *)currentItemModel{
     _withDrawModel = withDrawModel;
+    _currentItemModel = currentItemModel;
     
     for (int i=0; i<withDrawModel.ruleList.count; i++) {
         JSWithdrawItemModel *itemModel = withDrawModel.ruleList[i];
@@ -337,33 +340,45 @@
         itemView.itemModel = itemModel;
         itemView.hidden = NO;
         
-        if (i == 0) {
-            itemView.isSelected = YES;
-            if (self.delegate && [self.delegate respondsToSelector:@selector(didSelectedItemModel:)]) {
-                [self.delegate didSelectedItemModel:itemView.itemModel];
+        if (currentItemModel) {
+            if (currentItemModel.withdrawRuleId == itemModel.withdrawRuleId) {
+                itemView.isSelected = YES;
+            }else{
+                itemView.isSelected = NO;
             }
+            
         }else{
-            itemView.isSelected = NO;
+            if (i == 0) {
+                itemView.isSelected = YES;
+                _currentItemModel = itemModel;
+                if (self.delegate && [self.delegate respondsToSelector:@selector(didSelectedItemModel:)]) {
+                    [self.delegate didSelectedItemModel:itemView.itemModel];
+                }
+            }else{
+                itemView.isSelected = NO;
+            }
         }
+        
     }
-    self.titleLabel.text = withDrawModel.noteTitle;
+    self.titleLabel.text = self.currentItemModel.title;
     [self.titleLabel sizeToFit];
     
-    self.contentLabel.text = withDrawModel.noteBody;
+    self.contentLabel.text = self.currentItemModel.itemDescription;
     
-    CGFloat height = [withDrawModel.noteBody heightForFont:self.contentLabel.font width:kScreenWidth-40];
+    CGFloat height = [self.currentItemModel.itemDescription heightForFont:self.contentLabel.font width:kScreenWidth-40];
     self.contentLabel.size = CGSizeMake(kScreenWidth-40, height);
     
     [self setNeedsLayout];
 }
-+ (CGFloat)heightWithDrawModel:(JSWithdrawModel *)withDrawModel{
+
++ (CGFloat)heightWithDrawModel:(JSWithdrawModel *)withDrawModel itemModel:(JSWithdrawItemModel *)itemModel{
     CGFloat height = 10;
     height += 20;
     NSInteger index = withDrawModel.ruleList.count%3 > 0 ? 1 : 0;
     CGFloat itemsHeight = (60 + 25)*((withDrawModel.ruleList.count/3)+index);
     height += itemsHeight;
     
-    CGFloat contentHeight = [withDrawModel.noteBody heightForFont:[UIFont systemFontOfSize:14] width:kScreenWidth-40];
+    CGFloat contentHeight = [itemModel.itemDescription heightForFont:[UIFont systemFontOfSize:14] width:kScreenWidth-40];
     
     height +=15;
     height +=20;
@@ -655,7 +670,9 @@
 }
 - (void)getMoneyAction:(UIButton *)button{
     if (self.currentItemModel && self.currentMethod) {
+        [self showWaitingHUD];
         [JSNetworkManager getMoneyWithMethod:self.currentMethod count:self.currentItemModel.amount complement:^(NSInteger code, NSString * _Nonnull message) {
+            [self hideWaitingHUD];
             switch (code) {
                 case 0:{//提现成功
                     [self showAutoDismissTextAlert:@"提现成功"];
@@ -685,6 +702,7 @@
                 }break;
 
                 default:
+                    [self showAutoDismissTextAlert:message];
                     break;
             }
         }];
@@ -728,7 +746,9 @@
         cell = firstCell;
     }else if (indexPath.row == 1){
         JSWithdrawSecondCell *secondCell = [tableView dequeueReusableCellWithIdentifier:@"JSWithdrawSecondCell" forIndexPath:indexPath];
-        secondCell.withDrawModel = self.withdrawModel;
+        
+        [secondCell setWithDrawModel:self.withdrawModel currentItemModel:self.currentItemModel];
+        
         secondCell.delegate = self;
         cell = secondCell;
     }else if (indexPath.row == 2){
@@ -742,7 +762,7 @@
     if (indexPath.row == 0) {
         return 180;
     }else if (indexPath.row == 1){
-        return [JSWithdrawSecondCell heightWithDrawModel:self.withdrawModel];
+        return [JSWithdrawSecondCell heightWithDrawModel:self.withdrawModel itemModel:self.currentItemModel];
     }else if (indexPath.row == 2){
         return 250;
     }
@@ -759,6 +779,7 @@
 #pragma mark - JSWithdrawSecondCellDelegate
 - (void)didSelectedItemModel:(JSWithdrawItemModel *)model{
     self.currentItemModel = model;
+    [self.tableview reloadRow:1 inSection:0 withRowAnimation:UITableViewRowAnimationFade];
 }
 
 

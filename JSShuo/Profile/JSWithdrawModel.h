@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign)NSInteger money;
 @property (nonatomic, assign)NSInteger sort;
 @property (nonatomic, assign)NSInteger withdrawRuleId;
+@property (nonatomic, copy)NSString *title;
+@property (nonatomic, copy)NSString *itemDescription;
 @end
 
 @interface JSWithdrawModel : MTLModel<MTLJSONSerializing>

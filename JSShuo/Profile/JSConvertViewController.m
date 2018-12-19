@@ -288,14 +288,14 @@
 
 - (void)configModel:(JSAccountModel *)model{
     self.moneyLabel.text = [NSString stringWithFormat:@"%0.2f",model.money/100.0f];
-    self.subLabel_2.text = [NSString stringWithFormat:@"1零钱=%@金币",@(model.exchangeRate * 100)];
+    self.subLabel_2.text = [NSString stringWithFormat:@"1零钱=%@金币",@(model.exchangeRate)];
     self.inputTextField.placeholder = [NSString stringWithFormat:@"%0.2f",model.money/100.0f];
-    self.subLabel_4.text = @(model.money/100.0f * 1 * model.exchangeRate * 100).stringValue;
+    self.subLabel_4.text = @(model.money/100.0f * 1 * model.exchangeRate).stringValue;
 }
 
 
 - (void) textFieldDidChange:(UITextField *) textField {
     
-    self.subLabel_4.text = @(textField.text.integerValue * 1 * _accountModel.exchangeRate * 100).stringValue;
+    self.subLabel_4.text = @(textField.text.integerValue * 1 * _accountModel.exchangeRate).stringValue;
 }
 @end

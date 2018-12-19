@@ -389,7 +389,7 @@
     
     
     self.todayLabel.text = [NSString stringWithFormat:@"%@",@(model.todayCoin)];
-    self.convertTitleLabel.text = [NSString stringWithFormat: @"汇率：%@金币=1零钱",@(model.exchangeRate * 100)];
+    self.convertTitleLabel.text = [NSString stringWithFormat: @"汇率：%@金币=1零钱",@(model.exchangeRate)];
     
 }
 @end

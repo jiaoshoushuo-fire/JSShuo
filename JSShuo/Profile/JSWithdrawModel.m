@@ -15,7 +15,9 @@
              @"amount" : @"amount",
              @"money" : @"money",
              @"sort" : @"sort",
-             @"withdrawRuleId" : @"withdrawRuleId"
+             @"withdrawRuleId" : @"withdrawRuleId",
+             @"itemDescription":@"description",
+             @"title":@"title"
              };
 }
 
