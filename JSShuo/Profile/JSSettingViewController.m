@@ -149,7 +149,8 @@
     }else if ([title isEqualToString:@"给叫兽说评分"]){
         [JSTool appStoreComent];
     }else if ([title isEqualToString:@"隐私协议"]){
-        JSPrivacyViewController *privacyVC = [[JSPrivacyViewController alloc]init];
+        JSPrivacyViewController *privacyVC = [[JSPrivacyViewController alloc]initWithUrl:@"http://api.jiaoshoutt.com/v1/page/protocal/user"];
+        privacyVC.hidesBottomBarWhenPushed = YES;
         [self.rt_navigationController pushViewController:privacyVC animated:YES complete:nil];
     }else if ([title isEqualToString:@"建议与反馈"]){
         JSFeedbackViewController *feedbackVC = [[JSFeedbackViewController alloc]init];

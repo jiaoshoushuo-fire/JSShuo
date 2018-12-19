@@ -9,6 +9,7 @@
 #import "JSRegisterViewController.h"
 #import "JSNetworkManager+Login.h"
 #import "JSAccountManager+Wechat.h"
+#import "JSPrivacyViewController.h"
 
 @interface JSRegisterViewController ()
 @property (nonatomic, strong)UIImageView *accountIcon;
@@ -141,15 +142,19 @@
         _agreementLabel.ignoreCommonProperties = YES;
         
         
+        @weakify(self)
         _agreementLabel.highlightTapAction = ^(UIView * _Nonnull containerView, NSAttributedString * _Nonnull text, NSRange range, CGRect rect) {
-            NSLog(@"agreem highlight tap");
+            @strongify(self)
+            JSPrivacyViewController *privacyVC = [[JSPrivacyViewController alloc]initWithUrl:@"http://api.jiaoshoutt.com/v1/page/protocal/user"];
+            privacyVC.hidesBottomBarWhenPushed = YES;
+            [self.rt_navigationController pushViewController:privacyVC animated:YES complete:nil];
         };
         
         UIButton *selectButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [selectButton setImage:[UIImage imageNamed:@"js_agree_selected"] forState:UIControlStateNormal];
         [selectButton setImage:[UIImage imageNamed:@"js_agree_selected"] forState:UIControlStateSelected];
         [selectButton sizeToFit];
-        @weakify(self)
+        
         [selectButton bk_addEventHandler:^(id sender) {
             @strongify(self)
             NSLog(@"agreem selectbutton tap");

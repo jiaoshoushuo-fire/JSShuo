@@ -25,13 +25,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"隐私协议";
-    self.view.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:self.webView];
-    [self.webView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view);
-    }];
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://www.baidu.com/"]];
-    [self.webView loadRequest:request];
+//    self.view.backgroundColor = [UIColor whiteColor];
+//    [self.view addSubview:self.webView];
+//    [self.webView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.edges.equalTo(self.view);
+//    }];
+//    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://www.baidu.com/"]];
+//    [self.webView loadRequest:request];
 }
 
 /*
