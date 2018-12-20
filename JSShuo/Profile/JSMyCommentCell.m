@@ -17,7 +17,9 @@
              @"name" : @"name",
              @"portrait" : @"portrait",
              @"content" : @"content",
-             @"createTime" : @"createTime"
+             @"createTime" : @"createTime",
+             @"type":@"type",
+             @"articleId":@"articleId"
              };
 }
 

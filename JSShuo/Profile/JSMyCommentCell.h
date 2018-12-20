@@ -17,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy)NSString *portrait;
 @property (nonatomic, copy)NSString *content;
 @property (nonatomic, copy)NSString *createTime;
+@property (nonatomic, assign)NSInteger type;
+@property (nonatomic, assign)NSInteger articleId;
 @end
 
 @class JSMyCommentModel;

@@ -9,6 +9,7 @@
 #import "JSSubMyCommentViewController.h"
 #import "JSMyCommentCell.h"
 #import "JSNetworkManager+Login.h"
+#import "JSArticleDetailViewController.h"
 
 @interface JSSubMyCommentViewController ()<UITableViewDelegate,UITableViewDataSource,JSMyCommentCellDelegate>
 @property (nonatomic, strong)UITableView *tableView;
@@ -174,6 +175,20 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     JSMyCommentModel *model = self.dataArray[indexPath.row];
     return [JSMyCommentCell heightForRowWithModel:model];
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    JSMyCommentModel *model = self.dataArray[indexPath.row];
+    if (model.type == 1) {//文章
+        JSArticleDetailViewController *vc = [[JSArticleDetailViewController alloc]init];
+        vc.articleId = @(model.articleId);
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.rt_navigationController pushViewController:vc animated:YES complete:nil];
+    }else if (model.type == 2){//短视频
+        
+    }else if (model.type == 3){//长视频
+        
+    }
+
 }
 
 #pragma mark - JSMyCommentCellDelegate
