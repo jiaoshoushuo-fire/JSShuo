@@ -15,6 +15,7 @@ const static NSString *getActivityUrl = @"/v1/activity/grabredpackage/info";
 const static NSString *getCurrentActUrl = @"/v1/activity/grabredpackage/current";
 const static NSString *getOpenedRedListUrl = @"/v1/activity/grabredpackage/rank";
 const static NSString *postOpenPackageUrl = @"/v1/activity/grabredpackage/grab";
+const static NSString *getActivityListUrl = @"/v1/activity/list";
 
 @implementation JSNetworkManager (Mission)
 
@@ -99,6 +100,16 @@ const static NSString *postOpenPackageUrl = @"/v1/activity/grabredpackage/grab";
     NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,postTaskDoneUrl];
     NSDictionary *param = @{@"token":[JSAccountManager shareManager].accountToken,@"taskNo":taskNo};
     [self POST:url parameters:param complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
+        if (complement) {
+            complement(isSuccess,responseDict);
+        }
+    }];
+}
+
++ (void)requestMidTaskListComplement:(void(^)(BOOL isSuccess,  NSDictionary *contentDict))complement{
+    NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,getActivityListUrl];
+    
+    [self GET:url parameters:nil complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
         if (complement) {
             complement(isSuccess,responseDict);
         }

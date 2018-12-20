@@ -13,6 +13,10 @@
 #import "JSShareManager.h"
 #import "JSNewUserGuideViewController.h"
 #import "JSRedPacketViewController.h"
+#import "JSNetworkManager+Mission.h"
+#import "JSActivityWebViewController.h"
+
+
 
 @interface JSActivityCenterViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,ULBCollectionViewDelegateFlowLayout,JSActivityHeaderViewDelegate>
 @property (nonatomic, strong)UICollectionView *collectionView;
@@ -20,10 +24,18 @@
 @property (nonatomic, strong)UIImageView *titleBottomView;
 @property (nonatomic, strong)UIButton *bottomLeftButton;
 @property (nonatomic, strong)UIButton *bottomRightButton;
+
+@property (nonatomic, strong)NSMutableArray *activityArray;
 @end
 
 @implementation JSActivityCenterViewController
 
+- (NSMutableArray *)activityArray{
+    if (!_activityArray) {
+        _activityArray = [NSMutableArray array];
+    }
+    return _activityArray;
+}
 - (UILabel *)titleLabel{
     if (!_titleLabel) {
         _titleLabel = [[UILabel alloc]init];
@@ -99,6 +111,11 @@
         _collectionView.backgroundColor = [UIColor clearColor];
         [_collectionView registerClass:[JSActivityCell class] forCellWithReuseIdentifier:@"JSActivityCell"];
         [_collectionView registerClass:[JSActivityHeaderView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"JSActivityHeaderView"];
+        @weakify(self)
+        _collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+            @strongify(self);
+            [self headerRefreshData];
+        }];
         
     }
     return _collectionView;
@@ -140,17 +157,46 @@
         make.bottom.equalTo(self.bottomLeftButton.mas_top).offset(-20);
     }];
     // Do any additional setup after loading the view.
+    [self.collectionView.mj_header beginRefreshing];
+    
+}
+- (void)headerRefreshData{
+    
+    [JSNetworkManager requestMidTaskListComplement:^(BOOL isSuccess, NSDictionary * _Nonnull contentDict) {
+        if (isSuccess) {
+            [self.collectionView.mj_header endRefreshing];
+            if ([contentDict isKindOfClass:[NSArray class]]) {
+                [self.activityArray removeAllObjects];
+                NSArray *dataList = (NSArray *)contentDict;
+                for (NSDictionary *dict in dataList) {
+                    JSActivityCenterModel *model = [MTLJSONAdapter modelOfClass:[JSActivityCenterModel class] fromJSONDictionary:dict error:nil];
+                    [self.activityArray addObject:model];
+                }
+                [self.collectionView reloadData];
+            }
+        }
+    }];
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     return 1;
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 4;
+    return self.activityArray.count;
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     JSActivityCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"JSActivityCell" forIndexPath:indexPath];
+    JSActivityCenterModel *model = self.activityArray[indexPath.row];
+    cell.model = model;
     return cell;
+}
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    JSActivityCenterModel *model = self.activityArray[indexPath.row];
+    JSActivityWebViewController *webVC = [[JSActivityWebViewController alloc]initWithUrl:model.url];
+    webVC.name = model.name;
+    webVC.hidesBottomBarWhenPushed = YES;
+    [self.rt_navigationController pushViewController:webVC animated:YES complete:nil];
+    
 }
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
     

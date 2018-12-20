@@ -220,6 +220,7 @@
 		7AB931A9219E9490001E5390 /* JSConvertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB931A8219E9490001E5390 /* JSConvertViewController.m */; };
 		7AB931AC219E9763001E5390 /* JSAccountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB931AB219E9763001E5390 /* JSAccountModel.m */; };
 		7AB931AF219EDF89001E5390 /* JSIncomeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB931AE219EDF89001E5390 /* JSIncomeListViewController.m */; };
+		7ABD1D6521CB631B00625537 /* JSActivityWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABD1D6421CB631B00625537 /* JSActivityWebViewController.m */; };
 		7ABD9E602191BA6600E19B6A /* SDCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABD9E542191BA6500E19B6A /* SDCycleScrollView.m */; };
 		7ABD9E612191BA6600E19B6A /* UIView+SDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABD9E552191BA6500E19B6A /* UIView+SDExtension.m */; };
 		7ABD9E622191BA6600E19B6A /* SDCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABD9E562191BA6500E19B6A /* SDCollectionViewCell.m */; };
@@ -673,6 +674,8 @@
 		7AB931AB219E9763001E5390 /* JSAccountModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSAccountModel.m; sourceTree = "<group>"; };
 		7AB931AD219EDF89001E5390 /* JSIncomeListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSIncomeListViewController.h; sourceTree = "<group>"; };
 		7AB931AE219EDF89001E5390 /* JSIncomeListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSIncomeListViewController.m; sourceTree = "<group>"; };
+		7ABD1D6321CB631B00625537 /* JSActivityWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSActivityWebViewController.h; sourceTree = "<group>"; };
+		7ABD1D6421CB631B00625537 /* JSActivityWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSActivityWebViewController.m; sourceTree = "<group>"; };
 		7ABD9E512191BA6500E19B6A /* UIView+SDExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SDExtension.h"; sourceTree = "<group>"; };
 		7ABD9E522191BA6500E19B6A /* SDCycleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDCycleScrollView.h; sourceTree = "<group>"; };
 		7ABD9E532191BA6500E19B6A /* SDCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDCollectionViewCell.h; sourceTree = "<group>"; };
@@ -1230,6 +1233,8 @@
 			children = (
 				7A5FEEAF218B0D4D006CF7EC /* JSActivityCenterViewController.h */,
 				7A5FEEB0218B0D4D006CF7EC /* JSActivityCenterViewController.m */,
+				7ABD1D6321CB631B00625537 /* JSActivityWebViewController.h */,
+				7ABD1D6421CB631B00625537 /* JSActivityWebViewController.m */,
 				7AD5489C21AE60C400244C78 /* ULBCollectionViewFlowLayout.h */,
 				7AD5489B21AE60C400244C78 /* ULBCollectionViewFlowLayout.m */,
 				7AD5489521AE303900244C78 /* JSActivityCell.h */,
@@ -2070,6 +2075,7 @@
 				0065B4C221BF54C5003AEA5D /* JSNoSearchResultView.m in Sources */,
 				002B74DB219E647000483841 /* JSNetworkManager+Search.m in Sources */,
 				7A5FEEA3218B0BA7006CF7EC /* JSLaunchViewController.m in Sources */,
+				7ABD1D6521CB631B00625537 /* JSActivityWebViewController.m in Sources */,
 				006043302197C7700080091A /* ZFUtilities.m in Sources */,
 				0060432D2197C7700080091A /* UIViewController+ZFPlayerRotation.m in Sources */,
 				7AD5489721AE303900244C78 /* JSActivityCell.m in Sources */,
@@ -2258,7 +2264,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = JSShuo/JSShuo.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JB8ZC9V4MM;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2275,7 +2281,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.callthebeast.jiaoshoushuo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = JSShuo_develop;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -2287,8 +2293,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = JSShuo/JSShuo.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JB8ZC9V4MM;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2305,7 +2311,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.callthebeast.jiaoshoushuo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = JSShuo_distribution;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

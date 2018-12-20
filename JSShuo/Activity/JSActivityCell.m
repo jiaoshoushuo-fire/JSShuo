@@ -8,6 +8,21 @@
 
 #import "JSActivityCell.h"
 
+
+
+@implementation JSActivityCenterModel
+
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    return @{
+             @"activityId" : @"activityId",
+             @"image":@"image",
+             @"name":@"name",
+             @"url":@"url"
+             };
+}
+
+@end
+
 @interface JSActivityCell()
 @property (nonatomic, strong)UIImageView *imageView;
 @property (nonatomic, strong)UIButton *begainButton;
@@ -19,7 +34,7 @@
     if (!_imageView) {
         _imageView = [[UIImageView alloc]init];
         _imageView.userInteractionEnabled = YES;
-        _imageView.backgroundColor = [UIColor cyanColor];
+        _imageView.backgroundColor = [UIColor colorWithHexString:@"eeeeee"];
     }
     return _imageView;
 }
@@ -53,5 +68,10 @@
         }];
     }
     return self;
+}
+- (void)setModel:(JSActivityCenterModel *)model{
+    _model = model;
+    [self.begainButton setTitle:model.name forState:UIControlStateNormal];
+    [self.imageView setImageWithURL:[NSURL URLWithString:model.image] placeholder:nil];
 }
 @end
