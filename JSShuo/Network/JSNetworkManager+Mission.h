@@ -35,6 +35,9 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)requestOpenedPackageWithID:(NSInteger)ID Complement:(void(^)(BOOL isSuccess, NSDictionary *contentDict))complement;
 //完成任务
 + (void)requestTaskDoneWithNo:(NSString *)taskNo complement:(void(^)(BOOL isSuccess, NSDictionary *contentDict))complement;
+
+//中间列表
++ (void)requestMidTaskListComplement:(void(^)(BOOL isSuccess,  NSDictionary *contentDict))complement;
 @end
 
 NS_ASSUME_NONNULL_END

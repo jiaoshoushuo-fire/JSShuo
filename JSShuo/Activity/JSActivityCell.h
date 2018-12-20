@@ -10,8 +10,18 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface JSActivityCell : UICollectionViewCell
+@interface JSActivityCenterModel : MTLModel<MTLJSONSerializing>
 
+@property (nonatomic, assign)NSInteger activityId;
+@property (nonatomic, copy)NSString *image;
+@property (nonatomic, copy)NSString *name;
+@property (nonatomic, copy)NSString *url;
+
+@end
+
+
+@interface JSActivityCell : UICollectionViewCell
+@property (nonatomic, strong)JSActivityCenterModel *model;
 @end
 
 NS_ASSUME_NONNULL_END
