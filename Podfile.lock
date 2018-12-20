@@ -52,6 +52,7 @@ PODS:
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
   - TYPagerController (2.1.2)
+  - UMCCommon (1.5.3)
   - WechatOpenSDK (1.8.2)
   - Weibo_SDK (3.2.3)
   - WMPageController (2.5.2)
@@ -75,6 +76,7 @@ DEPENDENCIES:
   - RTRootNavigationController (~> 0.6.7)
   - SDWebImage (~> 3.8)
   - TYPagerController
+  - UMCCommon
   - WechatOpenSDK (~> 1.8.2)
   - Weibo_SDK (~> 3.2.3)
   - WMPageController (~> 2.5.2)
@@ -98,6 +100,7 @@ SPEC REPOS:
     - RTRootNavigationController
     - SDWebImage
     - TYPagerController
+    - UMCCommon
     - WechatOpenSDK
     - Weibo_SDK
     - WMPageController
@@ -120,11 +123,12 @@ SPEC CHECKSUMS:
   RTRootNavigationController: d6aa6cbb78a3eaecea4f6e4df63f15dd887836b8
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   TYPagerController: 262556ecef99986d26ed77fb1288a198ed42f4af
+  UMCCommon: 016af43c0f769feb1ae1861d65aaf2b23b89c9c7
   WechatOpenSDK: 676feec516a11173eafd1fe64b10d27babf28701
   Weibo_SDK: 652ca78c2f7147a5de5e75e7cbea89838a81772a
   WMPageController: 0c7624d2b48e4f1ab92371688cf6744ed701575d
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: 8448e5a8a25e3b5e52c65da4a622f97680ffa47e
+PODFILE CHECKSUM: f13fb9b7df9b02576e7e185199397c9a98216b08
 
 COCOAPODS: 1.5.3

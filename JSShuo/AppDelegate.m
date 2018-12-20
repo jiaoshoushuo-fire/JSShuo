@@ -21,6 +21,7 @@
 #import "JSArticleDetailViewController.h"
 #import "JSVideoDetailViewController.h"
 #import "JSActivityCenterViewController.h"
+#import <UMCommon/UMCommon.h>
 
 
 @interface AppDelegate ()<JPUSHRegisterDelegate>
@@ -84,7 +85,8 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [JSAccountManager initWechat];
     [JSAccountManager initQQ];
-    
+    [UMConfigure initWithAppkey:@"5c052746b465f524fd000464" channel:@"App Store"];
+
     [self initRootViewController];
     [self.window makeKeyAndVisible];
     
