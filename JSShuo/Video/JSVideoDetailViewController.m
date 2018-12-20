@@ -38,6 +38,7 @@ static NSString *kVideoCover = @"https://upload-images.jianshu.io/upload_images/
 @property (nonatomic,strong) NSMutableArray *commentDatas;
 @property (nonatomic,strong) NSMutableArray *recommendDatas;
 @property (nonatomic, strong)JSDetailBottomSendCommentView *bottomView;
+@property (nonatomic, strong) NSTimer *timer;
 @end
 
 @implementation JSVideoDetailViewController
@@ -65,6 +66,24 @@ static NSString *kVideoCover = @"https://upload-images.jianshu.io/upload_images/
     _controlView.landScapeControlView.titleLabel.text = self.videoTitle;
     _controlView.portraitControlView.titleLabel.text = self.videoTitle;
     self.player.assetURL = [NSURL URLWithString:self.urlStr];
+    // 启动定时器
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(rewardArticle:) userInfo:nil repeats:NO];
+}
+
+// 奖励金币
+- (void) rewardArticle:(NSTimer *)timer {
+    NSString *token = [JSAccountManager shareManager].accountToken;
+    if (token && token.length > 0) {
+        NSDictionary *param;
+        if (token) {
+            param = @{@"token":[JSAccountManager shareManager].accountToken,@"articleId":self.articleId};
+            [JSNetworkManager requestRewardArticleWithParams:param complent:^(BOOL isSuccess, NSDictionary * _Nonnull contentDic) {
+                [JSTool showAlertWithRewardDictiony:contentDic handle:^{
+                    
+                }];
+            }];
+        }
+    }
 }
 
 // 请求用户点赞、收藏等接口

@@ -15,6 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void) requestRecommendListWithParams:(NSDictionary *)params complent:(void(^)(BOOL isSuccess,NSArray *modelsArray))complent;
 
+
++ (void) requestRewardArticleWithParams:(NSDictionary *)params complent:(void(^)(BOOL isSuccess,NSDictionary *contentDic))complent;
+
 @end
 
 NS_ASSUME_NONNULL_END

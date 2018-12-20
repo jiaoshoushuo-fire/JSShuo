@@ -114,10 +114,15 @@
     _titleLabel.text = _model.title; // 暂时用描述字段来代替_playerIconImg
     [self.playerIconImg sd_setImageWithURL:[NSURL URLWithString:model.cover[0]]];
     _sourceLabel.text = _model.origin;
-//    _releaseTimeLabel.text = _model.publishTime;
-    _releaseTimeLabel.text = [[JSComputeTime new] distanceTimeWithPublistTime:model.publishTime];
+    _releaseTimeLabel.text = _model.publishTimeDesc;
+//    _releaseTimeLabel.text = [[JSComputeTime new] distanceTimeWithPublistTime:model.publishTime];
     _videoTimeLabel.text = [NSString stringWithFormat:@"%@",_model.duration];
-    _commitCountLabel.text = [NSString stringWithFormat:@"%@",_model.commentNum];
+    if (_model.commentNum.integerValue == 0) {
+        _commitCountLabel.hidden = YES;
+    } else {
+        _commitCountLabel.hidden = NO;
+        _commitCountLabel.text = [NSString stringWithFormat:@"%@",_model.commentNum];
+    }
     _praiseCountLabel.text = [NSString stringWithFormat:@"%@",_model.praiseNum];
 }
 

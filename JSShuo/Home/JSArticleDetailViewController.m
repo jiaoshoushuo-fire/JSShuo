@@ -34,6 +34,7 @@
 @property (nonatomic,strong) NSMutableArray *recommendDatas;
 @property (nonatomic,strong) JSDetailNavView *navView;
 @property (nonatomic, strong)JSDetailBottomSendCommentView *bottomView;
+@property (nonatomic, strong) NSTimer *timer;
 @end
 
 @implementation JSArticleDetailViewController
@@ -243,7 +244,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         JSRecommendModel *model = self.recommendDatas[indexPath.row];
-        self.title = model.title;
+        self.titleName = model.title;
         self.articleId = model.articleId;
         self.wkWebView = nil;
         self.bottomView.chatBtn.selected = NO;
@@ -354,11 +355,27 @@
 }
 
 - (void) setupWebView {
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(rewardArticle:) userInfo:nil repeats:NO];
     wkWebViewHeight = 0.f;
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://api.jiaoshoutt.com/v1/page/article/%@",self.articleId]];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
     [self.wkWebView loadRequest:urlRequest];
     [self showWaitingHUD];
+}
+
+- (void) rewardArticle:(NSTimer *)timer {
+    NSString *token = [JSAccountManager shareManager].accountToken;
+    if (token && token.length > 0) {
+        NSDictionary *param;
+        if (token) {
+            param = @{@"token":[JSAccountManager shareManager].accountToken,@"articleId":self.articleId};
+            [JSNetworkManager requestRewardArticleWithParams:param complent:^(BOOL isSuccess, NSDictionary * _Nonnull contentDic) {
+                [JSTool showAlertWithRewardDictiony:contentDic handle:^{
+                    
+                }];
+            }];
+        }
+    }
 }
 
 #pragma mark ------ < UIScrollViewDeltegate > ------
