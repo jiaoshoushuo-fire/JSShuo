@@ -313,6 +313,11 @@ SOFTWARE.
 
 
 
+## UMCCommon
+
+Copyright 2011 - 2018 umeng.com. All rights reserved.
+
+
 ## WMPageController
 
 The MIT License (MIT)

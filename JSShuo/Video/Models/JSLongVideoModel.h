@@ -40,6 +40,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong) NSNumber *commentNum;
 /** 点赞数 */
 @property (nonatomic,strong) NSNumber *praiseNum;
+/** 类型：文章、视频、短视频 **/
+@property (nonatomic,strong) NSNumber *type;
 /** 发布距离时间 */
 @property (nonatomic,strong) NSString *publishTime;
 /** 发布的时间戳 **/

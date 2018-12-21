@@ -364,6 +364,8 @@
 }
 
 - (void) rewardArticle:(NSTimer *)timer {
+    [self.timer invalidate];
+    self.timer = nil;
     NSString *token = [JSAccountManager shareManager].accountToken;
     if (token && token.length > 0) {
         NSDictionary *param;

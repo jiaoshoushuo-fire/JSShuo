@@ -26,6 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy) NSString *publishTime;
 @property (nonatomic,strong) NSNumber *showType;
 @property (nonatomic,copy) NSString *title;
+@property (nonatomic,strong) NSNumber *type;
 @property (nonatomic,copy) NSString *videoUrl;
 @property (nonatomic,copy) NSString *publishTimeDesc;
 
