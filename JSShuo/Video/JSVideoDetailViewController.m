@@ -142,7 +142,7 @@ static NSString *kVideoCover = @"https://upload-images.jianshu.io/upload_images/
     @weakify(self);
     [_bottomView.shareBtn bk_addEventHandler:^(id sender) {
         @strongify(self);
-        [JSShareManager shareWithTitle:@"测试title" Text:@"测试text" Image:[UIImage imageNamed:@"js_profile_mywallet_share"] Url:@"https://www.baidu.com/" complement:^(BOOL isSuccess) {
+        [JSShareManager shareWithTitle:@"叫兽说" Text:self.videoTitle Image:[UIImage imageNamed:@"js_profile_mywallet_share"] Url:@"https://www.baidu.com/" complement:^(BOOL isSuccess) {
             if (isSuccess) {
                 [self showAutoDismissTextAlert:@"分享成功"];
             }else{
