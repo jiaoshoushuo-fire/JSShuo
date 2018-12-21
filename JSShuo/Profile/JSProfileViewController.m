@@ -89,13 +89,13 @@
 
 - (NSArray *)iconImages{
     if (!_iconImages) {
-        _iconImages = @[@"js_profile_tixian",@"js_profile_shangcheng",@"js_profile_invitate",@"js_profile_qianbao"];
+        _iconImages = @[@"js_profile_tixian",/*@"js_profile_shangcheng",*/@"js_profile_invitate",@"js_profile_qianbao"];
     }
     return _iconImages;
 }
 - (NSArray *)itemTitels{
     if (!_itemTitels) {
-        _itemTitels = @[@"提现",@"商城",@"邀请好友",@"我的钱包"];
+        _itemTitels = @[@"提现",/*@"商城",*/@"邀请好友",@"我的钱包"];
     }
     return _itemTitels;
 }
@@ -540,18 +540,18 @@
             vc.hidesBottomBarWhenPushed = YES;
             [self.rt_navigationController pushViewController:vc animated:YES complete:nil];
         }break;
-        case 1:{//商城
-            [self showAutoDismissTextAlert:@"开发中，敬请期待"];
-//            JSShopViewController *shopVC = [[JSShopViewController alloc]init];
-//            shopVC.hidesBottomBarWhenPushed = YES;
-//            [self.rt_navigationController pushViewController:shopVC animated:YES complete:nil];
-        }break;
-        case 2:{//邀请好友
+//        case 1:{//商城
+//            [self showAutoDismissTextAlert:@"开发中，敬请期待"];
+////            JSShopViewController *shopVC = [[JSShopViewController alloc]init];
+////            shopVC.hidesBottomBarWhenPushed = YES;
+////            [self.rt_navigationController pushViewController:shopVC animated:YES complete:nil];
+//        }break;
+        case 1:{//邀请好友
             JSInvitationViewController *invitationVC = [[JSInvitationViewController alloc]init];
             invitationVC.hidesBottomBarWhenPushed = YES;
             [self.rt_navigationController pushViewController:invitationVC animated:YES complete:nil];
         }break;
-        case 3:{//我的钱包
+        case 2:{//我的钱包
             JSMyWalletViewController *myWalletVC = [[JSMyWalletViewController alloc]init];
             myWalletVC.hidesBottomBarWhenPushed = YES;
             [self.rt_navigationController pushViewController:myWalletVC animated:YES complete:nil];
