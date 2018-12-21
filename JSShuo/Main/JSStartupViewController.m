@@ -18,8 +18,9 @@
 - (UIScrollView *)scrollView{
     if (!_scrollView) {
         _scrollView = [[UIScrollView alloc]init];
+        _scrollView.backgroundColor = [UIColor whiteColor];
         _scrollView.pagingEnabled = YES;
-        _scrollView.contentSize = CGSizeMake(kScreenWidth * 3, 0);
+        
     }
     return _scrollView;
 }
@@ -67,6 +68,7 @@
             }
             [self.scrollView addSubview:imageView];
         }
+        self.scrollView.contentSize = CGSizeMake(kScreenWidth * images.count, 0);
         [self.view addSubview:self.scrollView];
         [self.scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.equalTo(self.view);
