@@ -187,7 +187,7 @@
         _alertLabel.ignoreCommonProperties = YES;
         _alertLabel.backgroundColor = [UIColor colorWithHexString:@"F9F0D5"];
         
-        NSString *text = @"邀请一位好友获得8元!";
+        NSString *text = @"邀请一位好友获得10零钱!";
         
         UIImageView *imageView = [[UIImageView alloc]init];
         imageView.image = [UIImage imageNamed:@"js_profile_news_icon"];

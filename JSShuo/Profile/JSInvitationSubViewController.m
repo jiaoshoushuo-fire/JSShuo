@@ -117,7 +117,7 @@
         _titleLabel = [[UILabel alloc]init];
         _titleLabel.font = [UIFont boldSystemFontOfSize:18];
         _titleLabel.textColor = [UIColor colorWithHexString:@"333333"];
-        _titleLabel.text = @"每邀请一名好友，10元怎么赚？";
+        _titleLabel.text = @"每邀请一名好友，10零钱红包怎么赚？";
         [_titleLabel sizeToFit];
     }
     return _titleLabel;
@@ -180,7 +180,7 @@
             make.top.equalTo(self.titleLabel.mas_bottom).offset(10);
         }];
         NSArray *days = @[@"第一天",@"第二天",@"第三天",@"第四天",@"第五天",@"第六天",@"第七天"];
-        NSArray *moneys = @[@"0.5元",@"1元",@"1元",@"1元",@"1元",@"2元",@"3.5元"];
+        NSArray *moneys = @[@"0.5",@"1",@"1",@"1",@"1",@"2",@"3.5"];
         CGFloat width = (kScreenWidth - 40 - 20)/3.0f;
         for (int i = 0; i< days.count; i++) {
             JSInvitationDayView *dayView = [[JSInvitationDayView alloc]initWithFrame:CGRectMake(20 + (width+10) * (i%3), 10+self.titleLabel.height+10+self.subLabel.height + 10 + (width + 15)*(i/3), width, width)];
@@ -322,7 +322,7 @@
         _label_3.textColor = [UIColor colorWithHexString:@"333333"];
         _label_3.numberOfLines = 0;
         NSString *redString = @"188+88";
-        NSString *string = [NSString stringWithFormat:@"可以告诉您的朋友：注册最高可领%@元随机红包，可立即提现哦",redString];
+        NSString *string = [NSString stringWithFormat:@"可以告诉您的朋友：注册最高可领%@零钱随机红包，可立即提现哦",redString];
         
         NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:string];
         [text addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:[string rangeOfString:redString]];
