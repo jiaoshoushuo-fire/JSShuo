@@ -35,8 +35,8 @@
     if (isFirstLogin) {
         [[AppDelegate instance] switchNextRootViewController];
     }else{
-        NSArray *images = @[@"js_yindao_number1",@"js_yindao_number3",@"js_yindao_number2"];
-        NSArray *image_Xs = @[@"js_yindao_number1_x",@"js_yindao_number3_x",@"js_yindao_number2_x"];
+        NSArray *images = @[@"js_yindao_number1",@"js_yindao_number3"/*,@"js_yindao_number2"*/];
+        NSArray *image_Xs = @[@"js_yindao_number1_x",@"js_yindao_number3_x"/*,@"js_yindao_number2_x"*/];
         
         for (int i = 0; i<images.count; i++) {
             UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(kScreenWidth*i, 0, kScreenWidth, kScreenHeight)];
@@ -49,13 +49,13 @@
             if (i == images.count - 1) {
                 UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
                 [button setTitle:@"开启赚钱之旅" forState:UIControlStateNormal];
-                [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+                [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
                 button.titleLabel.font = [UIFont systemFontOfSize:15];
                 button.size = CGSizeMake(100, 30);
                 button.clipsToBounds = YES;
                 button.layer.cornerRadius = button.height/2.0f;
                 button.layer.borderWidth = 0.5;
-                button.layer.borderColor = [[UIColor whiteColor]CGColor];
+                button.layer.borderColor = [[UIColor redColor]CGColor];
                 [button addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
                 
                 [imageView addSubview:button];
