@@ -126,7 +126,7 @@
     [self.view addSubview:self.titleLabel];
     [self.view addSubview:self.titleBottomView];
     [self.view addSubview:self.collectionView];
-    [self.view addSubview:self.bottomLeftButton];
+//    [self.view addSubview:self.bottomLeftButton];
     [self.view addSubview:self.bottomRightButton];
     
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -139,14 +139,14 @@
         make.centerX.equalTo(self.view);
         make.top.equalTo(self.titleLabel.mas_bottom);
     }];
-    [self.bottomLeftButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(self.bottomLeftButton.size);
-        make.left.equalTo(self.view).offset(30);
-        make.bottom.equalTo(self.view).offset(-30);
-    }];
+//    [self.bottomLeftButton mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.size.mas_equalTo(self.bottomLeftButton.size);
+//        make.left.equalTo(self.view).offset(30);
+//        make.bottom.equalTo(self.view).offset(-30);
+//    }];
     [self.bottomRightButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(self.bottomRightButton.size);
-        make.right.equalTo(self.view).offset(-30);
+        make.centerX.equalTo(self.view);
         make.bottom.equalTo(self.view).offset(-30);
     }];
     
@@ -154,7 +154,7 @@
         make.left.equalTo(self.view).offset(20);
         make.right.equalTo(self.view).offset(-20);
         make.top.equalTo(self.titleBottomView.mas_bottom).offset(20);
-        make.bottom.equalTo(self.bottomLeftButton.mas_top).offset(-20);
+        make.bottom.equalTo(self.bottomRightButton.mas_top).offset(-20);
     }];
     // Do any additional setup after loading the view.
     [self.collectionView.mj_header beginRefreshing];

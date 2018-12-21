@@ -451,6 +451,7 @@
         _storeButton.backgroundColor = [UIColor whiteColor];
         _storeButton.layer.borderWidth = 1.0f;
         _storeButton.layer.borderColor = [[UIColor colorWithHexString:@"999999"]CGColor];
+        _storeButton.hidden = YES;
         @weakify(self)
         [_storeButton bk_addEventHandler:^(id sender) {
             @strongify(self)
@@ -741,7 +742,7 @@
     UITableViewCell *cell = nil;
     if (indexPath.row == 0) {
         JSWithdrawFirstCell *firstCell = [tableView dequeueReusableCellWithIdentifier:@"JSWithdrawFirstCell" forIndexPath:indexPath];
-        firstCell.moneyLabel.text = [NSString stringWithFormat:@"%0.2f元", self.withdrawModel.amount/100.0f];
+        firstCell.moneyLabel.text = [NSString stringWithFormat:@"%0.2f零钱", self.withdrawModel.amount/100.0f];
         firstCell.delegate = self;
         cell = firstCell;
     }else if (indexPath.row == 1){
