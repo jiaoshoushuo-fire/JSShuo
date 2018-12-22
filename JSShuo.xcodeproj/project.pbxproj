@@ -206,6 +206,7 @@
 		7A8F67902190492A008A00F4 /* JSAccountManager+SinaWeibo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8F678F2190492A008A00F4 /* JSAccountManager+SinaWeibo.m */; };
 		7A9108F921A4FDAA005BFDC8 /* JSMissionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9108F821A4FDAA005BFDC8 /* JSMissionModel.m */; };
 		7A9108FC21A53775005BFDC8 /* JSNetworkManager+Mission.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9108FB21A53775005BFDC8 /* JSNetworkManager+Mission.m */; };
+		7AA9633821CE8CFC00691520 /* JSAlertRuleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AA9633721CE8CFC00691520 /* JSAlertRuleView.m */; };
 		7AB5541221B6211E00DEF2CC /* HJTabViewControllerPlugin_HeaderScroll.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB5540921B6211E00DEF2CC /* HJTabViewControllerPlugin_HeaderScroll.m */; };
 		7AB5541321B6211E00DEF2CC /* HJTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB5540A21B6211E00DEF2CC /* HJTabViewController.m */; };
 		7AB5541421B6211E00DEF2CC /* HJTabViewController+ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB5540B21B6211E00DEF2CC /* HJTabViewController+ViewController.m */; };
@@ -645,6 +646,8 @@
 		7A9108F821A4FDAA005BFDC8 /* JSMissionModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSMissionModel.m; sourceTree = "<group>"; };
 		7A9108FA21A53775005BFDC8 /* JSNetworkManager+Mission.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JSNetworkManager+Mission.h"; sourceTree = "<group>"; };
 		7A9108FB21A53775005BFDC8 /* JSNetworkManager+Mission.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "JSNetworkManager+Mission.m"; sourceTree = "<group>"; };
+		7AA9633621CE8CFC00691520 /* JSAlertRuleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSAlertRuleView.h; sourceTree = "<group>"; };
+		7AA9633721CE8CFC00691520 /* JSAlertRuleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSAlertRuleView.m; sourceTree = "<group>"; };
 		7AB5540321B6211E00DEF2CC /* HJTabViewController+ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HJTabViewController+ViewController.h"; sourceTree = "<group>"; };
 		7AB5540421B6211E00DEF2CC /* HJTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJTabViewController.h; sourceTree = "<group>"; };
 		7AB5540521B6211E00DEF2CC /* HJTabViewControllerPlugin_TabViewBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJTabViewControllerPlugin_TabViewBar.h; sourceTree = "<group>"; };
@@ -1451,6 +1454,8 @@
 				7A5152A721A7AAB400116494 /* CountDown.m */,
 				7AB5541D21B6786600DEF2CC /* JSAlertView.h */,
 				7AB5541E21B6786600DEF2CC /* JSAlertView.m */,
+				7AA9633621CE8CFC00691520 /* JSAlertRuleView.h */,
+				7AA9633721CE8CFC00691520 /* JSAlertRuleView.m */,
 				7A139ED421BD4264009EC742 /* JSTool.h */,
 				7A139ED521BD4264009EC742 /* JSTool.m */,
 				7A2EB55321BDFD5600189782 /* JSCommentView.h */,
@@ -1929,6 +1934,7 @@
 				7A8F67902190492A008A00F4 /* JSAccountManager+SinaWeibo.m in Sources */,
 				7A2EB55821BE759400189782 /* JSCommentTableView.m in Sources */,
 				7A846ECA219290AB0048F222 /* JSProfileUserModel.m in Sources */,
+				7AA9633821CE8CFC00691520 /* JSAlertRuleView.m in Sources */,
 				0065B4BC21BC150A003AEA5D /* JSVideoDetailViewController.m in Sources */,
 				7A1749DB21A28D7300E9AA12 /* JSMyCollectArticleViewController.m in Sources */,
 				7AD7F1B221AA742500F56F79 /* JSActivityModel.m in Sources */,
