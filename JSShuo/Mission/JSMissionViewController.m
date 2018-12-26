@@ -399,9 +399,11 @@
 
 @property (nonatomic, strong)UIView *floatView;
 
+
 @end
 
 @implementation JSMissionViewController
+
 
 - (UIView *)floatView{
     if (!_floatView) {
@@ -486,6 +488,10 @@
         
         make.bottom.equalTo(self.view).offset(-30);
     }];
+    
+}
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     [self requestSignTask];
 }
 - (void)requestSignTask{
@@ -525,7 +531,9 @@
     }];
 }
 - (void)userLoginSuccessNoti:(NSNotification *)notification{
-    [self requestSignTask];
+    if (self.isViewLoaded && self.view.window) {
+       [self requestSignTask];
+    }
 }
 
 #pragma mark - YUFoldingTableViewDelegate / required（必须实现的代理）

@@ -254,7 +254,7 @@
 - (void)checkBindWechatInfo{
     [JSNetworkManager queryUserInformationWitchComplement:^(BOOL isSuccess, JSProfileUserModel * _Nonnull userModel) {
         if (isSuccess) {
-            if (userModel.wechatId && userModel.wechatId.length > 0) {
+            if (userModel.isWechatBind == 1) {
                 self.wechatStatusLabel.text = @"已绑定";
                 self.wechatButton.enabled = NO;
             }else{

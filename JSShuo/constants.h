@@ -11,9 +11,9 @@
 
 static NSString * kLoginSuccessNotification     = @"kLoginSuccessNotification";    // 登陆成功通知
 static NSString * kShareUrl = @"http://api.jiaoshoutt.com/v1/page/invite";//分享Url
-static NSString * kShareQQImage_1 = @"http://s0.jiaoshoutt.com/image/fenxiangshoutu.png";
-static NSString * kShareQQImage_2 = @"http://s0.jiaoshoutt.com/image/shaijinbi.png";
-static NSString * kShareQQImage_3 = @"http://s0.jiaoshoutt.com/image/haoyouhuigui.png";
+static NSString * kShareQQImage_1 = @"fenxiangshoutu";
+static NSString * kShareQQImage_2 = @"shaijinbi";
+static NSString * kShareQQImage_3 = @"haoyouhuigui";
 
 static NSString * kGuidanceMark = @"kJiaoShouShuoGuidanceMark";
 

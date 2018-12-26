@@ -230,6 +230,7 @@
 		7ABD9E652191BA6600E19B6A /* TAAnimatedDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABD9E5B2191BA6500E19B6A /* TAAnimatedDotView.m */; };
 		7ABD9E662191BA6600E19B6A /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABD9E5C2191BA6500E19B6A /* TAAbstractDotView.m */; };
 		7ABD9E692191C03400E19B6A /* JSProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABD9E682191C03400E19B6A /* JSProfileCell.m */; };
+		7AC3696121D39E8A000D12E7 /* JSIncomeWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AC3696021D39E8A000D12E7 /* JSIncomeWebViewController.m */; };
 		7AD5489721AE303900244C78 /* JSActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD5489621AE303900244C78 /* JSActivityCell.m */; };
 		7AD5489A21AE426F00244C78 /* JSActivityHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD5489921AE426F00244C78 /* JSActivityHeaderView.m */; };
 		7AD5489D21AE60C500244C78 /* ULBCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD5489B21AE60C400244C78 /* ULBCollectionViewFlowLayout.m */; };
@@ -695,6 +696,8 @@
 		7ABD9E5F2191BA6500E19B6A /* TAPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAPageControl.h; sourceTree = "<group>"; };
 		7ABD9E672191C03400E19B6A /* JSProfileCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSProfileCell.h; sourceTree = "<group>"; };
 		7ABD9E682191C03400E19B6A /* JSProfileCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSProfileCell.m; sourceTree = "<group>"; };
+		7AC3695F21D39E8A000D12E7 /* JSIncomeWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSIncomeWebViewController.h; sourceTree = "<group>"; };
+		7AC3696021D39E8A000D12E7 /* JSIncomeWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSIncomeWebViewController.m; sourceTree = "<group>"; };
 		7AD5489521AE303900244C78 /* JSActivityCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSActivityCell.h; sourceTree = "<group>"; };
 		7AD5489621AE303900244C78 /* JSActivityCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSActivityCell.m; sourceTree = "<group>"; };
 		7AD5489821AE426F00244C78 /* JSActivityHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSActivityHeaderView.h; sourceTree = "<group>"; };
@@ -1328,6 +1331,8 @@
 				7AB931A8219E9490001E5390 /* JSConvertViewController.m */,
 				7AB931AD219EDF89001E5390 /* JSIncomeListViewController.h */,
 				7AB931AE219EDF89001E5390 /* JSIncomeListViewController.m */,
+				7AC3695F21D39E8A000D12E7 /* JSIncomeWebViewController.h */,
+				7AC3696021D39E8A000D12E7 /* JSIncomeWebViewController.m */,
 				7A1749C121A0789000E9AA12 /* JSInputCodeViewController.h */,
 				7A1749C221A0789000E9AA12 /* JSInputCodeViewController.m */,
 				7A1749C421A24C5F00E9AA12 /* JSGamesViewController.h */,
@@ -1990,6 +1995,7 @@
 				7A5FEE61218ACBAE006CF7EC /* main.m in Sources */,
 				0065B4BF21BE0FA8003AEA5D /* JSDetailSectionHeaderView.m in Sources */,
 				7A203E44218BE02A0001F926 /* JSLoginMainViewController.m in Sources */,
+				7AC3696121D39E8A000D12E7 /* JSIncomeWebViewController.m in Sources */,
 				7A1749C621A24C5F00E9AA12 /* JSGamesViewController.m in Sources */,
 				7AD5489A21AE426F00244C78 /* JSActivityHeaderView.m in Sources */,
 				7A203E4A218BE5650001F926 /* JSRegisterViewController.m in Sources */,
@@ -2270,7 +2276,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = JSShuo/JSShuo.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JB8ZC9V4MM;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2287,7 +2293,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.callthebeast.jiaoshoushuo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = JSShuo_develop;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -2299,8 +2305,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = JSShuo/JSShuo.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JB8ZC9V4MM;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2317,7 +2323,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.callthebeast.jiaoshoushuo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = JSShuo_distribution;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

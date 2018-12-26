@@ -17,6 +17,7 @@
 #import "JSShareManager.h"
 #import "JSMyApprenticeViewController.h"
 #import "JSNewUserGuideViewController.h"
+#import "JSIncomeWebViewController.h"
 
 
 @interface JSMyWalletHeaderView : UIView
@@ -463,7 +464,9 @@
         @weakify(self)
         [_incomeListButton bk_addEventHandler:^(id sender) {
             @strongify(self)
-            JSIncomeListViewController *incomeVC = [[JSIncomeListViewController alloc]init];
+            JSIncomeWebViewController *incomeVC = [[JSIncomeWebViewController alloc]initWithUrl:@"http://api.jiaoshoutt.com/v1/page/ranking/all"];
+            
+//            JSIncomeListViewController *incomeVC = [[JSIncomeListViewController alloc]init];
             [self.rt_navigationController pushViewController:incomeVC animated:YES complete:nil];
         } forControlEvents:UIControlEventTouchUpInside];
     }

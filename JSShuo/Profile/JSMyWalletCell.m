@@ -85,7 +85,7 @@
             make.right.mas_equalTo(self.goldLabel.mas_right);
             make.top.mas_equalTo(self.goldLabel.mas_bottom).offset(8);
             make.height.mas_equalTo(15);
-            make.width.mas_equalTo(120);
+            make.width.mas_equalTo(130);
         }];
         [self.contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.titleLabel.mas_left);
@@ -118,10 +118,10 @@
         
     }else if (type == 2){//零钱
         if (model.inOrOut == 1) {
-            self.goldLabel.text = [NSString stringWithFormat:@"+%.02f元",model.money/100.0f];
+            self.goldLabel.text = [NSString stringWithFormat:@"+%.02f零钱",model.money/100.0f];
             self.goldLabel.textColor = [UIColor redColor];
         }else if (model.inOrOut == 2){
-            self.goldLabel.text = [NSString stringWithFormat:@"%.02f元",model.money/100.0f];
+            self.goldLabel.text = [NSString stringWithFormat:@"%.02f零钱",model.money/100.0f];
             self.goldLabel.textColor = [UIColor greenColor];
         }
     }
