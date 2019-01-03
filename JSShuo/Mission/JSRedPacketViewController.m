@@ -11,6 +11,7 @@
 #import "JSNetworkManager+Mission.h"
 #import "JSActivityRuleViewController.h"
 #import "JSShareManager.h"
+#import "JSAlertRuleView.h"
 
 @interface JSRedPacketViewController ()
 @property (nonatomic, strong)UIImageView *backImageView;
@@ -108,8 +109,11 @@
         @weakify(self)
         [_ruleButton bk_addEventHandler:^(id sender) {
             @strongify(self)
-            JSActivityRuleViewController *webVC = [[JSActivityRuleViewController alloc]initWithUrl:self.ruleUrl];
-            [self.rt_navigationController pushViewController:webVC animated:YES complete:nil];
+//            JSActivityRuleViewController *webVC = [[JSActivityRuleViewController alloc]initWithUrl:self.ruleUrl];
+//            [self.rt_navigationController pushViewController:webVC animated:YES complete:nil];
+            JSAlertRuleView *ruleView = [[JSAlertRuleView alloc]initWithFrame:[UIApplication sharedApplication].keyWindow.bounds];
+            [[UIApplication sharedApplication].keyWindow addSubview:ruleView];
+            
         } forControlEvents:UIControlEventTouchUpInside];
     }
     return _ruleButton;

@@ -760,7 +760,9 @@
     }
 }
 
+
 - (BOOL)textView:(YYTextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    
     if ([text isEqualToString:@"\n"]) {
         //提交评论
         NSDictionary *dict = nil;
@@ -781,6 +783,27 @@
         
         return NO;
     }
+//    else if (str.length > 50) {
+//        NSRange rangeIndex = [str rangeOfComposedCharacterSequenceAtIndex:50];
+//        if (rangeIndex.length == 1)//字数超限
+//        {
+//            textView.text = [str substringToIndex:50];
+//            //这里重新统计下字数，字数超限，我发现就不走textViewDidChange方法了，你若不统计字数，忽略这行
+//            //            self.textNumberLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)textView.text.length];
+//
+//        }else{
+//            NSRange rangeRange = [str rangeOfComposedCharacterSequencesForRange:NSMakeRange(0, 50)];
+//            textView.text = [str substringWithRange:rangeRange];
+//
+//        }
+//        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
+//
+//        hud.mode = MBProgressHUDModeText;
+//        hud.label.text = @"限制50个字符之内";
+//        [hud hideAnimated:YES afterDelay:2.f];
+//        return NO;
+//
+//    }
     return YES;
 }
 

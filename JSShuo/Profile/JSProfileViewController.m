@@ -477,7 +477,7 @@
 }
 - (NSArray *)profileInfoArray{
     if (!_profileInfoArray) {
-        _profileInfoArray = @[@{@"imagePath":@"js_profile_input_code",@"title":@"输入邀请码",@"subTitle":@"0.5-88零钱大抽奖"},
+        _profileInfoArray = @[@{@"imagePath":@"js_profile_input_code",@"title":@"输入邀请码",@"subTitle":@"最高88零钱邀请大红包"},
                               @{@"imagePath":@"js_profile_mession",@"title":@"任务中心",@"subTitle":@"红包金币拿到手软"},
                               @{@"imagePath":@"js_profile_game",@"title":@"活动大厅",@"subTitle":@"金币赚不停"},
                               /*@{@"imagePath":@"js_profile_huiyuan",@"title":@"会员大促销",@"subTitle":@"特价返利最后七天"},*/

@@ -49,11 +49,11 @@ const static NSString *shareSuccessUrl = @"/v1/user/share/success";
     NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,getSecurityCodeUrl];
     NSDictionary *param = @{@"mobile":phoneNumber,@"type":@(type)};
     [self POST:url parameters:param complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
-#ifdef DEBUG
-        //测试用
-        NSString *validCode = responseDict[@"validCode"];
-        [self showErrorMessgae:validCode];
-#endif
+//#ifdef DEBUG
+//        //测试用
+//        NSString *validCode = responseDict[@"validCode"];
+//        [self showErrorMessgae:validCode];
+//#endif
         if (complement) {
             complement(isSuccess,responseDict);
         }

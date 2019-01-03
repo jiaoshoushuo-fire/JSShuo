@@ -82,7 +82,10 @@ static ShareResponseHandler qqShareHandler = nil;
     }
     qqShareHandler = handler;
     
-    QQApiWebImageObject *webImageObject = [QQApiWebImageObject objectWithPreviewImageURL:[NSURL URLWithString:url] title:title description:description];
+    UIImage *image = [UIImage imageNamed:url];
+    QQApiImageObject *webImageObject = [QQApiImageObject objectWithData:UIImageJPEGRepresentation(image,1.0f) previewImageData:UIImageJPEGRepresentation(image,1.0f) title:title description:description];
+    
+//    QQApiWebImageObject *webImageObject = [QQApiWebImageObject objectWithPreviewImageURL:[NSURL URLWithString:url] title:title description:description];
     SendMessageToQQReq* req = [SendMessageToQQReq reqWithContent:webImageObject];
     
     QQApiSendResultCode code = EQQAPISENDSUCESS;

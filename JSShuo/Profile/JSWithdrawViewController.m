@@ -676,7 +676,7 @@
             [self hideWaitingHUD];
             switch (code) {
                 case 0:{//提现成功
-                    [self showAutoDismissTextAlert:@"提现成功"];
+                    [self showAutoDismissTextAlert:@"提现申请已提交，审核中"];
                     [self performSelector:@selector(dismissSelfVC) withObject:nil afterDelay:2];
                 }break;
                 case 101:{//绑定手机号

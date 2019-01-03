@@ -8,7 +8,7 @@
 
 #import "JSBaseWebViewController.h"
 
-@interface JSBaseWebViewController ()
+@interface JSBaseWebViewController ()<UIWebViewDelegate>
 @property (nonatomic, strong)UIWebView *webView;
 @property (nonatomic, copy)NSString *currentUrl;
 @end
@@ -26,6 +26,7 @@
 - (UIWebView *)webView{
     if (!_webView) {
         _webView = [[UIWebView alloc]init];
+        _webView.delegate = self;
     }
     return _webView;
 }
@@ -38,6 +39,16 @@
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.currentUrl]];
     [self.webView loadRequest:request];
     // Do any additional setup after loading the view.
+}
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
+    [self showWaitingHUD];
+    return YES;
+}
+- (void)webViewDidFinishLoad:(UIWebView *)webView{
+    [self hideWaitingHUD];
+}
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
+    [self hideWaitingHUD];
 }
 
 /*

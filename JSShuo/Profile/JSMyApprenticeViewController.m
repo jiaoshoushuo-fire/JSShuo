@@ -290,6 +290,7 @@
     JSApprentModel *model = self.dataArray[indexPath.row];
     [cell setModel:model withType:self.celltype];
     cell.delegate = self;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

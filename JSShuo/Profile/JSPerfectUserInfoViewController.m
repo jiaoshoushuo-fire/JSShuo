@@ -151,14 +151,14 @@
             {
                 JSPerfectUserInfoCellModel *model = [[JSPerfectUserInfoCellModel alloc]init];
                 model.title = @"微信";
-                model.subTitle = userModel.isWechatBind == 1 ? userModel.wechatAccount : @"未绑定";
+                model.subTitle = userModel.isWechatBind == 1 ? /*userModel.wechatAccount*/@"已绑定" : @"未绑定";
                 model.isHasAccessory = YES;
                 [array2 addObject:model];
             }
             {
                 JSPerfectUserInfoCellModel *model = [[JSPerfectUserInfoCellModel alloc]init];
                 model.title = @"支付宝";
-                model.subTitle = userModel.isAlipayBind == 1 ? userModel.alipayAccount : @"未绑定";
+                model.subTitle = userModel.isAlipayBind == 1 ? /*userModel.alipayAccount*/@"已绑定" : @"未绑定";
                 model.isHasAccessory = YES;
                 [array2 addObject:model];
             }
