@@ -211,8 +211,6 @@
         } else if ([type isEqualToString:@"1"]) { // 视频
             NSString *ID = [userInfo objectForKey:@"ID"];
             JSVideoDetailViewController *vc = [JSVideoDetailViewController new];
-            vc.urlStr = [userInfo objectForKey:@"urlStr"];
-            vc.videoTitle = [userInfo objectForKey:@"videoTitle"];
             vc.articleId = [userInfo objectForKey:@"ID"];
             vc.hidesBottomBarWhenPushed = YES;
             RTRootNavigationController *nav = self.mainViewController.viewControllers[0];

@@ -38,8 +38,8 @@
     _progressWidth = 0;
     _animateDuration = 0.25;
     
-    _normalTextFont = [UIFont systemFontOfSize:17];
-    _selectedTextFont = [UIFont systemFontOfSize:18];
+    _normalTextFont = [UIFont systemFontOfSize:18];
+    _selectedTextFont = [UIFont systemFontOfSize:20];
     _normalTextColor = [UIColor colorWithRed:51/255.0 green:51/255.0 blue:51/255.0 alpha:1];
     _selectedTextColor = [UIColor redColor];
     _textColorProgressEnable = YES;

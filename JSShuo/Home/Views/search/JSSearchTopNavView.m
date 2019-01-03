@@ -92,6 +92,7 @@
         _searchTextField.font = [UIFont systemFontOfSize:12];
         _searchTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
         _searchTextField.delegate = self;
+        _searchTextField.returnKeyType = UIReturnKeySearch;
     }
     return _searchTextField;
 }

@@ -112,7 +112,10 @@
     }];
     
     _titleLabel.text = _model.title; // 暂时用描述字段来代替_playerIconImg
-    [self.playerIconImg sd_setImageWithURL:[NSURL URLWithString:model.cover[0]]];
+    // 改变图片尺寸
+    NSString *imgStr = [NSString stringWithFormat:@"%@?imageView2/1/w/480/h/270",model.cover[0]];
+    [self.playerIconImg sd_setImageWithURL:[NSURL URLWithString:imgStr] placeholderImage:[UIImage imageNamed:@"placeHolder_16_9"]];
+    
     _sourceLabel.text = _model.origin;
     _releaseTimeLabel.text = _model.publishTimeDesc;
 //    _releaseTimeLabel.text = [[JSComputeTime new] distanceTimeWithPublistTime:model.publishTime];

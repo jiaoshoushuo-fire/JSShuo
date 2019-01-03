@@ -20,7 +20,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong) UIImageView *expressionImgView;
 
 @property (nonatomic,strong) UIButton *chatBtn;
+@property (nonatomic,strong) UILabel *commentNum;
 @property (nonatomic,strong) UIButton *praiseBtn;
+@property (nonatomic,strong) UILabel *praiseNum;
 @property (nonatomic,strong) UIButton *collectionBtn;
 @property (nonatomic,strong) UIButton *shareBtn;
 

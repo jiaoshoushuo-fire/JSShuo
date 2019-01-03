@@ -11,6 +11,7 @@
 
 const static NSString *longVideoList = @"/v1/content/list";
 const static NSString *searchResult = @"/v1/content/search";
+const static NSString *topList = @"/v1/content/top";
 
 @implementation JSNetworkManager (LongVideo)
 
@@ -35,11 +36,23 @@ const static NSString *searchResult = @"/v1/content/search";
     [self GET:url parameters:params complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
         if (complent && isSuccess) {
             NSArray *array = [JSLongVideoModel modelsWithArray:responseDict[@"list"]];
-            
             complent(true,responseDict[@"totalPage"],array);
         } else {
             NSArray *tempArr = [NSArray array];
             complent(false,@0,tempArr);
+        }
+    }];
+}
+
++ (void) requestTopListWithParams:(NSDictionary *)params complent:(void(^)(BOOL isSuccess, NSArray *modelsArray))complent {
+    NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,topList];
+    [self GET:url parameters:params complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
+        if (complent && isSuccess) {
+            NSArray *array = [JSLongVideoModel modelsWithArray:responseDict[@"list"]];
+            complent(true,array);
+        } else {
+            NSArray *tempArr = [NSArray array];
+            complent(false,tempArr);
         }
     }];
 }

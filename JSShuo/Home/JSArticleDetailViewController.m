@@ -39,8 +39,9 @@
 
 @implementation JSArticleDetailViewController
 
-- (void) reward:(UIBarButtonItem *)item {
-    
+- (void)viewDidDisappear:(BOOL)animated {
+    [self.timer invalidate];
+    self.timer = nil;
 }
 
 - (void)viewDidLoad {
@@ -76,6 +77,18 @@
             NSNumber *praised = contentDic[@"praise"];
             if ([praised  isEqual: @1]) {
                 self.bottomView.praiseBtn.selected = YES;
+            }
+            NSNumber *praiseNum = contentDic[@"praiseNum"];
+            if (praiseNum.integerValue != 0) {
+                self.bottomView.praiseNum.text = [NSString stringWithFormat:@"%@",praiseNum];
+            } else {
+                self.bottomView.praiseNum.hidden = YES;
+            }
+            NSNumber *commentNum = contentDic[@"commentNum"];
+            if (commentNum.integerValue != 0) {
+                self.bottomView.commentNum.text = [NSString stringWithFormat:@"%@",commentNum];
+            } else {
+                self.bottomView.commentNum.hidden = YES;
             }
         }
     }];
@@ -395,6 +408,11 @@
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
     [self hideWaitingHUD];
     [self.tableView scrollToTop];
+    
+    [ webView evaluateJavaScript:@"document.getElementsByTagName('body')[0].style.webkitTextSizeAdjust= '110%'" completionHandler:^(id _Nullable result, NSError * _Nullable error) {
+        
+    }];
+    
     [webView evaluateJavaScript:@"document.body.scrollHeight" completionHandler:^(id _Nullable result, NSError * _Nullable error) {
         CGFloat documentHeight = [result doubleValue];
         CGRect webFrame = webView.frame;

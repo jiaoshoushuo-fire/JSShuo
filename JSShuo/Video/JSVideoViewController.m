@@ -84,8 +84,6 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     JSVideoDetailViewController *vc = [JSVideoDetailViewController new];
     JSLongVideoModel *model = self.datas[indexPath.row];
-    vc.urlStr = model.videoUrl;
-    vc.videoTitle = model.title;
     vc.articleId = model.articleId;
     vc.hidesBottomBarWhenPushed = YES;
     [self.rt_navigationController pushViewController:vc animated:YES complete:nil];
