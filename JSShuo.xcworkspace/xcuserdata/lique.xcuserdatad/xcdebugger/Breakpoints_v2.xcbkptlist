@@ -9,7 +9,7 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            scope = "0"
+            scope = "1"
             stopOnStyle = "0">
          </BreakpointContent>
       </BreakpointProxy>
@@ -36,12 +36,12 @@
                   moduleName = "JSShuo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lique/Desktop/%E6%95%99%E6%8E%88/iOS/JSShuo/JSShuo/AppDelegate.m"
-                  timestampString = "568186865.177489"
+                  timestampString = "568295341.205139"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "201"
                   endingLineNumber = "201"
-                  offsetFromSymbolStart = "99">
+                  offsetFromSymbolStart = "104">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -51,12 +51,12 @@
                   moduleName = "JSShuo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lique/Desktop/%E6%95%99%E6%8E%88/iOS/JSShuo/JSShuo/AppDelegate.m"
-                  timestampString = "568186865.18093"
+                  timestampString = "568295341.208184"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "201"
                   endingLineNumber = "201"
-                  offsetFromSymbolStart = "22">
+                  offsetFromSymbolStart = "28">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -66,12 +66,12 @@
                   moduleName = "JSShuo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lique/Desktop/%E6%95%99%E6%8E%88/iOS/JSShuo/JSShuo/AppDelegate.m"
-                  timestampString = "568186865.183898"
+                  timestampString = "568295341.210615"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "201"
                   endingLineNumber = "201"
-                  offsetFromSymbolStart = "16">
+                  offsetFromSymbolStart = "20">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -99,7 +99,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JSShuo/Libs/ZFPlayer/Classes/Core/ZFPlayerController.m"
-            timestampString = "566751944.073015"
+            timestampString = "568295340.863073"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "773"
@@ -115,7 +115,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JSShuo/Libs/ZFPlayer/Classes/Core/ZFPlayerController.m"
-            timestampString = "566751944.073157"
+            timestampString = "568295340.863837"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "783"
@@ -131,7 +131,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JSShuo/Home/JSArticleDetailViewController.m"
-            timestampString = "568173213.3909301"
+            timestampString = "568295340.8641469"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "135"
@@ -147,12 +147,12 @@
                   moduleName = "JSShuo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lique/Desktop/%E6%95%99%E6%8E%88/iOS/JSShuo/JSShuo/Home/JSArticleDetailViewController.m"
-                  timestampString = "568186865.207285"
+                  timestampString = "568295341.229725"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "135"
                   endingLineNumber = "135"
-                  offsetFromSymbolStart = "84">
+                  offsetFromSymbolStart = "96">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -162,7 +162,7 @@
                   moduleName = "JSShuo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lique/Desktop/%E6%95%99%E6%8E%88/iOS/JSShuo/JSShuo/Home/JSArticleDetailViewController.m"
-                  timestampString = "568186865.209846"
+                  timestampString = "568295341.231662"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "136"
@@ -177,12 +177,12 @@
                   moduleName = "JSShuo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lique/Desktop/%E6%95%99%E6%8E%88/iOS/JSShuo/JSShuo/Home/JSArticleDetailViewController.m"
-                  timestampString = "568186865.2119631"
+                  timestampString = "568295341.233646"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "135"
                   endingLineNumber = "135"
-                  offsetFromSymbolStart = "16">
+                  offsetFromSymbolStart = "20">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -200,6 +200,70 @@
             startingLineNumber = "661"
             endingLineNumber = "661"
             landmarkName = "-pan:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "JSShuo/Libs/ZFPlayer/Classes/ControlView/ZFPlayerControlView.m"
+            timestampString = "568295340.864421"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "530"
+            endingLineNumber = "530"
+            landmarkName = "-setPlayer:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "JSShuo/Libs/ZFPlayer/Classes/ControlView/ZFPlayerControlView.m"
+            timestampString = "568295340.864661"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "-layoutSubviews"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "JSShuo/Libs/ZFPlayer/Classes/ControlView/ZFPlayerControlView.m"
+            timestampString = "568295340.864727"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "-initWithFrame:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "JSShuo/Libs/ZFPlayer/Classes/Core/ZFPlayerController.m"
+            timestampString = "568295340.864782"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "180"
+            endingLineNumber = "180"
+            landmarkName = "-layoutPlayerSubViews"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

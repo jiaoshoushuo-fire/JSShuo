@@ -51,8 +51,8 @@ static NSString *kIdentifier = @"ZFDouYinCell";
     self.view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.tableView];
     self.fd_prefersNavigationBarHidden = YES;
+    [self.navigationController setNavigationBarHidden:YES];
     if (self.ID) { // 是从收藏列表进来的
-        [self.navigationController setNavigationBarHidden:YES];
         [self.view addSubview:self.backBtn];
         [self requestCollectionData];
     } else {
@@ -240,7 +240,7 @@ static NSString *kIdentifier = @"ZFDouYinCell";
         if (self.ID) {
             _tableView.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight);
         } else {
-            _tableView.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight-49-60);
+            _tableView.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight-49-0);
         }
         _tableView.rowHeight = _tableView.frame.size.height;
         

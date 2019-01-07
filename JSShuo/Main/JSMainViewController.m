@@ -13,6 +13,7 @@
 #import "JSMissionViewController.h"
 #import "JSProfileViewController.h"
 #import "JSActivityCenterViewController.h"
+#import "JSShortVideoViewController.h"
 
 @interface JSMainViewController ()
 
@@ -20,7 +21,7 @@
 
 
 @property (nonatomic, strong) JSHomeTitleBarViewController      *homeViewController;
-@property (nonatomic, strong) JSVideoTitleBarViewController     *videoViewController;
+@property (nonatomic, strong) JSShortVideoViewController        *videoViewController;
 @property (nonatomic, strong) JSActivityCenterViewController    *activityViewController;
 @property (nonatomic, strong) JSMissionViewController           *newsViewController;
 @property (nonatomic, strong) JSProfileViewController           *profileViewController;
@@ -36,7 +37,8 @@
     // Do any additional setup after loading the view.
     
     self.homeViewController = [[JSHomeTitleBarViewController alloc] init];
-    self.videoViewController = [[JSVideoTitleBarViewController alloc] init];
+//    self.videoViewController = [[JSVideoTitleBarViewController alloc] init];
+    self.videoViewController = [[JSShortVideoViewController alloc] init];
     self.activityViewController = [[JSActivityCenterViewController alloc] init];
     self.newsViewController = [[JSMissionViewController alloc] init];
     self.profileViewController = [[JSProfileViewController alloc] init];
