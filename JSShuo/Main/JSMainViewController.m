@@ -22,11 +22,11 @@
 
 @property (nonatomic, strong) JSHomeTitleBarViewController      *homeViewController;
 
-@property (nonatomic, strong) JSVideoTitleBarViewController     *videoViewController;
+//@property (nonatomic, strong) JSVideoTitleBarViewController     *videoViewController;
 //@property (nonatomic, strong) JSActivityCenterViewController    *activityViewController;
 
 @property (nonatomic, strong) JSShortVideoViewController        *videoViewController;
-@property (nonatomic, strong) JSActivityCenterViewController    *activityViewController;
+//@property (nonatomic, strong) JSActivityCenterViewController    *activityViewController;
 
 @property (nonatomic, strong) JSMissionViewController           *newsViewController;
 @property (nonatomic, strong) JSProfileViewController           *profileViewController;
@@ -43,12 +43,12 @@
 
     self.homeViewController = [[JSHomeTitleBarViewController alloc] init];
 
-    self.videoViewController = [[JSVideoTitleBarViewController alloc] init];
+//    self.videoViewController = [[JSVideoTitleBarViewController alloc] init];
 //    self.activityViewController = [[JSActivityCenterViewController alloc] init];
 
 //    self.videoViewController = [[JSVideoTitleBarViewController alloc] init];
     self.videoViewController = [[JSShortVideoViewController alloc] init];
-    self.activityViewController = [[JSActivityCenterViewController alloc] init];
+//    self.activityViewController = [[JSActivityCenterViewController alloc] init];
 
     self.newsViewController = [[JSMissionViewController alloc] init];
     self.profileViewController = [[JSProfileViewController alloc] init];
