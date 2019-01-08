@@ -24,6 +24,7 @@
 #import "JSCommonQuestionViewController.h"
 #import "JSMyCommentViewController.h"
 #import "JSMyCollectViewController.h"
+#import "JSRedPacketViewController.h"
 #import "AppDelegate.h"
 
 @interface JSProfileItemView : UIView
@@ -287,6 +288,12 @@
         self.myReadTitle.hidden = YES;
         self.myReadTime.hidden = YES;
         
+        self.myGoldtTitle.hidden = YES;
+        self.myGoldNumber.hidden = YES;
+        
+        self.myPocketMoney.hidden = YES;
+        self.myPocketMoneyTitle.hidden = YES;
+        
         [self.leftButton mas_makeConstraints:^(MASConstraintMaker *make) {
             make.size.mas_equalTo(CGSizeMake(30, 30));
             make.left.equalTo(self).offset(10);
@@ -478,7 +485,7 @@
 - (NSArray *)profileInfoArray{
     if (!_profileInfoArray) {
         _profileInfoArray = @[@{@"imagePath":@"js_profile_input_code",@"title":@"输入邀请码",@"subTitle":@"最高88零钱邀请大红包"},
-                              @{@"imagePath":@"js_profile_mession",@"title":@"任务中心",@"subTitle":@"红包金币拿到手软"},
+                              /*@{@"imagePath":@"js_profile_mession",@"title":@"任务中心",@"subTitle":@"红包金币拿到手软"},*/
                               @{@"imagePath":@"js_profile_game",@"title":@"活动大厅",@"subTitle":@"金币赚不停"},
                               /*@{@"imagePath":@"js_profile_huiyuan",@"title":@"会员大促销",@"subTitle":@"特价返利最后七天"},*/
                               @{@"imagePath":@"js_profile_question",@"title":@"常见问题",@"subTitle":@""},
@@ -627,7 +634,10 @@
     }else if ([title isEqualToString:@"任务中心"]){
         [[AppDelegate instance].mainViewController switchToViewControllerAtIndex:3];
     }else if ([title isEqualToString:@"活动大厅"]){
-        [[AppDelegate instance].mainViewController switchToViewControllerAtIndex:2];
+//        [[AppDelegate instance].mainViewController switchToViewControllerAtIndex:2];
+        JSRedPacketViewController *redPackVC = [[JSRedPacketViewController alloc]init];
+        redPackVC.hidesBottomBarWhenPushed = YES;
+        [self.rt_navigationController pushViewController:redPackVC animated:YES complete:nil];
         
     }else if ([title isEqualToString:@"会员大促销"]){
         JSMemberViewController *memberVC = [[JSMemberViewController alloc]init];

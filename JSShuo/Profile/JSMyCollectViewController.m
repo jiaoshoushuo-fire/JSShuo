@@ -11,6 +11,7 @@
 #import "JSMyCollectArticleViewController.h"
 #import "JSMyCollectVideoViewController.h"
 #import "JSMyCollectVideoManagerViewController.h"
+#import "JSMyCollectShortVideoViewController.h"
 
 @interface JSMyCollectViewController ()<WMPageControllerDelegate,WMPageControllerDataSource>
 @property (nonatomic, strong)WMPageController *pageController;
@@ -30,7 +31,7 @@
 - (NSArray *)subVCs{
     if (!_subVCs) {
         JSMyCollectArticleViewController *subVC = [[JSMyCollectArticleViewController alloc]init];
-        JSMyCollectVideoManagerViewController *subVC2 = [[JSMyCollectVideoManagerViewController alloc]init];
+        JSMyCollectShortVideoViewController *subVC2 = [[JSMyCollectShortVideoViewController alloc]init];
         _subVCs = @[subVC,subVC2];
     }
     return _subVCs;

@@ -258,6 +258,12 @@
         [self.bottomView addSubview:self.bottomTitleLabel];
         [self.bottomView addSubview:self.markImageview];
         
+        self.alertLabel.hidden = YES;
+        self.titleLabel_3.hidden = YES;
+        self.todayLabel.hidden = YES;
+        self.convertTitleLabel.hidden = YES;
+        self.convertButton.hidden = YES;
+        
         [self.alertLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.right.top.equalTo(self);
             make.height.mas_equalTo(30);
@@ -500,7 +506,7 @@
 }
 - (JSMyWalletHeaderView *)headerView{
     if (!_headerView) {
-        _headerView = [[JSMyWalletHeaderView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 370)];
+        _headerView = [[JSMyWalletHeaderView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 320)];
         @weakify(self)
         [_headerView.withdrawButton bk_addEventHandler:^(id sender) {
             @strongify(self)
@@ -531,6 +537,7 @@
             myApprentVC.hidesBottomBarWhenPushed = YES;
             [self.rt_navigationController pushViewController:myApprentVC animated:YES complete:nil];
         }];
+        _headerView.switchView.hidden = YES;
         _headerView.switchView.selectedIndexChangedHandler = ^(NSUInteger index) {
             @strongify(self);
             self.isGold = index == 0 ? YES : NO;
@@ -607,15 +614,16 @@
         make.height.mas_equalTo(35);
     }];
     
-    
+    self.bottomView.hidden = YES;
     [self.view addSubview:self.tableView];
     
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.top.equalTo(self.view);
-        make.bottom.mas_equalTo(self.bottomView.mas_top).offset(-1);
+//        make.bottom.mas_equalTo(self.bottomView.mas_top).offset(-1);
+        make.bottom.equalTo(self.view);
     }];
     // Do any additional setup after loading the view.
-    _isGold = YES;
+    _isGold = NO;
     self.currentGoldPage = 1;
     self.currentLoosePage = 1;
     
