@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void) requestKeywordWihtParmas:(NSDictionary *)params complent:(void(^)(BOOL isSuccess, NSNumber *totalPage, NSArray *modelsArray))complent;
 
++ (void) requestTopListWithParams:(NSDictionary *)params complent:(void(^)(BOOL isSuccess, NSArray *modelsArray))complent;
+
 @end
 
 NS_ASSUME_NONNULL_END

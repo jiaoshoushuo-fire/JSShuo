@@ -285,8 +285,6 @@
     JSVideoDetailViewController *vc = [[JSVideoDetailViewController alloc]init];
     JSCollectModel *model = self.dataArray[indexPath.row];
     
-    vc.urlStr = model.videoUrl;
-    vc.videoTitle = model.title;
     vc.articleId = @(model.articleId);
     vc.hidesBottomBarWhenPushed = YES;
     [self.rt_navigationController pushViewController:vc animated:YES complete:nil];

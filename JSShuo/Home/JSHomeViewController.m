@@ -21,6 +21,7 @@
 @interface JSHomeViewController () <UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) NSMutableArray *datas;
+@property (nonatomic,strong) NSMutableArray *topList;
 @property (nonatomic,strong) NSNumber *currentPage;
 @property (nonatomic,strong) JSNoSearchResultView *noResultView;
 @end
@@ -34,7 +35,19 @@
     [self initTableView];
     [self.view addSubview:self.noResultView];
     _noResultView.hidden = YES;
-    _type == JSHomePage ? [self requestData] : [self requestSearchResultData];
+    if (_type == JSHomePage) {
+        [self requestTopList];
+    } else if (_type == JSSearchResultPage) {
+        [self requestSearchResultData];
+    }
+}
+
+- (void) requestTopList {
+    NSDictionary *dic = @{@"channel":self.genreID};
+    [JSNetworkManager requestTopListWithParams:dic complent:^(BOOL isSuccess, NSArray * _Nonnull modelsArray) {
+        self.topList = [NSMutableArray arrayWithArray:modelsArray];
+        [self requestData];
+    }];
 }
 
 - (void) requestData {
@@ -43,10 +56,7 @@
     [JSNetworkManager requestLongVideoListWithParams:params complent:^(BOOL isSuccess, NSNumber * _Nonnull totalPage, NSArray * _Nonnull modelsArray) {
         if (isSuccess) {
             [self dealData:modelsArray];
-            if (totalPage == self.currentPage) {
-                self.noResultView.hidden = YES;
-                self.tableView.mj_footer.hidden = YES;
-            }
+            self.noResultView.hidden = YES;
         } else {
             [self.tableView.mj_header endRefreshing];
             [self.tableView.mj_footer endRefreshing];
@@ -98,9 +108,11 @@
     if (self.currentPage.integerValue == 1) { // 下拉刷新
         self.datas = tempArr;
         [self.tableView.mj_header endRefreshing];
-    } else {
-        [self.datas addObjectsFromArray:tempArr];
         [self.tableView.mj_footer endRefreshing];
+    } else {
+        [self.datas insertObjects:tempArr atIndex:0];
+        [self.tableView.mj_footer endRefreshing];
+        [self.tableView.mj_header endRefreshing];
     }
     if (self.tableView) {
         [self.tableView reloadData];
@@ -122,14 +134,12 @@
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_tableView];
     
-//    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.and.left.and.right.mas_equalTo(0);
-//        make.height.mas_equalTo(ScreenHeight-49-60-38);
-//    }];
     @weakify(self)
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         @strongify(self)
-        self.currentPage = @1;
+//        self.currentPage = @1;
+        int temp = self.currentPage.intValue + 1;
+        self.currentPage = [NSNumber numberWithInt:temp];
         self.type == JSHomePage ? [self requestData] : [self requestSearchResultData];
     }];
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
@@ -141,22 +151,33 @@
 }
 
 #pragma mark UITableViewDelegate
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     JSArticleDetailViewController *vc = [JSArticleDetailViewController new];
-    vc.articleId = [self.datas[indexPath.row] articleId];
-    vc.title = [self.datas[indexPath.row] title];
+    JSHomeModel *model ;
+    if (indexPath.row < self.topList.count) {
+        model = self.topList[indexPath.row];
+    } else {
+        model = self.datas[indexPath.row - self.topList.count];
+    }
+    vc.articleId = model.articleId;
+    vc.titleName = model.title;
     vc.hidesBottomBarWhenPushed = YES;
     [self.rt_navigationController pushViewController:vc animated:YES complete:nil];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.datas.count;
+    return self.datas.count + self.topList.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    JSHomeModel *model = self.datas[indexPath.row];
+    JSHomeModel *model ;
+    if (indexPath.row < self.topList.count) {
+        model = self.topList[indexPath.row];
+    } else {
+        model = self.datas[indexPath.row - self.topList.count];
+    }
+    
     if (model.showType.intValue == 1) {
         JSShowTypeBigPictureTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JSShowTypeBigPictureTableViewCell" forIndexPath:indexPath];
         cell.model = model;
@@ -178,7 +199,12 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    JSHomeModel *model = self.datas[indexPath.row];
+    JSHomeModel *model ;
+    if (indexPath.row < self.topList.count) {
+        model = self.topList[indexPath.row];
+    } else {
+        model = self.datas[indexPath.row - self.topList.count];
+    }
     if (model.showType.intValue == 1) {
         return [tableView fd_heightForCellWithIdentifier:@"JSShowTypeBigPictureTableViewCell" cacheByIndexPath:indexPath configuration:^(id cell) {
             // 重点(自适应高度必须实现)
@@ -203,15 +229,33 @@
 
 //预加载Cell内容
 - (void)setupModelOfBigPictureCell:(JSShowTypeBigPictureTableViewCell *)cell AtIndexPath:(NSIndexPath *)indexPath{
-    cell.model = [_datas objectAtIndex:indexPath.row];
+    JSHomeModel *model ;
+    if (indexPath.row < self.topList.count) {
+        model = self.topList[indexPath.row];
+    } else {
+        model = self.datas[indexPath.row - self.topList.count];
+    }
+    cell.model = model;
 }
 
 - (void)setupModelOfSmallPictureCell:(JSShowTypeSmallPictureTableViewCell *)cell AtIndexPath:(NSIndexPath *)indexPath{
-    cell.model = [_datas objectAtIndex:indexPath.row];
+    JSHomeModel *model ;
+    if (indexPath.row < self.topList.count) {
+        model = self.topList[indexPath.row];
+    } else {
+        model = self.datas[indexPath.row - self.topList.count];
+    }
+    cell.model = model;
 }
 
 - (void)setupModelOfThreePictureCell:(JSShowTypeThreePictureTableViewCell *)cell AtIndexPath:(NSIndexPath *)indexPath{
-    cell.model = [_datas objectAtIndex:indexPath.row];
+    JSHomeModel *model ;
+    if (indexPath.row < self.topList.count) {
+        model = self.topList[indexPath.row];
+    } else {
+        model = self.datas[indexPath.row - self.topList.count];
+    }
+    cell.model = model;
 }
 
 - (JSNoSearchResultView *)noResultView {
@@ -219,7 +263,13 @@
         _noResultView = [[JSNoSearchResultView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight-64)];
         _noResultView.titleLabelOne.text = @"当前手机暂无网络连接！";
         _noResultView.titleLabelTwo.text = @"请检查网络设置后点击屏幕刷新";
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(requestData)];
+        UITapGestureRecognizer *tap;
+        
+        if (_type == JSHomePage) {
+            tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(requestData)];
+        } else if (_type == JSSearchResultPage){
+            tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(requestSearchResultData)];
+        }
         [_noResultView addGestureRecognizer:tap];
     }
     return _noResultView;

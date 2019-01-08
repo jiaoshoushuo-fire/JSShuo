@@ -22,7 +22,7 @@
 #import "UITableView+FDTemplateLayoutCell.h"
 #import "JSShareManager.h"
 #import "JSNetworkManager+Login.h"
-
+#import "JSLongVideoModel.h"
 
 static NSString *kVideoCover = @"https://upload-images.jianshu.io/upload_images/635942-14593722fe3f0695.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240";
 
@@ -39,6 +39,8 @@ static NSString *kVideoCover = @"https://upload-images.jianshu.io/upload_images/
 @property (nonatomic,strong) NSMutableArray *recommendDatas;
 @property (nonatomic, strong)JSDetailBottomSendCommentView *bottomView;
 @property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic,copy) NSString *urlStr;
+@property (nonatomic,copy) NSString *videoTitle;
 @end
 
 @implementation JSVideoDetailViewController
@@ -56,7 +58,17 @@ static NSString *kVideoCover = @"https://upload-images.jianshu.io/upload_images/
     _pageNum = 1;
     _pageSize = 10;
     
-    [self reloadView];
+    [self requestModel];
+}
+
+// 根据 ID 请求播放地址
+- (void) requestModel {
+    [JSNetworkManager requestDetailWithArticleID:self.articleId.integerValue complent:^(BOOL isSuccess, NSDictionary * _Nonnull contentDic) {
+        JSLongVideoModel *model = [JSLongVideoModel modelWithDictionary:contentDic];
+        self.videoTitle = model.title;
+        self.urlStr = model.videoUrl;
+        [self reloadView];
+    }];
 }
 
 - (void) reloadView {
@@ -72,6 +84,8 @@ static NSString *kVideoCover = @"https://upload-images.jianshu.io/upload_images/
 
 // 奖励金币
 - (void) rewardArticle:(NSTimer *)timer {
+    [self.timer invalidate];
+    self.timer = nil;
     NSString *token = [JSAccountManager shareManager].accountToken;
     if (token && token.length > 0) {
         NSDictionary *param;
