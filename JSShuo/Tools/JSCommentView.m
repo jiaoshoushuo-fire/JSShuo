@@ -419,6 +419,10 @@
         return [MTLValueTransformer transformerUsingForwardBlock:^id(id value, BOOL *success, NSError *__autoreleasing *error) {
             return [JSTool compareCurrentTime:value];
         }];
+    }else if ([key isEqualToString:@"content"]){
+        return [MTLValueTransformer transformerUsingForwardBlock:^id(id value, BOOL *success, NSError *__autoreleasing *error) {
+            return [value stringByURLDecode];
+        }];
     }
     return nil;
 }
@@ -768,10 +772,11 @@
         NSDictionary *dict = nil;
         if (self.inputBar.commentModel) {
             NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefaultsKeyAccessToken];
-            dict = @{@"token":token,@"articleId":@(self.inputBar.commentModel.articleId),@"content":self.inputBar.inputTextView.text,@"replyCommentId":@(self.inputBar.commentModel.commentId),@"replyUserId":@(self.inputBar.commentModel.userId)};
+            
+            dict = @{@"token":token,@"articleId":@(self.inputBar.commentModel.articleId),@"content":[self.inputBar.inputTextView.text stringByURLEncode],@"replyCommentId":@(self.inputBar.commentModel.commentId),@"replyUserId":@(self.inputBar.commentModel.userId)};
         }else{
             NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefaultsKeyAccessToken];
-            dict = @{@"token":token,@"articleId":self.videoModel.articleId,@"content":self.inputBar.inputTextView.text};
+            dict = @{@"token":token,@"articleId":self.videoModel.articleId,@"content":[self.inputBar.inputTextView.text stringByURLEncode]};
         }
         [JSNetworkManager addComment:dict complement:^(BOOL isSuccess, NSDictionary * _Nonnull contentDict) {
             if (isSuccess) {

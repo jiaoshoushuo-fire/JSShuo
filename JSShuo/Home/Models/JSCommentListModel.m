@@ -47,6 +47,7 @@
 
 + (JSCommentListModel *) modelWithDictionary:(NSDictionary *)dic {
     JSCommentListModel *model = [[JSCommentListModel new] initWithDictionary:dic];
+    model.content = [model.content stringByURLDecode];
     return model;
 }
 
