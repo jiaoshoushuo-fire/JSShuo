@@ -50,6 +50,7 @@
         make.left.mas_equalTo(15);
     }];
     // 底部
+    self.bottomView.model = model;
     [self.contentView addSubview:self.bottomView];
     [self.bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.bigImageView.mas_bottom).offset(0); // bottomView自带上边间隙
@@ -91,7 +92,7 @@
 
 - (JSCellBottomView *)bottomView {
     if (!_bottomView) {
-        _bottomView = [[JSCellBottomView alloc] initWithModel:self.model];
+        _bottomView = [[JSCellBottomView alloc] init];
     }
     return _bottomView;
 }

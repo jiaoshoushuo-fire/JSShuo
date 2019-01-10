@@ -154,7 +154,7 @@
         _coverImageView = [[UIImageView alloc] init];
         _coverImageView.userInteractionEnabled = YES;
         _coverImageView.backgroundColor = [UIColor blackColor];
-        _coverImageView.contentMode = UIViewContentModeScaleAspectFit;
+        _coverImageView.contentMode = UIViewContentModeScaleAspectFill;
     }
     return _coverImageView;
 }

@@ -210,7 +210,7 @@
         _coverImageView.userInteractionEnabled = YES;
         _coverImageView.tag = 100;
         _coverImageView.backgroundColor = [UIColor blackColor];
-        _coverImageView.contentMode = UIViewContentModeScaleAspectFit;
+        _coverImageView.contentMode = UIViewContentModeScaleAspectFill;
     }
     return _coverImageView;
 }

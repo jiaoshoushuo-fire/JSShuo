@@ -17,6 +17,7 @@
 #import "JSNetworkManager+Search.h"
 #import "JSArticleDetailViewController.h"
 #import "JSNoSearchResultView.h"
+#import "JSShortVideoViewController.h"
 
 @interface JSHomeViewController () <UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) UITableView *tableView;
@@ -153,13 +154,21 @@
 #pragma mark UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    JSArticleDetailViewController *vc = [JSArticleDetailViewController new];
+    
     JSHomeModel *model ;
     if (indexPath.row < self.topList.count) {
         model = self.topList[indexPath.row];
     } else {
         model = self.datas[indexPath.row - self.topList.count];
     }
+    if (model.videoUrl.length > 0 && self.genreID.integerValue == 0) {
+        JSShortVideoViewController *vc = [JSShortVideoViewController new];
+        vc.ID = model.articleId.integerValue;
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.rt_navigationController pushViewController:vc animated:YES complete:nil];
+        return;
+    }
+    JSArticleDetailViewController *vc = [JSArticleDetailViewController new];
     vc.articleId = model.articleId;
     vc.titleName = model.title;
     vc.hidesBottomBarWhenPushed = YES;

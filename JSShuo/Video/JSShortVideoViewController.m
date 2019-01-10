@@ -81,6 +81,7 @@ static NSString *kIdentifier = @"ZFDouYinCell";
 - (void) setupPlayerConfig {
     /// playerManager
     ZFAVPlayerManager *playerManager = [[ZFAVPlayerManager alloc] init];
+    playerManager.scalingMode = ZFPlayerScalingModeAspectFill;
     //    KSMediaPlayerManager *playerManager = [[KSMediaPlayerManager alloc] init];
     //    ZFIJKPlayerManager *playerManager = [[ZFIJKPlayerManager alloc] init];
     
