@@ -21,8 +21,13 @@
 
 
 @property (nonatomic, strong) JSHomeTitleBarViewController      *homeViewController;
+
+//@property (nonatomic, strong) JSVideoTitleBarViewController     *videoViewController;
+//@property (nonatomic, strong) JSActivityCenterViewController    *activityViewController;
+
 @property (nonatomic, strong) JSShortVideoViewController        *videoViewController;
-@property (nonatomic, strong) JSActivityCenterViewController    *activityViewController;
+//@property (nonatomic, strong) JSActivityCenterViewController    *activityViewController;
+
 @property (nonatomic, strong) JSMissionViewController           *newsViewController;
 @property (nonatomic, strong) JSProfileViewController           *profileViewController;
 
@@ -35,28 +40,33 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+
     self.homeViewController = [[JSHomeTitleBarViewController alloc] init];
+
+//    self.videoViewController = [[JSVideoTitleBarViewController alloc] init];
+//    self.activityViewController = [[JSActivityCenterViewController alloc] init];
+
 //    self.videoViewController = [[JSVideoTitleBarViewController alloc] init];
     self.videoViewController = [[JSShortVideoViewController alloc] init];
-    self.activityViewController = [[JSActivityCenterViewController alloc] init];
+//    self.activityViewController = [[JSActivityCenterViewController alloc] init];
+
     self.newsViewController = [[JSMissionViewController alloc] init];
     self.profileViewController = [[JSProfileViewController alloc] init];
-    
-    
+
+
     RTRootNavigationController *nav1 = [[RTRootNavigationController alloc] init];
     nav1.viewControllers = @[self.homeViewController];
     RTRootNavigationController *nav2 = [[RTRootNavigationController alloc] init];
     nav2.viewControllers = @[self.videoViewController];
-    RTRootNavigationController *nav3 = [[RTRootNavigationController alloc] init];
-    nav3.viewControllers = @[self.activityViewController];
+//    RTRootNavigationController *nav3 = [[RTRootNavigationController alloc] init];
+//    nav3.viewControllers = @[self.activityViewController];
     RTRootNavigationController *nav4 = [[RTRootNavigationController alloc] init];
     nav4.viewControllers = @[self.newsViewController];
     RTRootNavigationController *nav5 = [[RTRootNavigationController alloc] init];
     nav5.viewControllers = @[self.profileViewController];
-    
-    self.viewControllers = @[nav1, nav2, nav3, nav4, nav5];
-    
+
+    self.viewControllers = @[nav1, nav2, /*nav3,*/ nav4, nav5];
+
     @weakify(self)
     self.mainTabBar = [JSMainTabBar mainTabBarWithHandler:^(id sender) {
         @strongify(self)
@@ -64,11 +74,11 @@
         [self didSelectTabBarButton:button];
     }];
     [self setValue:self.mainTabBar forKey:@"tabBar"];
-    
+
     [self switchToViewControllerAtIndex:0];
 }
 - (void)didSelectTabBarButton:(UIButton *)button {
-    
+
     if (button == self.mainTabBar.homeButton) {
         if (self.selectedViewController == [self.viewControllers objectAtIndex:0]) {
 //            [self.homeViewController scrollToTopAndReloadData];
@@ -79,24 +89,24 @@
         if (self.selectedViewController != [self.viewControllers objectAtIndex:1]) {
             self.selectedIndex = 1;
         }
-    } else if (button == self.mainTabBar.publishButton) {
+    } /*else if (button == self.mainTabBar.publishButton) {
         if (self.selectedViewController == [self.viewControllers objectAtIndex:2]) {
             //            [self.newsViewController scrollToTopAndReloadData];
         } else {
             self.selectedIndex = 2;
         }
-        
-    } else if (button == self.mainTabBar.newsButton) {
-        if (self.selectedViewController == [self.viewControllers objectAtIndex:3]) {
+
+    } */else if (button == self.mainTabBar.newsButton) {
+        if (self.selectedViewController == [self.viewControllers objectAtIndex:2]) {
             //            [self.newsViewController scrollToTopAndReloadData];
         } else {
-            self.selectedIndex = 3;
+            self.selectedIndex = 2;
         }
     } else if (button == self.mainTabBar.profileButton) {
-        if (self.selectedViewController == [self.viewControllers objectAtIndex:4]) {
+        if (self.selectedViewController == [self.viewControllers objectAtIndex:3]) {
             //            [self.profileViewController scrollToTopAndReloadData];
         } else {
-            self.selectedIndex = 4;
+            self.selectedIndex = 3;
         }
     }
 }
@@ -106,7 +116,7 @@
         if (![JSAccountManager isLogin]) {
             [JSAlertView showAlertViewWithType:JSALertTypeSignIn rewardModel:nil superView:self.view handle:^{
                 [JSAccountManager checkLoginStatusComplement:^(BOOL isLogin) {
-                    
+
                 }];
             }];
         }

@@ -567,6 +567,8 @@
         [self.bottomView addSubview:self.aliplayButton];
         [self.bottomView addSubview:self.wechatPlayButton];
         
+        self.contentLabel.hidden = YES;
+        
         [self.titleLabel_1 mas_makeConstraints:^(MASConstraintMaker *make) {
             make.size.mas_equalTo(self.titleLabel_1.size);
             make.top.equalTo(self.contentView).offset(10);

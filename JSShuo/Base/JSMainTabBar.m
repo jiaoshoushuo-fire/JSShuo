@@ -17,7 +17,7 @@
 
 @property (nonatomic, strong, readwrite) UIButton *homeButton;
 @property (nonatomic, strong, readwrite) UIButton *discoverButton;
-@property (nonatomic, strong, readwrite) UIButton *publishButton;
+//@property (nonatomic, strong, readwrite) UIButton *publishButton;
 @property (nonatomic, strong, readwrite) UIButton *newsButton;
 @property (nonatomic, strong, readwrite) UIButton *profileButton;
 
@@ -71,7 +71,7 @@
 
 - (void)setupButtons {
     
-    CGSize itemSize = CGSizeMake(self.width / 5, self.height);
+    CGSize itemSize = CGSizeMake(self.width / 4.0f, self.height);
     self.homeButton = [self buttonWithNormalImage:[UIImage imageNamed:@"tab_home_normal"]
                                     selectedImage:[UIImage imageNamed:@"tab_home_selected"]
                                             title:@"推荐"
@@ -80,10 +80,10 @@
                                         selectedImage:[UIImage imageNamed:@"tab_discover_selected"]
                                                 title:@"视频"
                                                  size:itemSize];
-    self.publishButton = [self buttonWithNormalImage:[UIImage imageNamed:@"tab_publish"]
-                                       selectedImage:[UIImage imageNamed:@"tab_publish"]
-                                               title:@""
-                                                size:CGSizeMake(self.width / 5, self.width / 5 / 1.27)];
+//    self.publishButton = [self buttonWithNormalImage:[UIImage imageNamed:@"tab_publish"]
+//                                       selectedImage:[UIImage imageNamed:@"tab_publish"]
+//                                               title:@""
+//                                                size:CGSizeMake(self.width / 5, self.width / 5 / 1.27)];
     self.newsButton = [self buttonWithNormalImage:[UIImage imageNamed:@"tab_news_normal"]
                                     selectedImage:[UIImage imageNamed:@"tab_news_selected"]
                                             title:@"任务"
@@ -95,15 +95,15 @@
     
     self.homeButton.origin = CGPointMake(0, 0);
     self.discoverButton.origin = CGPointMake(self.homeButton.right, 0);
-    self.publishButton.origin = CGPointMake(self.discoverButton.right, -8);
-    self.newsButton.origin = CGPointMake(self.publishButton.right, 0);
+//    self.publishButton.origin = CGPointMake(self.discoverButton.right, -8);
+    self.newsButton.origin = CGPointMake(self.discoverButton.right, 0);
     self.profileButton.origin = CGPointMake(self.newsButton.right, 0);
     
     self.homeButton.selected = YES;
     
     [self addSubview:self.homeButton];
     [self addSubview:self.discoverButton];
-    [self addSubview:self.publishButton];
+//    [self addSubview:self.publishButton];
     [self addSubview:self.newsButton];
     [self addSubview:self.profileButton];
 }
@@ -170,12 +170,12 @@
         [self setSelectButtonAtIndex:0];
     } else if (button == self.discoverButton) {
         [self setSelectButtonAtIndex:1];
-    } else if (button == self.publishButton){
+    } /*else if (button == self.publishButton){
         [self setSelectButtonAtIndex:2];
-    }else if (button == self.newsButton) {
-        [self setSelectButtonAtIndex:3];
+    }*/else if (button == self.newsButton) {
+        [self setSelectButtonAtIndex:2];
     } else if (button == self.profileButton) {
-        [self setSelectButtonAtIndex:4];
+        [self setSelectButtonAtIndex:3];
     }
     
     if (self.handler) {
@@ -186,9 +186,9 @@
 - (void)setSelectButtonAtIndex:(NSInteger)index {
     self.homeButton.selected = (index == 0);
     self.discoverButton.selected = (index == 1);
-    self.publishButton.selected = (index == 2);
-    self.newsButton.selected = (index == 3);
-    self.profileButton.selected = (index == 4);
+//    self.publishButton.selected = (index == 2);
+    self.newsButton.selected = (index == 2);
+    self.profileButton.selected = (index == 3);
 }
 
 - (void)setBadgeNumber:(NSUInteger)number atIndex:(NSInteger)index {

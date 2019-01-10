@@ -24,11 +24,11 @@
         JSMissionRewardModel *rewardModel = [MTLJSONAdapter modelOfClass:[JSMissionRewardModel class] fromJSONDictionary:rewardDict error:nil];
         if (rewardModel.rewardCode == 0) {
             if (rewardModel.amountType == 1) {//金币
-                if (rewardModel.rewardType == 1) {//普通
-                    [JSAlertView showAlertViewWithType:JSALertTypeNomal rewardModel:rewardModel superView:[UIApplication sharedApplication].keyWindow handle:handle];
-                }else if (rewardModel.rewardType == 2){//彩蛋
-                    [JSAlertView showAlertViewWithType:JSALertTypeGold rewardModel:rewardModel superView:[UIApplication sharedApplication].keyWindow handle:handle];
-                }
+//                if (rewardModel.rewardType == 1) {//普通
+//                    [JSAlertView showAlertViewWithType:JSALertTypeNomal rewardModel:rewardModel superView:[UIApplication sharedApplication].keyWindow handle:handle];
+//                }else if (rewardModel.rewardType == 2){//彩蛋
+//                    [JSAlertView showAlertViewWithType:JSALertTypeGold rewardModel:rewardModel superView:[UIApplication sharedApplication].keyWindow handle:handle];
+//                }
             }else if (rewardModel.amountType == 2){//零钱
                 [JSAlertView showAlertViewWithType:JSALertTypeFirstLoginIn rewardModel:rewardModel superView:[UIApplication sharedApplication].keyWindow handle:handle];
             }

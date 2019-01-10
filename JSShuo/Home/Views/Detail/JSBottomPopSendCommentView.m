@@ -71,7 +71,7 @@
             if (self.textView.text.length > 0) {
                 NSLog(@"要调用发送评论的接口");
                 NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefaultsKeyAccessToken];
-                NSDictionary *params = @{@"token":token,@"articleId":self.articleID,@"content":self.textView.text};
+                NSDictionary *params = @{@"token":token,@"articleId":self.articleID,@"content":[self.textView.text stringByURLEncode]};
                 [JSNetworkManager addComment:params complement:^(BOOL isSuccess, NSDictionary * _Nonnull contentDict) {
                     if (isSuccess) {
                         [self.textView resignFirstResponder];
