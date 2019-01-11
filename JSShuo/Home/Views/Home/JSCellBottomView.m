@@ -11,97 +11,99 @@
 
 @interface JSCellBottomView()
 @property (nonatomic,strong) UIView *lineView;
-@property (nonatomic,strong) JSHomeModel *model;
+//@property (nonatomic,strong) JSHomeModel *model;
 @end
 
 @implementation JSCellBottomView
 
 
-- (instancetype) initWithModel:(JSHomeModel *)model {
+- (instancetype) init {
     if (self = [super init]) {
-        _model = model;
-        [self addSubview:self.hotLabel];
-        [self addSubview:self.sourceLabel];
-        [self addSubview:self.releaseTimeLabel];
-        [self addSubview:self.commitCountImg];
-        [self addSubview:self.commitCountLabel];
-        [self addSubview:self.praiseCountImg];
-        [self addSubview:self.praiseCountLabel];
-        [self addSubview:self.lineView];
-        
-        [self.hotLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(self).offset(9);
-//            make.top.mas_equalTo(9);  //  看看这两个有没有区别
-            make.size.mas_equalTo(CGSizeMake(30, 17));
-            make.left.mas_equalTo(15);
-        }];
-        
-        
-        
-        if (_model.isTop.integerValue == 2) { // 2是不置顶，1是置顶
-            self.hotLabel.hidden = YES;
-            [self.sourceLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.leading.equalTo(self).with.offset(15);
-//                make.top.mas_equalTo(self.playerIconImg.mas_bottom).offset(9);
-                make.top.mas_equalTo(9);
-            }];
-        } else {
-            self.hotLabel.hidden = NO;
-            [self.sourceLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.leading.equalTo(self).with.offset(55);
-//                make.top.mas_equalTo(self.playerIconImg.mas_bottom).offset(9);
-                make.top.mas_equalTo(9);
-            }];
-        }
-        [self.releaseTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(self.sourceLabel.mas_right).offset(10);
-            make.centerY.mas_equalTo(self.sourceLabel.mas_centerY);
-            make.width.mas_equalTo(240);
-        }];
-        [self.commitCountLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            /*  总结：
-             1. UILabel、UIImageView 可以不设置宽高；
-             2. 不设置宽高时，根据文字、图片内容自动包裹；
-             3. 当文字内容、图片尺寸改变时，宽度自动改变；
-             4. 当label设置了对trailing的边距，同时左边有view与它有相对距离时；label变宽，这个view也会向左移动，不需要更新约束。
-             */
-            make.centerY.mas_equalTo(self.releaseTimeLabel.mas_centerY);
-            make.trailing.equalTo(self).with.offset(-15);
-        }];
-        [self.commitCountImg mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.size.mas_equalTo(CGSizeMake(19, 17));
-            make.right.mas_equalTo(self.commitCountLabel.mas_left).offset(-5);
-            make.centerY.mas_equalTo(self.commitCountLabel.mas_centerY);
-        }];
-        [self.praiseCountLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerY.mas_equalTo(self.commitCountLabel.mas_centerY);
-            make.trailing.equalTo(self.commitCountImg).with.offset(-29);
-        }];
-        [self.praiseCountImg mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.size.mas_equalTo(CGSizeMake(17, 17));
-            make.right.mas_equalTo(self.praiseCountLabel.mas_left).offset(-5);
-            make.centerY.mas_equalTo(self.praiseCountLabel.mas_centerY);
-        }];
-        [self.lineView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.size.mas_equalTo(CGSizeMake(ScreenWidth-30, 2));
-            make.left.mas_equalTo(15);
-            make.top.mas_equalTo(self.sourceLabel.mas_bottom).offset(8);
-        }];
-        
-        _sourceLabel.text = _model.origin;
-        _releaseTimeLabel.text = _model.publishTimeDesc;
-//        _releaseTimeLabel.text = [[JSComputeTime new] distanceTimeWithPublistTime:_model.publishTime];
-        _videoTimeLabel.text = [NSString stringWithFormat:@"%@",_model.duration];
-        if (_model.commentNum.integerValue > 0) {
-            _commitCountLabel.hidden = NO;
-            _commitCountLabel.text = [NSString stringWithFormat:@"%@",_model.commentNum];
-        } else {
-            _commitCountLabel.hidden = YES;
-        }
-        _praiseCountLabel.text = [NSString stringWithFormat:@"%@",_model.praiseNum];
         
     }
     return self;
+}
+
+- (void)setModel:(JSHomeModel *)model {
+    _model = model;
+    [self addSubview:self.sourceLabel];
+    [self addSubview:self.releaseTimeLabel];
+    [self addSubview:self.commitCountImg];
+    [self addSubview:self.commitCountLabel];
+    [self addSubview:self.praiseCountImg];
+    [self addSubview:self.praiseCountLabel];
+    [self addSubview:self.lineView];
+    
+    if (_model.isTop.integerValue == 2) { // 2是不置顶，1是置顶
+        self.hotLabel.hidden = YES;
+        [self.hotLabel removeFromSuperview];
+        [self.sourceLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.leading.equalTo(self).with.offset(15);
+            //                make.top.mas_equalTo(self.playerIconImg.mas_bottom).offset(9);
+            make.top.mas_equalTo(9);
+        }];
+    } else {
+        self.hotLabel.hidden = NO;
+        [self addSubview:self.hotLabel];
+        [self.hotLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(self).offset(9);
+            //            make.top.mas_equalTo(9);  //  看看这两个有没有区别
+            make.size.mas_equalTo(CGSizeMake(30, 17));
+            make.left.mas_equalTo(15);
+        }];
+        [self.sourceLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.leading.equalTo(self).with.offset(55);
+            //                make.top.mas_equalTo(self.playerIconImg.mas_bottom).offset(9);
+            make.top.mas_equalTo(9);
+        }];
+    }
+    [self.releaseTimeLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.sourceLabel.mas_right).offset(10);
+        make.centerY.mas_equalTo(self.sourceLabel.mas_centerY);
+        make.width.mas_equalTo(240);
+    }];
+    [self.commitCountLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        /*  总结：
+         1. UILabel、UIImageView 可以不设置宽高；
+         2. 不设置宽高时，根据文字、图片内容自动包裹；
+         3. 当文字内容、图片尺寸改变时，宽度自动改变；
+         4. 当label设置了对trailing的边距，同时左边有view与它有相对距离时；label变宽，这个view也会向左移动，不需要更新约束。
+         */
+        make.centerY.mas_equalTo(self.releaseTimeLabel.mas_centerY);
+        make.trailing.equalTo(self).with.offset(-15);
+    }];
+    [self.commitCountImg mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(19, 17));
+        make.right.mas_equalTo(self.commitCountLabel.mas_left).offset(-5);
+        make.centerY.mas_equalTo(self.commitCountLabel.mas_centerY);
+    }];
+    [self.praiseCountLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.mas_equalTo(self.commitCountLabel.mas_centerY);
+        make.trailing.equalTo(self.commitCountImg).with.offset(-29);
+    }];
+    [self.praiseCountImg mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(17, 17));
+        make.right.mas_equalTo(self.praiseCountLabel.mas_left).offset(-5);
+        make.centerY.mas_equalTo(self.praiseCountLabel.mas_centerY);
+    }];
+    [self.lineView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(ScreenWidth-30, 2));
+        make.left.mas_equalTo(15);
+        make.top.mas_equalTo(self.sourceLabel.mas_bottom).offset(8);
+    }];
+    
+    _sourceLabel.text = _model.origin;
+    _releaseTimeLabel.text = _model.publishTimeDesc;
+    //        _releaseTimeLabel.text = [[JSComputeTime new] distanceTimeWithPublistTime:_model.publishTime];
+    _videoTimeLabel.text = [NSString stringWithFormat:@"%@",_model.duration];
+    if (_model.commentNum.integerValue > 0) {
+        _commitCountLabel.hidden = NO;
+        _commitCountLabel.text = [NSString stringWithFormat:@"%@",_model.commentNum];
+    } else {
+        _commitCountLabel.hidden = YES;
+    }
+    _praiseCountLabel.text = [NSString stringWithFormat:@"%@",_model.praiseNum];
+    
 }
 
 - (UILabel *)hotLabel {

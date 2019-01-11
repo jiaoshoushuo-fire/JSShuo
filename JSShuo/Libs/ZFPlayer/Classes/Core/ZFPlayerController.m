@@ -177,6 +177,7 @@
         [self.currentPlayerManager.view addSubview:self.controlView];
         
         self.currentPlayerManager.view.frame = superview.bounds;
+        UIView *temp = self.currentPlayerManager.view;
         self.currentPlayerManager.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 //        self.currentPlayerManager.view.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin;
         self.controlView.frame = self.currentPlayerManager.view.bounds;

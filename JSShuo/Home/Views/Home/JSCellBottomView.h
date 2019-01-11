@@ -23,7 +23,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong) UIImageView *commitCountImg;
 @property (nonatomic,strong) UILabel *commitCountLabel;
 
-- (instancetype) initWithModel:(JSHomeModel *)model;
+@property (nonatomic,strong) JSHomeModel *model;
+
+//- (instancetype) initWithModel:(JSHomeModel *)model;
 
 @end
 
