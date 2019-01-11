@@ -258,10 +258,14 @@ const static NSString *shareSuccessUrl = @"/v1/user/share/success";
     }];
 }
 
-+ (void)getMoneyWithMethod:(NSString *)method count:(NSInteger)amount complement:(void(^)(NSInteger code, NSString *message))complement{
++ (void)getMoneyWithMethod:(NSString *)method count:(NSInteger)amount realName:(NSString *)realName alipayId:(NSString *)alipayId complement:(void(^)(NSInteger code, NSString *message))complement{
     NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,getMoneyUrl];
-    NSDictionary *param = @{@"token":[JSAccountManager shareManager].accountToken,@"method":method,@"amount":@(amount)};
-    [[self shareManager] POST:url parameters:[self transformParameters:param] progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    NSDictionary *param = @{@"token":[JSAccountManager shareManager].accountToken,@"method":method,@"amount":@(amount),@"realName":realName};
+    NSMutableDictionary *newParam = [NSMutableDictionary dictionaryWithDictionary:param];
+    if (alipayId) {
+        [newParam setValue:alipayId forKey:@"alipayId"];
+    }
+    [[self shareManager] POST:url parameters:[self transformParameters:newParam] progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSString *state = responseObject[@"code"];
         NSString *messageString = responseObject[@"message"];
         if (complement) {

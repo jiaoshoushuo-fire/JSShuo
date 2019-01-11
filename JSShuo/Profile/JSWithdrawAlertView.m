@@ -26,7 +26,7 @@
 @property (nonatomic, strong)JSAdjustButton *bindWechatButton;
 @property (nonatomic, strong)UILabel *bindWechatLabel;
 
-@property (nonatomic, copy)void(^actionBlock)(BOOL isSuccess);
+@property (nonatomic, copy)void(^actionBlock)(BOOL isSuccess,NSString *name,NSString *alipayAccount);
 
 @property (nonatomic, assign)JSWithdrawAlertViewType alertType;
 
@@ -157,9 +157,8 @@
                 [self.contentView addSubview:self.realNameTextfield];
                 [self.contentView addSubview:self.actionButton];
                 
-                if (self.isBindType) {
-                    [self.actionButton setTitle:@"绑定支付宝" forState:UIControlStateNormal];
-                }
+                
+                [self.actionButton setTitle:@"支付宝提现" forState:UIControlStateNormal];
                 
                 
                 [self.accountIcon mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -208,8 +207,13 @@
                 [self.contentView addSubview:self.realNameIcon];
                 [self.contentView addSubview:self.realNameTextfield];
                 [self.contentView addSubview:self.actionButton];
+                
+                [self.actionButton setTitle:@"微信提现" forState:UIControlStateNormal];
+                
                 if (self.isBindType) {
-                    [self.actionButton setTitle:@"绑定微信" forState:UIControlStateNormal];
+                    self.isBindWechat = YES;
+                    [self.bindWechatButton setTitle:@"已绑定" forState:UIControlStateNormal];
+                    self.bindWechatButton.enabled = NO;
                 }
                 
                 
@@ -300,15 +304,20 @@
             switch (self.alertType) {
                 case JSWithdrawAlertViewTypeAlipay:{
                     if (self.accountTextField.text.length > 0 && self.realNameTextfield.text.length > 0) {
-                        [JSNetworkManager bindAlipayWithAlipayId:self.accountTextField.text realName:self.realNameTextfield.text complement:^(BOOL isSuccess, NSDictionary * _Nonnull contenDict) {
-                            if (isSuccess) {
-                                [self endEditing:YES];
-                                [self removeFromSuperview];
-                                if (self.actionBlock) {
-                                    self.actionBlock(YES);
-                                }
-                            }
-                        }];
+//                        [JSNetworkManager bindAlipayWithAlipayId:self.accountTextField.text realName:self.realNameTextfield.text complement:^(BOOL isSuccess, NSDictionary * _Nonnull contenDict) {
+//                            if (isSuccess) {
+//                                [self endEditing:YES];
+//                                [self removeFromSuperview];
+//                                if (self.actionBlock) {
+//                                    self.actionBlock(YES);
+//                                }
+//                            }
+//                        }];
+                        [self endEditing:YES];
+                        [self removeFromSuperview];
+                        if (self.actionBlock) {
+                            self.actionBlock(YES, self.realNameTextfield.text, self.accountTextField.text);
+                        }
                     }else{
                         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self animated:YES];
                         
@@ -335,7 +344,11 @@
                         [hud hideAnimated:YES afterDelay:2.f];
                         return;
                     }
-                    
+                    [self endEditing:YES];
+                    [self removeFromSuperview];
+                    if (self.actionBlock) {
+                        self.actionBlock(YES, self.realNameTextfield.text, nil);
+                    }
                     
                     
                 }break;
@@ -347,7 +360,7 @@
                             [self endEditing:YES];
                             [self removeFromSuperview];
                             if (self.actionBlock) {
-                                self.actionBlock(YES);
+                                self.actionBlock(YES,nil,nil);
                             }
                         }
                     };
@@ -379,7 +392,7 @@
     }
     
 }
-+ (void)showAlertViewWithSuperView:(UIView *)superView type:(JSWithdrawAlertViewType)type isBind:(BOOL)isBind handle:(void(^)(BOOL isSuccess))hande{
++ (void)showAlertViewWithSuperView:(UIView *)superView type:(JSWithdrawAlertViewType)type isBind:(BOOL)isBind handle:(void(^)(BOOL isSuccess,NSString *name,NSString *alipayAccount))hande{
     JSWithdrawAlertView *alertView = [[JSWithdrawAlertView alloc]initWithFrame:superView.bounds type:type isBindType:isBind];
     alertView.actionBlock = hande;
     
