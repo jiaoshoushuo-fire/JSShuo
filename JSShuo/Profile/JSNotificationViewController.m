@@ -28,6 +28,7 @@
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _tableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
         @weakify(self)
         _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
             @strongify(self)

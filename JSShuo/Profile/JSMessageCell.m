@@ -139,7 +139,7 @@
     CGFloat contentHeight = [model.content heightForFont:[UIFont systemFontOfSize:12] width:kScreenWidth-20*2];
     
     height += contentHeight;
-    height += 35;
+//    height += 35;
     
     return height;
 }
@@ -152,7 +152,7 @@
         [self.messageContentView addSubview:self.timeLabel];
         [self.messageContentView addSubview:self.messageContentLabel];
         [self.messageContentView addSubview:self.topLine];
-        [self.messageContentView addSubview:self.detailView];
+//        [self.messageContentView addSubview:self.detailView];
     }
     return self;
 }
@@ -192,10 +192,10 @@
     self.messageContentLabel.left = 10;
     self.messageContentLabel.top = self.topLine.bottom + 10;
     
-    self.detailView.left = 0;
-    self.detailView.top = self.messageContentLabel.bottom + 5;
-    
-    self.messageContentView.height = 5 + self.messageTitleLabel.height + 5 + 1 + 10 + contentHeight + 5+ self.detailView.height;
+//    self.detailView.left = 0;
+//    self.detailView.top = self.messageContentLabel.bottom + 5;
+
+    self.messageContentView.height = 5 + self.messageTitleLabel.height + 5 + 1 + 10 + contentHeight + 5;//+ self.detailView.height;
     
 }
 - (void)awakeFromNib {
