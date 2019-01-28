@@ -422,6 +422,7 @@
     }else if ([key isEqualToString:@"content"]){
         return [MTLValueTransformer transformerUsingForwardBlock:^id(id value, BOOL *success, NSError *__autoreleasing *error) {
             return [value stringByURLDecode];
+//            return value;
         }];
     }
     return nil;

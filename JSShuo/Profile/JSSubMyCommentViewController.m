@@ -10,6 +10,8 @@
 #import "JSMyCommentCell.h"
 #import "JSNetworkManager+Login.h"
 #import "JSArticleDetailViewController.h"
+#import "JSMyCollectShortVideoViewController.h"
+#import "JSShortVideoViewController.h"
 
 @interface JSSubMyCommentViewController ()<UITableViewDelegate,UITableViewDataSource,JSMyCommentCellDelegate>
 @property (nonatomic, strong)UITableView *tableView;
@@ -184,7 +186,10 @@
         vc.hidesBottomBarWhenPushed = YES;
         [self.rt_navigationController pushViewController:vc animated:YES complete:nil];
     }else if (model.type == 2){//短视频
-        
+        JSShortVideoViewController *videoVC = [[JSShortVideoViewController alloc]init];
+        videoVC.ID = model.articleId;
+        videoVC.hidesBottomBarWhenPushed = YES;
+        [self.rt_navigationController pushViewController:videoVC animated:YES complete:nil];
     }else if (model.type == 3){//长视频
         
     }

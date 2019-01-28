@@ -674,44 +674,93 @@
 - (void)getMoneyAction:(UIButton *)button{
     if (self.currentItemModel && self.currentMethod) {
         [self showWaitingHUD];
-        [JSNetworkManager getMoneyWithMethod:self.currentMethod count:self.currentItemModel.amount complement:^(NSInteger code, NSString * _Nonnull message) {
+        [JSNetworkManager queryUserInformationWitchComplement:^(BOOL isSuccess, JSProfileUserModel * _Nonnull userModel) {
             [self hideWaitingHUD];
-            switch (code) {
-                case 0:{//提现成功
-                    [self showAutoDismissTextAlert:@"提现申请已提交，审核中"];
-                    [self performSelector:@selector(dismissSelfVC) withObject:nil afterDelay:2];
-                }break;
-                case 101:{//绑定手机号
-                    [JSWithdrawAlertView showAlertViewWithSuperView:self.navigationController.view type:JSWithdrawAlertViewTypeBindIPhone isBind:NO handle:^(BOOL isSuccess) {
+            if (isSuccess) {
+                if (userModel.bindStatus == 1) {//已绑定手机
+                    [self withdrawProcessModel:userModel];
+                }else{//未绑定手机 先弹绑定手机提示
+                    [JSWithdrawAlertView showAlertViewWithSuperView:self.navigationController.view type:JSWithdrawAlertViewTypeBindIPhone isBind:NO handle:^(BOOL isSuccess, NSString * _Nonnull name, NSString * _Nonnull alipayAccount) {
                         if (isSuccess) {
-                            [self getMoneyAction:nil];
+                            [self withdrawProcessModel:userModel];
                         }
                     }];
-                    
-                }break;
-                case 102:{//微信未绑定
-                    [JSWithdrawAlertView showAlertViewWithSuperView:self.navigationController.view type:JSWithdrawAlertViewTypeWechat isBind:NO handle:^(BOOL isSuccess) {
-                        if (isSuccess) {
-                            [self getMoneyAction:nil];
-                        }
-                    }];
-                }break;
-                case 103:{//支付宝未绑定
-                    [JSWithdrawAlertView showAlertViewWithSuperView:self.navigationController.view type:JSWithdrawAlertViewTypeAlipay isBind:NO handle:^(BOOL isSuccess) {
-                        if (isSuccess) {
-                            [self getMoneyAction:nil];
-                        }
-                    }];
-                }break;
-
-                default:
-                    [self showAutoDismissTextAlert:message];
-                    break;
+                }
             }
         }];
+//        [JSNetworkManager getMoneyWithMethod:self.currentMethod count:self.currentItemModel.amount complement:^(NSInteger code, NSString * _Nonnull message) {
+//            [self hideWaitingHUD];
+//            switch (code) {
+//                case 0:{//提现成功
+//                    [self showAutoDismissTextAlert:@"提现申请已提交，审核中"];
+//                    [self performSelector:@selector(dismissSelfVC) withObject:nil afterDelay:2];
+//                }break;
+//                case 101:{//绑定手机号
+//                    [JSWithdrawAlertView showAlertViewWithSuperView:self.navigationController.view type:JSWithdrawAlertViewTypeBindIPhone isBind:NO handle:^(BOOL isSuccess) {
+//                        if (isSuccess) {
+//                            [self getMoneyAction:nil];
+//                        }
+//                    }];
+//
+//                }break;
+//                case 102:{//微信未绑定
+//                    [JSWithdrawAlertView showAlertViewWithSuperView:self.navigationController.view type:JSWithdrawAlertViewTypeWechat isBind:NO handle:^(BOOL isSuccess) {
+//                        if (isSuccess) {
+//                            [self getMoneyAction:nil];
+//                        }
+//                    }];
+//                }break;
+//                case 103:{//支付宝未绑定
+//                    [JSWithdrawAlertView showAlertViewWithSuperView:self.navigationController.view type:JSWithdrawAlertViewTypeAlipay isBind:NO handle:^(BOOL isSuccess) {
+//                        if (isSuccess) {
+//                            [self getMoneyAction:nil];
+//                        }
+//                    }];
+//                }break;
+//
+//                default:
+//                    [self showAutoDismissTextAlert:message];
+//                    break;
+//            }
+//        }];
 
     }
 }
+- (void)withdrawProcessModel:(JSProfileUserModel *)userModel{
+    if ([self.currentMethod isEqualToString:@"ALIPAY"]) {
+        [JSWithdrawAlertView showAlertViewWithSuperView:self.navigationController.view type:JSWithdrawAlertViewTypeAlipay isBind:NO handle:^(BOOL isSuccess, NSString * _Nonnull name, NSString * _Nonnull alipayAccount) {
+            if (isSuccess) {
+                [self showWaitingHUD];
+                [JSNetworkManager getMoneyWithMethod:self.currentMethod count:self.currentItemModel.amount realName:name alipayId:alipayAccount complement:^(NSInteger code, NSString * _Nonnull message) {
+                    [self hideWaitingHUD];
+                    if (code == 0) {
+                        [self showAutoDismissTextAlert:@"提现申请已提交，审核中"];
+                        [self performSelector:@selector(dismissSelfVC) withObject:nil afterDelay:2];
+                    }else{
+                        [self showAutoDismissTextAlert:message];
+                    }
+                }];
+            }
+        }];
+        
+    }else if ([self.currentMethod isEqualToString:@"WECHAT"]){
+        [JSWithdrawAlertView showAlertViewWithSuperView:self.navigationController.view type:JSWithdrawAlertViewTypeWechat isBind:userModel.isWechatBind == 1 handle:^(BOOL isSuccess, NSString * _Nonnull name, NSString * _Nonnull alipayAccount) {
+            if (isSuccess) {
+                [self showWaitingHUD];
+                [JSNetworkManager getMoneyWithMethod:self.currentMethod count:self.currentItemModel.amount realName:name alipayId:alipayAccount complement:^(NSInteger code, NSString * _Nonnull message) {
+                    [self hideWaitingHUD];
+                    if (code == 0) {
+                        [self showAutoDismissTextAlert:@"提现申请已提交，审核中"];
+                        [self performSelector:@selector(dismissSelfVC) withObject:nil afterDelay:2];
+                    }else{
+                        [self showAutoDismissTextAlert:message];
+                    }
+                }];
+            }
+        }];
+    }
+}
+
 - (void)dismissSelfVC{
     [self.rt_navigationController popViewControllerAnimated:YES complete:nil];
 }

@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface JSWithdrawAlertView : UIView
 
-+ (void)showAlertViewWithSuperView:(UIView *)superView type:(JSWithdrawAlertViewType)type isBind:(BOOL)isBind handle:(void(^)(BOOL isSuccess))hande;
++ (void)showAlertViewWithSuperView:(UIView *)superView type:(JSWithdrawAlertViewType)type isBind:(BOOL)isBind handle:(void(^)(BOOL isSuccess,NSString *name,NSString *alipayAccount))hande;
 @end
 
 NS_ASSUME_NONNULL_END

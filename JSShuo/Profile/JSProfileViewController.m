@@ -294,6 +294,9 @@
         self.myPocketMoney.hidden = YES;
         self.myPocketMoneyTitle.hidden = YES;
         
+        self.lineLeft.hidden = YES;
+        self.lineRight.hidden = YES;
+        
         [self.leftButton mas_makeConstraints:^(MASConstraintMaker *make) {
             make.size.mas_equalTo(CGSizeMake(30, 30));
             make.left.equalTo(self).offset(10);

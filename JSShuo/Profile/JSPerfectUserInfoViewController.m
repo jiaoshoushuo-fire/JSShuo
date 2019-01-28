@@ -155,13 +155,13 @@
                 model.isHasAccessory = YES;
                 [array2 addObject:model];
             }
-            {
-                JSPerfectUserInfoCellModel *model = [[JSPerfectUserInfoCellModel alloc]init];
-                model.title = @"支付宝";
-                model.subTitle = userModel.isAlipayBind == 1 ? /*userModel.alipayAccount*/@"已绑定" : @"未绑定";
-                model.isHasAccessory = YES;
-                [array2 addObject:model];
-            }
+//            {
+//                JSPerfectUserInfoCellModel *model = [[JSPerfectUserInfoCellModel alloc]init];
+//                model.title = @"支付宝";
+//                model.subTitle = userModel.isAlipayBind == 1 ? /*userModel.alipayAccount*/@"已绑定" : @"未绑定";
+//                model.isHasAccessory = YES;
+//                [array2 addObject:model];
+//            }
             [self.userInfos addObject:array2];
             [self.tableview reloadData];
         }
@@ -387,11 +387,11 @@
         }
     }else if ([model.title isEqualToString:@"支付宝"]){
         if ([model.subTitle isEqualToString:@"未绑定"]) {
-            [JSWithdrawAlertView showAlertViewWithSuperView:self.navigationController.view type:JSWithdrawAlertViewTypeAlipay isBind:YES handle:^(BOOL isSuccess) {
-                if (isSuccess) {
-                    [self.tableview.mj_header beginRefreshing];
-                }
-            }];
+//            [JSWithdrawAlertView showAlertViewWithSuperView:self.navigationController.view type:JSWithdrawAlertViewTypeAlipay isBind:YES handle:^(BOOL isSuccess) {
+//                if (isSuccess) {
+//                    [self.tableview.mj_header beginRefreshing];
+//                }
+//            }];
         }
     }
 }

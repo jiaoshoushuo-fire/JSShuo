@@ -275,7 +275,7 @@
         _titleLabel = [[UILabel alloc]init];
         _titleLabel.font = [UIFont systemFontOfSize:16];
         _titleLabel.textColor = [UIColor colorWithHexString:@"B81E13"];
-        _titleLabel.text = @"明日签到可领金币";
+        _titleLabel.text = @"每日签到可领金币";
         [_titleLabel sizeToFit];
     }
     return _titleLabel;

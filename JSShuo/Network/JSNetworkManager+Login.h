@@ -60,7 +60,7 @@ typedef  NS_ENUM(NSInteger, JSRequestSecurityCodeType){
 + (void)queryWithdrawInfoWithComplement:(void(^)(BOOL isSuccess,NSDictionary *dataDict))complement;
 
 //提现
-+ (void)getMoneyWithMethod:(NSString *)method count:(NSInteger)amount complement:(void(^)(NSInteger code, NSString *message))complement;
++ (void)getMoneyWithMethod:(NSString *)method count:(NSInteger)amount realName:(NSString *)realName alipayId:(NSString *)alipayId complement:(void(^)(NSInteger code, NSString *message))complement;
 
 //账户查询
 + (void)queryAccountInfoWithComplement:(void(^)(BOOL isSuccess,JSAccountModel *accountModel))complement;
