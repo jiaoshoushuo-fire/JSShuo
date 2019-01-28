@@ -11,7 +11,7 @@
 
 @interface JSBottomPopSendCommentView() <YYTextKeyboardObserver,YYTextViewDelegate>
 @property (nonatomic, strong) UIView *contentView;
-@property (nonatomic, strong) YYTextView *textView;
+@property (nonatomic) BOOL isReply;
 @property (nonatomic, strong) UIButton *cancleBtn;
 @property (nonatomic, strong) UIButton *complementBtn;
 @property (nonatomic, strong) UIView *levelLine;
@@ -71,7 +71,12 @@
             if (self.textView.text.length > 0) {
                 NSLog(@"要调用发送评论的接口");
                 NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefaultsKeyAccessToken];
-                NSDictionary *params = @{@"token":token,@"articleId":self.articleID,@"content":[self.textView.text stringByURLEncode]};
+                NSDictionary *params;
+                if (self.isReply) {
+                    params = @{@"token":token,@"articleId":self.articleID,@"content":[self.textView.text stringByURLEncode],@"replyCommentId":self.replyCommentId,@"replyUserId":self.replyUserId};
+                } else {
+                    params = @{@"token":token,@"articleId":self.articleID,@"content":[self.textView.text stringByURLEncode]};
+                }
                 [JSNetworkManager addComment:params complement:^(BOOL isSuccess, NSDictionary * _Nonnull contentDict) {
                     if (isSuccess) {
                         [self.textView resignFirstResponder];
@@ -126,12 +131,22 @@
     return _verticalLine;
 }
 
+// 直接评论
 + (void) showInputBarWithView:(UIView *)superView articleId:(NSString *)articleID complement:(void(^)(NSDictionary *comment))complement {
     JSBottomPopSendCommentView *sendView = [[JSBottomPopSendCommentView alloc] initWithFrame:superView.bounds];
     sendView.finishBlock = complement;
     [sendView setupID:articleID];
     [sendView inputbarBecomeFirstResponder];
     [superView addSubview:sendView];
+}
+
+// 回复评论
+- (void) showInputBarWithView:(UIView *)superView articleId:(NSString *)articleID complement:(void(^)(NSDictionary *comment))complement {
+    self.isReply = YES;
+    self.finishBlock = complement;
+    [self setupID:articleID];
+    [self inputbarBecomeFirstResponder];
+    [superView addSubview:self];
 }
 
 - (void) setupID:(NSString *)ID {

@@ -37,6 +37,7 @@
         [self addSubview:self.playBtn];
         [self addSubview:self.sliderView];
         [self resetControlView];
+        self.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
     }
     return self;
 }

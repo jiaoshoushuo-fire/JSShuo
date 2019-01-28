@@ -138,10 +138,10 @@
             }else{
                 [self showAutoDismissTextAlert:@"分享失败"];
             }
-        }];
-    } forControlEvents:UIControlEventTouchUpInside];
+        }];    } forControlEvents:UIControlEventTouchUpInside];
     
     // 第 2 个按钮
+    
     [_bottomView.praiseBtn bk_addEventHandler:^(id sender) {
         @strongify(self);
         NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefaultsKeyAccessToken];
@@ -153,6 +153,8 @@
                     self.bottomView.praiseBtn.userInteractionEnabled = YES;
                     if (isSuccess) {
                         self.bottomView.praiseBtn.selected = NO;
+                        long number = [self.bottomView.praiseNum.text integerValue];
+                        self.bottomView.praiseNum.text = [NSString stringWithFormat:@"%ld",number-1];
                     }
                 }];
             } else { // 点赞
@@ -162,6 +164,8 @@
                     self.bottomView.praiseBtn.userInteractionEnabled = YES;
                     if (isSuccess) {
                         self.bottomView.praiseBtn.selected = YES;
+                        long number = [self.bottomView.praiseNum.text integerValue];
+                        self.bottomView.praiseNum.text = [NSString stringWithFormat:@"%ld",number+1];
                     }
                 }];
             }
@@ -263,6 +267,25 @@
         self.bottomView.chatBtn.selected = NO;
         [self setupWebView];
         [self reloadView];
+    } else {
+        JSCommentTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        JSCommentListModel *model = self.commentDatas[indexPath.row];
+        [JSNetworkManager queryUserInformationWitchComplement:^(BOOL isSuccess, JSProfileUserModel * _Nonnull userModel) {
+            // 用户不能评论自己
+            if (model.userId.integerValue == userModel.userId) {
+                return;
+            } else {
+                NSString *nickName = model.nickname;
+                JSBottomPopSendCommentView *popView = [[JSBottomPopSendCommentView alloc] initWithFrame:self.navigationController.view.bounds];
+                popView.textView.placeholderText = [NSString stringWithFormat:@"回复：%@",nickName];
+                popView.replyUserId = model.userId;
+                popView.replyCommentId = model.commentId;
+                [popView showInputBarWithView:self.navigationController.view articleId:[NSString stringWithFormat:@"%@",self.articleId] complement:^(NSDictionary * _Nonnull comment) {
+                    [self showAutoDismissTextAlert:@"发送成功"];
+                    [self requestCommentList];
+                }];
+            }
+        }];
     }
 }
 

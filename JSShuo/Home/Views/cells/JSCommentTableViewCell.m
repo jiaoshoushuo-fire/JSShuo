@@ -63,18 +63,20 @@
 
 - (void)setModel:(JSCommentListModel *)model {
     _model = model;
-    
     if (model.replyList.count) {
-        [self.contentView addSubview:self.bigContentView];
+        UIView *tempView = [self viewWithTag:10000];
+        if (!tempView) {
+            [self.contentView addSubview:self.bigContentView];
+            [self.contentView addSubview:self.bottomLineView];
+            
+        }
         CGFloat totalHeight = [self addReplayView:model];
         [self.bigContentView mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.userNameLabel.mas_left);
             make.right.mas_equalTo(self.mainContentLabel.mas_right);
-//            make.height.mas_equalTo(totalHeight);
+            //            make.height.mas_equalTo(totalHeight);
             make.top.mas_equalTo(self.mainContentLabel.mas_bottom).offset(5);
         }];
-
-        [self.contentView addSubview:self.bottomLineView];
         [self.bottomLineView mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(15);
             make.right.mas_equalTo(-15);
@@ -83,6 +85,7 @@
             make.bottom.mas_equalTo(0);
         }];
     } else {
+        [self.bigContentView removeFromSuperview];
         [self.contentView addSubview:self.bottomLineView];
         [self.bottomLineView mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(15);
@@ -100,6 +103,7 @@
 }
 
 - (CGFloat) addReplayView:(JSCommentListModel *)model {
+    [self.bigContentView removeAllSubviews];
     CGFloat totalHeight = 0.0;
     if (model.replyList.count) { //
         if (model.replyList.count == self.bigContentView.subviews.count) {
@@ -107,7 +111,7 @@
         }
         for (int i = 0; i < model.replyList.count; i++) {
             NSString *contentStr = [model.replyList[i] objectForKey:@"content"]; // 回复的内容
-            NSString *replyNickName = [model.replyList[i] objectForKey:@"replyNickname"]; // 回复某个评论的userName
+            NSString *replyNickName = [model.replyList[i] objectForKey:@"nickname"]; // 回复某个评论的userName
             NSString *combinStr = [NSString stringWithFormat:@"%@回复：%@",replyNickName,contentStr];
             NSMutableAttributedString *indroStr = [NSMutableAttributedString setupAttributeString:combinStr rangeText:replyNickName textColor:[UIColor colorWithHexString:@"4A90E2"]];
             
@@ -191,6 +195,7 @@
 - (UIView *)bigContentView {
     if (!_bigContentView) {
         _bigContentView = [[UIView alloc] init];
+        _bigContentView.tag = 10000;
     }
     return _bigContentView;
 }

@@ -12,7 +12,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface JSBottomPopSendCommentView : UIView
 
+@property (nonatomic, strong) YYTextView *textView;
+@property (nonatomic, strong) NSNumber *replyCommentId;
+@property (nonatomic, strong) NSNumber *replyUserId;
+
 + (void) showInputBarWithView:(UIView *)superView articleId:(NSString *)articleID complement:(void(^)(NSDictionary *comment))complement;
+
+- (void) showInputBarWithView:(UIView *)superView articleId:(NSString *)articleID complement:(void(^)(NSDictionary *comment))complement;
 
 @end
 

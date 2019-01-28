@@ -36,7 +36,7 @@
                   moduleName = "JSShuo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lique/Desktop/%E6%95%99%E6%8E%88/iOS/JSShuo/JSShuo/AppDelegate.m"
-                  timestampString = "568812380.41417"
+                  timestampString = "570334899.328775"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "201"
@@ -51,7 +51,7 @@
                   moduleName = "JSShuo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lique/Desktop/%E6%95%99%E6%8E%88/iOS/JSShuo/JSShuo/AppDelegate.m"
-                  timestampString = "568812380.417292"
+                  timestampString = "570334899.330946"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "201"
@@ -66,7 +66,7 @@
                   moduleName = "JSShuo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lique/Desktop/%E6%95%99%E6%8E%88/iOS/JSShuo/JSShuo/AppDelegate.m"
-                  timestampString = "568812380.420326"
+                  timestampString = "570334899.334123"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "201"
@@ -131,7 +131,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JSShuo/Home/JSArticleDetailViewController.m"
-            timestampString = "568295340.8641469"
+            timestampString = "570334854.2767169"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "135"
@@ -147,7 +147,7 @@
                   moduleName = "JSShuo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lique/Desktop/%E6%95%99%E6%8E%88/iOS/JSShuo/JSShuo/Home/JSArticleDetailViewController.m"
-                  timestampString = "568812380.445101"
+                  timestampString = "570334899.356768"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "135"
@@ -162,7 +162,7 @@
                   moduleName = "JSShuo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lique/Desktop/%E6%95%99%E6%8E%88/iOS/JSShuo/JSShuo/Home/JSArticleDetailViewController.m"
-                  timestampString = "568812380.44792"
+                  timestampString = "570334899.358839"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "136"
@@ -177,7 +177,7 @@
                   moduleName = "JSShuo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lique/Desktop/%E6%95%99%E6%8E%88/iOS/JSShuo/JSShuo/Home/JSArticleDetailViewController.m"
-                  timestampString = "568812380.450362"
+                  timestampString = "570334899.360808"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "135"
@@ -274,12 +274,60 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JSShuo/Video/JSShortVideoViewController.m"
-            timestampString = "568814028.023936"
+            timestampString = "570013713.366985"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "216"
             endingLineNumber = "216"
             landmarkName = "-playTheVideoAtIndexPath:scrollToTop:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "JSShuo/Home/Views/cells/JSCommentTableViewCell.m"
+            timestampString = "570334854.277436"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "139"
+            endingLineNumber = "139"
+            landmarkName = "-addReplayView:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "JSShuo/Home/JSArticleDetailViewController.m"
+            timestampString = "570334922.4766721"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "300"
+            endingLineNumber = "300"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "JSShuo/Home/Views/cells/JSCommentTableViewCell.m"
+            timestampString = "570334932.993737"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "-setModel:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

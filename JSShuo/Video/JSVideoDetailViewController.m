@@ -177,6 +177,8 @@ static NSString *kVideoCover = @"https://upload-images.jianshu.io/upload_images/
                     self.bottomView.praiseBtn.userInteractionEnabled = YES;
                     if (isSuccess) {
                         self.bottomView.praiseBtn.selected = NO;
+                        long number = [self.bottomView.praiseNum.text integerValue];
+                        self.bottomView.praiseNum.text = [NSString stringWithFormat:@"%ld",number-1];
                     }
                 }];
             } else { // 点赞
@@ -186,6 +188,8 @@ static NSString *kVideoCover = @"https://upload-images.jianshu.io/upload_images/
                     self.bottomView.praiseBtn.userInteractionEnabled = YES;
                     if (isSuccess) {
                         self.bottomView.praiseBtn.selected = YES;
+                        long number = [self.bottomView.praiseNum.text integerValue];
+                        self.bottomView.praiseNum.text = [NSString stringWithFormat:@"%ld",number+1];
                     }
                 }];
             }
