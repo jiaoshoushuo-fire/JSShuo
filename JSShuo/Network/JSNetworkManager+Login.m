@@ -18,7 +18,7 @@ const static NSString *profileMessageUrl = @"/v1/user/message/list";
 const static NSString *loginOutUrl = @"/v1/user/logout";
 const static NSString *userInfoQueryUrl = @"/v1/user/info/query";
 const static NSString *modifyUserInfoUrl = @"/v1/user/info/modify";
-const static NSString *uploadImageUrl = @"/v1/upload/image";
+
 const static NSString *feedbackUrl = @"/v1/user/feedback/create";
 const static NSString *withdrawUrl = @"/v1/account/withdraw/queryRule";
 const static NSString *getMoneyUrl = @"/v1/account/withdraw/apply";
@@ -192,19 +192,11 @@ const static NSString *shareSuccessUrl = @"/v1/user/share/success";
     [self upLoadImageWithType:1 image:image complement:complemnt];
 }
 
-+ (void)upLoadImageWithType:(NSInteger)type image:(UIImage *)image complement:(void(^)(BOOL isSuccess, NSDictionary *contentDict))complemnt{
-    NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,uploadImageUrl];
-    NSDictionary *param = @{@"type":@(type)};
-    [self ImagePOST:url parameters:param image:image complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
-        if (complemnt) {
-            complemnt(isSuccess,responseDict);
-        }
-    }];
-}
+
 + (void)feedbackText:(NSString *)text images:(NSArray *)images complement:(void(^)(BOOL isSuccess,NSDictionary *contentDict))complement{
     NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,feedbackUrl];
     NSDictionary *param = @{@"token":[JSAccountManager shareManager].accountToken,@"content":text};
-    //先没有传图片，以后更新
+    
     dispatch_group_t group = dispatch_group_create();
     dispatch_queue_t queue = dispatch_queue_create("com.jsshuo.feedback", DISPATCH_QUEUE_CONCURRENT);
     NSMutableArray *imageUrls = [NSMutableArray array];

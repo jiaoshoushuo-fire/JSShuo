@@ -26,6 +26,7 @@
 #import "JSMyCollectViewController.h"
 #import "JSRedPacketViewController.h"
 #import "AppDelegate.h"
+#import "JSPostMessageViewController.h"
 
 @interface JSProfileItemView : UIView
 @property (nonatomic, strong)UIImageView *itemImageView;
@@ -416,6 +417,7 @@
             messageVC.hidesBottomBarWhenPushed = YES;
             [self.rt_navigationController pushViewController:messageVC animated:YES complete:nil];
             
+
         } forControlEvents:UIControlEventTouchUpInside];
         
         
@@ -424,6 +426,7 @@
             JSSettingViewController *settingVC = [[JSSettingViewController alloc]init];
             settingVC.hidesBottomBarWhenPushed = YES;
             [self.rt_navigationController pushViewController:settingVC animated:YES complete:nil];
+            
 
             
         } forControlEvents:UIControlEventTouchUpInside];

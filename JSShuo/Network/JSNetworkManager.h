@@ -31,6 +31,8 @@ const static NSString *Base_Url = @"http://apitest.jiaoshoutt.com";
 + (void)ImagePOST:(NSString *)url parameters:(NSDictionary *)parameters image:(UIImage *)image complement:(void(^)(BOOL isSuccess,NSDictionary *responseDict))complement;
 
 + (NSDictionary *)transformParameters:(NSDictionary *)parameters;
+
++ (void)upLoadImageWithType:(NSInteger)type image:(UIImage *)image complement:(void(^)(BOOL isSuccess, NSDictionary *contentDict))complemnt;
 @end
 
 NS_ASSUME_NONNULL_END
