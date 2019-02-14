@@ -26,6 +26,14 @@
 		002D6AAB21A3D2DC00BADF5C /* JSDetailBottomSendCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 002D6AAA21A3D2DC00BADF5C /* JSDetailBottomSendCommentView.m */; };
 		002D6B7021A92A4500BADF5C /* NSMutableAttributedString+JSRangeTextColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 002D6B6F21A92A4400BADF5C /* NSMutableAttributedString+JSRangeTextColor.m */; };
 		002D6B7321A92F3300BADF5C /* UILabel+QLAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 002D6B7121A92F3300BADF5C /* UILabel+QLAdd.m */; };
+		00301485220178B1001A317E /* JSCircleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00301484220178B1001A317E /* JSCircleViewController.m */; };
+		00301488220187AB001A317E /* JSCircleTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00301487220187AB001A317E /* JSCircleTabViewController.m */; };
+		0030148C2201A4CD001A317E /* JSCircleListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0030148B2201A4CD001A317E /* JSCircleListModel.m */; };
+		003014992203FDF2001A317E /* JSCirclePureWordTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 003014982203FDF2001A317E /* JSCirclePureWordTableViewCell.m */; };
+		0030149C2203FE2D001A317E /* JSCircleOnePictureTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0030149B2203FE2D001A317E /* JSCircleOnePictureTableViewCell.m */; };
+		0030149F2203FE49001A317E /* JSCircleTwoPictureTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0030149E2203FE49001A317E /* JSCircleTwoPictureTableViewCell.m */; };
+		003014A22203FE57001A317E /* JSCircleThreePictureTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 003014A12203FE57001A317E /* JSCircleThreePictureTableViewCell.m */; };
+		003014A522041BB3001A317E /* JSCircleBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 003014A422041BB3001A317E /* JSCircleBottomView.m */; };
 		00452037218EDD5C00371F10 /* JSHomeTitleBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00452036218EDD5C00371F10 /* JSHomeTitleBarViewController.m */; };
 		00452046218EED9E00371F10 /* nav_header_login_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 00452042218EED9D00371F10 /* nav_header_login_normal.png */; };
 		00452049218EED9E00371F10 /* nav_header_login_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 00452045218EED9E00371F10 /* nav_header_login_selected.png */; };
@@ -297,6 +305,22 @@
 		002D6B6F21A92A4400BADF5C /* NSMutableAttributedString+JSRangeTextColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSMutableAttributedString+JSRangeTextColor.m"; sourceTree = "<group>"; };
 		002D6B7121A92F3300BADF5C /* UILabel+QLAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+QLAdd.m"; sourceTree = "<group>"; };
 		002D6B7221A92F3300BADF5C /* UILabel+QLAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+QLAdd.h"; sourceTree = "<group>"; };
+		00301483220178B1001A317E /* JSCircleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSCircleViewController.h; sourceTree = "<group>"; };
+		00301484220178B1001A317E /* JSCircleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSCircleViewController.m; sourceTree = "<group>"; };
+		00301486220187AB001A317E /* JSCircleTabViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSCircleTabViewController.h; sourceTree = "<group>"; };
+		00301487220187AB001A317E /* JSCircleTabViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSCircleTabViewController.m; sourceTree = "<group>"; };
+		0030148A2201A4CD001A317E /* JSCircleListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSCircleListModel.h; sourceTree = "<group>"; };
+		0030148B2201A4CD001A317E /* JSCircleListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSCircleListModel.m; sourceTree = "<group>"; };
+		003014972203FDF2001A317E /* JSCirclePureWordTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSCirclePureWordTableViewCell.h; sourceTree = "<group>"; };
+		003014982203FDF2001A317E /* JSCirclePureWordTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSCirclePureWordTableViewCell.m; sourceTree = "<group>"; };
+		0030149A2203FE2D001A317E /* JSCircleOnePictureTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSCircleOnePictureTableViewCell.h; sourceTree = "<group>"; };
+		0030149B2203FE2D001A317E /* JSCircleOnePictureTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSCircleOnePictureTableViewCell.m; sourceTree = "<group>"; };
+		0030149D2203FE49001A317E /* JSCircleTwoPictureTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSCircleTwoPictureTableViewCell.h; sourceTree = "<group>"; };
+		0030149E2203FE49001A317E /* JSCircleTwoPictureTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSCircleTwoPictureTableViewCell.m; sourceTree = "<group>"; };
+		003014A02203FE57001A317E /* JSCircleThreePictureTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSCircleThreePictureTableViewCell.h; sourceTree = "<group>"; };
+		003014A12203FE57001A317E /* JSCircleThreePictureTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSCircleThreePictureTableViewCell.m; sourceTree = "<group>"; };
+		003014A322041BB3001A317E /* JSCircleBottomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSCircleBottomView.h; sourceTree = "<group>"; };
+		003014A422041BB3001A317E /* JSCircleBottomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSCircleBottomView.m; sourceTree = "<group>"; };
 		00452035218EDD5C00371F10 /* JSHomeTitleBarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSHomeTitleBarViewController.h; sourceTree = "<group>"; };
 		00452036218EDD5C00371F10 /* JSHomeTitleBarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSHomeTitleBarViewController.m; sourceTree = "<group>"; };
 		00452042218EED9D00371F10 /* nav_header_login_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav_header_login_normal.png; sourceTree = "<group>"; };
@@ -825,6 +849,45 @@
 			path = Detail;
 			sourceTree = "<group>";
 		};
+		0030148222017846001A317E /* Circle */ = {
+			isa = PBXGroup;
+			children = (
+				0030148D2203FD8D001A317E /* Views */,
+				0030148922018CE4001A317E /* Models */,
+				00301486220187AB001A317E /* JSCircleTabViewController.h */,
+				00301487220187AB001A317E /* JSCircleTabViewController.m */,
+				00301483220178B1001A317E /* JSCircleViewController.h */,
+				00301484220178B1001A317E /* JSCircleViewController.m */,
+			);
+			path = Circle;
+			sourceTree = "<group>";
+		};
+		0030148922018CE4001A317E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0030148A2201A4CD001A317E /* JSCircleListModel.h */,
+				0030148B2201A4CD001A317E /* JSCircleListModel.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0030148D2203FD8D001A317E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0030149A2203FE2D001A317E /* JSCircleOnePictureTableViewCell.h */,
+				0030149B2203FE2D001A317E /* JSCircleOnePictureTableViewCell.m */,
+				0030149D2203FE49001A317E /* JSCircleTwoPictureTableViewCell.h */,
+				0030149E2203FE49001A317E /* JSCircleTwoPictureTableViewCell.m */,
+				003014A02203FE57001A317E /* JSCircleThreePictureTableViewCell.h */,
+				003014A12203FE57001A317E /* JSCircleThreePictureTableViewCell.m */,
+				003014972203FDF2001A317E /* JSCirclePureWordTableViewCell.h */,
+				003014982203FDF2001A317E /* JSCirclePureWordTableViewCell.m */,
+				003014A322041BB3001A317E /* JSCircleBottomView.h */,
+				003014A422041BB3001A317E /* JSCircleBottomView.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		00452038218EE1DD00371F10 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -1137,6 +1200,7 @@
 				7A203E4B218BF2220001F926 /* User */,
 				7A203E41218BDFB00001F926 /* Login */,
 				7A5FEEBE218B2429006CF7EC /* Libs */,
+				0030148222017846001A317E /* Circle */,
 				7A5FEEAE218B0D00006CF7EC /* Mission */,
 				7A5FEEAD218B0CF5006CF7EC /* Profile */,
 				7A5FEEAC218B0CEE006CF7EC /* Video */,
@@ -1896,6 +1960,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A898F9921956EB900A7CADD /* NSString+Path.m in Sources */,
+				00301485220178B1001A317E /* JSCircleViewController.m in Sources */,
 				7A898F9C2195865200A7CADD /* JSInputBar.m in Sources */,
 				0060432B2197C7700080091A /* ZFKVOController.m in Sources */,
 				004910A62195583200B85B4F /* JSShowTypeBigPictureTableViewCell.m in Sources */,
@@ -1918,6 +1983,7 @@
 				7A6E473C21997C5B00D5C559 /* JSPrivacyViewController.m in Sources */,
 				7A1749C321A0789000E9AA12 /* JSInputCodeViewController.m in Sources */,
 				0045205B2190484700371F10 /* JSLongVideoModel.m in Sources */,
+				003014A522041BB3001A317E /* JSCircleBottomView.m in Sources */,
 				7A6E474221997DCE00D5C559 /* JSAboutUsViewController.m in Sources */,
 				7A1749CC21A24D3C00E9AA12 /* JSCommonQuestionViewController.m in Sources */,
 				7A8F677A218FCF72008A00F4 /* JSNetworkManager.m in Sources */,
@@ -1952,6 +2018,7 @@
 				7A5152A821A7AAB500116494 /* CountDown.m in Sources */,
 				7A898F8A21956B0F00A7CADD /* GGAssetCollectionView.m in Sources */,
 				7AB5541421B6211E00DEF2CC /* HJTabViewController+ViewController.m in Sources */,
+				003014A22203FE57001A317E /* JSCircleThreePictureTableViewCell.m in Sources */,
 				006043242197C7700080091A /* ZFPlayerController.m in Sources */,
 				002B752321A11A6F00483841 /* JSCommentListModel.m in Sources */,
 				7AB5541821B6211E00DEF2CC /* HJTabViewBar.m in Sources */,
@@ -2002,12 +2069,14 @@
 				7A9108F921A4FDAA005BFDC8 /* JSMissionModel.m in Sources */,
 				004910AC2195586100B85B4F /* JSShowTypeThreePictureTableViewCell.m in Sources */,
 				006043372197C7700080091A /* ZFPlayerControlView.m in Sources */,
+				003014992203FDF2001A317E /* JSCirclePureWordTableViewCell.m in Sources */,
 				7A5FEEB7218B0D6D006CF7EC /* JSVideoViewController.m in Sources */,
 				7AB5541521B6211E00DEF2CC /* HJTabViewControllerPlugin_TabViewBar.m in Sources */,
 				006043342197C7700080091A /* ZFNetworkSpeedMonitor.m in Sources */,
 				7A5152AB21A7D84900116494 /* JSOpenRedPackCell.m in Sources */,
 				7AB931A9219E9490001E5390 /* JSConvertViewController.m in Sources */,
 				006043392197C7700080091A /* ZFLoadingView.m in Sources */,
+				00301488220187AB001A317E /* JSCircleTabViewController.m in Sources */,
 				0045205321900D4300371F10 /* JSVideoTitleBarViewController.m in Sources */,
 				7A898F8821956B0F00A7CADD /* GGPhotoPreviewViewController.m in Sources */,
 				7A898F8D21956B0F00A7CADD /* GGAssetItemCell.m in Sources */,
@@ -2040,11 +2109,13 @@
 				002B752021A11A2D00483841 /* JSNetworkManager+Comment.m in Sources */,
 				7A9108FC21A53775005BFDC8 /* JSNetworkManager+Mission.m in Sources */,
 				006043362197C7700080091A /* ZFSliderView.m in Sources */,
+				0030149F2203FE49001A317E /* JSCircleTwoPictureTableViewCell.m in Sources */,
 				006043282197C7700080091A /* ZFPlayerNotification.m in Sources */,
 				7A139ED321BCD6B5009EC742 /* JSMyCollectShortVideoViewController.m in Sources */,
 				7A203E51218C77350001F926 /* JSForgetPasswordViewController.m in Sources */,
 				7A898F8F21956B0F00A7CADD /* GFImageCropView.m in Sources */,
 				7A898F8B21956B0F00A7CADD /* GGAssetCollectionCell.m in Sources */,
+				0030148C2201A4CD001A317E /* JSCircleListModel.m in Sources */,
 				7A442EF621B2E7AA0073C273 /* JSInvitationSubViewController.m in Sources */,
 				7A015E11219A75BE0025D24F /* JSWithdrawViewController.m in Sources */,
 				7A5FEE8B218AFBAC006CF7EC /* JSTabBarViewController.m in Sources */,
@@ -2095,6 +2166,7 @@
 				006043262197C7700080091A /* ZFPlayerLogManager.m in Sources */,
 				7A898F682194065E00A7CADD /* JSMessageCell.m in Sources */,
 				7A846ECD219333D10048F222 /* NSDictionary+SetNullWithStr.m in Sources */,
+				0030149C2203FE2D001A317E /* JSCircleOnePictureTableViewCell.m in Sources */,
 				7A1749E121A2ADC900E9AA12 /* JSCollectModel.m in Sources */,
 				7A5FEE94218AFD7D006CF7EC /* JSMainTabBar.m in Sources */,
 				7A1749D521A25A8C00E9AA12 /* JSSubMyCommentViewController.m in Sources */,

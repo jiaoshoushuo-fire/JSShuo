@@ -20,6 +20,7 @@
 
 @interface ZFDouYinCell : UITableViewCell 
 
+@property (nonatomic, strong) UILabel *commentLabel;
 @property (nonatomic, strong) JSShortVideoModel *data;
 @property (nonatomic, weak)id<ZFDouYinCellDelegate>delegate;
 

@@ -19,14 +19,17 @@
 #import "JSNetworkManager+Login.h"
 #import "ZFLoadingView.h"
 #import "JSBaseViewController.h"
+#import "JSNetworkManager+Comment.h"
 
 @interface ZFDouYinCell ()
 
 @property (nonatomic, strong) UIImageView *coverImageView;
 
 @property (nonatomic, strong) UIButton *likeBtn;
+@property (nonatomic, strong) UILabel *likeLabel;
 
 @property (nonatomic, strong) UIButton *commentBtn;
+//@property (nonatomic, strong) UILabel *commentLabel;
 
 @property (nonatomic, strong) UIButton *shareBtn;
 
@@ -45,7 +48,9 @@
         [self.contentView addSubview:self.coverImageView];
         [self.contentView addSubview:self.titleLabel];
         [self.contentView addSubview:self.likeBtn];
+        [self.contentView addSubview:self.likeLabel];
         [self.contentView addSubview:self.commentBtn];
+        [self.contentView addSubview:self.commentLabel];
         [self.contentView addSubview:self.shareBtn];
         @weakify(self)
         [self.likeBtn bk_addEventHandler:^(UIButton *sender) {
@@ -59,6 +64,8 @@
                             sender.userInteractionEnabled = YES;
                             if (isSuccess) {
                                 sender.selected = NO;
+                                NSString *tempValue = self.likeLabel.text;
+                                self.likeLabel.text = [NSString stringWithFormat:@"%ld",tempValue.integerValue-1];
                             }
                         }];
                     } else { // 取消收藏
@@ -69,6 +76,8 @@
                             sender.userInteractionEnabled = YES;
                             if (isSuccess) {
                                 sender.selected = YES;
+                                NSString *tempValue = self.likeLabel.text;
+                                self.likeLabel.text = [NSString stringWithFormat:@"%ld",tempValue.integerValue+1];
                             }
                         }];
 //                        [JSNetworkManager addPraise:params complement:^(BOOL isSuccess, NSDictionary * _Nonnull contentDic) {
@@ -132,11 +141,14 @@
     min_y = CGRectGetMinY(self.shareBtn.frame) - min_h - margin;
     self.commentBtn.frame = CGRectMake(min_x, min_y, min_w, min_h);
 
+    self.commentLabel.frame = CGRectMake(min_x, CGRectGetMaxY(self.commentBtn.frame)+2, min_w, 15);
+    
     min_w = CGRectGetWidth(self.shareBtn.frame);
     min_h = min_w;
     min_x = CGRectGetMinX(self.commentBtn.frame);
     min_y = CGRectGetMinY(self.commentBtn.frame) - min_h - margin;
     self.likeBtn.frame = CGRectMake(min_x, min_y, min_w, min_h);
+    self.likeLabel.frame = CGRectMake(min_x, CGRectGetMaxY(self.likeBtn.frame)+2, min_w, 15);
 
     min_x = 20;
     min_h = 42;
@@ -167,12 +179,32 @@
 }
 
 
+- (UILabel *)likeLabel {
+    if (!_likeLabel) {
+        _likeLabel = [[UILabel alloc] init];
+        _likeLabel.textColor = [UIColor whiteColor];
+        _likeLabel.font = [UIFont systemFontOfSize:15];
+        _likeLabel.textAlignment = NSTextAlignmentCenter;
+    }
+    return _likeLabel;
+}
+
 - (UIButton *)commentBtn {
     if (!_commentBtn) {
         _commentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_commentBtn setImage:[UIImage imageNamed:@"js_shortvideo_xiaoxi"] forState:UIControlStateNormal];
     }
     return _commentBtn;
+}
+
+- (UILabel *)commentLabel {
+    if (!_commentLabel) {
+        _commentLabel = [[UILabel alloc] init];
+        _commentLabel.textColor = [UIColor whiteColor];
+        _commentLabel.font = [UIFont systemFontOfSize:15];
+        _commentLabel.textAlignment = NSTextAlignmentCenter;
+    }
+    return _commentLabel;
 }
 
 - (UIButton *)shareBtn {
@@ -192,6 +224,30 @@
 
 - (void)setData:(JSShortVideoModel *)data {
     _data = data;
+    NSLog(@"%@",data.articleId);
+    if (data) {
+        @weakify(self);
+        [JSNetworkManager requestDetailWithArticleID:_data.articleId.integerValue complent:^(BOOL isSuccess, NSDictionary * _Nonnull contentDic) {
+            @strongify(self);
+            if (isSuccess) {
+                NSNumber *praiseNum = contentDic[@"praiseNum"];
+                if (praiseNum.integerValue != 0) {
+                    self.likeLabel.hidden = NO;
+                    self.likeLabel.text = [NSString stringWithFormat:@"%@",praiseNum];
+                } else {
+                    self.likeLabel.hidden = YES;
+                }
+                NSNumber *commentNum = contentDic[@"commentNum"];
+                if (commentNum.integerValue != 0) {
+                    self.commentLabel.hidden = NO;
+                    self.commentLabel.text = [NSString stringWithFormat:@"%@",commentNum];
+                } else {
+                    self.commentLabel.hidden = YES;
+                }
+            }
+        }];
+    }
+    
     [self.coverImageView setImageWithURLString:data.cover[0] placeholder:[UIImage imageNamed:@"loading_bgView"]];
     self.titleLabel.text = data.Description;
     //查询是否收藏

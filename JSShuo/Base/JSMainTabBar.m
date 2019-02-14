@@ -152,7 +152,7 @@
 
 - (void)didSelectedButton:(id)sender {
     UIButton *button = (UIButton *)sender;
-    if (button == self.newsButton || button == self.profileButton) {
+    if (/*button == self.newsButton || */ button == self.profileButton) {
         [JSAccountManager checkLoginStatusComplement:^(BOOL isLogin) {
             if (isLogin) {
                 [self processButtonAction:sender];

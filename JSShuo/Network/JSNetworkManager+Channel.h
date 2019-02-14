@@ -14,6 +14,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void) requestChannelListWithParams:(NSDictionary *)params complent:(void(^)(BOOL isSuccess,NSDictionary *contentDic))complent;
 
+/** 圈子list **/
++ (void) requestCircleWithChannel:(NSString *)channel pageNum:(NSString *)pageNum complent:(void(^)(BOOL isSuccess,NSArray *contentArray))complent;
+
 @end
 
 NS_ASSUME_NONNULL_END

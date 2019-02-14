@@ -152,7 +152,7 @@
             if (isLogin) {
                 if (haveToken) {
                     JSMainViewController *mainVC = [AppDelegate instance].mainViewController;
-                    [mainVC switchToViewControllerAtIndex:4];
+                    [mainVC switchToViewControllerAtIndex:3];
                 }
                 [self.nav updateHeaderImage];
             }

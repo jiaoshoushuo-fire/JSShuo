@@ -10,7 +10,8 @@
 #import "JSMainTabBar.h"
 #import "JSHomeTitleBarViewController.h"
 #import "JSVideoTitleBarViewController.h"
-#import "JSMissionViewController.h"
+//#import "JSMissionViewController.h"
+#import "JSCircleTabViewController.h"
 #import "JSProfileViewController.h"
 #import "JSActivityCenterViewController.h"
 #import "JSShortVideoViewController.h"
@@ -28,7 +29,7 @@
 @property (nonatomic, strong) JSShortVideoViewController        *videoViewController;
 //@property (nonatomic, strong) JSActivityCenterViewController    *activityViewController;
 
-@property (nonatomic, strong) JSMissionViewController           *newsViewController;
+@property (nonatomic, strong) JSCircleTabViewController           *newsViewController;
 @property (nonatomic, strong) JSProfileViewController           *profileViewController;
 
 @property (nonatomic, assign) BOOL isShowAlert;
@@ -50,7 +51,7 @@
     self.videoViewController = [[JSShortVideoViewController alloc] init];
 //    self.activityViewController = [[JSActivityCenterViewController alloc] init];
 
-    self.newsViewController = [[JSMissionViewController alloc] init];
+    self.newsViewController = [[JSCircleTabViewController alloc] init];
     self.profileViewController = [[JSProfileViewController alloc] init];
 
 

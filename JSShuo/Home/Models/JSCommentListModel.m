@@ -23,7 +23,7 @@
 - (CGFloat) getReplayHeight:(JSCommentListModel *)model {
     CGFloat totalHeight = 0.0;
     for (int i = 0; i < model.replyList.count; i++) {
-        NSString *contentStr = [model.replyList[i] objectForKey:@"content"]; // 回复的内容
+        NSString *contentStr = [[model.replyList[i] objectForKey:@"content"] stringByURLDecode]; // 回复的内容
         NSString *replyNickName = [model.replyList[i] objectForKey:@"replyNickname"]; // 回复某个评论的userName
         NSString *combinStr = [NSString stringWithFormat:@"%@回复：%@",replyNickName,contentStr];
         NSMutableAttributedString *indroStr = [NSMutableAttributedString setupAttributeString:combinStr rangeText:replyNickName textColor:[UIColor colorWithHexString:@"4A90E2"]];
@@ -42,7 +42,7 @@
         //            CGFloat endMessageLabH = messageLabAotuH > MessageMAX_H?MessageMAX_H:messageLabAotuH;
         totalHeight += labSize.height;
     }
-    return totalHeight + (10+5)*model.replyList.count;
+    return totalHeight + (5+5)*model.replyList.count;
 }
 
 + (JSCommentListModel *) modelWithDictionary:(NSDictionary *)dic {

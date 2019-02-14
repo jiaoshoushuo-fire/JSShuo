@@ -110,7 +110,7 @@
             return 0;
         }
         for (int i = 0; i < model.replyList.count; i++) {
-            NSString *contentStr = [model.replyList[i] objectForKey:@"content"]; // 回复的内容
+            NSString *contentStr = [[model.replyList[i] objectForKey:@"content"] stringByURLDecode]; // 回复的内容
             NSString *replyNickName = [model.replyList[i] objectForKey:@"nickname"]; // 回复某个评论的userName
             NSString *combinStr = [NSString stringWithFormat:@"%@回复：%@",replyNickName,contentStr];
             NSMutableAttributedString *indroStr = [NSMutableAttributedString setupAttributeString:combinStr rangeText:replyNickName textColor:[UIColor colorWithHexString:@"4A90E2"]];
@@ -130,7 +130,7 @@
 //                        CGFloat endMessageLabH = messageLabAotuH > MessageMAX_H?MessageMAX_H:messageLabAotuH;
             UIView *lastView = [self.bigContentView.subviews lastObject];
             CGFloat originalY = CGRectGetMaxY(lastView.frame);
-            label.frame = CGRectMake(7, originalY+10, labSize.width, labSize.height+5);
+            label.frame = CGRectMake(7, originalY+5, labSize.width, labSize.height+5);
             [self.bigContentView addSubview:label];
             self.bigContentView.backgroundColor = [UIColor colorWithHexString:@"F6F6F6"];
             totalHeight += labSize.height;
