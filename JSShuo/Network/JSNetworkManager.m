@@ -9,6 +9,7 @@
 #import "JSNetworkManager.h"
 #import "MBProgressHUD.h"
 #import "AppDelegate.h"
+const static NSString *uploadImageUrl = @"/v1/upload/image";
 
 
 @implementation JSNetworkManager
@@ -270,5 +271,15 @@
 }
 
     
-    
+
+
++ (void)upLoadImageWithType:(NSInteger)type image:(UIImage *)image complement:(void(^)(BOOL isSuccess, NSDictionary *contentDict))complemnt{
+    NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,uploadImageUrl];
+    NSDictionary *param = @{@"type":@(type)};
+    [self ImagePOST:url parameters:param image:image complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
+        if (complemnt) {
+            complemnt(isSuccess,responseDict);
+        }
+    }];
+}
 @end

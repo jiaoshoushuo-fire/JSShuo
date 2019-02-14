@@ -442,15 +442,20 @@
         if ([object isKindOfClass:[NSString class]]) {
             reslutImage = [UIImage imageWithContentsOfFile:(NSString *)object];
             
+            NSData *data = [JSTool zipNSDataWithImage:reslutImage];
+            UIImage *lastImage = [UIImage imageWithData:data];
            
-            [images addObject:reslutImage];
+            [images addObject:lastImage];
             
             dispatch_group_leave(self.group);
         }else if ([object isKindOfClass:[PHAsset class]]){
             PHAsset *asset = (PHAsset *)object;
             [GGPhotoLibrary requestImageForAsset:asset preferSize:CGSizeMake(asset.pixelWidth, asset.pixelHeight) completion:^(UIImage *image, NSDictionary *info) {
                 
-                [images addObject:image];
+                NSData *data = [JSTool zipNSDataWithImage:image];
+                UIImage *lastImage = [UIImage imageWithData:data];
+                
+                [images addObject:lastImage];
                 dispatch_group_leave(self.group);
             }];
         }

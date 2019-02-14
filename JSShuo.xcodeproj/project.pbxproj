@@ -239,6 +239,8 @@
 		7ABD9E662191BA6600E19B6A /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABD9E5C2191BA6500E19B6A /* TAAbstractDotView.m */; };
 		7ABD9E692191C03400E19B6A /* JSProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABD9E682191C03400E19B6A /* JSProfileCell.m */; };
 		7AC3696121D39E8A000D12E7 /* JSIncomeWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AC3696021D39E8A000D12E7 /* JSIncomeWebViewController.m */; };
+		7ACFD4E522004CE1007DC0BE /* JSPostMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ACFD4E422004CE1007DC0BE /* JSPostMessageViewController.m */; };
+		7ACFD4E822007A2F007DC0BE /* JSNetworkManager+Poster.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ACFD4E722007A2F007DC0BE /* JSNetworkManager+Poster.m */; };
 		7AD5489721AE303900244C78 /* JSActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD5489621AE303900244C78 /* JSActivityCell.m */; };
 		7AD5489A21AE426F00244C78 /* JSActivityHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD5489921AE426F00244C78 /* JSActivityHeaderView.m */; };
 		7AD5489D21AE60C500244C78 /* ULBCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD5489B21AE60C400244C78 /* ULBCollectionViewFlowLayout.m */; };
@@ -722,6 +724,10 @@
 		7ABD9E682191C03400E19B6A /* JSProfileCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSProfileCell.m; sourceTree = "<group>"; };
 		7AC3695F21D39E8A000D12E7 /* JSIncomeWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSIncomeWebViewController.h; sourceTree = "<group>"; };
 		7AC3696021D39E8A000D12E7 /* JSIncomeWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSIncomeWebViewController.m; sourceTree = "<group>"; };
+		7ACFD4E322004CE1007DC0BE /* JSPostMessageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSPostMessageViewController.h; sourceTree = "<group>"; };
+		7ACFD4E422004CE1007DC0BE /* JSPostMessageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSPostMessageViewController.m; sourceTree = "<group>"; };
+		7ACFD4E622007A2F007DC0BE /* JSNetworkManager+Poster.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JSNetworkManager+Poster.h"; sourceTree = "<group>"; };
+		7ACFD4E722007A2F007DC0BE /* JSNetworkManager+Poster.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "JSNetworkManager+Poster.m"; sourceTree = "<group>"; };
 		7AD5489521AE303900244C78 /* JSActivityCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSActivityCell.h; sourceTree = "<group>"; };
 		7AD5489621AE303900244C78 /* JSActivityCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSActivityCell.m; sourceTree = "<group>"; };
 		7AD5489821AE426F00244C78 /* JSActivityHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSActivityHeaderView.h; sourceTree = "<group>"; };
@@ -1330,6 +1336,8 @@
 				002B74C9219D514100483841 /* JSSearchViewController.m */,
 				002B74DD219EC79000483841 /* JSArticleDetailViewController.h */,
 				002B74DE219EC79000483841 /* JSArticleDetailViewController.m */,
+				7ACFD4E322004CE1007DC0BE /* JSPostMessageViewController.h */,
+				7ACFD4E422004CE1007DC0BE /* JSPostMessageViewController.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1637,6 +1645,8 @@
 				002B751F21A11A2D00483841 /* JSNetworkManager+Comment.m */,
 				002B752721A2592200483841 /* JSNetworkManager+Recommend.h */,
 				002B752821A2592300483841 /* JSNetworkManager+Recommend.m */,
+				7ACFD4E622007A2F007DC0BE /* JSNetworkManager+Poster.h */,
+				7ACFD4E722007A2F007DC0BE /* JSNetworkManager+Poster.m */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1992,7 +2002,9 @@
 				004910A92195584B00B85B4F /* JSShowTypeSmallPictureTableViewCell.m in Sources */,
 				002B74D2219D648300483841 /* JSSearchResultView.m in Sources */,
 				004521192192DFB600371F10 /* JSHomeModel.m in Sources */,
+				7ACFD4E522004CE1007DC0BE /* JSPostMessageViewController.m in Sources */,
 				7AB5541F21B6786600DEF2CC /* JSAlertView.m in Sources */,
+				7ACFD4E822007A2F007DC0BE /* JSNetworkManager+Poster.m in Sources */,
 				7A139ECD21BB6EAB009EC742 /* JSNewUserGuideViewController.m in Sources */,
 				004910A221951DB700B85B4F /* UITableView+FDKeyedHeightCache.m in Sources */,
 				006043472197CAA20080091A /* ZFDouYinCell.m in Sources */,
@@ -2348,7 +2360,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = JSShuo/JSShuo.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JB8ZC9V4MM;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2365,7 +2377,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.callthebeast.jiaoshoushuo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = JSShuo_develop;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -2377,8 +2389,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = JSShuo/JSShuo.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JB8ZC9V4MM;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2395,7 +2407,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.callthebeast.jiaoshoushuo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = JSShuo_distribution;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

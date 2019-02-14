@@ -159,7 +159,7 @@
 
 + (NSString *)saveImageToTemporaryDirectory:(UIImage *)image ext:(NSString *)ext {
     
-    NSData *data = UIImageJPEGRepresentation(image, 1);
+    NSData *data = UIImageJPEGRepresentation(image, 0.1);
     return [self saveImageDataToTemporaryDirectory:data ext:ext];
 }
 
