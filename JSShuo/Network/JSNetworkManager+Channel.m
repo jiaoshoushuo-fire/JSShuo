@@ -11,6 +11,7 @@
 
 const static NSString *channelList = @"/v1/content/channel/list";
 const static NSString *circleList = @"/v1/poster/list";
+const static NSString *circleMy = @"/v1/poster/me";
 
 @implementation JSNetworkManager (Channel)
 
@@ -33,6 +34,23 @@ const static NSString *circleList = @"/v1/poster/list";
     [params setObject:pageNum forKey:@"pageNum"];
     [params setObject:@"10" forKey:@"pageSize"];
     NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,circleList];
+    [self POST:url parameters:params complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
+        if (complent) {
+            NSArray *array = [JSCircleListModel modelsWithArray:responseDict[@"list"]];
+            complent(isSuccess,array);
+        }
+    }];
+}
+
++ (void) requestCircleWithMyPageNum:(NSString *)pageNum complent:(void(^)(BOOL isSuccess,NSArray *contentArray))complent {
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    NSString *token = [JSAccountManager shareManager].accountToken;
+    if (token) {
+        [params setObject:token forKey:@"token"];
+    }
+    [params setObject:pageNum forKey:@"pageNum"];
+    [params setObject:@"10" forKey:@"pageSize"];
+    NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,circleMy];
     [self POST:url parameters:params complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
         if (complent) {
             NSArray *array = [JSCircleListModel modelsWithArray:responseDict[@"list"]];

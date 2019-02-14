@@ -25,6 +25,11 @@
 
 @implementation JSCircleViewController
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self requestData];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationController setNavigationBarHidden:YES];
@@ -33,7 +38,6 @@
     [self initTableView];
     [self.view addSubview:self.noResultView];
     _noResultView.hidden = YES;
-    [self requestData];
 }
 
 - (void) requestData {
@@ -79,7 +83,7 @@
 
 - (void) initTableView {
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight-49-64) style:UITableViewStylePlain];
-    [_tableView registerClass:[JSCirclePureWordTableViewCell class] forCellReuseIdentifier:@"JSCirclePureWordTableViewCell.h"];
+    [_tableView registerClass:[JSCircleOnePictureTableViewCell class] forCellReuseIdentifier:@"JSCircleOnePictureTableViewCell"];
     [_tableView registerClass:[JSCircleTwoPictureTableViewCell class] forCellReuseIdentifier:@"JSCircleTwoPictureTableViewCell"];
     [_tableView registerClass:[JSCircleThreePictureTableViewCell class] forCellReuseIdentifier:@"JSCircleThreePictureTableViewCell"];
     [_tableView registerClass:[JSCirclePureWordTableViewCell class] forCellReuseIdentifier:@"JSCirclePureWordTableViewCell"];
@@ -109,6 +113,7 @@
     if (model.imageType.integerValue == 0) { // 纯文字
         JSCirclePureWordTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JSCirclePureWordTableViewCell" forIndexPath:indexPath];
         cell.model = model;
+        cell.backgroundColor = [UIColor cyanColor];
         return cell;
     } else if (model.imageType.integerValue == 1) { // 1图
         JSCircleOnePictureTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JSCircleOnePictureTableViewCell" forIndexPath:indexPath];

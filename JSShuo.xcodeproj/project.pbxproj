@@ -93,6 +93,8 @@
 		0065B4BF21BE0FA8003AEA5D /* JSDetailSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0065B4BE21BE0FA8003AEA5D /* JSDetailSectionHeaderView.m */; };
 		0065B4C221BF54C5003AEA5D /* JSNoSearchResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0065B4C121BF54C5003AEA5D /* JSNoSearchResultView.m */; };
 		009601AD21AD91C2001BE083 /* JSBottomPopSendCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 009601AC21AD91C2001BE083 /* JSBottomPopSendCommentView.m */; };
+		00E7570322154B40006B6460 /* JSCircleMyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E7570222154B40006B6460 /* JSCircleMyViewController.m */; };
+		00E7570622154BBF006B6460 /* JSCircleMyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E7570522154BBF006B6460 /* JSCircleMyTableViewCell.m */; };
 		2D4BE293799FA8F9CF3BD9E0 /* libPods-JSShuoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07D21E4F3FE796E0EC111709 /* libPods-JSShuoTests.a */; };
 		6797051512B36A0CAA259324 /* libPods-JSShuoUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 45918ABA94D7C616D6E9C28A /* libPods-JSShuoUITests.a */; };
 		7A015E11219A75BE0025D24F /* JSWithdrawViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A015E10219A75BE0025D24F /* JSWithdrawViewController.m */; };
@@ -438,6 +440,10 @@
 		0065B4C121BF54C5003AEA5D /* JSNoSearchResultView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSNoSearchResultView.m; sourceTree = "<group>"; };
 		009601AB21AD91C2001BE083 /* JSBottomPopSendCommentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSBottomPopSendCommentView.h; sourceTree = "<group>"; };
 		009601AC21AD91C2001BE083 /* JSBottomPopSendCommentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSBottomPopSendCommentView.m; sourceTree = "<group>"; };
+		00E7570122154B40006B6460 /* JSCircleMyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSCircleMyViewController.h; sourceTree = "<group>"; };
+		00E7570222154B40006B6460 /* JSCircleMyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSCircleMyViewController.m; sourceTree = "<group>"; };
+		00E7570422154BBF006B6460 /* JSCircleMyTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSCircleMyTableViewCell.h; sourceTree = "<group>"; };
+		00E7570522154BBF006B6460 /* JSCircleMyTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSCircleMyTableViewCell.m; sourceTree = "<group>"; };
 		07D21E4F3FE796E0EC111709 /* libPods-JSShuoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JSShuoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		35A90D49D7D66324E387894E /* Pods-JSShuoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSShuoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JSShuoUITests/Pods-JSShuoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		428D5311982CDC892743DA34 /* Pods-JSShuoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSShuoUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JSShuoUITests/Pods-JSShuoUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -864,6 +870,8 @@
 				00301487220187AB001A317E /* JSCircleTabViewController.m */,
 				00301483220178B1001A317E /* JSCircleViewController.h */,
 				00301484220178B1001A317E /* JSCircleViewController.m */,
+				00E7570122154B40006B6460 /* JSCircleMyViewController.h */,
+				00E7570222154B40006B6460 /* JSCircleMyViewController.m */,
 			);
 			path = Circle;
 			sourceTree = "<group>";
@@ -890,6 +898,8 @@
 				003014982203FDF2001A317E /* JSCirclePureWordTableViewCell.m */,
 				003014A322041BB3001A317E /* JSCircleBottomView.h */,
 				003014A422041BB3001A317E /* JSCircleBottomView.m */,
+				00E7570422154BBF006B6460 /* JSCircleMyTableViewCell.h */,
+				00E7570522154BBF006B6460 /* JSCircleMyTableViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2021,6 +2031,7 @@
 				0065B4BC21BC150A003AEA5D /* JSVideoDetailViewController.m in Sources */,
 				7A1749DB21A28D7300E9AA12 /* JSMyCollectArticleViewController.m in Sources */,
 				7AD7F1B221AA742500F56F79 /* JSActivityModel.m in Sources */,
+				00E7570622154BBF006B6460 /* JSCircleMyTableViewCell.m in Sources */,
 				002B74D8219E5A0700483841 /* JSHotSearchTitleCollectionViewCell.m in Sources */,
 				7A5FEEA9218B0BD0006CF7EC /* JSMainViewController.m in Sources */,
 				7A5FEE98218AFEA1006CF7EC /* UIColor+JSShuo.m in Sources */,
@@ -2156,6 +2167,7 @@
 				0060433D2197C7700080091A /* KSMediaPlayerManager.m in Sources */,
 				7ABD9E612191BA6600E19B6A /* UIView+SDExtension.m in Sources */,
 				7A5FEEBA218B0D7C006CF7EC /* JSProfileViewController.m in Sources */,
+				00E7570322154B40006B6460 /* JSCircleMyViewController.m in Sources */,
 				7A600EC9219C1B2D0033F6DF /* JSInvitationViewController.m in Sources */,
 				7ABD9E692191C03400E19B6A /* JSProfileCell.m in Sources */,
 				7A6E473921997B8C00D5C559 /* JSFontChangeViewController.m in Sources */,

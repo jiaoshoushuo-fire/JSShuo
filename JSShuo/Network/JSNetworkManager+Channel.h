@@ -17,6 +17,10 @@ NS_ASSUME_NONNULL_BEGIN
 /** 圈子list **/
 + (void) requestCircleWithChannel:(NSString *)channel pageNum:(NSString *)pageNum complent:(void(^)(BOOL isSuccess,NSArray *contentArray))complent;
 
+/** 圈子 -- 我的 **/
++ (void) requestCircleWithMyPageNum:(NSString *)pageNum complent:(void(^)(BOOL isSuccess,NSArray *contentArray))complent;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

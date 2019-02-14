@@ -30,29 +30,11 @@
     [self addSubview:self.praiseCountLabel];
     [self addSubview:self.timeLabel];
     [self addSubview:self.lineView];
-    if (_model.isTop.integerValue == 2) { // 2是不置顶，1是置顶
-        self.hotLabel.hidden = YES;
-        [self.hotLabel removeFromSuperview];
-        [self.commitCountImg mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.size.mas_equalTo(CGSizeMake(19, 17));
-            make.left.mas_equalTo(15);
-            make.top.mas_equalTo(13);
-        }];
-    } else {
-        self.hotLabel.hidden = NO;
-        [self addSubview:self.hotLabel];
-        [self.hotLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(self).offset(9);
-//            make.top.mas_equalTo(9);  //  看看这两个有没有区别
-            make.size.mas_equalTo(CGSizeMake(30, 17));
-            make.left.mas_equalTo(15);
-        }];
-        [self.commitCountImg mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.size.mas_equalTo(CGSizeMake(19, 17));
-            make.left.mas_equalTo(self.hotLabel.mas_right).offset(10);
-            make.top.mas_equalTo(13);
-        }];
-    }
+    [self.commitCountImg mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(19, 17));
+        make.left.mas_equalTo(15);
+        make.top.mas_equalTo(13);
+    }];
     [self.commitCountLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.commitCountImg.mas_right).offset(7);
         make.centerY.mas_equalTo(self.commitCountImg.mas_centerY);
@@ -64,9 +46,7 @@
         make.left.mas_equalTo(self.commitCountLabel.mas_right).offset(18);
         make.centerY.mas_equalTo(self.commitCountLabel.mas_centerY);
     }];
-    [self.commitCountLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.centerY.mas_equalTo(self.commitCountLabel.mas_centerY);
-//        make.trailing.equalTo(self.commitCountImg).with.offset(-29);
+    [self.praiseCountLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.praiseCountImg.mas_right).offset(7);
         make.centerY.mas_equalTo(self.praiseCountImg.mas_centerY);
         make.width.mas_equalTo(20);
@@ -79,29 +59,16 @@
         make.height.mas_equalTo(17);
     }];
     [self.lineView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(15);
-        make.right.mas_equalTo(-15);
+        make.left.mas_equalTo(0);
+        make.right.mas_equalTo(0);
         make.height.mas_equalTo(1);
-        make.top.mas_equalTo(16);
+        make.top.mas_equalTo(self.timeLabel.mas_bottom).offset(16);
     }];
     self.commitCountLabel.text = [NSString stringWithFormat:@"%@",model.commentNum];
     self.praiseCountLabel.text = [NSString stringWithFormat:@"%@",model.praiseNum];
     self.timeLabel.text = model.createTimeDesc;
 }
 
-
-- (UILabel *)hotLabel {
-    if (!_hotLabel) {
-        _hotLabel = [[UILabel alloc] init];
-        _hotLabel.text = @"置顶";
-        _hotLabel.textAlignment = NSTextAlignmentCenter;
-        _hotLabel.layer.borderWidth = 1;
-        _hotLabel.layer.borderColor = [[UIColor colorWithHexString:@"F44336"] CGColor];
-        _hotLabel.font = [UIFont systemFontOfSize:10];
-        _hotLabel.textColor = [UIColor colorWithHexString:@"F44336"];
-    }
-    return _hotLabel;
-}
 
 - (UIImageView *)commitCountImg {
     if (!_commitCountImg) {

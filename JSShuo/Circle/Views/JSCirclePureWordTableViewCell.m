@@ -45,6 +45,7 @@
         make.height.mas_equalTo(25);
         make.right.mas_equalTo(-15);
     }];
+    self.subtitleLabel.preferredMaxLayoutWidth = ScreenWidth - 30;
     if (model.title.length > 0) { // 有标题
         self.titleLabel.hidden = NO;
         [self.contentView addSubview:self.titleLabel];
@@ -56,7 +57,6 @@
         }];
         self.titleLabel.text = model.title;
         // 设置副标题
-        self.subtitleLabel.preferredMaxLayoutWidth = ScreenWidth - 30;
         [self.subtitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(self.titleLabel.mas_bottom).offset(7);
             make.left.mas_equalTo(15);
@@ -66,7 +66,6 @@
         self.titleLabel.hidden = YES;
         [self.titleLabel removeFromSuperview];
         // 设置副标题
-        self.subtitleLabel.preferredMaxLayoutWidth = ScreenWidth - 30;
         [self.subtitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(self.headView.mas_bottom).offset(7);
             make.left.mas_equalTo(15);
@@ -82,6 +81,7 @@
     [self.headView sd_setImageWithURL:[NSURL URLWithString:model.portrait] placeholderImage:[UIImage imageNamed:@"placeHolder_1_1"]];
     self.nicknameLabel.text = model.nickname;
     self.subtitleLabel.text = [model.Description stringByRemovingPercentEncoding];
+    self.bottomView.model = model;
     self.bottomView.commitCountLabel.text = [NSString stringWithFormat:@"%@",model.commentNum];
     self.bottomView.praiseCountLabel.text = [NSString stringWithFormat:@"%@",model.praiseNum];
     self.bottomView.timeLabel.text = model.createTimeDesc;
@@ -90,6 +90,7 @@
 - (JSCircleBottomView *)bottomView {
     if (!_bottomView) {
         _bottomView = [[JSCircleBottomView alloc] init];
+        _bottomView.backgroundColor = [UIColor yellowColor];
     }
     return _bottomView;
 }
@@ -100,7 +101,7 @@
         _subtitleLabel.font = [UIFont systemFontOfSize:16];
         _subtitleLabel.textAlignment = NSTextAlignmentLeft;
         _subtitleLabel.textColor = [UIColor colorWithHexString:@"545454"];
-        _subtitleLabel.numberOfLines = 3;
+        _subtitleLabel.numberOfLines = 0;
         //设置huggingPriority
         [_subtitleLabel setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
     }

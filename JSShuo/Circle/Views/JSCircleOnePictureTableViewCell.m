@@ -92,6 +92,7 @@
     self.nicknameLabel.text = model.nickname;
     self.subtitleLabel.text = model.Description;
     [self.userPostImageView sd_setImageWithURL:[NSURL URLWithString:model.images[0]] placeholderImage:[UIImage imageNamed:@"placeHolder_16_9"]];
+    self.bottomView.model = model;
     self.bottomView.commitCountLabel.text = [NSString stringWithFormat:@"%@",model.commentNum];
     self.bottomView.praiseCountLabel.text = [NSString stringWithFormat:@"%@",model.praiseNum];
     self.bottomView.timeLabel.text = model.createTimeDesc;

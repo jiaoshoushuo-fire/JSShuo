@@ -11,6 +11,7 @@
 #import "TYPagerController.h"
 #import "JSCircleViewController.h"
 #import "JSPostMessageViewController.h"
+#import "JSCircleMyViewController.h"
 
 @interface JSCircleTabViewController ()<TYTabPagerBarDataSource,TYTabPagerBarDelegate,TYPagerControllerDataSource,TYPagerControllerDelegate>
 @property (nonatomic, weak) TYTabPagerBar *tabBar;
@@ -69,9 +70,14 @@
 }
 
 - (UIViewController *)pagerController:(TYPagerController *)pagerController controllerForIndex:(NSInteger)index prefetching:(BOOL)prefetching {
-    JSCircleViewController *vc = [[JSCircleViewController alloc] init];
-    vc.channel = [self.datas[index] objectForKey:@"channel"];
-    return vc;
+    if (index == 2) {
+        JSCircleMyViewController *vc = [JSCircleMyViewController new];
+        return vc;
+    } else {
+        JSCircleViewController *vc = [[JSCircleViewController alloc] init];
+        vc.channel = [self.datas[index] objectForKey:@"channel"];
+        return vc;
+    }
 }
 
 #pragma mark - TYPagerControllerDelegate

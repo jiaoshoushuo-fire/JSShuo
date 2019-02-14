@@ -13,7 +13,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface JSCircleBottomView : UIView
 
-@property (nonatomic,strong) UILabel *hotLabel;// 置顶label
 @property (nonatomic,strong) UIImageView *commitCountImg;// 评论
 @property (nonatomic,strong) UILabel *commitCountLabel;// 评论数量
 @property (nonatomic,strong) UIImageView *praiseCountImg;// 点赞

@@ -38,6 +38,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong) NSNumber *isTop;
 /** 评论数 */
 @property (nonatomic,strong) NSNumber *commentNum;
+
+@property (nonatomic,strong) NSNumber *collectNum;
+
 /** 点赞数 */
 @property (nonatomic,strong) NSNumber *praiseNum;
 /** 类型：文章、视频、短视频 **/
