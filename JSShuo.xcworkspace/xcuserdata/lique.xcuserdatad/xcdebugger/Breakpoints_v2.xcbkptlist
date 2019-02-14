@@ -36,12 +36,12 @@
                   moduleName = "JSShuo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lique/Desktop/%E6%95%99%E6%8E%88/iOS/JSShuo/JSShuo/AppDelegate.m"
-                  timestampString = "571816417.202718"
+                  timestampString = "571817657.359777"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "201"
                   endingLineNumber = "201"
-                  offsetFromSymbolStart = "99">
+                  offsetFromSymbolStart = "104">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -51,12 +51,12 @@
                   moduleName = "JSShuo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lique/Desktop/%E6%95%99%E6%8E%88/iOS/JSShuo/JSShuo/AppDelegate.m"
-                  timestampString = "571816417.205274"
+                  timestampString = "571817657.3622479"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "201"
                   endingLineNumber = "201"
-                  offsetFromSymbolStart = "22">
+                  offsetFromSymbolStart = "28">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -66,12 +66,12 @@
                   moduleName = "JSShuo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lique/Desktop/%E6%95%99%E6%8E%88/iOS/JSShuo/JSShuo/AppDelegate.m"
-                  timestampString = "571816417.208317"
+                  timestampString = "571817657.364392"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "201"
                   endingLineNumber = "201"
-                  offsetFromSymbolStart = "16">
+                  offsetFromSymbolStart = "20">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -147,12 +147,12 @@
                   moduleName = "JSShuo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lique/Desktop/%E6%95%99%E6%8E%88/iOS/JSShuo/JSShuo/Home/JSArticleDetailViewController.m"
-                  timestampString = "571816417.235019"
+                  timestampString = "571817657.383786"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "135"
                   endingLineNumber = "135"
-                  offsetFromSymbolStart = "84">
+                  offsetFromSymbolStart = "96">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -162,7 +162,7 @@
                   moduleName = "JSShuo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lique/Desktop/%E6%95%99%E6%8E%88/iOS/JSShuo/JSShuo/Home/JSArticleDetailViewController.m"
-                  timestampString = "571816417.237928"
+                  timestampString = "571817657.385922"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "136"
@@ -177,12 +177,12 @@
                   moduleName = "JSShuo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lique/Desktop/%E6%95%99%E6%8E%88/iOS/JSShuo/JSShuo/Home/JSArticleDetailViewController.m"
-                  timestampString = "571816417.240658"
+                  timestampString = "571817657.38805"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "135"
                   endingLineNumber = "135"
-                  offsetFromSymbolStart = "16">
+                  offsetFromSymbolStart = "20">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -280,6 +280,38 @@
             startingLineNumber = "27"
             endingLineNumber = "27"
             landmarkName = "-getReplayHeight:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "JSShuo/Circle/JSCircleViewController.m"
+            timestampString = "571817657.186222"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "-initTableView"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "JSShuo/Circle/JSCircleViewController.m"
+            timestampString = "571817657.186627"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
+            landmarkName = "-initTableView"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

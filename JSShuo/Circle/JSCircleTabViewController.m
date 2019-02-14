@@ -10,6 +10,7 @@
 #import "TYTabPagerBar.h"
 #import "TYPagerController.h"
 #import "JSCircleViewController.h"
+#import "JSPostMessageViewController.h"
 
 @interface JSCircleTabViewController ()<TYTabPagerBarDataSource,TYTabPagerBarDelegate,TYPagerControllerDataSource,TYPagerControllerDelegate>
 @property (nonatomic, weak) TYTabPagerBar *tabBar;
@@ -108,6 +109,15 @@
     [tabBar registerClass:[TYTabPagerBarCell class] forCellWithReuseIdentifier:[TYTabPagerBarCell cellIdentifier]];
     tabBar.backgroundColor = [UIColor colorWithHexString:@"F9F9F9"];
     [self.view addSubview:tabBar];
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn.frame = CGRectMake(ScreenWidth-20-15, (44-20)/2, 20, 20);
+    [btn setImage:[UIImage imageNamed:@"js_comment_xie"] forState:UIControlStateNormal];
+    [btn addBlockForControlEvents:UIControlEventTouchUpInside block:^(id  _Nonnull sender) {
+        JSPostMessageViewController *postVC = [[JSPostMessageViewController alloc]init];
+        postVC.hidesBottomBarWhenPushed = YES;
+        [self.rt_navigationController pushViewController:postVC animated:YES complete:nil];
+    }];
+    [tabBar addSubview:btn];
     _tabBar = tabBar;
 }
 
