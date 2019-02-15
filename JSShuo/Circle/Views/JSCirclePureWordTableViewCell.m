@@ -23,7 +23,7 @@
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        
+        self.contentView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
     }
     return self;
 }
@@ -36,29 +36,29 @@
     [self.contentView addSubview:self.bottomView];
     [self.headView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(15);
-        make.top.mas_equalTo(12);
+        make.top.mas_equalTo(12).priorityHigh();
         make.size.mas_equalTo(CGSizeMake(40, 40));
     }];
     [self.nicknameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.headView.mas_right).offset(12);
-        make.centerY.mas_equalTo(self.headView);
-        make.height.mas_equalTo(25);
+        make.centerY.mas_equalTo(self.headView.mas_centerY);
+//        make.height.mas_equalTo(25);
         make.right.mas_equalTo(-15);
     }];
     self.subtitleLabel.preferredMaxLayoutWidth = ScreenWidth - 30;
     if (model.title.length > 0) { // 有标题
         self.titleLabel.hidden = NO;
         [self.contentView addSubview:self.titleLabel];
-        [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(self.headView.mas_bottom).offset(16);
+        [self.titleLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(self.headView.mas_bottom).offset(16).priorityHigh();
             make.left.mas_equalTo(15);
             make.right.mas_equalTo(-15);
-            make.height.mas_equalTo(25);
+//            make.height.mas_equalTo(25);
         }];
-        self.titleLabel.text = model.title;
+        self.titleLabel.text = [model.title stringByRemovingPercentEncoding];
         // 设置副标题
-        [self.subtitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(self.titleLabel.mas_bottom).offset(7);
+        [self.subtitleLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(self.titleLabel.mas_bottom).offset(7).priorityHigh();
             make.left.mas_equalTo(15);
             make.right.mas_equalTo(-15);
         }];
@@ -66,17 +66,19 @@
         self.titleLabel.hidden = YES;
         [self.titleLabel removeFromSuperview];
         // 设置副标题
-        [self.subtitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(self.headView.mas_bottom).offset(7);
+        [self.subtitleLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(self.headView.mas_bottom).offset(7).priorityHigh();
             make.left.mas_equalTo(15);
             make.right.mas_equalTo(-15);
         }];
     }
     // 总共高 12+17+16+1 = 46
     [self.bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.subtitleLabel.mas_bottom).offset(0);
+        make.top.mas_equalTo(self.subtitleLabel.mas_bottom).offset(0).priorityHigh();
         make.left.right.mas_equalTo(self.subtitleLabel);
-        make.height.mas_equalTo(46);
+        //不设置高度，给颜色没有效果
+//        make.height.mas_equalTo(46);
+        make.bottom.mas_equalTo(0).priorityHigh();
     }];
     [self.headView sd_setImageWithURL:[NSURL URLWithString:model.portrait] placeholderImage:[UIImage imageNamed:@"placeHolder_1_1"]];
     self.nicknameLabel.text = model.nickname;
@@ -90,7 +92,6 @@
 - (JSCircleBottomView *)bottomView {
     if (!_bottomView) {
         _bottomView = [[JSCircleBottomView alloc] init];
-        _bottomView.backgroundColor = [UIColor yellowColor];
     }
     return _bottomView;
 }

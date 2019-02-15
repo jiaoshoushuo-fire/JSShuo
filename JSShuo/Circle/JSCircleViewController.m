@@ -59,6 +59,7 @@
     if (modelsArray.count < 1) {
         [self.tableView.mj_footer endRefreshing];
         [self.tableView.mj_header endRefreshing];
+        return;
     }
     NSMutableArray *tempArray = [[NSMutableArray alloc] initWithCapacity:0];
     for (int i = 0; i < modelsArray.count; i++) {
@@ -72,7 +73,7 @@
         [self.tableView.mj_footer endRefreshing];
         [self.tableView.mj_header endRefreshing];
     } else {
-        [self.datas addObject:tempArray];
+        [self.datas addObjectsFromArray:tempArray];
         [self.tableView.mj_footer endRefreshing];
         [self.tableView.mj_header endRefreshing];
     }
@@ -113,7 +114,6 @@
     if (model.imageType.integerValue == 0) { // 纯文字
         JSCirclePureWordTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JSCirclePureWordTableViewCell" forIndexPath:indexPath];
         cell.model = model;
-        cell.backgroundColor = [UIColor cyanColor];
         return cell;
     } else if (model.imageType.integerValue == 1) { // 1图
         JSCircleOnePictureTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JSCircleOnePictureTableViewCell" forIndexPath:indexPath];

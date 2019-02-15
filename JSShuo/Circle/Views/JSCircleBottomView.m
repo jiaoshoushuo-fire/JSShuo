@@ -32,14 +32,15 @@
     [self addSubview:self.lineView];
     [self.commitCountImg mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(19, 17));
+//        make.width.mas_equalTo(19);
         make.left.mas_equalTo(15);
-        make.top.mas_equalTo(13);
+        make.top.mas_equalTo(13).priorityHigh();
     }];
     [self.commitCountLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.commitCountImg.mas_right).offset(7);
         make.centerY.mas_equalTo(self.commitCountImg.mas_centerY);
         make.width.mas_equalTo(20);
-        make.height.mas_equalTo(17);
+//        make.height.mas_equalTo(17);
     }];
     [self.praiseCountImg mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(17, 17));
@@ -50,19 +51,20 @@
         make.left.mas_equalTo(self.praiseCountImg.mas_right).offset(7);
         make.centerY.mas_equalTo(self.praiseCountImg.mas_centerY);
         make.width.mas_equalTo(20);
-        make.height.mas_equalTo(17);
+//        make.height.mas_equalTo(17);
     }];
     [self.timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.praiseCountLabel.mas_right).offset(18);
         make.centerY.mas_equalTo(self.commitCountLabel.mas_centerY);
         make.right.mas_equalTo(-15);
-        make.height.mas_equalTo(17);
+//        make.height.mas_equalTo(17);
     }];
     [self.lineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(0);
         make.right.mas_equalTo(0);
         make.height.mas_equalTo(1);
-        make.top.mas_equalTo(self.timeLabel.mas_bottom).offset(16);
+        make.top.mas_equalTo(self.timeLabel.mas_bottom).offset(16).priorityHigh();
+        make.bottom.mas_equalTo(0);
     }];
     self.commitCountLabel.text = [NSString stringWithFormat:@"%@",model.commentNum];
     self.praiseCountLabel.text = [NSString stringWithFormat:@"%@",model.praiseNum];

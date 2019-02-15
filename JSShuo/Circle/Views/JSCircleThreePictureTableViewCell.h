@@ -25,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 /** 用户上传的图片 **/
 @property (nonatomic,strong) UIImageView *userPostImageView1;
 @property (nonatomic,strong) UIImageView *userPostImageView2;
+@property (nonatomic,strong) UIImageView *userPostImageView3;
 /** cell底部的一排 **/
 @property (nonatomic,strong) JSCircleBottomView *bottomView;
 

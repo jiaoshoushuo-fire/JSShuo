@@ -43,7 +43,7 @@
         [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.iconImageView.mas_right).offset(8);
             make.top.mas_equalTo(12);
-            make.height.mas_equalTo(self.iconImageView.height);
+            make.height.mas_equalTo(self.iconImageView);
             make.right.mas_equalTo(-15);
         }];
         [self.timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -58,7 +58,7 @@
             make.width.mas_equalTo(ScreenWidth/2-15);
             make.height.mas_equalTo(20);
         }];
-        self.titleLabel.text = model.title.length > 0 ? model.title : @"无标题";
+        self.titleLabel.text = model.title.length > 0 ? [model.title stringByRemovingPercentEncoding] : @"无标题";
         [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:model.images[0]] placeholderImage:[UIImage imageNamed:@"placeHolder_16_9"]];
         self.timeLabel.text = model.createTimeDesc;
         // 状态标题
@@ -95,7 +95,7 @@
             make.height.mas_equalTo(self.timeLabel);
             make.width.mas_equalTo(ScreenWidth/2-15);
         }];
-        self.titleLabel.text = model.title.length > 0 ? model.title : @"无标题";
+        self.titleLabel.text = model.title.length > 0 ? [model.title stringByRemovingPercentEncoding] : @"无标题";
         self.timeLabel.text = model.createTimeDesc;
         // 状态标题
         self.stateLabel.text = model.auditStatusDesc;
@@ -138,7 +138,7 @@
     if (!_timeLabel) {
         _timeLabel = [[UILabel alloc] init];
         _timeLabel.font = [UIFont systemFontOfSize:14];
-        _timeLabel.textAlignment = NSTextAlignmentLeft;
+//        _timeLabel.textAlignment = NSTextAlignmentLeft;
         _timeLabel.textColor = [UIColor colorWithHexString:@"545454"];
     }
     return _timeLabel;
@@ -155,7 +155,8 @@
     if (!_titleLabel) {
         _titleLabel = [[UILabel alloc] init];
         _titleLabel.textAlignment = NSTextAlignmentLeft;
-        _titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:18];
+        _titleLabel.numberOfLines = 0;
+        _titleLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:16];
         _titleLabel.textColor = [UIColor colorWithHexString:@"0D0D0D"];
     }
     return _titleLabel;

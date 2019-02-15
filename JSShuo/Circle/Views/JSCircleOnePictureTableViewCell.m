@@ -23,7 +23,7 @@
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        
+        self.contentView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
     }
     return self;
 }
@@ -38,29 +38,29 @@
     
     [self.headView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(15);
-        make.top.mas_equalTo(12);
+        make.top.mas_equalTo(12).priorityHigh();
         make.size.mas_equalTo(CGSizeMake(40, 40));
     }];
     [self.nicknameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(self.headView).offset(12);
-        make.centerY.mas_equalTo(self.headView);
-        make.height.mas_equalTo(25);
+        make.left.mas_equalTo(self.headView.mas_right).offset(12);
+        make.centerY.mas_equalTo(self.headView.mas_centerY);
+//        make.height.mas_equalTo(25);
         make.right.mas_equalTo(-15);
     }];
     if (model.title.length > 0) { // 有标题
         self.titleLabel.hidden = NO;
         [self.contentView addSubview:self.titleLabel];
         [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(self.headView).offset(16);
+            make.top.mas_equalTo(self.headView.mas_bottom).offset(16).priorityHigh();
             make.left.mas_equalTo(15);
             make.right.mas_equalTo(-15);
-            make.height.mas_equalTo(25);
+//            make.height.mas_equalTo(25);
         }];
         self.titleLabel.text = model.title;
         // 设置副标题
         self.subtitleLabel.preferredMaxLayoutWidth = ScreenWidth - 30;
         [self.subtitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(self.titleLabel).offset(7);
+            make.top.mas_equalTo(self.titleLabel.mas_bottom).offset(7).priorityHigh();
             make.left.mas_equalTo(15);
             make.right.mas_equalTo(-15);
         }];
@@ -70,22 +70,23 @@
         // 设置副标题
         self.subtitleLabel.preferredMaxLayoutWidth = ScreenWidth - 30;
         [self.subtitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(self.headView).offset(7);
+            make.top.mas_equalTo(self.headView.mas_bottom).offset(7).priorityHigh();
             make.left.mas_equalTo(15);
             make.right.mas_equalTo(-15);
         }];
     }
     
     [self.userPostImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.subtitleLabel).offset(12);
+        make.top.mas_equalTo(self.subtitleLabel.mas_bottom).offset(12).priorityHigh();
         make.left.right.mas_equalTo(self.subtitleLabel);
         make.height.mas_equalTo(self.userPostImageView.width).multipliedBy(9.0/16.0);
     }];
     // 总共高 12+17+16+1 = 46
     [self.bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.userPostImageView).offset(0);
+        make.top.mas_equalTo(self.userPostImageView.mas_bottom).offset(0).priorityHigh();
         make.left.right.mas_equalTo(self.subtitleLabel);
-        make.height.mas_equalTo(46);
+//        make.height.mas_equalTo(46);
+        make.bottom.mas_equalTo(0).priorityHigh();
     }];
     
     [self.headView sd_setImageWithURL:[NSURL URLWithString:model.portrait] placeholderImage:[UIImage imageNamed:@"placeHolder_1_1"]];
