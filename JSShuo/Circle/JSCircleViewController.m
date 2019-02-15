@@ -14,7 +14,7 @@
 #import "JSCirclePureWordTableViewCell.h"
 #import "JSNoSearchResultView.h"
 #import "UITableView+FDTemplateLayoutCell.h"
-
+#import "JSArticleDetailViewController.h"
 
 @interface JSCircleViewController () <UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) UITableView *tableView;
@@ -59,6 +59,7 @@
     if (modelsArray.count < 1) {
         [self.tableView.mj_footer endRefreshing];
         [self.tableView.mj_header endRefreshing];
+        [self.tableView.mj_footer removeFromSuperview];
         return;
     }
     NSMutableArray *tempArray = [[NSMutableArray alloc] initWithCapacity:0];
@@ -103,6 +104,15 @@
         self.pageNum += 1;
         [self requestData];
     }];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    JSCircleListModel *model = self.datas[indexPath.row];
+    JSArticleDetailViewController *vc = [JSArticleDetailViewController new];
+    vc.articleId = model.articleId;
+    vc.title = model.title;
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.rt_navigationController pushViewController:vc animated:YES complete:nil];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

@@ -55,7 +55,8 @@
             make.right.mas_equalTo(-15);
 //            make.height.mas_equalTo(25);
         }];
-        self.titleLabel.text = [model.title stringByRemovingPercentEncoding];
+//        self.titleLabel.text = [model.title stringByRemovingPercentEncoding];
+        self.titleLabel.text = [model.title stringByURLDecode];
         // 设置副标题
         [self.subtitleLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(self.titleLabel.mas_bottom).offset(7).priorityHigh();
