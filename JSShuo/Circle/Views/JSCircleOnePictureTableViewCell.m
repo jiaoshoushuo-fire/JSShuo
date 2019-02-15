@@ -38,7 +38,7 @@
     
     [self.headView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(15);
-        make.top.mas_equalTo(12).priorityHigh();
+        make.top.mas_equalTo(12);
         make.size.mas_equalTo(CGSizeMake(40, 40));
     }];
     [self.nicknameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -51,7 +51,7 @@
         self.titleLabel.hidden = NO;
         [self.contentView addSubview:self.titleLabel];
         [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(self.headView.mas_bottom).offset(16).priorityHigh();
+            make.top.mas_equalTo(self.headView.mas_bottom).offset(16);
             make.left.mas_equalTo(15);
             make.right.mas_equalTo(-15);
 //            make.height.mas_equalTo(25);
@@ -60,7 +60,7 @@
         // 设置副标题
         self.subtitleLabel.preferredMaxLayoutWidth = ScreenWidth - 30;
         [self.subtitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(self.titleLabel.mas_bottom).offset(7).priorityHigh();
+            make.top.mas_equalTo(self.titleLabel.mas_bottom).offset(7);
             make.left.mas_equalTo(15);
             make.right.mas_equalTo(-15);
         }];
@@ -70,20 +70,20 @@
         // 设置副标题
         self.subtitleLabel.preferredMaxLayoutWidth = ScreenWidth - 30;
         [self.subtitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(self.headView.mas_bottom).offset(7).priorityHigh();
+            make.top.mas_equalTo(self.headView.mas_bottom).offset(7);
             make.left.mas_equalTo(15);
             make.right.mas_equalTo(-15);
         }];
     }
     
     [self.userPostImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.subtitleLabel.mas_bottom).offset(12).priorityHigh();
+        make.top.mas_equalTo(self.subtitleLabel.mas_bottom).offset(12);
         make.left.right.mas_equalTo(self.subtitleLabel);
         make.height.mas_equalTo(self.userPostImageView.mas_width).multipliedBy(9.0/16.0);
     }];
     // 总共高 12+17+16+1 = 46
     [self.bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.userPostImageView.mas_bottom).offset(0).priorityHigh();
+        make.top.mas_equalTo(self.userPostImageView.mas_bottom).offset(0);
         make.left.right.mas_equalTo(self.subtitleLabel);
 //        make.height.mas_equalTo(46);
         make.bottom.mas_equalTo(0).priorityHigh();

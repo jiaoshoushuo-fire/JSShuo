@@ -93,12 +93,12 @@
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_tableView];
     @weakify(self);
-    self.tableView.mj_header = [MJRefreshHeader headerWithRefreshingBlock:^{
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         @strongify(self);
         self.pageNum = 1;
         [self requestData];
     }];
-    self.tableView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
+    self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
         @strongify(self);
         self.pageNum += 1;
         [self requestData];
@@ -142,6 +142,7 @@
             // 重点(自适应高度必须实现)
             [self setupModelOfOnePictureCell:cell AtIndexPath:indexPath];
         }];
+        
     } else if(model.imageType.integerValue == 2) { // 2图
         return [tableView fd_heightForCellWithIdentifier:@"JSCircleTwoPictureTableViewCell" cacheByIndexPath:indexPath configuration:^(id cell) {
             // 重点(自适应高度必须实现)
