@@ -58,7 +58,7 @@
             make.right.mas_equalTo(-15);
             make.height.mas_equalTo(25);
         }];
-        self.titleLabel.text = model.title;
+        self.titleLabel.text = [model.title stringByURLDecode];
         // 设置副标题
         self.subtitleLabel.preferredMaxLayoutWidth = ScreenWidth - 30;
         [self.subtitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -105,7 +105,7 @@
     
     [self.headView sd_setImageWithURL:[NSURL URLWithString:model.portrait] placeholderImage:[UIImage imageNamed:@"placeHolder_1_1"]];
     self.nicknameLabel.text = model.nickname;
-    self.subtitleLabel.text = model.Description;
+    self.subtitleLabel.text = [model.Description stringByURLDecode];
     [self.userPostImageView1 sd_setImageWithURL:[NSURL URLWithString:model.images[0]] placeholderImage:[UIImage imageNamed:@"placeHolder_1_1"]];
     [self.userPostImageView2 sd_setImageWithURL:[NSURL URLWithString:model.images[1]] placeholderImage:[UIImage imageNamed:@"placeHolder_1_1"]];
     [self.userPostImageView3 sd_setImageWithURL:[NSURL URLWithString:model.images[2]] placeholderImage:[UIImage imageNamed:@"placeHolder_1_1"]];

@@ -424,8 +424,10 @@
         [_headerView.rightButton bk_addEventHandler:^(id sender) {//设置
             @strongify(self)
             JSSettingViewController *settingVC = [[JSSettingViewController alloc]init];
+//            JSPostMessageViewController *settingVC = [[JSPostMessageViewController alloc]init];
             settingVC.hidesBottomBarWhenPushed = YES;
             [self.rt_navigationController pushViewController:settingVC animated:YES complete:nil];
+            
             
 
             

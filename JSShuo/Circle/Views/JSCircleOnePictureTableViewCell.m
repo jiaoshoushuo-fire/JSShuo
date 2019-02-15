@@ -56,7 +56,7 @@
             make.right.mas_equalTo(-15);
 //            make.height.mas_equalTo(25);
         }];
-        self.titleLabel.text = model.title;
+        self.titleLabel.text = [model.title stringByURLDecode];
         // 设置副标题
         self.subtitleLabel.preferredMaxLayoutWidth = ScreenWidth - 30;
         [self.subtitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -79,7 +79,7 @@
     [self.userPostImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.subtitleLabel.mas_bottom).offset(12).priorityHigh();
         make.left.right.mas_equalTo(self.subtitleLabel);
-        make.height.mas_equalTo(self.userPostImageView.width).multipliedBy(9.0/16.0);
+        make.height.mas_equalTo(self.userPostImageView.mas_width).multipliedBy(9.0/16.0);
     }];
     // 总共高 12+17+16+1 = 46
     [self.bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -90,8 +90,8 @@
     }];
     
     [self.headView sd_setImageWithURL:[NSURL URLWithString:model.portrait] placeholderImage:[UIImage imageNamed:@"placeHolder_1_1"]];
-    self.nicknameLabel.text = model.nickname;
-    self.subtitleLabel.text = model.Description;
+    self.nicknameLabel.text = model.nickname ;
+    self.subtitleLabel.text = [model.Description stringByURLDecode];
     [self.userPostImageView sd_setImageWithURL:[NSURL URLWithString:model.images[0]] placeholderImage:[UIImage imageNamed:@"placeHolder_16_9"]];
     self.bottomView.model = model;
     self.bottomView.commitCountLabel.text = [NSString stringWithFormat:@"%@",model.commentNum];
