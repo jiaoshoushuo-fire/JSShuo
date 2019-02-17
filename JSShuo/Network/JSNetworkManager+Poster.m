@@ -9,6 +9,7 @@
 #import "JSNetworkManager+Poster.h"
 
 const static NSString *postPublishUrl = @"/v1/poster/publish";
+const static NSString *deletePublishUrl = @"/v1/poster/delete";
 
 @implementation JSNetworkManager (Poster)
 
@@ -63,6 +64,18 @@ const static NSString *postPublishUrl = @"/v1/poster/publish";
     }
     
     
+}
+
++ (void) deleteCircleWithID:(NSString *)ID complement:(void(^)(BOOL isSuccess,NSDictionary *contentDic ))complement {
+    NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,deletePublishUrl];
+    NSDictionary *params = @{@"token":[JSAccountManager shareManager].accountToken,
+                             @"posterId":ID
+                             };
+    [self POST:url parameters:params complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
+        if (isSuccess) {
+            complement(isSuccess,responseDict);
+        }
+    }];
 }
 
 @end

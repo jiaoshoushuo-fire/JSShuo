@@ -84,9 +84,13 @@
 //                                       selectedImage:[UIImage imageNamed:@"tab_publish"]
 //                                               title:@""
 //                                                size:CGSizeMake(self.width / 5, self.width / 5 / 1.27)];
-    self.newsButton = [self buttonWithNormalImage:[UIImage imageNamed:@"tab_news_normal"]
-                                    selectedImage:[UIImage imageNamed:@"tab_news_selected"]
-                                            title:@"任务"
+//    self.newsButton = [self buttonWithNormalImage:[UIImage imageNamed:@"tab_news_normal"]
+//                                    selectedImage:[UIImage imageNamed:@"tab_news_selected"]
+//                                            title:@"任务"
+//                                             size:itemSize];
+    self.newsButton = [self buttonWithNormalImage:[UIImage imageNamed:@"tab_circle_normal"]
+                                    selectedImage:[UIImage imageNamed:@"tab_circle_selected"]
+                                            title:@"叫兽圈"
                                              size:itemSize];
     self.profileButton = [self buttonWithNormalImage:[UIImage imageNamed:@"tab_profile_normal"]
                                        selectedImage:[UIImage imageNamed:@"tab_profile_selected"]
