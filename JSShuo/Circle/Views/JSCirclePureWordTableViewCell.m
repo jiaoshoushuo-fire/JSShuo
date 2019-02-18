@@ -34,12 +34,12 @@
     [self.contentView addSubview:self.nicknameLabel];
     [self.contentView addSubview:self.subtitleLabel];
     [self.contentView addSubview:self.bottomView];
-    [self.headView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.headView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(15);
         make.top.mas_equalTo(12).priorityHigh();
         make.size.mas_equalTo(CGSizeMake(40, 40));
     }];
-    [self.nicknameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.nicknameLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.headView.mas_right).offset(12);
         make.centerY.mas_equalTo(self.headView.mas_centerY);
 //        make.height.mas_equalTo(25);
@@ -74,7 +74,7 @@
         }];
     }
     // 总共高 12+17+16+1 = 46
-    [self.bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.bottomView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.subtitleLabel.mas_bottom).offset(0).priorityHigh();
         make.left.right.mas_equalTo(self.subtitleLabel);
         //不设置高度，给颜色没有效果

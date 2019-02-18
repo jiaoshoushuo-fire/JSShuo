@@ -36,30 +36,30 @@
         make.left.mas_equalTo(15);
         make.top.mas_equalTo(13).priorityHigh();
     }];
-    [self.commitCountLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.commitCountLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.commitCountImg.mas_right).offset(7);
         make.centerY.mas_equalTo(self.commitCountImg.mas_centerY);
         make.width.mas_equalTo(20);
 //        make.height.mas_equalTo(17);
     }];
-    [self.praiseCountImg mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.praiseCountImg mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(17, 17));
         make.left.mas_equalTo(self.commitCountLabel.mas_right).offset(18);
         make.centerY.mas_equalTo(self.commitCountLabel.mas_centerY);
     }];
-    [self.praiseCountLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.praiseCountLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.praiseCountImg.mas_right).offset(7);
         make.centerY.mas_equalTo(self.praiseCountImg.mas_centerY);
         make.width.mas_equalTo(20);
 //        make.height.mas_equalTo(17);
     }];
-    [self.timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.timeLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.praiseCountLabel.mas_right).offset(18);
         make.centerY.mas_equalTo(self.commitCountLabel.mas_centerY);
         make.right.mas_equalTo(-15);
 //        make.height.mas_equalTo(17);
     }];
-    [self.lineView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.lineView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(0);
         make.right.mas_equalTo(0);
         make.height.mas_equalTo(1);

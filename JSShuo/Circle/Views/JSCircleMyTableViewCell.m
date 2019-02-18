@@ -115,7 +115,7 @@
         }
     }
     [self.contentView addSubview:self.lineView];
-    [self.lineView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.lineView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(15);
         make.top.mas_equalTo(self.timeLabel.mas_bottom).offset(12);
         make.size.mas_equalTo(CGSizeMake(ScreenWidth-30, 1));
