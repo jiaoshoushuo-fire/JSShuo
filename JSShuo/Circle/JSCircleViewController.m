@@ -114,6 +114,7 @@
     JSArticleDetailViewController *vc = [JSArticleDetailViewController new];
     vc.articleId = model.articleId;
     vc.title = model.title;
+    vc.isCircleType = YES;
     vc.hidesBottomBarWhenPushed = YES;
     [self.rt_navigationController pushViewController:vc animated:YES complete:nil];
 }

@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)postPublishTitle:(NSString *)title text:(NSString *)text images:(NSArray *)images complement:(void(^)(BOOL isSuccess,NSDictionary *contentDict))complement;
 
++ (void) deleteCircleWithID:(NSString *)ID complement:(void(^)(BOOL isSuccess,NSDictionary *contentDic ))complement;
+
 @end
 
 NS_ASSUME_NONNULL_END

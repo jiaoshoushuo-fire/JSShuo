@@ -31,28 +31,30 @@
 - (void)setModel:(JSCircleListModel *)model {
     _model = model;
     if (model.images.count > 0) { // 有图
+        self.iconImageView.hidden = NO;
+        
         [self.contentView addSubview:self.iconImageView];
         [self.contentView addSubview:self.titleLabel];
         [self.contentView addSubview:self.timeLabel];
         [self.contentView addSubview:self.stateLabel];
-        [self.iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        [self.iconImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(12);
             make.left.mas_equalTo(15);
             make.size.mas_equalTo(CGSizeMake(120, 120/16.0*9));
         }];
-        [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        [self.titleLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.iconImageView.mas_right).offset(8);
             make.top.mas_equalTo(12);
             make.height.mas_equalTo(self.iconImageView);
             make.right.mas_equalTo(-15);
         }];
-        [self.timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        [self.timeLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.iconImageView);
             make.width.mas_equalTo(ScreenWidth/2-15);
             make.top.mas_equalTo(self.iconImageView.mas_bottom).offset(8);
             make.height.mas_equalTo(20);
         }];
-        [self.stateLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        [self.stateLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.right.mas_equalTo(-15);
             make.top.mas_equalTo(self.timeLabel);
             make.width.mas_equalTo(ScreenWidth/2-15);
@@ -73,23 +75,26 @@
             self.stateLabel.textColor = [UIColor blackColor];
         }
     } else { // 没有图片
+        self.iconImageView.hidden = YES;
+        [self.iconImageView removeFromSuperview];
+        
         [self.contentView addSubview:self.titleLabel];
         [self.contentView addSubview:self.timeLabel];
         [self.contentView addSubview:self.stateLabel];
 //        self.titleLabel.preferredMaxLayoutWidth = ScreenWidth-30;
-        [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        [self.titleLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(15);
             make.top.mas_equalTo(12);
             make.right.mas_equalTo(-15);
             make.height.mas_offset(25);
         }];
-        [self.timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        [self.timeLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(self.titleLabel.mas_bottom).offset(8);
             make.left.mas_equalTo(15);
             make.height.mas_equalTo(20);
             make.width.mas_equalTo(ScreenWidth/2-15);
         }];
-        [self.stateLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        [self.stateLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(self.timeLabel);
             make.right.mas_equalTo(-15);
             make.height.mas_equalTo(self.timeLabel);
@@ -110,7 +115,7 @@
         }
     }
     [self.contentView addSubview:self.lineView];
-    [self.lineView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.lineView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(15);
         make.top.mas_equalTo(self.timeLabel.mas_bottom).offset(12);
         make.size.mas_equalTo(CGSizeMake(ScreenWidth-30, 1));

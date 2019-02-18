@@ -132,7 +132,13 @@
     @weakify(self);
     [_bottomView.shareBtn bk_addEventHandler:^(id sender) {
         @strongify(self);
-        [JSShareManager shareWithTitle:@"叫兽说" Text:self.titleName Image:[UIImage imageNamed:@"js_share_image"] Url:[NSString stringWithFormat:@"http://api.jiaoshoutt.com/v1/page/article/%@",self.articleId] complement:^(BOOL isSuccess) {
+        NSString *shareUrlStr;
+        if (self.isCircleType) { // 圈子
+            shareUrlStr = [NSString stringWithFormat:@"%@/v1/page/poster/%@",Base_Url,self.articleId];
+        } else {
+            shareUrlStr = [NSString stringWithFormat:@"%@/v1/page/article/%@",Base_Url,self.articleId];
+        }
+        [JSShareManager shareWithTitle:@"叫兽说" Text:self.titleName Image:[UIImage imageNamed:@"js_share_image"] Url:shareUrlStr complement:^(BOOL isSuccess) {
             if (isSuccess) {
                 [self showAutoDismissTextAlert:@"分享成功"];
             }else{
@@ -393,7 +399,12 @@
 - (void) setupWebView {
     self.timer = [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(rewardArticle:) userInfo:nil repeats:NO];
     wkWebViewHeight = 0.f;
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://api.jiaoshoutt.com/v1/page/article/%@",self.articleId]];
+    NSURL *url;
+    if (_isCircleType) { // 圈子
+        url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/v1/page/poster/%@",Base_Url,self.articleId]];
+    } else { 
+        url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/v1/page/article/%@",Base_Url,self.articleId]];
+    }
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
     [self.wkWebView loadRequest:urlRequest];
     [self showWaitingHUD];

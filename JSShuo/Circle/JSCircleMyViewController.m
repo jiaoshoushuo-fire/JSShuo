@@ -10,6 +10,7 @@
 #import "JSCircleMyTableViewCell.h"
 #import "JSNetworkManager+Channel.h"
 #import "JSNoSearchResultView.h"
+#import "JSCircleMyDetailViewController.h"
 
 @interface JSCircleMyViewController () <UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) UITableView *tableView;
@@ -19,6 +20,10 @@
 @end
 
 @implementation JSCircleMyViewController
+
+- (void)viewWillAppear:(BOOL)animated {
+    [self requestData];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -83,6 +88,14 @@
         self.pageNum += 1;
         [self requestData];
     }];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    JSCircleListModel *model = self.datas[indexPath.row];
+    JSCircleMyDetailViewController *vc = [JSCircleMyDetailViewController new];
+    vc.articleId = model.articleId;
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.rt_navigationController pushViewController:vc animated:YES complete:nil];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
