@@ -38,6 +38,7 @@
     [self initTableView];
     [self.view addSubview:self.noResultView];
     _noResultView.hidden = YES;
+    
 }
 
 - (void) requestData {
@@ -104,7 +105,9 @@
         self.pageNum += 1;
         [self requestData];
     }];
+    
 }
+
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     JSCircleListModel *model = self.datas[indexPath.row];
