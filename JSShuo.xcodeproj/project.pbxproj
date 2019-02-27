@@ -92,7 +92,9 @@
 		0065B4BC21BC150A003AEA5D /* JSVideoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0065B4BB21BC150A003AEA5D /* JSVideoDetailViewController.m */; };
 		0065B4BF21BE0FA8003AEA5D /* JSDetailSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0065B4BE21BE0FA8003AEA5D /* JSDetailSectionHeaderView.m */; };
 		0065B4C221BF54C5003AEA5D /* JSNoSearchResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0065B4C121BF54C5003AEA5D /* JSNoSearchResultView.m */; };
+		00739021221BCE6300D8B31F /* JSReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00739020221BCE6300D8B31F /* JSReportViewController.m */; };
 		009601AD21AD91C2001BE083 /* JSBottomPopSendCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 009601AC21AD91C2001BE083 /* JSBottomPopSendCommentView.m */; };
+		00A5FDDD221CFBA4006430DD /* JSCircleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A5FDDC221CFBA4006430DD /* JSCircleDetailViewController.m */; };
 		00E7570322154B40006B6460 /* JSCircleMyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E7570222154B40006B6460 /* JSCircleMyViewController.m */; };
 		00E7570622154BBF006B6460 /* JSCircleMyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E7570522154BBF006B6460 /* JSCircleMyTableViewCell.m */; };
 		00E757092216C700006B6460 /* JSCircleMyDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E757082216C700006B6460 /* JSCircleMyDetailViewController.m */; };
@@ -439,8 +441,12 @@
 		0065B4BE21BE0FA8003AEA5D /* JSDetailSectionHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSDetailSectionHeaderView.m; sourceTree = "<group>"; };
 		0065B4C021BF54C5003AEA5D /* JSNoSearchResultView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSNoSearchResultView.h; sourceTree = "<group>"; };
 		0065B4C121BF54C5003AEA5D /* JSNoSearchResultView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSNoSearchResultView.m; sourceTree = "<group>"; };
+		0073901F221BCE6300D8B31F /* JSReportViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSReportViewController.h; sourceTree = "<group>"; };
+		00739020221BCE6300D8B31F /* JSReportViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSReportViewController.m; sourceTree = "<group>"; };
 		009601AB21AD91C2001BE083 /* JSBottomPopSendCommentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSBottomPopSendCommentView.h; sourceTree = "<group>"; };
 		009601AC21AD91C2001BE083 /* JSBottomPopSendCommentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSBottomPopSendCommentView.m; sourceTree = "<group>"; };
+		00A5FDDB221CFBA4006430DD /* JSCircleDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSCircleDetailViewController.h; sourceTree = "<group>"; };
+		00A5FDDC221CFBA4006430DD /* JSCircleDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSCircleDetailViewController.m; sourceTree = "<group>"; };
 		00E7570122154B40006B6460 /* JSCircleMyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSCircleMyViewController.h; sourceTree = "<group>"; };
 		00E7570222154B40006B6460 /* JSCircleMyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSCircleMyViewController.m; sourceTree = "<group>"; };
 		00E7570422154BBF006B6460 /* JSCircleMyTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSCircleMyTableViewCell.h; sourceTree = "<group>"; };
@@ -873,6 +879,8 @@
 				00301487220187AB001A317E /* JSCircleTabViewController.m */,
 				00301483220178B1001A317E /* JSCircleViewController.h */,
 				00301484220178B1001A317E /* JSCircleViewController.m */,
+				00A5FDDB221CFBA4006430DD /* JSCircleDetailViewController.h */,
+				00A5FDDC221CFBA4006430DD /* JSCircleDetailViewController.m */,
 				00E7570122154B40006B6460 /* JSCircleMyViewController.h */,
 				00E7570222154B40006B6460 /* JSCircleMyViewController.m */,
 				00E757072216C700006B6460 /* JSCircleMyDetailViewController.h */,
@@ -1351,6 +1359,8 @@
 				002B74C9219D514100483841 /* JSSearchViewController.m */,
 				002B74DD219EC79000483841 /* JSArticleDetailViewController.h */,
 				002B74DE219EC79000483841 /* JSArticleDetailViewController.m */,
+				0073901F221BCE6300D8B31F /* JSReportViewController.h */,
+				00739020221BCE6300D8B31F /* JSReportViewController.m */,
 				7ACFD4E322004CE1007DC0BE /* JSPostMessageViewController.h */,
 				7ACFD4E422004CE1007DC0BE /* JSPostMessageViewController.m */,
 			);
@@ -2106,6 +2116,7 @@
 				006043392197C7700080091A /* ZFLoadingView.m in Sources */,
 				00301488220187AB001A317E /* JSCircleTabViewController.m in Sources */,
 				0045205321900D4300371F10 /* JSVideoTitleBarViewController.m in Sources */,
+				00A5FDDD221CFBA4006430DD /* JSCircleDetailViewController.m in Sources */,
 				7A898F8821956B0F00A7CADD /* GGPhotoPreviewViewController.m in Sources */,
 				7A898F8D21956B0F00A7CADD /* GGAssetItemCell.m in Sources */,
 				7AD7F1AC21AA713000F56F79 /* JSBaseWebViewController.m in Sources */,
@@ -2170,6 +2181,7 @@
 				7AB5541221B6211E00DEF2CC /* HJTabViewControllerPlugin_HeaderScroll.m in Sources */,
 				0060433C2197C7700080091A /* UIImageView+ZFCache.m in Sources */,
 				7A5FEE53218ACBAD006CF7EC /* AppDelegate.m in Sources */,
+				00739021221BCE6300D8B31F /* JSReportViewController.m in Sources */,
 				0060433D2197C7700080091A /* KSMediaPlayerManager.m in Sources */,
 				7ABD9E612191BA6600E19B6A /* UIView+SDExtension.m in Sources */,
 				7A5FEEBA218B0D7C006CF7EC /* JSProfileViewController.m in Sources */,

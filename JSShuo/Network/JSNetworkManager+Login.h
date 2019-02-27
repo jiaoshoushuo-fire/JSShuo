@@ -77,6 +77,9 @@ typedef  NS_ENUM(NSInteger, JSRequestSecurityCodeType){
 // 点赞
 + (void) addPraise:(NSDictionary *)params complement:(void(^)(BOOL isSuccess,NSDictionary *contentDic))complement;
 
+// 查询是否点赞
++ (void)queryPraiseWithArticleId:(NSInteger)collectId complement:(void(^)(BOOL isSuccess, NSDictionary *contentDict))complement;
+
 //取消点赞
 + (void) deletePraiseWithArticleID:(NSInteger)articleId complement:(void(^)(BOOL isSuccess,NSDictionary *contentDic))complement ;
 

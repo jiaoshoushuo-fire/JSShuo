@@ -38,6 +38,7 @@ const static NSString *addCollectUrl = @"/v1/user/collect/add";
 const static NSString *collectListUrl = @"/v1/user/collect/list";
 const static NSString *deleateCollectUrl = @"/v1/user/collect/delete";
 const static NSString *queryCollectUrl = @"/v1/user/collect/query";
+const static NSString *queryPraiseUrl = @"/v1/user/praise/query";
 const static NSString *apprenticeListUrl = @"/v1/user/apprentice/list";
 const static NSString *messageClearUrl = @"/v1/user/message/clear";
 const static NSString *createApprenticeUrl = @"/v1/user/apprentice/create";
@@ -323,6 +324,16 @@ const static NSString *shareSuccessUrl = @"/v1/user/share/success";
         }
     }];
     
+}
+
++ (void)queryPraiseWithArticleId:(NSInteger)ID complement:(void(^)(BOOL isSuccess, NSDictionary *contentDict))complement{
+    NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,queryPraiseUrl];
+    NSDictionary *param = @{@"token":[JSAccountManager shareManager].accountToken,@"articleId":@(ID)};
+    [self GET:url parameters:param complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
+        if (complement && responseDict) {
+            complement(isSuccess,responseDict);
+        }
+    }];
 }
 
 + (void) addPraise:(NSDictionary *)params complement:(void(^)(BOOL isSuccess,NSDictionary *contentDic))complement {

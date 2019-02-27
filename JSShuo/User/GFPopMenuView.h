@@ -22,6 +22,7 @@ typedef NS_ENUM(NSUInteger,GGShareUIType) {
 @property (nonatomic, weak) id<GFPopMenuViewDelegate> delegate;
 @property (nonatomic, assign) CGPoint menuButtonCenter; //menuButton在当前view中的中心位置
 
+- (void)dismissDuration:(NSTimeInterval)duration completion:(void(^)(void))completion;
 + (void)showInView:(UIView *)view hander:(id)model delegate:(id<GFPopMenuViewDelegate>)delegate;
 
 @end

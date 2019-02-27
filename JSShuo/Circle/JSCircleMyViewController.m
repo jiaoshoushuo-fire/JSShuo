@@ -78,12 +78,12 @@
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_tableView];
     @weakify(self);
-    self.tableView.mj_header = [MJRefreshHeader headerWithRefreshingBlock:^{
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         @strongify(self);
         self.pageNum = 1;
         [self requestData];
     }];
-    self.tableView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
+    self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
         @strongify(self);
         self.pageNum += 1;
         [self requestData];
@@ -94,6 +94,7 @@
     JSCircleListModel *model = self.datas[indexPath.row];
     JSCircleMyDetailViewController *vc = [JSCircleMyDetailViewController new];
     vc.articleId = model.articleId;
+    vc.titleName = model.title.length > 0 ? model.title : @"";
     vc.hidesBottomBarWhenPushed = YES;
     [self.rt_navigationController pushViewController:vc animated:YES complete:nil];
 }

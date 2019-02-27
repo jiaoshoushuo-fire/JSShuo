@@ -36,12 +36,12 @@
                   moduleName = "JSShuo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lique/Desktop/%E6%95%99%E6%8E%88/iOS/JSShuo/JSShuo/AppDelegate.m"
-                  timestampString = "572173906.594272"
+                  timestampString = "572450165.7914979"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "201"
                   endingLineNumber = "201"
-                  offsetFromSymbolStart = "104">
+                  offsetFromSymbolStart = "99">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -51,12 +51,12 @@
                   moduleName = "JSShuo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lique/Desktop/%E6%95%99%E6%8E%88/iOS/JSShuo/JSShuo/AppDelegate.m"
-                  timestampString = "572173906.5974621"
+                  timestampString = "572450165.794389"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "201"
                   endingLineNumber = "201"
-                  offsetFromSymbolStart = "28">
+                  offsetFromSymbolStart = "22">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -66,12 +66,12 @@
                   moduleName = "JSShuo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lique/Desktop/%E6%95%99%E6%8E%88/iOS/JSShuo/JSShuo/AppDelegate.m"
-                  timestampString = "572173906.600237"
+                  timestampString = "572450165.7985359"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "201"
                   endingLineNumber = "201"
-                  offsetFromSymbolStart = "20">
+                  offsetFromSymbolStart = "16">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -212,15 +212,6 @@
             continueAfterRunningActions = "No"
             scope = "0"
             stopOnStyle = "0">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.IDEConstraintErrorBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            breakpointStackSelectionBehavior = "1">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

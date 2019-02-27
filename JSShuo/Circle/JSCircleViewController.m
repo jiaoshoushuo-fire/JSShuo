@@ -14,7 +14,7 @@
 #import "JSCirclePureWordTableViewCell.h"
 #import "JSNoSearchResultView.h"
 #import "UITableView+FDTemplateLayoutCell.h"
-#import "JSArticleDetailViewController.h"
+#import "JSCircleDetailViewController.h"
 
 @interface JSCircleViewController () <UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) UITableView *tableView;
@@ -108,10 +108,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     JSCircleListModel *model = self.datas[indexPath.row];
-    JSArticleDetailViewController *vc = [JSArticleDetailViewController new];
+    JSCircleDetailViewController *vc = [JSCircleDetailViewController new];
     vc.articleId = model.articleId;
-    vc.title = model.title;
-    vc.isCircleType = YES;
+    vc.titleName = model.title.length > 0 ? [model.title stringByURLDecode] : @"帖子详情";
     vc.hidesBottomBarWhenPushed = YES;
     [self.rt_navigationController pushViewController:vc animated:YES complete:nil];
 }

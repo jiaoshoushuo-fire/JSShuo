@@ -107,38 +107,50 @@
             
         }break;
         case 2:{
-            [JSAccountManager shareURLToWechat:self.shareUrl title:self.title description:self.shareText thumbnail:self.shareImage type:GFShareTypeWechatTimeline handler:^(BOOL success, BOOL cancel) {
-                if (success) {
-                    [self reportShareSuccessMessage];
-                }
-                if (self.complementBlock) {
-                    self.complementBlock(success);
-                }
+//            [JSAccountManager shareURLToWechat:self.shareUrl title:self.title description:self.shareText thumbnail:self.shareImage type:GFShareTypeWechatTimeline handler:^(BOOL success, BOOL cancel) {
+//                if (success) {
+//                    [self reportShareSuccessMessage];
+//                }
+//                if (self.complementBlock) {
+//                    self.complementBlock(success);
+//                }
+//            }];
+            // 举报
+            [popMenu dismissDuration:0.25 completion:^{
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"reportArticle" object:nil];
             }];
         }break;
         case 3:{//短信  
-            if( [MFMessageComposeViewController canSendText]) {
-                MFMessageComposeViewController * controller = [[MFMessageComposeViewController alloc] init];
-//                controller.recipients = @[@"10086"];//发送短信的号码，数组形式入参
-                controller.navigationBar.tintColor = [UIColor redColor];
-                controller.body = [NSString stringWithFormat:@"%@ %@",@"在这里看文章可以赚零花钱，我用了好几天每天都能赚个早饭钱棒极了！推荐你也试试~叫兽说专注有趣有营养的好文热文，涨知识，赚零花。",kShareUrl]; //此处的body就是短信将要发生的内容
-                controller.messageComposeDelegate = self;
-                JSMainViewController *mainVC = [AppDelegate instance].mainViewController;
-                RTRootNavigationController *currentNav = mainVC.selectedViewController;
-                UIViewController *currentVC = currentNav.rt_topViewController;
-                
-                [currentVC presentViewController:controller animated:YES completion:nil];
-                
-            }
-            else {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示信息"
-                                                                message:@"该设备不支持短信功能"
-                                                               delegate:nil
-                                                      cancelButtonTitle:@"确定"
-                                                      otherButtonTitles:nil, nil];
-                [alert show];
-            }
-            
+//            if( [MFMessageComposeViewController canSendText]) {
+//                MFMessageComposeViewController * controller = [[MFMessageComposeViewController alloc] init];
+////                controller.recipients = @[@"10086"];//发送短信的号码，数组形式入参
+//                controller.navigationBar.tintColor = [UIColor redColor];
+//                controller.body = [NSString stringWithFormat:@"%@ %@",@"在这里看文章可以赚零花钱，我用了好几天每天都能赚个早饭钱棒极了！推荐你也试试~叫兽说专注有趣有营养的好文热文，涨知识，赚零花。",kShareUrl]; //此处的body就是短信将要发生的内容
+//                controller.messageComposeDelegate = self;
+//                JSMainViewController *mainVC = [AppDelegate instance].mainViewController;
+//                RTRootNavigationController *currentNav = mainVC.selectedViewController;
+//                UIViewController *currentVC = currentNav.rt_topViewController;
+//
+//                [currentVC presentViewController:controller animated:YES completion:nil];
+//
+//            }
+//            else {
+//                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示信息"
+//                                                                message:@"该设备不支持短信功能"
+//                                                               delegate:nil
+//                                                      cancelButtonTitle:@"确定"
+//                                                      otherButtonTitles:nil, nil];
+//                [alert show];
+//            }
+//            复制链接
+            NSString *urlString = [JSShareManager shareManager].shareUrl;
+            [[UIPasteboard generalPasteboard] setString:urlString];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示信息"
+                                                            message:@"复制成功"
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"确定"
+                                                  otherButtonTitles:nil, nil];
+            [alert show];
         }break;
         case 4:{
             

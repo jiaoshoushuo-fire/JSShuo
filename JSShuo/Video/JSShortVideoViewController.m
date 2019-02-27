@@ -25,6 +25,7 @@
 #import "JSShareManager.h"
 #import "JSNetworkManager+Comment.h"
 #import "JSLongVideoModel.h"
+#import "JSReportViewController.h"
 
 static NSString *kIdentifier = @"ZFDouYinCell";
 
@@ -45,6 +46,22 @@ static NSString *kIdentifier = @"ZFDouYinCell";
     [self.player.currentPlayerManager pause];
 }
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"reportArticle" object:nil];
+}
+
+- (void) addNoti {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(goReportVC) name:@"reportArticle" object:nil];
+}
+
+- (void) goReportVC {
+    NSLog(@"goReportVC");
+    JSReportViewController *vc = [JSReportViewController new];
+    vc.posterID = [NSString stringWithFormat:@"%ld",self.ID];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.rt_navigationController pushViewController:vc animated:YES complete:nil];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     _currentPage = @0;
@@ -61,6 +78,7 @@ static NSString *kIdentifier = @"ZFDouYinCell";
         self.tableView.mj_header = header;
     }
     [self setupPlayerConfig];
+    [self addNoti];
 }
 
 // 从收藏页面进入的

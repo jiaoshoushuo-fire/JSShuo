@@ -23,6 +23,7 @@
 #import "JSShareManager.h"
 #import "JSNetworkManager+Login.h"
 #import "JSLongVideoModel.h"
+#import "JSReportViewController.h"
 
 static NSString *kVideoCover = @"https://upload-images.jianshu.io/upload_images/635942-14593722fe3f0695.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240";
 
@@ -47,18 +48,31 @@ static NSString *kVideoCover = @"https://upload-images.jianshu.io/upload_images/
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.view.backgroundColor = [UIColor whiteColor];
     [self.navigationController setNavigationBarHidden:YES];
-    
     [self initSendCommentView];
     [self setupPlayer];
     [self.view addSubview:self.tableView];
-    
     _pageNum = 1;
     _pageSize = 10;
-    
     [self requestModel];
+    [self addNoti];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"reportArticle" object:nil];
+}
+
+- (void) addNoti {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(goReportVC) name:@"reportArticle" object:nil];
+}
+
+- (void) goReportVC {
+    NSLog(@"goReportVC");
+    JSReportViewController *vc = [JSReportViewController new];
+    vc.posterID = self.articleId.stringValue;
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.rt_navigationController pushViewController:vc animated:YES complete:nil];
 }
 
 // 根据 ID 请求播放地址
