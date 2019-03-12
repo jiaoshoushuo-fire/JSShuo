@@ -122,6 +122,13 @@ typedef  NS_ENUM(NSInteger, JSRequestSecurityCodeType){
 
 //分享成功
 + (void)requestShareSuccessWithUrl:(NSString *)shareUrl complement:(void(^)(BOOL isSuccess, NSDictionary *contentDict))complement;
+
+/// 我的列表
++ (void)requestInfoMenuComplement:(void (^)(BOOL isSuccess, NSArray *contentArray))complement;
+
+/// 请求是否显示邀请好友按钮
++ (void) requestIsShowInviteMenu;
+
 @end
 
 NS_ASSUME_NONNULL_END

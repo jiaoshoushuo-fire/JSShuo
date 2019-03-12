@@ -51,33 +51,33 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        [self addSubview:self.otherPlatformLeftLine];
-        [self addSubview:self.otherPlanformRightLine];
-        [self addSubview:self.otherPlatfomTitle];
-        [self addSubview:self.wechatLoginButton];
-        
-        [self.otherPlatfomTitle mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.size.mas_equalTo(CGSizeMake(80, 20));
-            make.centerX.equalTo(self);
-            make.top.equalTo(self);
-        }];
-        [self.otherPlatformLeftLine mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self).offset(10);
-            make.right.mas_equalTo(self.otherPlatfomTitle.mas_left).offset(-25);
-            make.height.mas_equalTo(1.0f);
-            make.centerY.equalTo(self.otherPlatfomTitle.mas_centerY);
-        }];
-        [self.otherPlanformRightLine mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(self.otherPlatfomTitle.mas_right).offset(25);
-            make.right.equalTo(self).offset(-10);
-            make.height.mas_equalTo(1.0);
-            make.centerY.equalTo(self.otherPlatfomTitle.mas_centerY);
-        }];
-        [self.wechatLoginButton mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.size.mas_equalTo(CGSizeMake(40, 40));
-            make.top.mas_equalTo(self.otherPlatfomTitle.mas_bottom).offset(25);
-            make.centerX.equalTo(self.otherPlatfomTitle.mas_centerX);
-        }];
+//        [self addSubview:self.otherPlatformLeftLine];
+//        [self addSubview:self.otherPlanformRightLine];
+//        [self addSubview:self.otherPlatfomTitle];
+//        [self addSubview:self.wechatLoginButton];
+//
+//        [self.otherPlatfomTitle mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.size.mas_equalTo(CGSizeMake(80, 20));
+//            make.centerX.equalTo(self);
+//            make.top.equalTo(self);
+//        }];
+//        [self.otherPlatformLeftLine mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.left.equalTo(self).offset(10);
+//            make.right.mas_equalTo(self.otherPlatfomTitle.mas_left).offset(-25);
+//            make.height.mas_equalTo(1.0f);
+//            make.centerY.equalTo(self.otherPlatfomTitle.mas_centerY);
+//        }];
+//        [self.otherPlanformRightLine mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.left.mas_equalTo(self.otherPlatfomTitle.mas_right).offset(25);
+//            make.right.equalTo(self).offset(-10);
+//            make.height.mas_equalTo(1.0);
+//            make.centerY.equalTo(self.otherPlatfomTitle.mas_centerY);
+//        }];
+//        [self.wechatLoginButton mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.size.mas_equalTo(CGSizeMake(40, 40));
+//            make.top.mas_equalTo(self.otherPlatfomTitle.mas_bottom).offset(25);
+//            make.centerX.equalTo(self.otherPlatfomTitle.mas_centerX);
+//        }];
     }
     return self;
 }

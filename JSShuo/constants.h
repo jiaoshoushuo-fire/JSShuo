@@ -17,4 +17,6 @@ static NSString * kShareQQImage_3 = @"haoyouhuigui";
 
 static NSString * kGuidanceMark = @"kJiaoShouShuoGuidanceMark";
 
+static NSString * kShowInvite = @"kShowInvite";
+
 #endif /* constants_h */

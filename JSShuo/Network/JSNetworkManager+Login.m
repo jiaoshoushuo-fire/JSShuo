@@ -43,6 +43,8 @@ const static NSString *apprenticeListUrl = @"/v1/user/apprentice/list";
 const static NSString *messageClearUrl = @"/v1/user/message/clear";
 const static NSString *createApprenticeUrl = @"/v1/user/apprentice/create";
 const static NSString *shareSuccessUrl = @"/v1/user/share/success";
+const static NSString *infoMenu = @"/v1/user/info/menu";
+const static NSString *isShowInviteMenu = @"/v1/user/info/isShowInviteMenu";
 
 @implementation JSNetworkManager (Login)
 
@@ -490,4 +492,25 @@ const static NSString *shareSuccessUrl = @"/v1/user/share/success";
         }
     }];
 }
+
++ (void)requestInfoMenuComplement:(void (^)(BOOL isSuccess, NSArray *contentArray))complement {
+    NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,infoMenu];
+    [self GET:url parameters:@{} complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
+        if (complement) {
+            complement(isSuccess,(NSArray *)responseDict);
+        }
+    }];
+}
+
++ (void) requestIsShowInviteMenu {
+    NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,isShowInviteMenu];
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kShowInvite]; // 默认不显示
+    [self GET:url parameters:@{} complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
+        if (isSuccess) {
+            BOOL show = [responseDict[@"show"] boolValue];
+            [[NSUserDefaults standardUserDefaults] setBool:show forKey:kShowInvite];
+        }
+    }];
+}
+
 @end
