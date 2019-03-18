@@ -130,7 +130,8 @@
             }else{
                 [self showAutoDismissTextAlert:@"分享失败"];
             }
-        }];    } forControlEvents:UIControlEventTouchUpInside];
+        }];
+    } forControlEvents:UIControlEventTouchUpInside];
     
     // 第 2 个按钮
     

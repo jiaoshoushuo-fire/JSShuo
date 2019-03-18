@@ -7,6 +7,7 @@
 //
 
 #import "JSCircleBottomView.h"
+#import "JSShareManager.h"
 
 @interface JSCircleBottomView()
 @property (nonatomic,strong) UIView *lineView;
@@ -29,6 +30,7 @@
     [self addSubview:self.praiseCountImg];
     [self addSubview:self.praiseCountLabel];
     [self addSubview:self.timeLabel];
+    [self addSubview:self.reportBtn];
     [self addSubview:self.lineView];
     [self.commitCountImg mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(19, 17));
@@ -53,12 +55,18 @@
         make.width.mas_equalTo(20);
 //        make.height.mas_equalTo(17);
     }];
+    [self.reportBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(25, 20));
+        make.centerY.mas_equalTo(self.commitCountLabel.mas_centerY);
+        make.right.mas_equalTo(-15);
+    }];
     [self.timeLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.praiseCountLabel.mas_right).offset(18);
         make.centerY.mas_equalTo(self.commitCountLabel.mas_centerY);
-        make.right.mas_equalTo(-15);
+        make.right.mas_equalTo(self.reportBtn.mas_left).offset(-5);
 //        make.height.mas_equalTo(17);
     }];
+    
     [self.lineView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(0);
         make.right.mas_equalTo(0);
@@ -116,6 +124,14 @@
         _timeLabel.textAlignment = NSTextAlignmentLeft;
     }
     return _timeLabel;
+}
+
+- (UIButton *)reportBtn {
+    if (!_reportBtn) {
+        _reportBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_reportBtn setBackgroundImage:[UIImage imageNamed:@"js_report"] forState:UIControlStateNormal];
+    }
+    return _reportBtn;
 }
 
 - (UIView *) lineView {

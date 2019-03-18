@@ -17,7 +17,7 @@
 @property (nonatomic, strong)UILabel *label_2;
 @property (nonatomic, strong)UILabel *label_3;
 @property (nonatomic, strong)UILabel *label_4;
-//@property (nonatomic, strong)UILabel *label_5;
+@property (nonatomic, strong)UILabel *label_5;
 
 @end
 
@@ -144,26 +144,26 @@
     return _label_4;
 }
 
-//- (UILabel *)label_5{
-//    if (!_label_5) {
-//        _label_5 = [[UILabel alloc]init];
-//        _label_5.numberOfLines = 0;
-//        _label_5.font = [UIFont systemFontOfSize:14];
-//        _label_5.textColor = [UIColor colorWithHexString:@"242424"];
-//        //        NSString *string = @"1元";
-//        NSString *string_2 = [NSString stringWithFormat:@"5·活动结束时间以叫兽说官方信息为准，活动的最终解释权归叫兽说所有"];
-//
-//        NSMutableAttributedString *AttributedStr = [[NSMutableAttributedString alloc]initWithString:string_2];
-//        //        [AttributedStr addAttribute:NSForegroundColorAttributeName
-//        //                              value:[UIColor colorWithHexString:@"F35037"]
-//        //                              range:[string_2 rangeOfString:string]];
-//
-//        _label_5.attributedText = AttributedStr;
-//        CGSize size = [_label_5 sizeThatFits:CGSizeMake(self.contentView.width - 40, MAXFLOAT)];
-//        _label_5.size = size;
-//    }
-//    return _label_5;
-//}
+- (UILabel *)label_5{
+    if (!_label_5) {
+        _label_5 = [[UILabel alloc]init];
+        _label_5.numberOfLines = 0;
+        _label_5.font = [UIFont systemFontOfSize:14];
+        _label_5.textColor = [UIColor colorWithHexString:@"242424"];
+        //        NSString *string = @"1元";
+        NSString *string_2 = [NSString stringWithFormat:@"5·本活动与苹果公司无关"];
+
+        NSMutableAttributedString *AttributedStr = [[NSMutableAttributedString alloc]initWithString:string_2];
+        //        [AttributedStr addAttribute:NSForegroundColorAttributeName
+        //                              value:[UIColor colorWithHexString:@"F35037"]
+        //                              range:[string_2 rangeOfString:string]];
+
+        _label_5.attributedText = AttributedStr;
+        CGSize size = [_label_5 sizeThatFits:CGSizeMake(self.contentView.width - 40, MAXFLOAT)];
+        _label_5.size = size;
+    }
+    return _label_5;
+}
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -178,10 +178,10 @@
         [self.contentView addSubview:self.label_2];
         [self.contentView addSubview:self.label_3];
         [self.contentView addSubview:self.label_4];
-//        [self.contentView addSubview:self.label_5];
+        [self.contentView addSubview:self.label_5];
         
         [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.size.mas_equalTo(CGSizeMake(260, 290));
+            make.size.mas_equalTo(CGSizeMake(260, 320));
             make.center.equalTo(self);
         }];
         [self.headerBackView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -217,11 +217,12 @@
             make.top.equalTo(self.label_3.mas_bottom).offset(10);
             make.centerX.equalTo(self.contentView);
         }];
-//        [self.label_5 mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.size.mas_equalTo(self.label_5.size);
-//            make.top.equalTo(self.label_4.mas_bottom).offset(10);
+        [self.label_5 mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.size.mas_equalTo(self.label_5.size);
+            make.top.equalTo(self.label_4.mas_bottom).offset(10);
 //            make.centerX.equalTo(self.contentView);
-//        }];
+            make.left.mas_equalTo(self.label_4);
+        }];
     
         
     }

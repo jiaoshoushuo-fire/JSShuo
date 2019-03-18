@@ -15,12 +15,16 @@
 #import "JSNoSearchResultView.h"
 #import "UITableView+FDTemplateLayoutCell.h"
 #import "JSCircleDetailViewController.h"
+#import "JSShareManager.h"
+#import <objc/runtime.h>
+#import "JSReportViewController.h"
 
 @interface JSCircleViewController () <UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) NSMutableArray *datas;
 @property (nonatomic,assign) int pageNum;
 @property (nonatomic,strong) JSNoSearchResultView *noResultView;
+@property (nonatomic,strong) NSNumber *reportArticleId;
 @end
 
 @implementation JSCircleViewController
@@ -28,6 +32,22 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self requestData];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"reportArticle" object:nil];
+}
+
+- (void) addNoti {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(goReportVC) name:@"reportArticle" object:nil];
+}
+
+- (void) goReportVC {
+    NSLog(@"goReportVC");
+    JSReportViewController *vc = [JSReportViewController new];
+    vc.posterID = self.reportArticleId.stringValue;
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.rt_navigationController pushViewController:vc animated:YES complete:nil];
 }
 
 - (void)viewDidLoad {
@@ -38,6 +58,7 @@
     [self initTableView];
     [self.view addSubview:self.noResultView];
     _noResultView.hidden = YES;
+    [self addNoti];
 }
 
 - (void) requestData {
@@ -124,20 +145,41 @@
     if (model.imageType.integerValue == 0) { // 纯文字
         JSCirclePureWordTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JSCirclePureWordTableViewCell" forIndexPath:indexPath];
         cell.model = model;
+        objc_setAssociatedObject(cell.bottomView.reportBtn, @"reportBtn", model, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        [cell.bottomView.reportBtn addTarget:self action:@selector(showShare:) forControlEvents:UIControlEventTouchUpInside];
         return cell;
     } else if (model.imageType.integerValue == 1) { // 1图
         JSCircleOnePictureTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JSCircleOnePictureTableViewCell" forIndexPath:indexPath];
         cell.model = model;
+        objc_setAssociatedObject(cell.bottomView.reportBtn, @"reportBtn", model, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        [cell.bottomView.reportBtn addTarget:self action:@selector(showShare:) forControlEvents:UIControlEventTouchUpInside];
         return cell;
     } else if (model.imageType.integerValue == 2) { // 2图
         JSCircleTwoPictureTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JSCircleTwoPictureTableViewCell" forIndexPath:indexPath];
         cell.model = model;
+        objc_setAssociatedObject(cell.bottomView.reportBtn, @"reportBtn", model, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        [cell.bottomView.reportBtn addTarget:self action:@selector(showShare:) forControlEvents:UIControlEventTouchUpInside];
         return cell;
     } else { // 3图
         JSCircleThreePictureTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JSCircleThreePictureTableViewCell" forIndexPath:indexPath];
         cell.model = model;
+        objc_setAssociatedObject(cell.bottomView.reportBtn, @"reportBtn", model, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        [cell.bottomView.reportBtn addTarget:self action:@selector(showShare:) forControlEvents:UIControlEventTouchUpInside];
         return cell;
     }
+}
+
+- (void) showShare:(UIButton *)btn {
+    JSCircleListModel *model = objc_getAssociatedObject(btn, @"reportBtn");
+    self.reportArticleId = model.articleId;
+    NSString *shareUrlStr = [NSString stringWithFormat:@"%@/v1/page/poster/%@",Base_Url,model.articleId];
+    [JSShareManager shareWithTitle:@"叫兽说" Text:model.title Image:[UIImage imageNamed:@"js_share_image"] Url:shareUrlStr complement:^(BOOL isSuccess) {
+        if (isSuccess) {
+            [self showAutoDismissTextAlert:@"分享成功"];
+        }else{
+            [self showAutoDismissTextAlert:@"分享失败"];
+        }
+    }];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

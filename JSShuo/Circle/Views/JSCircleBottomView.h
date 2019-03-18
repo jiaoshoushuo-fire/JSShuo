@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong) UIImageView *praiseCountImg;// 点赞
 @property (nonatomic,strong) UILabel *praiseCountLabel; // 点赞数量
 @property (nonatomic,strong) UILabel *timeLabel;// 发布时间
+@property (nonatomic,strong) UIButton *reportBtn;// 举报
 @property (nonatomic,strong) JSCircleListModel *model;
 
 

@@ -9,6 +9,7 @@
 #import "JSPostMessageViewController.h"
 #import "GGAssetsPickerViewController.h"
 #import "JSNetworkManager+Poster.h"
+#import "JSPrivacyViewController.h"
 
 @interface JSPostMessageFirstCell : UITableViewCell<YYTextViewDelegate>
 @property (nonatomic, strong)YYTextView *contentTextView;
@@ -242,6 +243,7 @@
 @property (nonatomic, strong)UILabel *subLabel_1;
 @property (nonatomic, strong)UILabel *subLabel_2;
 @property (nonatomic, strong)UILabel *subLabel_3;
+@property (nonatomic, strong)YYLabel *subLabel_4;
 @property (nonatomic, strong)UIView *leftLine;
 @property (nonatomic, strong)UIView *rightLine;
 @end
@@ -276,6 +278,7 @@
 //1、任何人都可以发贴，没有等级限制；
 //2、多发有质量的帖子，严禁水贴，情节严重会封号哦；
 //3、禁止发布与政治安全、色情、赌博有关的帖子，违规将不会通过审核。
+//4、我已阅读用户协议与隐私条款
 - (UILabel *)subLabel_1{
     if (!_subLabel_1) {
         _subLabel_1 = [[UILabel alloc]init];
@@ -318,6 +321,89 @@
     return _subLabel_3;
 }
 
+- (YYLabel *)subLabel_4 {
+    if (!_subLabel_4) {
+        _subLabel_4 = [[YYLabel alloc] init];
+        _subLabel_4.displaysAsynchronously = YES;
+        _subLabel_4.ignoreCommonProperties = YES;
+        
+        @weakify(self);
+        UIButton *selectButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [selectButton setImage:[UIImage imageNamed:@"js_agree_selected"] forState:UIControlStateNormal];
+        [selectButton setImage:[UIImage imageNamed:@"js_agree_selected"] forState:UIControlStateSelected];
+        [selectButton sizeToFit];
+        
+        [selectButton bk_addEventHandler:^(id sender) {
+            @strongify(self)
+            NSLog(@"agreem selectbutton tap");
+        } forControlEvents:UIControlEventTouchUpInside];
+        
+        NSString *string_1 = @"我已阅读并同意";
+        NSString *string_2 = @"《用户协议》";
+        
+        NSMutableAttributedString *textString = [self stringWithContent:selectButton string:string_1 highlightString:string_2];
+        [textString setColor:[UIColor colorWithHexString:@"999999"] range:[textString.string rangeOfString:string_1]];
+        [textString setColor:[UIColor colorWithHexString:@"E81E2D"] range:[textString.string rangeOfString:string_2]];
+        textString.font = [UIFont systemFontOfSize:12];
+        YYTextLayout *layout = [YYTextLayout layoutWithContainerSize:CGSizeMake(MAXFLOAT, 25) text:textString];
+        [_subLabel_4 setTextLayout:layout];
+        _subLabel_4.size = layout.textBoundingSize;
+    }
+    return _subLabel_4;
+}
+
+- (NSMutableAttributedString *)stringWithContent:(UIButton *)button string:(NSString *)string highlightString:(NSString *)highlightString{
+    NSMutableAttributedString *reslutString = [[NSMutableAttributedString alloc]initWithString:@""];
+    if (button) {
+        NSMutableAttributedString *imageAttributeString = [NSMutableAttributedString attachmentStringWithContent:button contentMode:UIViewContentModeCenter attachmentSize:button.size alignToFont:[UIFont systemFontOfSize:12] alignment:YYTextVerticalAlignmentCenter];
+        [reslutString appendAttributedString:imageAttributeString];
+        [reslutString appendString:@" "];
+    }
+    [reslutString appendString:string];
+    [reslutString appendString:highlightString];
+    
+    
+    [self setHighlightInfo:@{} withRange:[reslutString.string rangeOfString:highlightString] toText:reslutString];
+    return reslutString;
+}
+
+- (void)setHighlightInfo:(NSDictionary*)info withRange:(NSRange)range toText:(NSMutableAttributedString *)text {
+    if (range.length == 0 || text.length == 0) return;
+    {
+        NSString *str = text.string;
+        unichar *chars = malloc(str.length * sizeof(unichar));
+        if (!chars) return;
+        [str getCharacters:chars range:NSMakeRange(0, str.length)];
+        
+        NSUInteger start = range.location, end = range.location + range.length;
+        for (int i = 0; i < str.length; i++) {
+            unichar c = chars[i];
+            if (0xD800 <= c && c <= 0xDBFF) { // UTF16 lead surrogates
+                if (start > i) start++;
+                if (end > i) end++;
+            }
+        }
+        free(chars);
+        if (end <= start) return;
+        range = NSMakeRange(start, end - start);
+    }
+    
+    if (range.location >= text.length) return;
+    if (range.location + range.length > text.length) return;
+    
+    YYTextBorder *border = [YYTextBorder new];
+    border.cornerRadius = 3;
+    border.insets = UIEdgeInsetsMake(-2, -2, -2, -2);
+    border.fillColor = [UIColor colorWithHexString:@"ebeef0"];
+    
+    YYTextHighlight *highlight = [YYTextHighlight new];
+    [highlight setBackgroundBorder:border];
+    highlight.userInfo = info;
+    
+    [text setTextHighlight:highlight range:range];
+    [text setColor:[UIColor colorWithHexString:@"E81E2D"] range:range];
+}
+
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         [self.contentView addSubview:self.titleLabel];
@@ -326,10 +412,16 @@
         [self.contentView addSubview:self.subLabel_1];
         [self.contentView addSubview:self.subLabel_2];
         [self.contentView addSubview:self.subLabel_3];
+        [self.contentView addSubview:self.subLabel_4];
         
+        [self.subLabel_4 mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.size.mas_equalTo(self.subLabel_4.size);
+            make.bottom.equalTo(self.contentView).offset(-10);
+            make.left.equalTo(self.contentView).offset(10);
+        }];
         [self.subLabel_3 mas_makeConstraints:^(MASConstraintMaker *make) {
             make.size.mas_equalTo(self.subLabel_3.size);
-            make.bottom.equalTo(self.contentView).offset(-20);
+            make.bottom.equalTo(self.subLabel_4.mas_top);
             make.left.equalTo(self.contentView).offset(10);
         }];
         [self.subLabel_2 mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -366,7 +458,7 @@
 
 + (CGFloat)heightForCell{
     CGFloat height = (kScreenWidth- 10*5)/4.0f + 20;
-    CGFloat height2 = 250;
+    CGFloat height2 = 240;
     return kScreenHeight - IPHONE_NAVIGATIONBAR_HEIGHT - height - height2;
 }
 
@@ -528,6 +620,13 @@
         cell = secondCell;
     }else if (indexPath.row == 2){
         JSPostMessageThirdCell *thirdCell = [tableView dequeueReusableCellWithIdentifier:@"JSPostMessageThirdCell" forIndexPath:indexPath];
+        @weakify(self);
+        thirdCell.subLabel_4.highlightTapAction = ^(UIView * _Nonnull containerView, NSAttributedString * _Nonnull text, NSRange range, CGRect rect) {
+            @strongify(self);
+            JSPrivacyViewController *privacyVC = [[JSPrivacyViewController alloc]initWithUrl:@"http://api.jiaoshoutt.com/v1/page/protocal/user"];
+            privacyVC.hidesBottomBarWhenPushed = YES;
+            [self.rt_navigationController pushViewController:privacyVC animated:YES complete:nil];
+        };
         cell = thirdCell;
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;

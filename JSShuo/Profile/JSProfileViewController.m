@@ -636,6 +636,7 @@
     }else if (indexPath.section == 1){
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell" forIndexPath:indexPath];
         [cell.contentView addSubview:self.cycleScrollView];
+        cell.userInteractionEnabled = NO; // 防止跳转
         profileCell = cell;
     }else{
         JSProfileCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JSProfileCell" forIndexPath:indexPath];
