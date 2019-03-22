@@ -368,6 +368,8 @@
 }
 
 - (void)setModel:(JSAccountModel *)model{
+    self.bottomView.hidden = YES;
+    
     _model = model;
     NSString *money = [NSString stringWithFormat:@"%.02f",model.money/100.0f];
     NSString *typeString = @"零钱";
