@@ -10,8 +10,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-//const static NSString *Base_Url = @"http://api.jiaoshoutt.com";
-const static NSString *Base_Url = @"http://apitest.jiaoshoutt.com";
+const static NSString *Base_Url = @"http://api.jiaoshoutt.com";
+//const static NSString *Base_Url = @"http://apitest.jiaoshoutt.com";
 
 
 @interface JSNetworkManager : NSObject

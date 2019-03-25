@@ -68,7 +68,7 @@
         _label_1.font = [UIFont systemFontOfSize:14];
         _label_1.textColor = [UIColor colorWithHexString:@"242424"];
         NSString *string = @"1次";
-        NSString *string_2 = [NSString stringWithFormat:@"1·活动限叫兽说用户参加，每位用户每天仅有 %@ 参加机会",string];
+        NSString *string_2 = [NSString stringWithFormat:@"1·活动限叫兽说用户参加，每位用户每天仅能参加 %@",string];
         
         NSMutableAttributedString *AttributedStr = [[NSMutableAttributedString alloc]initWithString:string_2];
         [AttributedStr addAttribute:NSForegroundColorAttributeName
@@ -89,7 +89,7 @@
         _label_2.font = [UIFont systemFontOfSize:14];
         _label_2.textColor = [UIColor colorWithHexString:@"242424"];
         NSString *string = @"1元";
-        NSString *string_2 = [NSString stringWithFormat:@"2·每有一名新用户进入页面，红包奖金池增加 %@",string];
+        NSString *string_2 = [NSString stringWithFormat:@"2·活动获得的红包可以在‘我的-钱包’内进行查看和提现。活动期间，到账可能有延迟，请耐心等待。"];
         
         NSMutableAttributedString *AttributedStr = [[NSMutableAttributedString alloc]initWithString:string_2];
         [AttributedStr addAttribute:NSForegroundColorAttributeName
@@ -110,7 +110,7 @@
         _label_3.font = [UIFont systemFontOfSize:14];
         _label_3.textColor = [UIColor colorWithHexString:@"242424"];
 //        NSString *string = @"1元";
-        NSString *string_2 = [NSString stringWithFormat:@"3·当天用户只有进入叫兽说，参加并认真看文章或者收徒，分享新闻给朋友等任务，才能增加红包中奖概率哦！"];
+        NSString *string_2 = [NSString stringWithFormat:@"3·如发现用户以违规或作弊手段抢红包，叫兽说有权收回用户违规获得得奖励。"];
         
         NSMutableAttributedString *AttributedStr = [[NSMutableAttributedString alloc]initWithString:string_2];
 //        [AttributedStr addAttribute:NSForegroundColorAttributeName
@@ -130,7 +130,7 @@
         _label_4.font = [UIFont systemFontOfSize:14];
         _label_4.textColor = [UIColor colorWithHexString:@"242424"];
         NSString *string = @"“我的-钱包”";
-        NSString *string_2 = [NSString stringWithFormat:@"4·活动的现金可在 %@ 内进行查看和提现，活动期间，到账可能有延时，请耐心等待",string];
+        NSString *string_2 = [NSString stringWithFormat:@"4·活动结束时间以叫兽说官方信息为准，本活动的最终解释权归叫兽说所有。"];
         
         NSMutableAttributedString *AttributedStr = [[NSMutableAttributedString alloc]initWithString:string_2];
         [AttributedStr addAttribute:NSForegroundColorAttributeName
@@ -151,13 +151,13 @@
         _label_5.font = [UIFont systemFontOfSize:14];
         _label_5.textColor = [UIColor colorWithHexString:@"242424"];
         //        NSString *string = @"1元";
-        NSString *string_2 = [NSString stringWithFormat:@"5·活动结束时间以叫兽说官方信息为准，活动的最终解释权归叫兽说所有"];
-        
+        NSString *string_2 = [NSString stringWithFormat:@"5·本活动与苹果公司无关"];
+
         NSMutableAttributedString *AttributedStr = [[NSMutableAttributedString alloc]initWithString:string_2];
         //        [AttributedStr addAttribute:NSForegroundColorAttributeName
         //                              value:[UIColor colorWithHexString:@"F35037"]
         //                              range:[string_2 rangeOfString:string]];
-        
+
         _label_5.attributedText = AttributedStr;
         CGSize size = [_label_5 sizeThatFits:CGSizeMake(self.contentView.width - 40, MAXFLOAT)];
         _label_5.size = size;
@@ -181,7 +181,7 @@
         [self.contentView addSubview:self.label_5];
         
         [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.size.mas_equalTo(CGSizeMake(260, 360));
+            make.size.mas_equalTo(CGSizeMake(260, 320));
             make.center.equalTo(self);
         }];
         [self.headerBackView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -220,7 +220,8 @@
         [self.label_5 mas_makeConstraints:^(MASConstraintMaker *make) {
             make.size.mas_equalTo(self.label_5.size);
             make.top.equalTo(self.label_4.mas_bottom).offset(10);
-            make.centerX.equalTo(self.contentView);
+//            make.centerX.equalTo(self.contentView);
+            make.left.mas_equalTo(self.label_4);
         }];
     
         

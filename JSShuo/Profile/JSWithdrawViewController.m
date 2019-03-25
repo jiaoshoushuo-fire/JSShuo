@@ -129,6 +129,7 @@
 @property (nonatomic, strong)UILabel *subLabel_2;
 @property (nonatomic, strong)UILabel *subLabel_3;
 @property (nonatomic, strong)UILabel *subLabel_4;
+@property (nonatomic, strong)UILabel *subLabel_5;
 @end
 @implementation JSWithdrawThirdCell
 
@@ -182,7 +183,7 @@
         _subLabel_3 = [[UILabel alloc]init];
         _subLabel_3.textColor = [UIColor colorWithHexString:@"666666"];
         _subLabel_3.font = [UIFont systemFontOfSize:16];
-        NSString *text = @"3、叫兽说不欢迎用户使用非正常途径包括但不限于手机模拟器，改号软件等方式虚假收徒。一经发现，叫兽说有权收回所有奖励；";
+        NSString *text = @"3、叫兽说不欢迎用户使用非正常途径包括但不限于手机模拟器，改号软件等第三方程序修改硬件参数等作弊手段参与活动。一经发现，叫兽说有权收回所有奖励；";
         
         _subLabel_3.text = text;
         _subLabel_3.numberOfLines = 0;
@@ -208,6 +209,22 @@
     return _subLabel_4;
 }
 
+- (UILabel *)subLabel_5{
+    if (!_subLabel_5) {
+        _subLabel_5 = [[UILabel alloc]init];
+        _subLabel_5.textColor = [UIColor colorWithHexString:@"666666"];
+        _subLabel_5.font = [UIFont systemFontOfSize:16];
+        NSString *text = @"5、本活动与苹果公司无关。";
+        
+        _subLabel_5.text = text;
+        _subLabel_5.numberOfLines = 0;
+        
+        CGFloat height = [_subLabel_5 sizeThatFits:CGSizeMake(kScreenWidth - 20, MAXFLOAT)].height;
+        _subLabel_5.size = CGSizeMake(kScreenWidth - 20, height);
+    }
+    return _subLabel_5;
+}
+
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         
@@ -216,6 +233,7 @@
         [self.contentView addSubview:self.subLabel_2];
         [self.contentView addSubview:self.subLabel_3];
         [self.contentView addSubview:self.subLabel_4];
+        [self.contentView addSubview:self.subLabel_5];
         
         [self.titleLabel_4 mas_makeConstraints:^(MASConstraintMaker *make) {
             make.size.mas_equalTo(self.titleLabel_4.size);
@@ -243,7 +261,11 @@
             make.left.equalTo(self.contentView).offset(10);
             make.top.mas_equalTo(self.subLabel_3.mas_bottom).offset(5);
         }];
-        
+        [self.subLabel_5 mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.size.mas_equalTo(self.subLabel_5.size);
+            make.left.equalTo(self.contentView).offset(10);
+            make.top.mas_equalTo(self.subLabel_4.mas_bottom).offset(5);
+        }];
     }
     return self;
 }
@@ -816,7 +838,7 @@
     }else if (indexPath.row == 1){
         return [JSWithdrawSecondCell heightWithDrawModel:self.withdrawModel itemModel:self.currentItemModel];
     }else if (indexPath.row == 2){
-        return 250;
+        return 310;
     }
     return 180;
 }

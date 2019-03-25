@@ -281,7 +281,7 @@ static const NSTimeInterval kSelectDuration = 0.25f;
 //        self.linelayer2.top = self.cancelButton.top;
 //        self.linelayer2.left = 0;
 //    }else{
-    unsigned long maxLine = self.menuItems.count <= 3 ? 1 : 2;
+    unsigned long maxLine = self.menuItems.count <= 4 ? 1 : 2;
     
         self.shareUIContentLabel.hidden = self.shareUITitleLabel.hidden = YES;
         self.size = CGSizeMake(self.width, kPopMenuPadding + 20 + kPopMenuPadding*2 + (itemH + kPopMenuPadding)*(maxLine) + kPopMenuPadding + 40);
@@ -355,16 +355,16 @@ static const NSTimeInterval kSelectDuration = 0.25f;
     CGFloat itemW = 50;
     CGFloat itemH = itemW + 10 + 15 ;
     CGFloat tap = 50;
-    int number = (int)MIN(3, self.menuItems.count);
+    int number = (int)MIN(4, self.menuItems.count);
 //    CGFloat kPadding = (self.width - itemW * number - tap * (number - 1))/2.0f;
     CGFloat kPadding = tap = (self.width - itemW * number)/(number + 1);
-    unsigned long maxLine = self.menuItems.count <= 3 ? 1 : 2;
+    unsigned long maxLine = self.menuItems.count <= 4 ? 1 : 2;
     
     for (int i=0; i<self.menuItems.count; i++) {
         GFPopMenuItem *item = self.menuItems[i];
         CGFloat itemX, itemY;
         itemX = (i % number) * (itemW + tap) + kPadding;
-        itemY = self.height - kPopMenuPadding - (kPopMenuPadding + itemH) * (maxLine - i/3) - 40;
+        itemY = self.height - kPopMenuPadding - (kPopMenuPadding + itemH) * (maxLine - i/4) - 40;
         CGRect fromValue = CGRectMake(itemX, self.height, itemW, itemH);
         CGRect toValue = CGRectMake(itemX, itemY, itemW, itemH);
         
@@ -399,16 +399,16 @@ static const NSTimeInterval kSelectDuration = 0.25f;
     CGFloat itemW = 50;
     CGFloat itemH = itemW + 10 + 15 ;
     CGFloat tap = 50;
-    int number = (int)MIN(3, self.menuItems.count);
+    int number = (int)MIN(4, self.menuItems.count);
 //    CGFloat kPadding = (self.width - itemW * number - tap * (number-1))/2.0f;
     CGFloat kPadding = tap = (self.width - itemW * number)/(number + 1);
-    unsigned long maxLine = self.menuItems.count <= 3 ? 1 : 2;
+    unsigned long maxLine = self.menuItems.count <= 4 ? 1 : 2;
     
     for (int i=0; i<self.menuItems.count; i++) {
         GFPopMenuItem *item = self.menuItems[i];
         CGFloat itemX, itemY;
         itemX = (i % number) * (itemW + tap) + kPadding;
-        itemY = self.height - kPopMenuPadding - (kPopMenuPadding + itemH) * (maxLine - i/3) - 40;
+        itemY = self.height - kPopMenuPadding - (kPopMenuPadding + itemH) * (maxLine - i/4) - 40;
         
         CGRect toValue = CGRectMake(itemX, self.height, itemW, itemH);
         CGRect fromValue = CGRectMake(itemX, itemY, itemW, itemH);
@@ -521,6 +521,11 @@ static const NSTimeInterval kSelectDuration = 0.25f;
     }
     return self;
 }
+
+- (void)dismissDuration:(NSTimeInterval)duration completion:(void(^)(void))completion {
+    [self.contentView dismissDuration:duration completion:completion];
+}
+
 - (void)handleDeviceOrientationDidChange:(UIInterfaceOrientation)interfaceOrientation{
     
     UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;
@@ -610,6 +615,18 @@ static const NSTimeInterval kSelectDuration = 0.25f;
         item.positionIndex = 1;
         [items addObject:item];
     }
+    if ([model integerValue] == 0) {
+        UIImage *img2 = [UIImage imageNamed:@"js_share_report"];
+        GFPopMenuItem *item2 = [GFPopMenuItem menuItemWithImage:img2 title:@"举报"];
+        item2.positionIndex = 2;
+        [items addObject:item2];
+        
+        UIImage *img3 = [UIImage imageNamed:@"js_share_copyLink"];
+        GFPopMenuItem *item3 = [GFPopMenuItem menuItemWithImage:img3 title:@"复制链接"];
+        item3.positionIndex = 3;
+        [items addObject:item3];
+    }
+    
     
     if ([model intValue] == 1) {
         {

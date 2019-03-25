@@ -35,6 +35,8 @@
 
 @property (nonatomic, strong) UILabel *titleLabel;
 
+@property (nonatomic, strong) UILabel *authorLabel;
+
 @property (nonatomic, strong) UIImage *placeholderImage;
 
 @end
@@ -47,6 +49,7 @@
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         [self.contentView addSubview:self.coverImageView];
         [self.contentView addSubview:self.titleLabel];
+        [self.contentView addSubview:self.authorLabel];
         [self.contentView addSubview:self.likeBtn];
         [self.contentView addSubview:self.likeLabel];
         [self.contentView addSubview:self.commentBtn];
@@ -58,35 +61,34 @@
             sender.userInteractionEnabled = NO;
             [JSAccountManager checkLoginStatusComplement:^(BOOL isLogin) {
                 if (isLogin) {
-                    if (sender.selected) { // 取消收藏
+                    if (sender.selected) { // 取消点赞
 //                        addCollectUrl
-                        [JSNetworkManager requestDeleateCollectWithArticleId:self.data.articleId.integerValue complement:^(BOOL isSuccess, NSDictionary * _Nonnull contentDict) {
+                        [JSNetworkManager deletePraiseWithArticleID:self.data.articleId.integerValue complement:^(BOOL isSuccess, NSDictionary * _Nonnull contentDic) {
                             sender.userInteractionEnabled = YES;
                             if (isSuccess) {
                                 sender.selected = NO;
                                 NSString *tempValue = self.likeLabel.text;
                                 self.likeLabel.text = [NSString stringWithFormat:@"%ld",tempValue.integerValue-1];
+                                if (tempValue.integerValue-1 == 0) {
+                                    self.likeLabel.hidden = YES;
+                                } else {
+                                    self.likeLabel.hidden = NO;
+                                }
                             }
                         }];
-                    } else { // 取消收藏
+                    } else { // 点赞
                         NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefaultsKeyAccessToken];
                         NSDictionary *params = @{@"token":token,@"articleId":self.data.articleId};
-                        [JSNetworkManager addCollect:params complement:^(BOOL isSuccess, NSDictionary * _Nonnull contentDic) {
+                        [JSNetworkManager addPraise:params complement:^(BOOL isSuccess, NSDictionary * _Nonnull contentDic) {
                             NSLog(@"点赞 -- %@",contentDic);
                             sender.userInteractionEnabled = YES;
                             if (isSuccess) {
                                 sender.selected = YES;
                                 NSString *tempValue = self.likeLabel.text;
                                 self.likeLabel.text = [NSString stringWithFormat:@"%ld",tempValue.integerValue+1];
+                                self.likeLabel.hidden = NO;
                             }
                         }];
-//                        [JSNetworkManager addPraise:params complement:^(BOOL isSuccess, NSDictionary * _Nonnull contentDic) {
-//                            NSLog(@"点赞 -- %@",contentDic);
-//                            sender.userInteractionEnabled = YES;
-//                            if (isSuccess) {
-//                                sender.selected = YES;
-//                            }
-//                        }];
                     }
                 }
             }];
@@ -152,9 +154,26 @@
 
     min_x = 20;
     min_h = 42;
-    min_y = min_view_h - min_h - 40;
+    min_y = min_view_h - min_h - 20;
     min_w = self.likeBtn.left - margin;
     self.titleLabel.frame = CGRectMake(min_x, min_y, min_w, min_h);
+    
+    min_x = 20;
+    min_h = 20;
+    min_y = self.titleLabel.top - 22;
+    min_w = self.likeBtn.left - margin;
+    self.authorLabel.frame = CGRectMake(min_x, min_y, min_w, min_h);
+}
+
+- (UILabel *)authorLabel {
+    if (!_authorLabel) {
+        _authorLabel = [UILabel new];
+        _authorLabel.numberOfLines = 1;
+        _authorLabel.textColor = [UIColor whiteColor];
+        _authorLabel.font = [UIFont systemFontOfSize:13];
+        _authorLabel.text = @"author";
+    }
+    return _authorLabel;
 }
 
 - (UILabel *)titleLabel {
@@ -224,7 +243,7 @@
 
 - (void)setData:(JSShortVideoModel *)data {
     _data = data;
-    NSLog(@"%@",data.articleId);
+//    NSLog(@"%@",data.articleId);
     if (data) {
         @weakify(self);
         [JSNetworkManager requestDetailWithArticleID:_data.articleId.integerValue complent:^(BOOL isSuccess, NSDictionary * _Nonnull contentDic) {
@@ -236,6 +255,7 @@
                     self.likeLabel.text = [NSString stringWithFormat:@"%@",praiseNum];
                 } else {
                     self.likeLabel.hidden = YES;
+                    self.likeLabel.text = [NSString stringWithFormat:@"%@",praiseNum];
                 }
                 NSNumber *commentNum = contentDic[@"commentNum"];
                 if (commentNum.integerValue != 0) {
@@ -250,11 +270,14 @@
     
     [self.coverImageView setImageWithURLString:data.cover[0] placeholder:[UIImage imageNamed:@"loading_bgView"]];
     self.titleLabel.text = data.Description;
+    self.authorLabel.text = [NSString stringWithFormat:@"@%@",data.author];
     //查询是否收藏
-    if ([JSAccountManager isLogin]) {
-        [JSNetworkManager queryCollectWithArticleId:data.articleId.integerValue complement:^(BOOL isSuccess, NSDictionary * _Nonnull contentDict) {
-            BOOL isCollect = [contentDict[@"isCollect"] boolValue];
-            self.likeBtn.selected = isCollect;
+    if ([JSAccountManager isLogin] && data.articleId) {
+        [JSNetworkManager queryPraiseWithArticleId:data.articleId.integerValue complement:^(BOOL isSuccess, NSDictionary * _Nonnull contentDict) {
+            if (contentDict && ![contentDict isEqual:[NSNull null]]) {
+                BOOL isCollect = [contentDict[@"isPraise"] boolValue];
+                self.likeBtn.selected = isCollect;
+            }
         }];
     }
 

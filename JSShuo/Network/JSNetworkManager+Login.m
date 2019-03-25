@@ -38,10 +38,13 @@ const static NSString *addCollectUrl = @"/v1/user/collect/add";
 const static NSString *collectListUrl = @"/v1/user/collect/list";
 const static NSString *deleateCollectUrl = @"/v1/user/collect/delete";
 const static NSString *queryCollectUrl = @"/v1/user/collect/query";
+const static NSString *queryPraiseUrl = @"/v1/user/praise/query";
 const static NSString *apprenticeListUrl = @"/v1/user/apprentice/list";
 const static NSString *messageClearUrl = @"/v1/user/message/clear";
 const static NSString *createApprenticeUrl = @"/v1/user/apprentice/create";
 const static NSString *shareSuccessUrl = @"/v1/user/share/success";
+const static NSString *infoMenu = @"/v1/user/info/menu";
+const static NSString *isShowInviteMenu = @"/v1/user/info/isShowInviteMenu";
 
 @implementation JSNetworkManager (Login)
 
@@ -325,6 +328,16 @@ const static NSString *shareSuccessUrl = @"/v1/user/share/success";
     
 }
 
++ (void)queryPraiseWithArticleId:(NSInteger)ID complement:(void(^)(BOOL isSuccess, NSDictionary *contentDict))complement{
+    NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,queryPraiseUrl];
+    NSDictionary *param = @{@"token":[JSAccountManager shareManager].accountToken,@"articleId":@(ID)};
+    [self GET:url parameters:param complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
+        if (complement && responseDict) {
+            complement(isSuccess,responseDict);
+        }
+    }];
+}
+
 + (void) addPraise:(NSDictionary *)params complement:(void(^)(BOOL isSuccess,NSDictionary *contentDic))complement {
     NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,addPraiseUrl];
     [self POST:url parameters:params complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
@@ -479,4 +492,25 @@ const static NSString *shareSuccessUrl = @"/v1/user/share/success";
         }
     }];
 }
+
++ (void)requestInfoMenuComplement:(void (^)(BOOL isSuccess, NSArray *contentArray))complement {
+    NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,infoMenu];
+    [self GET:url parameters:@{} complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
+        if (complement) {
+            complement(isSuccess,(NSArray *)responseDict);
+        }
+    }];
+}
+
++ (void) requestIsShowInviteMenu {
+    NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,isShowInviteMenu];
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kShowInvite]; // 默认不显示
+    [self GET:url parameters:@{} complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
+        if (isSuccess) {
+            BOOL show = [responseDict[@"show"] boolValue];
+            [[NSUserDefaults standardUserDefaults] setBool:show forKey:kShowInvite];
+        }
+    }];
+}
+
 @end

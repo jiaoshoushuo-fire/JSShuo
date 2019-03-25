@@ -1,9 +1,9 @@
 //
-//  JSArticleDetailViewController.h
+//  JSReportViewController.h
 //  JSShuo
 //
-//  Created by li que on 2018/11/16.
-//  Copyright © 2018  乔中祥. All rights reserved.
+//  Created by li que on 2019/2/19.
+//  Copyright © 2019  乔中祥. All rights reserved.
 //
 /**
  *　　　　　　　 ┏┓       ┏┓+ +
@@ -29,16 +29,13 @@
  *　　　　　　　　　 ┗┻┛　 ┗┻┛+ + + +
  */
 
-#import <UIKit/UIKit.h>
 #import "JSBaseViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface JSArticleDetailViewController : JSBaseViewController
+@interface JSReportViewController : JSBaseViewController
 
-
-@property (nonatomic,copy) NSString *titleName;
-@property (nonatomic,strong) NSNumber *articleId;
+@property (nonatomic,copy) NSString *posterID;
 
 @end
 

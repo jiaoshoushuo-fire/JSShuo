@@ -24,27 +24,28 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.contentView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
+        [self.contentView addSubview:self.headView];
+        [self.contentView addSubview:self.nicknameLabel];
+        [self.headView mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(15);
+            make.top.mas_equalTo(12).priorityHigh();
+            make.size.mas_equalTo(CGSizeMake(40, 40));
+        }];
+        [self.nicknameLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(self.headView.mas_right).offset(12);
+            make.centerY.mas_equalTo(self.headView.mas_centerY);
+            //        make.height.mas_equalTo(25);
+            make.right.mas_equalTo(-15);
+        }];
     }
     return self;
 }
 
 - (void)setModel:(JSCircleListModel *)model {
     _model = model;
-    [self.contentView addSubview:self.headView];
-    [self.contentView addSubview:self.nicknameLabel];
     [self.contentView addSubview:self.subtitleLabel];
     [self.contentView addSubview:self.bottomView];
-    [self.headView mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(15);
-        make.top.mas_equalTo(12).priorityHigh();
-        make.size.mas_equalTo(CGSizeMake(40, 40));
-    }];
-    [self.nicknameLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(self.headView.mas_right).offset(12);
-        make.centerY.mas_equalTo(self.headView.mas_centerY);
-//        make.height.mas_equalTo(25);
-        make.right.mas_equalTo(-15);
-    }];
+    
     self.subtitleLabel.preferredMaxLayoutWidth = ScreenWidth - 30;
     if (model.title.length > 0) { // 有标题
         self.titleLabel.hidden = NO;

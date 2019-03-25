@@ -10,6 +10,7 @@
 
 const static NSString *postPublishUrl = @"/v1/poster/publish";
 const static NSString *deletePublishUrl = @"/v1/poster/delete";
+const static NSString *tipOffUrl = @"/v1/poster/tipOff";
 
 @implementation JSNetworkManager (Poster)
 
@@ -74,6 +75,21 @@ const static NSString *deletePublishUrl = @"/v1/poster/delete";
     [self POST:url parameters:params complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
         if (isSuccess) {
             complement(isSuccess,responseDict);
+        }
+    }];
+}
+
++ (void) tipOffCircleWithID:(NSString *)ID reason:(NSNumber *)reason complement:(void(^)(BOOL isSuccess,NSDictionary *contentDic))complement {
+    NSString *url = [NSString stringWithFormat:@"%@%@",Base_Url,tipOffUrl];
+    NSDictionary *params = @{@"token":[JSAccountManager shareManager].accountToken,
+                             @"posterId":ID,
+                             @"reason":reason
+                             };
+    [self POST:url parameters:params complement:^(BOOL isSuccess, NSDictionary * _Nonnull responseDict) {
+        if (isSuccess) {
+            complement(isSuccess,responseDict);
+        } else {
+            complement(NO,nil);
         }
     }];
 }

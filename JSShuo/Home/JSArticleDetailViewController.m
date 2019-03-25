@@ -19,7 +19,7 @@
 #import "JSShareManager.h"
 #import "JSNetworkManager+Login.h"
 #import "JSDetailSectionHeaderView.h"
-
+#import "JSReportViewController.h"
 
 @interface JSArticleDetailViewController () <WKNavigationDelegate,WKUIDelegate,UITableViewDelegate,UITableViewDataSource>
 {
@@ -58,6 +58,23 @@
     _pageNum = 1;
     _pageSize = 10;
     [self reloadView];
+    [self addNoti];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"reportArticle" object:nil];
+}
+
+- (void) addNoti {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(goReportVC) name:@"reportArticle" object:nil];
+}
+
+- (void) goReportVC {
+    NSLog(@"goReportVC");
+    JSReportViewController *vc = [JSReportViewController new];
+    vc.posterID = self.articleId.stringValue;
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.rt_navigationController pushViewController:vc animated:YES complete:nil];
 }
 
 - (void) reloadView {
@@ -132,12 +149,7 @@
     @weakify(self);
     [_bottomView.shareBtn bk_addEventHandler:^(id sender) {
         @strongify(self);
-        NSString *shareUrlStr;
-        if (self.isCircleType) { // 圈子
-            shareUrlStr = [NSString stringWithFormat:@"%@/v1/page/poster/%@",Base_Url,self.articleId];
-        } else {
-            shareUrlStr = [NSString stringWithFormat:@"%@/v1/page/article/%@",Base_Url,self.articleId];
-        }
+        NSString *shareUrlStr = [NSString stringWithFormat:@"%@/v1/page/article/%@",Base_Url,self.articleId];
         [JSShareManager shareWithTitle:@"叫兽说" Text:self.titleName Image:[UIImage imageNamed:@"js_share_image"] Url:shareUrlStr complement:^(BOOL isSuccess) {
             if (isSuccess) {
                 [self showAutoDismissTextAlert:@"分享成功"];
@@ -399,12 +411,7 @@
 - (void) setupWebView {
     self.timer = [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(rewardArticle:) userInfo:nil repeats:NO];
     wkWebViewHeight = 0.f;
-    NSURL *url;
-    if (_isCircleType) { // 圈子
-        url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/v1/page/poster/%@",Base_Url,self.articleId]];
-    } else { 
-        url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/v1/page/article/%@",Base_Url,self.articleId]];
-    }
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/v1/page/article/%@",Base_Url,self.articleId]];;
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
     [self.wkWebView loadRequest:urlRequest];
     [self showWaitingHUD];

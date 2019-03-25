@@ -60,7 +60,9 @@
     NSString *title = infoDict[@"title"];
     NSString *subTitle = infoDict[@"subTitle"];
     
-    self.iconImageView.image = [UIImage imageNamed:imagePath];
+//    self.iconImageView.image = [UIImage imageNamed:imagePath]; // imagePath为本地地址
+    [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:imagePath]];
+
     self.titleLabel.text = title;
     [self.titleLabel sizeToFit];
     

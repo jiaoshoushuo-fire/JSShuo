@@ -16,6 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void) deleteCircleWithID:(NSString *)ID complement:(void(^)(BOOL isSuccess,NSDictionary *contentDic ))complement;
 
+/** 举报 **/
++ (void) tipOffCircleWithID:(NSString *)ID reason:(NSNumber *)reason complement:(void(^)(BOOL isSuccess,NSDictionary *contentDic))complement;
+
 @end
 
 NS_ASSUME_NONNULL_END

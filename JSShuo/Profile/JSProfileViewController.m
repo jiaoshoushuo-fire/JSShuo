@@ -27,6 +27,7 @@
 #import "JSRedPacketViewController.h"
 #import "AppDelegate.h"
 #import "JSPostMessageViewController.h"
+#import "JSNetworkManager+Login.h"
 
 @interface JSProfileItemView : UIView
 @property (nonatomic, strong)UIImageView *itemImageView;
@@ -91,13 +92,23 @@
 
 - (NSArray *)iconImages{
     if (!_iconImages) {
-        _iconImages = @[@"js_profile_tixian",/*@"js_profile_shangcheng",*/@"js_profile_invitate",@"js_profile_qianbao"];
+        BOOL show = [[NSUserDefaults standardUserDefaults] boolForKey:kShowInvite];
+        if (show) {
+            _iconImages = @[@"js_profile_tixian",/*@"js_profile_shangcheng",*/@"js_profile_invitate",@"js_profile_qianbao"];
+        } else {
+            _iconImages = @[@"js_profile_tixian",/*@"js_profile_shangcheng",*//*@"js_profile_invitate",*/@"js_profile_qianbao"];
+        }
     }
     return _iconImages;
 }
 - (NSArray *)itemTitels{
     if (!_itemTitels) {
-        _itemTitels = @[@"提现",/*@"商城",*/@"邀请好友",@"我的钱包"];
+        BOOL show = [[NSUserDefaults standardUserDefaults] boolForKey:kShowInvite];
+        if (show) {
+            _itemTitels = @[@"提现",/*@"商城",*/@"邀请好友",@"我的钱包"];
+        } else {
+            _itemTitels = @[@"提现",/*@"商城",*//*@"邀请好友",*/@"我的钱包"];
+        }
     }
     return _itemTitels;
 }
@@ -123,6 +134,9 @@
 
 - (void)itemViewDidSelectedWithIndex:(UITapGestureRecognizer *)tap{
     NSInteger index = tap.view.tag - 100;
+    if (self.itemTitels.count == 2 && index == 1) {
+        index = 2;
+    }
     if (self.delegate && [self.delegate respondsToSelector:@selector(didSelectedMenuItemIndex:)]) {
         [self.delegate didSelectedMenuItemIndex:index];
     }
@@ -490,23 +504,38 @@
     }
     return _profileTableView;
 }
-- (NSArray *)profileInfoArray{
-    if (!_profileInfoArray) {
-        _profileInfoArray = @[@{@"imagePath":@"js_profile_input_code",@"title":@"输入邀请码",@"subTitle":@"最高88零钱邀请大红包"},
-                              /*@{@"imagePath":@"js_profile_mession",@"title":@"任务中心",@"subTitle":@"红包金币拿到手软"},*/
-                              @{@"imagePath":@"js_profile_game",@"title":@"活动大厅",@"subTitle":@"金币赚不停"},
-                              /*@{@"imagePath":@"js_profile_huiyuan",@"title":@"会员大促销",@"subTitle":@"特价返利最后七天"},*/
-                              @{@"imagePath":@"js_profile_question",@"title":@"常见问题",@"subTitle":@""},
-                              @{@"imagePath":@"js_profile_pinglun",@"title":@"我的评论",@"subTitle":@""},
-                              @{@"imagePath":@"js_profile_shoucang",@"title":@"我的收藏",@"subTitle":@""},
-                              ];
-    }
-    return _profileInfoArray;
-}
+//- (NSArray *)profileInfoArray{
+//    if (!_profileInfoArray) {
+//        _profileInfoArray = @[@{@"imagePath":@"js_profile_input_code",@"title":@"输入邀请码",@"subTitle":@"最高88零钱邀请大红包"},
+//                              /*@{@"imagePath":@"js_profile_mession",@"title":@"任务中心",@"subTitle":@"红包金币拿到手软"},*/
+//                              @{@"imagePath":@"js_profile_game",@"title":@"活动大厅",@"subTitle":@"金币赚不停"},
+//                              /*@{@"imagePath":@"js_profile_huiyuan",@"title":@"会员大促销",@"subTitle":@"特价返利最后七天"},*/
+//                              @{@"imagePath":@"js_profile_question",@"title":@"常见问题",@"subTitle":@""},
+//                              @{@"imagePath":@"js_profile_pinglun",@"title":@"我的评论",@"subTitle":@""},
+//                              @{@"imagePath":@"js_profile_shoucang",@"title":@"我的收藏",@"subTitle":@""},
+//                              ];
+//    }
+//    return _profileInfoArray;
+//}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"我的";
+    [self requestData];
+}
+
+- (void) requestData {
+    [self showWaitingHUD];
+    [JSNetworkManager requestIsShowInviteMenu];
+    [JSNetworkManager requestInfoMenuComplement:^(BOOL isSuccess, NSArray * _Nonnull contentArray) {
+        [self hideWaitingHUD];
+        if (isSuccess) {
+            self.profileInfoArray = contentArray;
+        }
+        [self setupConfig];
+    }];
+}
+- (void) setupConfig {
     [self.view addSubview:self.profileTableView];
     [self.profileTableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
@@ -607,6 +636,7 @@
     }else if (indexPath.section == 1){
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell" forIndexPath:indexPath];
         [cell.contentView addSubview:self.cycleScrollView];
+        cell.userInteractionEnabled = NO; // 防止跳转
         profileCell = cell;
     }else{
         JSProfileCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JSProfileCell" forIndexPath:indexPath];

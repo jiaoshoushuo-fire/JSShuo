@@ -39,7 +39,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationController setNavigationBarHidden:YES];
-    
+    [JSNetworkManager requestIsShowInviteMenu]; // 请求 “我的” 页面中，是否显示接口
     [self setupNav];
     [self addTabPageBar];
     [self addPagerController];
