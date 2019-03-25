@@ -73,6 +73,7 @@
         _redPocketButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _redPocketButton.size = CGSizeMake(27, 22);
         [_redPocketButton setImage:[UIImage imageNamed:@"nav_headr_redpocket"] forState:UIControlStateNormal];
+        _redPocketButton.hidden = YES;
     }
     return _redPocketButton;
 }

@@ -164,6 +164,7 @@
         vc.hidesBottomBarWhenPushed = YES;
         [self.rt_navigationController pushViewController:vc animated:YES complete:nil];
     } forControlEvents:UIControlEventTouchUpInside];
+    
     [self.view addSubview:_nav];
     [_nav mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(self.view);

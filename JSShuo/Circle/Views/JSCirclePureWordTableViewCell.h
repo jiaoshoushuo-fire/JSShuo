@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "JSCircleBottomView.h"
-#import "JSCircleListModel.h"
+//#import "JSCircleListModel.h"
+#import "JSCircleRootCell.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface JSCirclePureWordTableViewCell : UITableViewCell
+@interface JSCirclePureWordTableViewCell : JSCircleRootCell
 
 /** 用户头像 **/
 @property (nonatomic,strong) UIImageView *headView;
@@ -22,10 +23,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong) UILabel *titleLabel;
 /** 详情标题 **/
 @property (nonatomic,strong) UILabel *subtitleLabel;
+
 /** cell底部的一排 **/
 @property (nonatomic,strong) JSCircleBottomView *bottomView;
 
-@property (nonatomic,strong) JSCircleListModel *model;
+//@property (nonatomic,strong) JSCircleListModel *model;
 
 @end
 

@@ -8,7 +8,9 @@
 
 #import "JSCircleTwoPictureTableViewCell.h"
 
+
 @implementation JSCircleTwoPictureTableViewCell
+@synthesize model = _model;
 
 - (void)awakeFromNib {
     [super awakeFromNib];

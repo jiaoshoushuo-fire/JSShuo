@@ -252,6 +252,7 @@
 		7AD7F1AC21AA713000F56F79 /* JSBaseWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD7F1AB21AA713000F56F79 /* JSBaseWebViewController.m */; };
 		7AD7F1AF21AA730000F56F79 /* JSActivityRuleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD7F1AE21AA730000F56F79 /* JSActivityRuleViewController.m */; };
 		7AD7F1B221AA742500F56F79 /* JSActivityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD7F1B121AA742500F56F79 /* JSActivityModel.m */; };
+		7AE58C832248758E00F93544 /* JSCircleRootCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE58C822248758E00F93544 /* JSCircleRootCell.m */; };
 		A02B29E2FC7397B33BD05EC7 /* libPods-JSShuo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0C9F621EFFB845046C46704 /* libPods-JSShuo.a */; };
 /* End PBXBuildFile section */
 
@@ -755,6 +756,8 @@
 		7AD7F1AE21AA730000F56F79 /* JSActivityRuleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSActivityRuleViewController.m; sourceTree = "<group>"; };
 		7AD7F1B021AA742500F56F79 /* JSActivityModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSActivityModel.h; sourceTree = "<group>"; };
 		7AD7F1B121AA742500F56F79 /* JSActivityModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSActivityModel.m; sourceTree = "<group>"; };
+		7AE58C812248758E00F93544 /* JSCircleRootCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSCircleRootCell.h; sourceTree = "<group>"; };
+		7AE58C822248758E00F93544 /* JSCircleRootCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSCircleRootCell.m; sourceTree = "<group>"; };
 		970737962D02DBFA81E8DC67 /* Pods-JSShuoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSShuoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JSShuoTests/Pods-JSShuoTests.release.xcconfig"; sourceTree = "<group>"; };
 		A13FC4DE98462C1E2DE50010 /* Pods-JSShuo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSShuo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JSShuo/Pods-JSShuo.debug.xcconfig"; sourceTree = "<group>"; };
 		B29893048A2739D89BF02B42 /* Pods-JSShuo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSShuo.release.xcconfig"; path = "Pods/Target Support Files/Pods-JSShuo/Pods-JSShuo.release.xcconfig"; sourceTree = "<group>"; };
@@ -909,6 +912,8 @@
 				003014A12203FE57001A317E /* JSCircleThreePictureTableViewCell.m */,
 				003014972203FDF2001A317E /* JSCirclePureWordTableViewCell.h */,
 				003014982203FDF2001A317E /* JSCirclePureWordTableViewCell.m */,
+				7AE58C812248758E00F93544 /* JSCircleRootCell.h */,
+				7AE58C822248758E00F93544 /* JSCircleRootCell.m */,
 				003014A322041BB3001A317E /* JSCircleBottomView.h */,
 				003014A422041BB3001A317E /* JSCircleBottomView.m */,
 				00E7570422154BBF006B6460 /* JSCircleMyTableViewCell.h */,
@@ -2156,6 +2161,7 @@
 				7A898F8F21956B0F00A7CADD /* GFImageCropView.m in Sources */,
 				7A898F8B21956B0F00A7CADD /* GGAssetCollectionCell.m in Sources */,
 				0030148C2201A4CD001A317E /* JSCircleListModel.m in Sources */,
+				7AE58C832248758E00F93544 /* JSCircleRootCell.m in Sources */,
 				7A442EF621B2E7AA0073C273 /* JSInvitationSubViewController.m in Sources */,
 				7A015E11219A75BE0025D24F /* JSWithdrawViewController.m in Sources */,
 				7A5FEE8B218AFBAC006CF7EC /* JSTabBarViewController.m in Sources */,

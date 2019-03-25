@@ -9,6 +9,7 @@
 #import "JSCircleThreePictureTableViewCell.h"
 
 @implementation JSCircleThreePictureTableViewCell
+@synthesize model = _model;
 
 - (void)awakeFromNib {
     [super awakeFromNib];

@@ -9,7 +9,7 @@
 #import "JSCirclePureWordTableViewCell.h"
 
 @implementation JSCirclePureWordTableViewCell
-
+@synthesize model = _model;
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
@@ -140,5 +140,6 @@
     }
     return _headView;
 }
+
 
 @end

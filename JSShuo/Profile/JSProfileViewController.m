@@ -85,6 +85,7 @@
 @property (nonatomic, strong)NSArray *iconImages;
 @property (nonatomic, strong)NSArray *itemTitels;
 @property (nonatomic, weak)id<JSProfileHeaderMenuItemViewDelegate>delegate;
+@property (nonatomic, strong)UIImageView *markImageView;
 
 @end
 
@@ -100,6 +101,15 @@
         }
     }
     return _iconImages;
+}
+- (UIImageView *)markImageView{
+    if (!_markImageView) {
+        _markImageView = [[UIImageView alloc]init];
+        _markImageView.image = [UIImage imageNamed:@"WechatIMG1989"];
+        _markImageView.clipsToBounds = YES;
+        _markImageView.contentMode = UIViewContentModeScaleAspectFill;
+    }
+    return _markImageView;
 }
 - (NSArray *)itemTitels{
     if (!_itemTitels) {
@@ -119,15 +129,21 @@
     if (self) {
         CGFloat width = kScreenWidth/(float)self.iconImages.count;
         CGFloat height = 10 + 30 + 5 + 20 + 10;
-        for (int i=0; i<self.iconImages.count; i++) {
-            JSProfileItemView *itemView = [[JSProfileItemView alloc]initWithFrame:CGRectMake(i*width, 0, width, height)];
-            UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(itemViewDidSelectedWithIndex:)];
-            [itemView addGestureRecognizer:tap];
-            itemView.itemImageView.image = [UIImage imageNamed:self.iconImages[i]];
-            itemView.itemLabel.text = self.itemTitels[i];
-            itemView.tag = 100 + i;
-            [self addSubview:itemView];
-        }
+//        for (int i=0; i<self.iconImages.count; i++) {
+//            JSProfileItemView *itemView = [[JSProfileItemView alloc]initWithFrame:CGRectMake(i*width, 0, width, height)];
+//            UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(itemViewDidSelectedWithIndex:)];
+//            [itemView addGestureRecognizer:tap];
+//            itemView.itemImageView.image = [UIImage imageNamed:self.iconImages[i]];
+//            itemView.itemLabel.text = self.itemTitels[i];
+//            itemView.tag = 100 + i;
+//            [self addSubview:itemView];
+//        }
+        [self addSubview:self.markImageView];
+        [self.markImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self).offset(10);
+            make.right.equalTo(self).offset(-10);
+            make.top.bottom.equalTo(self);
+        }];
     }
     return self;
 }
@@ -191,6 +207,7 @@
         _subLabel.textColor = [UIColor whiteColor];
         _subLabel.font = [UIFont systemFontOfSize:10];
         _subLabel.textAlignment = NSTextAlignmentCenter;
+        _subLabel.hidden = YES;
     }
     return _subLabel;
 }

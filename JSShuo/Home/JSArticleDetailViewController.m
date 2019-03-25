@@ -24,6 +24,8 @@
 @interface JSArticleDetailViewController () <WKNavigationDelegate,WKUIDelegate,UITableViewDelegate,UITableViewDataSource>
 {
     CGFloat wkWebViewHeight;
+    dispatch_group_t group;
+    dispatch_queue_t queue;
 }
 @property (nonatomic,strong) WKWebView *wkWebView;
 @property (nonatomic,strong) UITableView *tableView;
@@ -48,6 +50,9 @@
     [super viewDidLoad];
 //    [self.navigationController setNavigationBarHidden:YES];
     self.view.backgroundColor = [UIColor whiteColor];
+    group = dispatch_group_create();
+    queue = dispatch_queue_create("com.jsshuo.article_detail", DISPATCH_QUEUE_CONCURRENT);
+    
     [self setupWebView];
 //    [self setupNav];
     self.title = @"推荐详情";
@@ -81,10 +86,16 @@
     [self requestUserInfo];
     [self requestCommentList];
     [self requestRecommendList];
+    dispatch_group_notify(group, queue, ^{
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+        });
+    });
 }
 
 // 请求用户点赞、收藏等接口
 - (void) requestUserInfo {
+    
     [JSNetworkManager requestDetailWithArticleID:self.articleId.integerValue complent:^(BOOL isSuccess, NSDictionary * _Nonnull contentDic) {
         if (isSuccess) {
             NSNumber *collected = contentDic[@"collect"];
@@ -113,24 +124,30 @@
 
 // 请求评论列表
 - (void) requestCommentList {
+    
     NSDictionary *commentParams = @{@"articleId":self.articleId,@"pageNum":[NSNumber numberWithInt:_pageNum],@"pageSize":[NSNumber numberWithInt:_pageSize]};
+    dispatch_group_enter(group);
     [JSNetworkManager requestCommentListWithParams:commentParams complent:^(BOOL isSuccess, NSNumber * _Nonnull totalPage, NSArray * _Nonnull modelsArray) {
         if (isSuccess) {
             self.commentDatas = [NSMutableArray arrayWithArray:modelsArray];
             self.totalPage = totalPage;
-            [self.tableView reloadData];
+            
+//            [self.tableView reloadData];
         }
+        dispatch_group_leave(self->group);
     }];
 }
 
 // 请求相关推荐列表
 - (void) requestRecommendList {
     NSDictionary *recommendParams = @{@"articleId":self.articleId,@"type":@1,@"pageSize":@6};
+    dispatch_group_enter(group);
     [JSNetworkManager requestRecommendListWithParams:recommendParams complent:^(BOOL isSuccess, NSArray * _Nonnull modelsArray) {
         if (isSuccess) {
             self.recommendDatas = [NSMutableArray arrayWithArray:modelsArray];
-            [self.tableView reloadData];
+//            [self.tableView reloadData];
         }
+        dispatch_group_leave(self->group);
     }];
 }
 
@@ -234,7 +251,7 @@
         if (self.bottomView.chatBtn.selected) {
             [self.tableView scrollToTop];
         } else {
-            if (self.commentDatas.count) {
+            if (self.commentDatas.count && self.recommendDatas.count > 0) {
                 [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1] atScrollPosition:UITableViewScrollPositionTop animated:YES];
             }
         }
