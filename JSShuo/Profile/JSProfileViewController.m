@@ -690,9 +690,11 @@
         [[AppDelegate instance].mainViewController switchToViewControllerAtIndex:3];
     }else if ([title isEqualToString:@"活动大厅"]){
 //        [[AppDelegate instance].mainViewController switchToViewControllerAtIndex:2];
-        JSRedPacketViewController *redPackVC = [[JSRedPacketViewController alloc]init];
-        redPackVC.hidesBottomBarWhenPushed = YES;
-        [self.rt_navigationController pushViewController:redPackVC animated:YES complete:nil];
+        if (indexPath.section == 2) {
+            JSRedPacketViewController *redPackVC = [[JSRedPacketViewController alloc]init];
+            redPackVC.hidesBottomBarWhenPushed = YES;
+            [self.rt_navigationController pushViewController:redPackVC animated:YES complete:nil];
+        }
         
     }else if ([title isEqualToString:@"会员大促销"]){
         JSMemberViewController *memberVC = [[JSMemberViewController alloc]init];

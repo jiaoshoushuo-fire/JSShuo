@@ -45,11 +45,15 @@
         
     }];
     UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"不感兴趣" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        
+        if (self.noInterestBlock) {
+            self.noInterestBlock();
+        }
     }];
     NSString *string = [NSString stringWithFormat:@"屏蔽作者：%@",self.model.nickname];
     UIAlertAction *action2 = [UIAlertAction actionWithTitle:string style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        
+        if (self.shieldAuthor) {
+            self.shieldAuthor();
+        }
     }];
     
     [alertVC addAction:cancelAction];

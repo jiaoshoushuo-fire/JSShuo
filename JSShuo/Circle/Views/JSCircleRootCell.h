@@ -15,6 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic,strong) JSCircleListModel *model;
 
+@property (nonatomic,copy) void (^noInterestBlock)(void);
+@property (nonatomic,copy) void (^shieldAuthor)(void);
+
 
 @end
 

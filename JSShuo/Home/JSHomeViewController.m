@@ -111,7 +111,8 @@
         [self.tableView.mj_header endRefreshing];
         [self.tableView.mj_footer endRefreshing];
     } else {
-        [self.datas insertObjects:tempArr atIndex:0];
+//        [self.datas insertObjects:tempArr atIndex:0];
+        [self.datas addObjectsFromArray:tempArr];
         [self.tableView.mj_footer endRefreshing];
         [self.tableView.mj_header endRefreshing];
     }
