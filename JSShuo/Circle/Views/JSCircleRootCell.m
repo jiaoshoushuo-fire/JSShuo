@@ -7,6 +7,9 @@
 //
 
 #import "JSCircleRootCell.h"
+#import "JSNetworkManager+Login.h"
+#import "JSNetworkManager+Channel.h"
+
 
 @interface JSCircleRootCell ()
 @property (nonatomic, strong)UIButton *circlePersonalButton;
@@ -45,15 +48,26 @@
         
     }];
     UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"不感兴趣" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        if (self.noInterestBlock) {
-            self.noInterestBlock();
-        }
+        
+        [JSAccountManager checkLoginStatusComplement:^(BOOL isLogin) {
+            if (isLogin) {
+                [JSNetworkManager requestNotlookArticle:self.model.articleId.stringValue complement:^(BOOL isSuccess) {
+                    if (self.noInterestBlock) {
+                        self.noInterestBlock();
+                    }
+                }];
+            }
+        }];
     }];
+    
     NSString *string = [NSString stringWithFormat:@"屏蔽作者：%@",self.model.nickname];
     UIAlertAction *action2 = [UIAlertAction actionWithTitle:string style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        if (self.shieldAuthor) {
-            self.shieldAuthor();
-        }
+        
+        [JSNetworkManager requestShieldAuthor:self.model.nickname complement:^(BOOL isSuccess) {
+            if (self.shieldAuthor) {
+                self.shieldAuthor();
+            }
+        }];
     }];
     
     [alertVC addAction:cancelAction];

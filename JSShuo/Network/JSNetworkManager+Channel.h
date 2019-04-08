@@ -20,6 +20,11 @@ NS_ASSUME_NONNULL_BEGIN
 /** 圈子 -- 我的 **/
 + (void) requestCircleWithMyPageNum:(NSString *)pageNum complent:(void(^)(BOOL isSuccess,NSArray *contentArray))complent;
 
+/// 不感兴趣
++ (void) requestNotlookArticle:(NSString *)atricleID complement:(void(^)(BOOL isSuccess))complement;
+
+/// 屏蔽作者
++ (void) requestShieldAuthor:(NSString *)authorName complement:(void(^)(BOOL isSuccess))complement;
 
 @end
 

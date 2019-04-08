@@ -64,7 +64,9 @@
 }
 
 - (void) requestData {
+    [self showWaitingHUD];
     [JSNetworkManager requestCircleWithChannel:self.channel pageNum:[NSString stringWithFormat:@"%i",_pageNum] complent:^(BOOL isSuccess, NSArray * _Nonnull contentArray) {
+        [self hideWaitingHUD];
         if (isSuccess) {
             [self dealData:contentArray];
             self.noResultView.hidden = YES;
@@ -151,24 +153,52 @@
         cell.model = model;
         objc_setAssociatedObject(cell.bottomView.reportBtn, @"reportBtn", model, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         [cell.bottomView.reportBtn addTarget:self action:@selector(showShare:) forControlEvents:UIControlEventTouchUpInside];
+        cell.noInterestBlock = ^(void) {
+            [self.datas removeObjectAtIndex:indexPath.row];
+            [self.tableView reloadData];
+        };
+        cell.shieldAuthor = ^(void) {
+            [self requestData];
+        };
         return cell;
     } else if (model.imageType.integerValue == 1) { // 1图
         JSCircleOnePictureTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JSCircleOnePictureTableViewCell" forIndexPath:indexPath];
         cell.model = model;
         objc_setAssociatedObject(cell.bottomView.reportBtn, @"reportBtn", model, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         [cell.bottomView.reportBtn addTarget:self action:@selector(showShare:) forControlEvents:UIControlEventTouchUpInside];
+        cell.noInterestBlock = ^(void) {
+            [self.datas removeObjectAtIndex:indexPath.row];
+            [self.tableView reloadData];
+        };
+        cell.shieldAuthor = ^(void) {
+            [self requestData];
+        };
         return cell;
     } else if (model.imageType.integerValue == 2) { // 2图
         JSCircleTwoPictureTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JSCircleTwoPictureTableViewCell" forIndexPath:indexPath];
         cell.model = model;
         objc_setAssociatedObject(cell.bottomView.reportBtn, @"reportBtn", model, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         [cell.bottomView.reportBtn addTarget:self action:@selector(showShare:) forControlEvents:UIControlEventTouchUpInside];
+        cell.noInterestBlock = ^(void) {
+            [self.datas removeObjectAtIndex:indexPath.row];
+            [self.tableView reloadData];
+        };
+        cell.shieldAuthor = ^(void) {
+            [self requestData];
+        };
         return cell;
     } else { // 3图
         JSCircleThreePictureTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JSCircleThreePictureTableViewCell" forIndexPath:indexPath];
         cell.model = model;
         objc_setAssociatedObject(cell.bottomView.reportBtn, @"reportBtn", model, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         [cell.bottomView.reportBtn addTarget:self action:@selector(showShare:) forControlEvents:UIControlEventTouchUpInside];
+        cell.noInterestBlock = ^(void) {
+            [self.datas removeObjectAtIndex:indexPath.row];
+            [self.tableView reloadData];
+        };
+        cell.shieldAuthor = ^(void) {
+            [self requestData];
+        };
         return cell;
     }
 }
