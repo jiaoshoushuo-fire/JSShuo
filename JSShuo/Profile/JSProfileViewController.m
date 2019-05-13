@@ -28,6 +28,8 @@
 #import "AppDelegate.h"
 #import "JSPostMessageViewController.h"
 #import "JSNetworkManager+Login.h"
+#import "JSPrivacyViewController.h"
+#import "JSAboutUsViewController.h"
 
 @interface JSProfileItemView : UIView
 @property (nonatomic, strong)UIImageView *itemImageView;
@@ -696,7 +698,15 @@
             [self.rt_navigationController pushViewController:redPackVC animated:YES complete:nil];
         }
         
-    }else if ([title isEqualToString:@"会员大促销"]){
+    } else if ([title isEqualToString:@"隐私协议"]){
+        JSPrivacyViewController *privacyVC = [[JSPrivacyViewController alloc]initWithUrl:@"http://api.jiaoshoutt.com/v1/page/protocal/user"];
+        privacyVC.hidesBottomBarWhenPushed = YES;
+        [self.rt_navigationController pushViewController:privacyVC animated:YES complete:nil];
+    } else if ([title isEqualToString:@"关于我们"]){
+        JSAboutUsViewController *aboutUsVC = [[JSAboutUsViewController alloc]init];
+        aboutUsVC.hidesBottomBarWhenPushed = YES;
+        [self.rt_navigationController pushViewController:aboutUsVC animated:YES complete:nil];
+    } else if ([title isEqualToString:@"会员大促销"]){
         JSMemberViewController *memberVC = [[JSMemberViewController alloc]init];
         memberVC.hidesBottomBarWhenPushed = YES;
         [self.rt_navigationController pushViewController:memberVC animated:YES complete:nil];

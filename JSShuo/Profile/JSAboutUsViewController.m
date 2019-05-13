@@ -30,11 +30,11 @@
         _contentLabel = [[UILabel alloc]init];
         _contentLabel.textColor = [UIColor colorWithHexString:@"666666"];
         _contentLabel.font = [UIFont systemFontOfSize:14];
-        NSString *textString = @"    叫兽说是一款主打轻松，搞笑以及健康的两性的内容性APP，让用户的碎片时间过的更有意义。同时为了鼓励用户阅读和浏览，本APP还具有阅读激励机制与用户共同分享本APP的成长果实。";
+        NSString *textString = @"    叫兽说是一款主打轻松，搞笑以及健康的两性的内容性APP，让用户的碎片时间过的更有意义。";
         CGFloat height = [textString heightForFont:_contentLabel.font width:kScreenWidth - 50];
         _contentLabel.text = textString;
         _contentLabel.numberOfLines = 0;
-        _contentLabel.size = CGSizeMake(kScreenWidth - 50, height);
+        _contentLabel.size = CGSizeMake(kScreenWidth - 50, height+1);
     }
     return _contentLabel;
 }

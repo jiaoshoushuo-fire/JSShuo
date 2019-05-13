@@ -21,14 +21,14 @@
         [self.sendCommentContentView addSubview:self.editImgView];
         [self.sendCommentContentView addSubview:self.sendCommentLabel];
 //        [self.sendCommentContentView addSubview:self.expressionImgView];
-        [self addSubview:self.chatBtn];
+//        [self addSubview:self.chatBtn];
         [self addSubview:self.praiseBtn];
         [self addSubview:self.collectionBtn];
         [self addSubview:self.shareBtn];
         
         [self.sendCommentContentView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(15);
-            make.right.mas_equalTo(self.chatBtn.mas_left).offset(-22);
+            make.right.mas_equalTo(self.praiseBtn.mas_left).offset(-22);
             make.top.mas_equalTo((40-28)*0.5);
             make.height.mas_equalTo(28);
         }];
@@ -50,12 +50,12 @@
 //        }];
         
         
-        [self.chatBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-            // 23 * 22
-            make.size.mas_equalTo(CGSizeMake(23, 22));
-            make.top.mas_equalTo((40-22)*0.5);
-            make.right.mas_equalTo(self.praiseBtn.mas_left).offset(-20);
-        }];
+//        [self.chatBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+//            // 23 * 22
+//            make.size.mas_equalTo(CGSizeMake(23, 22));
+//            make.top.mas_equalTo((40-22)*0.5);
+//            make.right.mas_equalTo(self.praiseBtn.mas_left).offset(-20);
+//        }];
         [self.praiseBtn mas_makeConstraints:^(MASConstraintMaker *make) {
             // 21 * 22
             make.right.mas_equalTo(self.collectionBtn.mas_left).offset(-24);
@@ -75,13 +75,13 @@
             make.right.mas_equalTo(-15);
         }];
         
-        [self addSubview:self.commentNum];
+//        [self addSubview:self.commentNum];
         [self addSubview:self.praiseNum];
-        [self.commentNum mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.size.mas_equalTo(CGSizeMake(26, 16));
-            make.top.mas_equalTo(5);
-            make.left.mas_equalTo(self.chatBtn.mas_right).offset(-7);
-        }];
+//        [self.commentNum mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.size.mas_equalTo(CGSizeMake(26, 16));
+//            make.top.mas_equalTo(5);
+//            make.left.mas_equalTo(self.chatBtn.mas_right).offset(-7);
+//        }];
         [self.praiseNum mas_makeConstraints:^(MASConstraintMaker *make) {
             make.size.mas_equalTo(CGSizeMake(26, 16));
             make.top.mas_equalTo(5);

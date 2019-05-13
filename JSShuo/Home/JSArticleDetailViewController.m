@@ -112,12 +112,13 @@
             } else {
                 self.bottomView.praiseNum.hidden = YES;
             }
-            NSNumber *commentNum = contentDic[@"commentNum"];
-            if (commentNum.integerValue != 0) {
-                self.bottomView.commentNum.text = [NSString stringWithFormat:@"%@",commentNum];
-            } else {
-                self.bottomView.commentNum.hidden = YES;
-            }
+//            NSNumber *commentNum = contentDic[@"commentNum"];
+//            if (commentNum.integerValue != 0) {
+//                self.bottomView.commentNum.text = [NSString stringWithFormat:@"%@",commentNum];
+//            } else {
+//                self.bottomView.commentNum.hidden = YES;
+//            }
+            self.bottomView.commentNum.hidden = YES;
         }
     }];
 }
@@ -129,7 +130,8 @@
     dispatch_group_enter(group);
     [JSNetworkManager requestCommentListWithParams:commentParams complent:^(BOOL isSuccess, NSNumber * _Nonnull totalPage, NSArray * _Nonnull modelsArray) {
         if (isSuccess) {
-            self.commentDatas = [NSMutableArray arrayWithArray:modelsArray];
+            // 取消赋值，来隐藏评论
+//            self.commentDatas = [NSMutableArray arrayWithArray:modelsArray];
             self.totalPage = totalPage;
             
 //            [self.tableView reloadData];
@@ -252,7 +254,7 @@
             [self.tableView scrollToTop];
         } else {
             if (self.commentDatas.count && self.recommendDatas.count > 0) {
-                [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+                [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
             }
         }
         self.bottomView.chatBtn.selected = !self.bottomView.chatBtn.selected;

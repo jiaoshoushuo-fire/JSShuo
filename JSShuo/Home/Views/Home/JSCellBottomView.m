@@ -28,8 +28,8 @@
     _model = model;
     [self addSubview:self.sourceLabel];
     [self addSubview:self.releaseTimeLabel];
-    [self addSubview:self.commitCountImg];
-    [self addSubview:self.commitCountLabel];
+//    [self addSubview:self.commitCountImg];
+//    [self addSubview:self.commitCountLabel];
     [self addSubview:self.praiseCountImg];
     [self addSubview:self.praiseCountLabel];
     [self addSubview:self.lineView];
@@ -62,24 +62,25 @@
         make.centerY.mas_equalTo(self.sourceLabel.mas_centerY);
         make.width.mas_equalTo(240);
     }];
-    [self.commitCountLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        /*  总结：
-         1. UILabel、UIImageView 可以不设置宽高；
-         2. 不设置宽高时，根据文字、图片内容自动包裹；
-         3. 当文字内容、图片尺寸改变时，宽度自动改变；
-         4. 当label设置了对trailing的边距，同时左边有view与它有相对距离时；label变宽，这个view也会向左移动，不需要更新约束。
-         */
-        make.centerY.mas_equalTo(self.releaseTimeLabel.mas_centerY);
-        make.trailing.equalTo(self).with.offset(-15);
-    }];
-    [self.commitCountImg mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(19, 17));
-        make.right.mas_equalTo(self.commitCountLabel.mas_left).offset(-5);
-        make.centerY.mas_equalTo(self.commitCountLabel.mas_centerY);
-    }];
+//    [self.commitCountLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//        /*  总结：
+//         1. UILabel、UIImageView 可以不设置宽高；
+//         2. 不设置宽高时，根据文字、图片内容自动包裹；
+//         3. 当文字内容、图片尺寸改变时，宽度自动改变；
+//         4. 当label设置了对trailing的边距，同时左边有view与它有相对距离时；label变宽，这个view也会向左移动，不需要更新约束。
+//         */
+//        make.centerY.mas_equalTo(self.releaseTimeLabel.mas_centerY);
+//        make.trailing.equalTo(self).with.offset(-15);
+//    }];
+//    [self.commitCountImg mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.size.mas_equalTo(CGSizeMake(19, 17));
+//        make.right.mas_equalTo(self.commitCountLabel.mas_left).offset(-5);
+//        make.centerY.mas_equalTo(self.commitCountLabel.mas_centerY);
+//    }];
     [self.praiseCountLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.mas_equalTo(self.commitCountLabel.mas_centerY);
-        make.trailing.equalTo(self.commitCountImg).with.offset(-29);
+        make.centerY.mas_equalTo(self.releaseTimeLabel.mas_centerY);
+//        make.trailing.equalTo(self.commitCountImg).with.offset(-29);
+        make.trailing.equalTo(self).with.offset(-15);
     }];
     [self.praiseCountImg mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(17, 17));
